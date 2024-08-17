@@ -1,0 +1,13 @@
+<?php
+
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Untek\Utility\Init\Presentation\Cli\Commands\InitCommand;
+
+use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
+
+return static function (ContainerConfigurator $configurator): void {
+    $services = $configurator->services()->defaults()->public()->autowire()->autoconfigure();
+    $parameters = $configurator->parameters();
+
+    $services->set(InitCommand::class);
+};
