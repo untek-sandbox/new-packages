@@ -1,0 +1,33 @@
+{
+    "name": "sroze/argument-resolver",
+    "description": "A lightweight utility to resolve method arguments based on types and names",
+    "type": "library",
+    "license": "MIT",
+  "homepage": "https://untek-lab.github.io",
+    "homepage": "https://github.com/sroze/ArgumentResolver",
+    "keywords":  [
+        "argument",
+        "resolver",
+        "type hint"
+    ],
+    "authors": [
+        {
+            "name": "Samuel ROZE",
+            "email": "samuel.roze@gmail.com",
+            "homepage": "http://www.sroze.io"
+        }
+    ],
+    "require-dev": {
+        "phpspec/phpspec": "~2.2",
+        "doctrine/common": "~2.5",
+        "fabpot/php-cs-fixer": "~1.8"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "src/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
