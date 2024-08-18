@@ -7,7 +7,7 @@ use Psr\Container\ContainerInterface;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionParameter;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\Container\Traits\ContainerAwareTrait;
 
 class MethodParametersResolver

@@ -3,7 +3,7 @@
 namespace Untek\Framework\Telegram\Infrastructure\Normalizer;
 
 use ArrayObject;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\Contract\Common\Exceptions\NotImplementedMethodException;
 use Untek\Core\Instance\Helpers\MappingHelper;
 use Untek\Database\Base\Hydrator\DatabaseItemNormalizer;

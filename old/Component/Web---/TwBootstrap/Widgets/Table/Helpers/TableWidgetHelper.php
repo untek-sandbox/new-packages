@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Web\TwBootstrap\Widgets\Table\Helpers;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Model\Entity\Helpers\EntityHelper;
 
 class TableWidgetHelper

@@ -3,7 +3,7 @@
 namespace Untek\Framework\Telegram\Domain\Libs\Loaders\BundleLoaders;
 
 use Untek\Core\Bundle\Base\BaseLoader;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 
 class TelegramRoutesLoader extends BaseLoader
 {

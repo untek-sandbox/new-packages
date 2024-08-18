@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Core\Arr\Libs\ArrayValues;
+namespace Untek\Component\Arr\Libs\ArrayValues;
 
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
 
@@ -30,7 +30,7 @@ use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
  *     ]),
  * ];
  *
- * $result = \Untek\Core\Arr\Helpers\ArrayHelper::merge($array1, $array2);
+ * $result = \Untek\Component\Arr\Helpers\ArrayHelper::merge($array1, $array2);
  * ```
  *
  * The result will be

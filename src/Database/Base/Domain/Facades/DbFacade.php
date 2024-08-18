@@ -2,7 +2,7 @@
 
 namespace Untek\Database\Base\Domain\Facades;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\DotEnv\Domain\Libs\DotEnvMap;
 use Untek\Database\Base\Domain\Helpers\ConfigHelper;
 

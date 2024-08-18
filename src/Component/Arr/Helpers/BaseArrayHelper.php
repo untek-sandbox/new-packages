@@ -5,11 +5,11 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace Untek\Core\Arr\Helpers;
+namespace Untek\Component\Arr\Helpers;
 
 use InvalidArgumentException;
-use Untek\Core\Arr\Libs\ArrayValues\ReplaceArrayValue;
-use Untek\Core\Arr\Libs\ArrayValues\UnsetArrayValue;
+use Untek\Component\Arr\Libs\ArrayValues\ReplaceArrayValue;
+use Untek\Component\Arr\Libs\ArrayValues\UnsetArrayValue;
 use function foo\func;
 
 /**
@@ -159,17 +159,17 @@ abstract class BaseArrayHelper
      *
      * ```php
      * // working with array
-     * $username = \Untek\Core\Arr\Helpers\ArrayHelper::getValue($_POST, 'username');
+     * $username = \Untek\Component\Arr\Helpers\ArrayHelper::getValue($_POST, 'username');
      * // working with object
-     * $username = \Untek\Core\Arr\Helpers\ArrayHelper::getValue($user, 'username');
+     * $username = \Untek\Component\Arr\Helpers\ArrayHelper::getValue($user, 'username');
      * // working with anonymous function
-     * $fullName = \Untek\Core\Arr\Helpers\ArrayHelper::getValue($user, function ($user, $defaultValue) {
+     * $fullName = \Untek\Component\Arr\Helpers\ArrayHelper::getValue($user, function ($user, $defaultValue) {
      *     return $user->firstName . ' ' . $user->lastName;
      * });
      * // using dot format to retrieve the property of embedded object
-     * $street = \Untek\Core\Arr\Helpers\ArrayHelper::getValue($users, 'address.street');
+     * $street = \Untek\Component\Arr\Helpers\ArrayHelper::getValue($users, 'address.street');
      * // using an array of keys to retrieve the value
-     * $value = \Untek\Core\Arr\Helpers\ArrayHelper::getValue($versions, ['1.0', 'date']);
+     * $value = \Untek\Component\Arr\Helpers\ArrayHelper::getValue($versions, ['1.0', 'date']);
      * ```
      *
      * @param array|object $array array or object to extract value from
@@ -329,7 +329,7 @@ abstract class BaseArrayHelper
      * ```php
      * // $array = ['type' => 'A', 'options' => [1, 2]];
      * // working with array
-     * $type = \Untek\Core\Arr\Helpers\ArrayHelper::remove($array, 'type');
+     * $type = \Untek\Component\Arr\Helpers\ArrayHelper::remove($array, 'type');
      * // $array content
      * // $array = ['options' => [1, 2]];
      * ```
@@ -358,7 +358,7 @@ abstract class BaseArrayHelper
      *
      * ```php
      * $array = ['Bob' => 'Dylan', 'Michael' => 'Jackson', 'Mick' => 'Jagger', 'Janet' => 'Jackson'];
-     * $removed = \Untek\Core\Arr\Helpers\ArrayHelper::removeValue($array, 'Jackson');
+     * $removed = \Untek\Component\Arr\Helpers\ArrayHelper::removeValue($array, 'Jackson');
      * // result:
      * // $array = ['Bob' => 'Dylan', 'Mick' => 'Jagger'];
      * // $removed = ['Michael' => 'Jackson', 'Janet' => 'Jackson'];
@@ -921,20 +921,20 @@ abstract class BaseArrayHelper
      *     'E' => 1,
      * ];
      *
-     * $result = \Untek\Core\Arr\Helpers\ArrayHelper::filter($array, ['A']);
+     * $result = \Untek\Component\Arr\Helpers\ArrayHelper::filter($array, ['A']);
      * // $result will be:
      * // [
      * //     'A' => [1, 2],
      * // ]
      *
-     * $result = \Untek\Core\Arr\Helpers\ArrayHelper::filter($array, ['A', 'B.C']);
+     * $result = \Untek\Component\Arr\Helpers\ArrayHelper::filter($array, ['A', 'B.C']);
      * // $result will be:
      * // [
      * //     'A' => [1, 2],
      * //     'B' => ['C' => 1],
      * // ]
      *
-     * $result = \Untek\Core\Arr\Helpers\ArrayHelper::filter($array, ['B', '!B.C']);
+     * $result = \Untek\Component\Arr\Helpers\ArrayHelper::filter($array, ['B', '!B.C']);
      * // $result will be:
      * // [
      * //     'B' => ['D' => 2],

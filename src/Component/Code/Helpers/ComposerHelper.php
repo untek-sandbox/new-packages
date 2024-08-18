@@ -4,7 +4,7 @@ namespace Untek\Component\Code\Helpers;
 
 use Composer\Autoload\ClassLoader;
 use http\Exception\RuntimeException;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\Code\Exceptions\NotFoundDependencyException;
 
 /**

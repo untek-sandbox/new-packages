@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Web\View\Resources;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 
 class Js extends BaseResource
 {

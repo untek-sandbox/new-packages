@@ -4,7 +4,7 @@ namespace Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters;
 
 
 use Untek\Core\Text\Helpers\TemplateHelper;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 
 class ArrayFormatter extends BaseFormatter implements FormatterInterface
 {

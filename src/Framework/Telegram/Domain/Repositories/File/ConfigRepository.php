@@ -3,7 +3,7 @@
 
 namespace Untek\Framework\Telegram\Domain\Repositories\File;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Lib\Components\Store\StoreFile;
 
 class ConfigRepository

@@ -4,7 +4,7 @@ namespace Untek\Component\Web\HtmlRender\Infrastructure\Services;
 
 use Untek\Component\Web\Html\Helpers\Html;
 use Untek\Component\Web\HtmlRender\Application\Services\JsResourceInterface;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 
 class JsResource extends BaseResource implements JsResourceInterface
 {

@@ -2,7 +2,7 @@
 
 namespace Untek\Database\Base\Domain\Helpers;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\DotEnv\Domain\Libs\DotEnv;
 use Untek\Database\Base\Domain\Enums\DbDriverEnum;
 

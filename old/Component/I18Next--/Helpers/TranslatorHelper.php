@@ -2,7 +2,7 @@
 
 namespace Untek\Component\I18Next\Helpers;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 
 class TranslatorHelper
 {

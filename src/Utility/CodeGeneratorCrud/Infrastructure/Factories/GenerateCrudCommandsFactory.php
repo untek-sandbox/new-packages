@@ -2,7 +2,7 @@
 
 namespace Untek\Utility\CodeGeneratorCrud\Infrastructure\Factories;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Utility\CodeGeneratorApplication\Application\Enums\TypeEnum;
 use Untek\Utility\CodeGeneratorApplication\Infrastructure\Factories\GenerateApplicationCommandFactory;
 use Untek\Utility\CodeGeneratorApplication\Infrastructure\Generators\CommandGenerator;

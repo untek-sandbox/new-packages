@@ -2,7 +2,7 @@
 
 namespace Untek\Lib\Components\ShellRobot\Domain\Base;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Lib\Components\ShellRobot\Domain\Factories\ShellFactory;
 use Untek\Framework\Console\Domain\Base\BaseShellNew;
 

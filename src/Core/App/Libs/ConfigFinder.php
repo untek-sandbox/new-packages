@@ -6,7 +6,7 @@ use Symfony\Component\DependencyInjection\Loader\FileLoader;
 use Symfony\Component\Filesystem\Path;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 
 class ConfigFinder
 {

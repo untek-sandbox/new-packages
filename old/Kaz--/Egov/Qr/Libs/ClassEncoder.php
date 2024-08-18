@@ -2,7 +2,7 @@
 
 namespace Untek\Kaz\Egov\Qr\Libs;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\Collection\Libs\Collection;
 
 class ClassEncoder

@@ -2,7 +2,7 @@
 
 namespace Untek\Component\FormatAdapter\Drivers;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 
 class Json implements DriverInterface
 {

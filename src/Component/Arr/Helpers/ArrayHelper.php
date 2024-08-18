@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Core\Arr\Helpers;
+namespace Untek\Component\Arr\Helpers;
 
 use ArrayAccess;
 use Closure;

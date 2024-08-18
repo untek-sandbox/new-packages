@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Code\Libs;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\Contract\Common\Exceptions\InternalServerErrorException;
 use Untek\Core\Text\Libs\RandomString;
 

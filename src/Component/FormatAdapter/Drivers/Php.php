@@ -3,7 +3,7 @@
 namespace Untek\Component\FormatAdapter\Drivers;
 
 use Symfony\Component\VarExporter\VarExporter;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\FileSystem\Helpers\FileStorageHelper;
 use Untek\Component\FormatAdapter\Helpers\FileGeneratorHelper;
 

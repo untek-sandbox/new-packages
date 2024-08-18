@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Untek\Component\FormatAdapter\StoreFile;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\Container\Helpers\ContainerHelper;
 use Untek\Core\FileSystem\Helpers\FileHelper;
 use Untek\Core\Text\Helpers\TemplateHelper;

@@ -3,7 +3,7 @@
 namespace Untek\Database\Base\Domain\Helpers;
 
 use GuzzleHttp\Psr7\Uri;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Database\Base\Domain\Enums\DbDriverEnum;
 
 class ConfigHelper

@@ -10,7 +10,7 @@ use RobRichards\XMLSecLibs\XMLSecEnc;
 use RobRichards\XMLSecLibs\XMLSecurityDSig;
 use RobRichards\XMLSecLibs\XMLSecurityKey;
 use Untek\Component\Encoder\Encoders\XmlEncoder;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Crypt\Base\Domain\Exceptions\FailSignatureException;
 use Untek\Crypt\Base\Domain\Exceptions\InvalidDigestException;
 use Untek\Crypt\Pki\X509\Domain\Helpers\X509Helper;

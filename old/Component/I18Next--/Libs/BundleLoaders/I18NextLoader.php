@@ -2,7 +2,7 @@
 
 namespace Untek\Component\I18Next\Libs\BundleLoaders;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\Bundle\Base\BaseLoader;
 use Untek\Core\Container\Helpers\ContainerHelper;
 use Untek\Core\Contract\Common\Exceptions\ReadOnlyException;

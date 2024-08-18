@@ -2,7 +2,7 @@
 
 namespace Untek\Database\Base\Domain\Libs;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Database\Base\Domain\Repositories\Eloquent\SchemaRepository;
 
 class Dependency

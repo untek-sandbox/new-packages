@@ -6,7 +6,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Database\Seed\Application\Commands\ImportSeedCommand;
 use Untek\Database\Seed\Application\Queries\GetTablesQuery;
 use Untek\Framework\Console\Symfony4\Question\ChoiceQuestion;

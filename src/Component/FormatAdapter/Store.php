@@ -2,7 +2,7 @@
 
 namespace Untek\Component\FormatAdapter;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\FileSystem\Helpers\FilePathHelper;
 use Untek\Core\FileSystem\Helpers\FileStorageHelper;
 use Untek\Core\Instance\Helpers\ClassHelper;

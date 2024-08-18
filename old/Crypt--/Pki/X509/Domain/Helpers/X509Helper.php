@@ -4,7 +4,7 @@ namespace Untek\Crypt\Pki\X509\Domain\Helpers;
 
 use phpseclib\File\X509;
 use SimpleXMLElement;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Crypt\Pki\X509\Domain\Entities\CertificateEntity;
 use Untek\Crypt\Pki\X509\Domain\Entities\PersonEntity;
 use DateTime;

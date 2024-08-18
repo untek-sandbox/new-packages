@@ -4,7 +4,7 @@ namespace Untek\Component\Relation\Libs\Types;
 
 use Doctrine\Persistence\ObjectRepository;
 use Untek\Component\Relation\Interfaces\RelationInterface;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\Code\Factories\PropertyAccess;
 use Untek\Core\Collection\Helpers\CollectionHelper;
 

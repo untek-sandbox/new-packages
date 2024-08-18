@@ -3,7 +3,7 @@
 namespace Untek\Component\Http\Helpers;
 
 use GuzzleHttp\Psr7\Query;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\Web\Html\Helpers\Url;
 use function GuzzleHttp\Psr7\parse_query;
 

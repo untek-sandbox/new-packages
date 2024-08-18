@@ -3,7 +3,7 @@
 namespace Untek\Develop\Package\Domain\Services;
 
 //use Illuminate\Support\Arr;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 //use Untek\Model\Service\Base\BaseService;
 use Untek\Develop\Package\Domain\Entities\CommitEntity;

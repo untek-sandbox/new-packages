@@ -3,7 +3,7 @@
 namespace Untek\Component\Translator\Infrastructure\Services;
 
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 
 class AttributeTranslatorService
 {

@@ -8,7 +8,7 @@ use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\Actions\RestoreAct
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\Actions\UpdateAction;
 use Untek\Lib\Components\Status\Enums\StatusEnum;
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\Actions\ViewAction;
 
 class ActionFormatter extends BaseFormatter implements FormatterInterface

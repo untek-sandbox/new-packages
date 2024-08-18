@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Web\Form\Libs\Renders;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\Web\Html\Helpers\Html;
 
 abstract class BaseInputRender extends BaseRender

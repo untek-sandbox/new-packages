@@ -2,7 +2,7 @@
 
 namespace Untek\Develop\Package\Domain\Libs;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\FormatAdapter\StoreFile;
 use Untek\Develop\Package\Domain\Entities\ConfigEntity;
 use Untek\Develop\Package\Domain\Helpers\ComposerConfigHelper;

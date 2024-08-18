@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Component\Web\Html\Helpers\Html;
 

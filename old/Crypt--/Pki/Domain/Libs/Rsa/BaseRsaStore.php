@@ -2,7 +2,7 @@
 
 namespace Untek\Crypt\Pki\Domain\Libs\Rsa;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Crypt\Pki\Domain\Entities\CertificateSubjectEntity;
 use Untek\Crypt\Pki\Domain\Enums\CertificateFormatEnum;

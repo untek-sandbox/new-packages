@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Web\TwBootstrap\Widgets\Collection\Helpers;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\Web\Html\Helpers\Html;
 
 class CollectionWidgetHelper

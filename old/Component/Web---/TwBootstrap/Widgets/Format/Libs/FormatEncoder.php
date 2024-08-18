@@ -4,7 +4,7 @@ namespace Untek\Component\Web\TwBootstrap\Widgets\Format\Libs;
 
 use DateTime;
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Entities\AttributeEntity;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Enums\TypeEnum;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\ArrayFormatter;

@@ -2,7 +2,7 @@
 
 namespace Untek\Core\DotEnv\Domain\Libs;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\Pattern\Singleton\SingletonTrait;
 
 class DotEnvMap

@@ -7,7 +7,7 @@
 
 namespace Untek\Component\Web\Html\Helpers;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\Contract\Common\Exceptions\InvalidArgumentException;
 use Untek\Core\Base\Legacy\Yii\Base\Model;
 

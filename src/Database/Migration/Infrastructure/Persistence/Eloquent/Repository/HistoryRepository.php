@@ -6,7 +6,7 @@ use Untek\Core\Container\Libs\Container;
 use Illuminate\Database\Schema\Blueprint;
 use Psr\Container\ContainerInterface;
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Model\EntityManager\Interfaces\EntityManagerInterface;
 use Untek\Database\Eloquent\Domain\Base\BaseEloquentRepository;
 use Untek\Database\Eloquent\Domain\Capsule\Manager;

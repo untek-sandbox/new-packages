@@ -4,7 +4,7 @@ namespace Untek\Develop\Package\Domain\Libs;
 
 //use Illuminate\Support\Arr;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\FileSystem\Helpers\FileHelper;
 use Untek\Core\FileSystem\Helpers\FilePathHelper;
 use Untek\Core\Text\Helpers\TextHelper;

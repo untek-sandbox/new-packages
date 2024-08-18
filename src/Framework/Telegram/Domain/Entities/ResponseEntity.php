@@ -4,7 +4,7 @@
 namespace Untek\Framework\Telegram\Domain\Entities;
 
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 
 class ResponseEntity
 {

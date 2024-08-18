@@ -1,8 +1,8 @@
 <?php
 
-namespace Untek\Core\Arr\Libs;
+namespace Untek\Component\Arr\Libs;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 
 class Alias
 {

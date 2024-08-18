@@ -2,7 +2,7 @@
 
 namespace Untek\Core\FileSystem\Helpers;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\Collection\Libs\Collection;
 use Untek\Core\FileSystem\Entities\DirectoryEntity;
 use Untek\Core\FileSystem\Entities\FileEntity;

@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Web\TwBootstrap\Widgets\Table;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\Web\Widget\Base\BaseWidget2;
 use Untek\Component\Web\TwBootstrap\Widgets\Table\Helpers\TableWidgetHelper;
 

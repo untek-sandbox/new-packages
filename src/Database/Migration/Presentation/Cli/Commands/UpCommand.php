@@ -4,7 +4,7 @@ namespace Untek\Database\Migration\Presentation\Cli\Commands;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Framework\Console\Symfony4\Style\SymfonyStyle;
 
 class UpCommand extends BaseCommand

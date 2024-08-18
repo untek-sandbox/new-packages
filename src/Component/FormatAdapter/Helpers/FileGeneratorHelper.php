@@ -2,7 +2,7 @@
 
 namespace Untek\Component\FormatAdapter\Helpers;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\FileSystem\Helpers\FileStorageHelper;
 
 class FileGeneratorHelper

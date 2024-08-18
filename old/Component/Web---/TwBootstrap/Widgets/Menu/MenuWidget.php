@@ -3,7 +3,7 @@
 namespace Untek\Component\Web\TwBootstrap\Widgets\Menu;
 
 use Closure;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\Web\Html\Helpers\Html;
 use Untek\Component\Web\Widget\Base\BaseWidget;
 

@@ -2,7 +2,7 @@
 
 namespace Untek\Database\Eloquent\Domain\Factories;
 
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\Container\Helpers\ContainerHelper;
 use Untek\Core\FileSystem\Helpers\FileStorageHelper;
 use Untek\Database\Base\Domain\Enums\DbDriverEnum;

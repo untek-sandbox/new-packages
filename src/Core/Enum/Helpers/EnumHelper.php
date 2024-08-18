@@ -3,7 +3,7 @@
 namespace Untek\Core\Enum\Helpers;
 
 use InvalidArgumentException;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\Code\Helpers\ReflectionHelper;
 use Untek\Core\Enum\Interfaces\GetLabelsInterface;
 use Untek\Core\Instance\Exceptions\NotInstanceOfException;

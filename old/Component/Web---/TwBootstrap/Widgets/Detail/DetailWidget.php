@@ -20,7 +20,7 @@ use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\StringFormatter;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\TimeFormatter;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\UnknownTypeFormatter;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Libs\FormatEncoder;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Model\Entity\Helpers\EntityHelper;
 use Untek\Component\Web\Widget\Base\BaseWidget2;
 

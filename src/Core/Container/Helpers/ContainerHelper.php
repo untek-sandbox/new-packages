@@ -12,6 +12,7 @@ class ContainerHelper
 
     public static function setContainer(ContainerInterface $container): void
     {
+
         if (self::$container) {
 //            throw new ReadOnlyException();
         }

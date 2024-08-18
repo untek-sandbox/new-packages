@@ -4,7 +4,7 @@ namespace Untek\Core\FileSystem\Helpers;
 
 use PATHINFO_EXTENSION;
 use Symfony\Component\Mime\MimeTypes;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 
 class MimeTypeHelper
 {

@@ -4,7 +4,7 @@ namespace Untek\Framework\RestApi\Presentation\Http\Symfony\Helpers;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mime\MimeTypes;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 
 class RestApiHelper
 {

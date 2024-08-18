@@ -4,7 +4,7 @@ namespace Untek\Develop\Package\Domain\Entities;
 
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Untek\Model\Entity\Interfaces\EntityIdInterface;
-use Untek\Core\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ArrayHelper;
 use Symfony\Component\Validator\Constraints as Assert;
 use Untek\Model\Validator\Interfaces\ValidationByMetadataInterface;
 
