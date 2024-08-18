@@ -4,7 +4,6 @@ namespace Untek\Framework\RestApi\Presentation\Http\Symfony\Controllers;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Untek\Component\Http\Enums\HttpHeaderEnum;
-use Untek\Framework\RestApi\Presentation\Http\Symfony\Controllers\AbstractRestApiController;
 use Untek\Model\DataProvider\Dto\CollectionData;
 
 abstract class AbstractGetListRestApiController extends AbstractRestApiController

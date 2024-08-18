@@ -21,7 +21,7 @@ class LongPullCommand extends Command
 {
 
     use ContainerAwareTrait;
-    use LockTrait;
+//    use LockTrait;
     use LockableTrait;
     use LoopTrait;
     use IOTrait;

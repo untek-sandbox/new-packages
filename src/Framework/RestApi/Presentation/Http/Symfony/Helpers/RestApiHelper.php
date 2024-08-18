@@ -24,24 +24,4 @@ class RestApiHelper
         }
         return $format;
     }
-
-    public static function extractHeaders(array $headers): array
-    {
-        $result = [];
-        foreach ($headers as $headerKey => $headerValues) {
-            $headerKey = self::prepareHeaderKey($headerKey);
-            $result[$headerKey] = ArrayHelper::first($headerValues);
-        }
-        return $result;
-    }
-
-    protected static function keyToServerVar(string $name): string
-    {
-        return strtr(mb_strtoupper($name), '-', '_');
-    }
-
-    protected static function prepareHeaderKey(string $name): string
-    {
-        return strtr(mb_strtolower($name), '_', '-');
-    }
 }

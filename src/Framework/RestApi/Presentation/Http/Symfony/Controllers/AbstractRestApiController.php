@@ -4,7 +4,6 @@ namespace Untek\Framework\RestApi\Presentation\Http\Symfony\Controllers;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
@@ -72,14 +71,6 @@ abstract class AbstractRestApiController
         return MappingHelper::restoreObject($data, $type);
 //        return $this->getSerializer()->denormalize($data, $type);
     }
-
-    /*protected function error(string $message, int $statusCode = 500): JsonResponse
-    {
-        $data = [
-            'message' => $message
-        ];
-        return new JsonResponse($data, $statusCode);
-    }*/
 
     protected function emptyResponse(): JsonResponse
     {
