@@ -4,7 +4,7 @@ namespace Untek\Component\Translator\Infrastructure\Services;
 
 use Untek\Component\Translator\Infrastructure\Exceptions\NotFoundLanguageException;
 
-\Untek\Core\Code\Helpers\DeprecateHelper::hardThrow();
+\Untek\Component\Code\Helpers\DeprecateHelper::hardThrow();
 
 class LanguageService
 {

@@ -4,7 +4,7 @@ namespace Untek\Core\Enum\Helpers;
 
 use InvalidArgumentException;
 use Untek\Core\Arr\Helpers\ArrayHelper;
-use Untek\Core\Code\Helpers\ReflectionHelper;
+use Untek\Component\Code\Helpers\ReflectionHelper;
 use Untek\Core\Enum\Interfaces\GetLabelsInterface;
 use Untek\Core\Instance\Exceptions\NotInstanceOfException;
 use Untek\Core\Instance\Helpers\ClassHelper;

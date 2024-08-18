@@ -1,8 +1,8 @@
 <?php
 
-namespace Untek\Core\Code\Helpers;
+namespace Untek\Component\Code\Helpers;
 
-use Untek\Core\Code\Entities\PhpTokenEntity;
+use Untek\Component\Code\Entities\PhpTokenEntity;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;
 

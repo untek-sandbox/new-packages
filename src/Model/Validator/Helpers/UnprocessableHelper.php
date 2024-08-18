@@ -6,7 +6,7 @@ use Untek\Core\Collection\Libs\Collection;
 use Untek\Model\Validator\Entities\ValidationErrorEntity;
 use Untek\Model\Validator\Exceptions\UnprocessibleEntityException;
 
-\Untek\Core\Code\Helpers\DeprecateHelper::hardThrow();
+\Untek\Component\Code\Helpers\DeprecateHelper::hardThrow();
 
 class UnprocessableHelper
 {

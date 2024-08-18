@@ -6,7 +6,7 @@ use Untek\Core\Arr\Helpers\ArrayHelper;
 use Untek\Lib\Components\DynamicEntity\Interfaces\DynamicEntityAttributesInterface;
 use Throwable;
 use Untek\Core\Text\Helpers\Inflector;
-use Untek\Core\Code\Factories\PropertyAccess;
+use Untek\Component\Code\Factories\PropertyAccess;
 
 /**
  * Работа с атрибутами класса

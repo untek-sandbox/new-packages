@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
 use Symfony\Component\Routing\RouteCollection;
 use Untek\Core\App\Base\BaseApp;
 use Untek\Core\App\Subscribers\PhpErrorSubscriber;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Container\Interfaces\ContainerConfiguratorInterface;
 use Untek\Core\EventDispatcher\Interfaces\EventDispatcherConfiguratorInterface;
 use Untek\Component\Web\HtmlRender\Infrastructure\Services\HtmlRender;

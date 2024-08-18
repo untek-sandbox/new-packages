@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Core\Code\Helpers;
+namespace Untek\Component\Code\Helpers;
 
 use Untek\Core\FileSystem\Helpers\FilePathHelper;
 

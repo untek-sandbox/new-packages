@@ -3,7 +3,7 @@
 namespace Untek\Core\Contract\User\Exceptions;
 
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 
 DeprecateHelper::hardThrow();
 

@@ -2,7 +2,7 @@
 
 namespace Untek\Lib\Components\ShellRobot\Domain;
 
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Domain\Domain\Interfaces\DomainInterface;
 
 DeprecateHelper::hardThrow();

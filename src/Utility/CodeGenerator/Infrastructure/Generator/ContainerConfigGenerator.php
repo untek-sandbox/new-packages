@@ -3,7 +3,7 @@
 namespace Untek\Utility\CodeGenerator\Infrastructure\Generator;
 
 use Untek\Component\FormatAdapter\Store;
-use Untek\Core\Code\Helpers\ComposerHelper;
+use Untek\Component\Code\Helpers\ComposerHelper;
 use Untek\Core\Instance\Helpers\ClassHelper;
 use Untek\Utility\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\Application\Dto\GenerateResultCollection;

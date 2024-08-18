@@ -7,7 +7,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 
 DeprecateHelper::hardThrow();
 

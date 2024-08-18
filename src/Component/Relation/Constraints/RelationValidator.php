@@ -11,7 +11,7 @@ use Untek\Model\EntityManager\Interfaces\EntityManagerInterface;
 use Untek\Model\Repository\Interfaces\FindOneInterface;
 use Untek\Model\Validator\Constraints\BaseValidator;
 
-\Untek\Core\Code\Helpers\DeprecateHelper::hardThrow();
+\Untek\Component\Code\Helpers\DeprecateHelper::hardThrow();
 
 class RelationValidator extends BaseValidator
 {

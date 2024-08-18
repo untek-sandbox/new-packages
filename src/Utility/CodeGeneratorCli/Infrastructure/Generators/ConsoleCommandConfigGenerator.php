@@ -3,7 +3,7 @@
 namespace Untek\Utility\CodeGeneratorCli\Infrastructure\Generators;
 
 use Symfony\Component\Filesystem\Filesystem;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Component\Package\Helpers\PackageHelper;
 use Untek\Utility\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\Application\Dto\GenerateResultCollection;

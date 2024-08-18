@@ -18,6 +18,7 @@ class PackageHelper
      */
     public static function findAll(): Enumerable
     {
+
         $packages = self::getInstalled()['packages'];
         $collection = new Collection();
         foreach ($packages as $package) {
@@ -44,19 +45,19 @@ class PackageHelper
 
     public static function getInstalled(): array
     {
-        $store = new StoreFile(__DIR__ . '/../../../../composer/installed.json');
+        $store = new StoreFile(__DIR__ . '/../../../../../../composer/installed.json');
         return $installed = $store->load();
     }
 
     public static function getLock(): array
     {
-        $store = new StoreFile(__DIR__ . '/../../../../../composer.lock', 'json');
+        $store = new StoreFile(__DIR__ . '/../../../../../../../composer.lock', 'json');
         return $installed = $store->load();
     }
 
     public static function getPsr4Dictonary()
     {
-        $psr4 = include(__DIR__ . '/../../../../composer/autoload_psr4.php');
+        $psr4 = include(__DIR__ . '/../../../../../../composer/autoload_psr4.php');
         return $psr4;
     }
 

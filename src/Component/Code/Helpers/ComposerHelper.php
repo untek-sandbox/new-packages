@@ -1,11 +1,11 @@
 <?php
 
-namespace Untek\Core\Code\Helpers;
+namespace Untek\Component\Code\Helpers;
 
 use Composer\Autoload\ClassLoader;
 use http\Exception\RuntimeException;
 use Untek\Core\Arr\Helpers\ArrayHelper;
-use Untek\Core\Code\Exceptions\NotFoundDependencyException;
+use Untek\Component\Code\Exceptions\NotFoundDependencyException;
 
 /**
  * Работа с Composer

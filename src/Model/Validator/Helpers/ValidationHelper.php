@@ -3,12 +3,12 @@
 namespace Untek\Model\Validator\Helpers;
 
 use Symfony\Component\Validator\ConstraintViolationList;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Container\Helpers\ContainerHelper;
 use Untek\Model\Validator\Entities\ValidationErrorEntity;
 use Untek\Model\Validator\Libs\Validators\ChainValidator;
 
-\Untek\Core\Code\Helpers\DeprecateHelper::hardThrow();
+\Untek\Component\Code\Helpers\DeprecateHelper::hardThrow();
 
 class ValidationHelper
 {

@@ -8,7 +8,7 @@ use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\Persistence\ObjectRepository;
 use Illuminate\Database\Query\Builder;
 use Untek\Component\Relation\Traits\RepositoryRelationTrait;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Database\Base\Domain\Traits\TableNameTrait;
 use Untek\Database\Base\Hydrator\Traits\NormalizerTrait;
 use Untek\Database\Eloquent\Domain\Capsule\Manager;

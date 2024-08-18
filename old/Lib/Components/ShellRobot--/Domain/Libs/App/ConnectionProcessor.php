@@ -2,7 +2,7 @@
 
 namespace Untek\Lib\Components\ShellRobot\Domain\Libs\App;
 
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Lib\Components\ShellRobot\Domain\Entities\HostEntity;
 use Untek\Lib\Components\ShellRobot\Domain\Enums\VarEnum;
 use Untek\Lib\Components\ShellRobot\Domain\Factories\ShellFactory;

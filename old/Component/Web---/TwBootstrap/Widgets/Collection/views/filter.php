@@ -7,7 +7,7 @@
  */
 
 use Untek\Component\Web\HtmlRender\Application\Services\HtmlRenderInterface;
-use Untek\Core\Code\Factories\PropertyAccess;
+use Untek\Component\Code\Factories\PropertyAccess;
 use Untek\Core\Instance\Helpers\ClassHelper;
 use Untek\Core\Text\Helpers\Inflector;
 use Untek\Component\Http\Helpers\UrlHelper;

@@ -2,7 +2,7 @@
 
 namespace Untek\Develop\Package\Domain\Libs\Deps;
 
-use Untek\Core\Code\Entities\PhpTokenEntity;
+use Untek\Component\Code\Entities\PhpTokenEntity;
 use Untek\Core\Instance\Helpers\ClassHelper;
 
 class PhpUsesParser

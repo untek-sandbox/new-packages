@@ -4,7 +4,7 @@ namespace Untek\Database\Eloquent\Domain\Base;
 
 use Illuminate\Database\QueryException;
 use Untek\Core\Arr\Helpers\ArrayHelper;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Model\Query\Entities\Query;
 use Untek\Model\Query\Enums\OperatorEnum;

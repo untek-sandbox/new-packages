@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Core\Code\Libs;
+namespace Untek\Component\Code\Libs;
 
 use Untek\Core\Arr\Helpers\ArrayHelper;
 use Untek\Core\Contract\Common\Exceptions\InternalServerErrorException;

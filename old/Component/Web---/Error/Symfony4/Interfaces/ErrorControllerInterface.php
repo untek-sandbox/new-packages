@@ -4,7 +4,7 @@ namespace Untek\Component\Web\Error\Symfony4\Interfaces;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 
 DeprecateHelper::hardThrow();
 

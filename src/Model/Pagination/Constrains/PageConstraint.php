@@ -3,7 +3,7 @@
 namespace Untek\Model\Pagination\Constrains;
 
 use Symfony\Component\Validator\Constraint;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 
 DeprecateHelper::hardThrow();
 

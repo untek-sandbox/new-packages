@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Web\Controller\Enums;
 
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 
 DeprecateHelper::hardThrow();
 

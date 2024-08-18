@@ -2,7 +2,7 @@
 
 namespace Untek\Utility\Init\Presentation\Cli\Tasks;
 
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 
 DeprecateHelper::hardThrow();
 

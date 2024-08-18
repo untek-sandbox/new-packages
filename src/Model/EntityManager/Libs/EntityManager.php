@@ -3,7 +3,7 @@
 namespace Untek\Model\EntityManager\Libs;
 
 use Psr\Container\ContainerInterface;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;

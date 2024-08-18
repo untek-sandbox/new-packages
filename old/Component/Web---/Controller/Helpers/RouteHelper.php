@@ -3,7 +3,7 @@
 namespace Untek\Component\Web\Controller\Helpers;
 
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Instance\Helpers\ClassHelper;
 
 

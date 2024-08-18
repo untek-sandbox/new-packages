@@ -3,7 +3,7 @@
 namespace Untek\Model\DataProvider\Exceptions;
 
 use Exception;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 
 DeprecateHelper::hardThrow();
 

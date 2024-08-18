@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Core\Code\Exceptions;
+namespace Untek\Component\Code\Exceptions;
 
 use Exception;
 

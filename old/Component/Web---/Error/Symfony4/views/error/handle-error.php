@@ -9,7 +9,7 @@
 
 use Untek\Component\Web\HtmlRender\Application\Services\HtmlRenderInterface;
 
-\Untek\Core\Code\Helpers\DeprecateHelper::hardThrow();
+\Untek\Component\Code\Helpers\DeprecateHelper::hardThrow();
 
 ?>
 

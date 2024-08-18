@@ -4,7 +4,7 @@ namespace Untek\Model\Validator\Exceptions;
 
 use Error;
 use Symfony\Component\Validator\ConstraintViolation;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;
 use Untek\Model\Validator\Entities\ValidationErrorEntity;

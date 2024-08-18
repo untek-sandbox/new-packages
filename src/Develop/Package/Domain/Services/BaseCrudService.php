@@ -4,7 +4,7 @@
 namespace Untek\Develop\Package\Domain\Services;
 
 
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Model\Shared\Enums\EventEnum;
 use Untek\Model\Shared\Events\QueryEvent;
 use Untek\Model\Shared\Traits\DispatchEventTrait;

@@ -3,7 +3,7 @@
 namespace Untek\Framework\RestApi\Presentation\Http\Symfony\Helpers;
 
 use Symfony\Component\HttpFoundation\Request;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Instance\Helpers\MappingHelper;
 use Untek\Model\DataProvider\Dto\PageRequest;
 use Untek\Model\DataProvider\Interfaces\ExpandQueryInterface;

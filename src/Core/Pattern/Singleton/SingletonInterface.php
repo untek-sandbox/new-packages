@@ -2,7 +2,7 @@
 
 namespace Untek\Core\Pattern\Singleton;
 
-\Untek\Core\Code\Helpers\DeprecateHelper::hardThrow();
+\Untek\Component\Code\Helpers\DeprecateHelper::hardThrow();
 
 /**
  * Паттерн "Singleton"

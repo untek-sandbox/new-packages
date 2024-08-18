@@ -6,7 +6,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Untek\Core\App\Enums\AppEventEnum;
 use Untek\Core\App\Events\AppEvent;
 use Untek\Component\Web\WebApp\Libs\EnvDetector\WebEnvDetector;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 
 DeprecateHelper::hardThrow();
 

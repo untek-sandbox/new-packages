@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Core\Code\Helpers;
+namespace Untek\Component\Code\Helpers;
 
 use Laminas\Code\Generator\MethodGenerator;
 use Laminas\Code\Generator\ParameterGenerator;

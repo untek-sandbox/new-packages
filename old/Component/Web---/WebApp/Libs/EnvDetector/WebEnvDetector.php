@@ -3,7 +3,7 @@
 namespace Untek\Component\Web\WebApp\Libs\EnvDetector;
 
 use Symfony\Component\HttpFoundation\Request;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Env\Interfaces\EnvDetectorInterface;
 
 DeprecateHelper::hardThrow();

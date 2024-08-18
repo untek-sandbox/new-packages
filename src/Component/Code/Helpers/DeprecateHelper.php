@@ -1,10 +1,10 @@
 <?php
 
-namespace Untek\Core\Code\Helpers;
+namespace Untek\Component\Code\Helpers;
 
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
-use Untek\Core\Code\Exceptions\DeprecatedException;
+use Untek\Component\Code\Exceptions\DeprecatedException;
 use Untek\Core\Container\Helpers\ContainerHelper;
 
 /**

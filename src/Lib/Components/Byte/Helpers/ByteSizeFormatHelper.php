@@ -2,7 +2,7 @@
 
 namespace Untek\Lib\Components\Byte\Helpers;
 
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Component\Measure\Byte\Enums\ByteEnum;
 use Untek\Core\Enum\Helpers\EnumHelper;
 

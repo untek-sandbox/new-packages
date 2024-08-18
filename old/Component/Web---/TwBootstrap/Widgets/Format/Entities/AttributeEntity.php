@@ -4,7 +4,7 @@ namespace Untek\Component\Web\TwBootstrap\Widgets\Format\Entities;
 
 use Symfony\Component\PropertyAccess\Exception\UnexpectedTypeException;
 use Untek\Core\Instance\Helpers\PropertyHelper;
-use Untek\Core\Code\Helpers\TypeHelper;
+use Untek\Component\Code\Helpers\TypeHelper;
 
 class AttributeEntity
 {

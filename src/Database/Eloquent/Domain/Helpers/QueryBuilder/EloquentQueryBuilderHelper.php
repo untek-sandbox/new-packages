@@ -4,7 +4,7 @@ namespace Untek\Database\Eloquent\Domain\Helpers\QueryBuilder;
 
 use Illuminate\Database\Query\Builder;
 //use Illuminate\Support\Str;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Model\Query\Entities\Join;
 use Untek\Model\Query\Enums\OperatorEnum;
 use Untek\Database\Base\Domain\Enums\DbDriverEnum;

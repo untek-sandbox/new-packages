@@ -3,7 +3,7 @@
 namespace Untek\Develop\Package\Domain\Services;
 
 use Untek\Core\Arr\Helpers\ArrayHelper;
-use Untek\Core\Code\Helpers\ComposerHelper;
+use Untek\Component\Code\Helpers\ComposerHelper;
 use Untek\Core\FileSystem\Helpers\FileHelper;
 use Untek\Develop\Package\Domain\Entities\PackageEntity;
 use Untek\Develop\Package\Domain\Helpers\PackageHelper;

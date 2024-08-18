@@ -4,7 +4,7 @@ namespace Untek\Component\Relation\Libs\Types;
 
 use Doctrine\Persistence\ObjectRepository;
 use Psr\Container\ContainerInterface;
-use Untek\Core\Code\Factories\PropertyAccess;
+use Untek\Component\Code\Factories\PropertyAccess;
 use Untek\Core\Collection\Helpers\CollectionHelper;
 use Untek\Core\Collection\Libs\Collection;
 use Untek\Model\Shared\Interfaces\FindAllInterface;

@@ -2,7 +2,7 @@
 
 namespace Untek\Database\Base\Domain\Traits;
 
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\DotEnv\Domain\Libs\DotEnv;
 use Untek\Database\Eloquent\Domain\Capsule\Manager;
 use Untek\Database\Base\Domain\Libs\TableAlias;

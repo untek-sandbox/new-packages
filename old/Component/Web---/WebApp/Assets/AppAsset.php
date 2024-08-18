@@ -4,7 +4,7 @@ namespace Untek\Component\Web\WebApp\Assets;
 
 use Untek\Component\Web\Asset\Base\BaseAsset;
 use Untek\Component\Web\HtmlRender\Application\Services\HtmlRenderInterface;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 
 //DeprecateHelper::hardThrow();
 

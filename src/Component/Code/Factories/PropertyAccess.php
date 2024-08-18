@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Core\Code\Factories;
+namespace Untek\Component\Code\Factories;
 
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;

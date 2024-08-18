@@ -2,7 +2,7 @@
 
 namespace Untek\Model\Repository\Traits;
 
-use Untek\Core\Code\Factories\PropertyAccess;
+use Untek\Component\Code\Factories\PropertyAccess;
 use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Core\Contract\Common\Exceptions\InvalidMethodParameterException;
 use Untek\Core\Text\Helpers\Inflector;

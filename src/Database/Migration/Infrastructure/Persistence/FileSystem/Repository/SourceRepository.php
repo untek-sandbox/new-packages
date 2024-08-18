@@ -3,7 +3,7 @@
 namespace Untek\Database\Migration\Infrastructure\Persistence\FileSystem\Repository;
 
 use Untek\Core\Arr\Helpers\ArrayHelper;
-use Untek\Core\Code\Exceptions\DeprecatedException;
+use Untek\Component\Code\Exceptions\DeprecatedException;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
 use Untek\Core\FileSystem\Helpers\FilePathHelper;
 use Untek\Core\FileSystem\Helpers\FindFileHelper;

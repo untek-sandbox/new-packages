@@ -14,7 +14,7 @@ class UrlHelper
     {
         global $_SERVER;
 
-        \Untek\Core\Code\Helpers\DeprecateHelper::hardThrow();
+        \Untek\Component\Code\Helpers\DeprecateHelper::hardThrow();
 
         $baseUrl = explode('?', $_SERVER['REQUEST_URI'])[0];
         return $baseUrl;

@@ -11,7 +11,7 @@ use Throwable;
 use Untek\Component\Web\Error\Libs\CallAction;
 use Untek\Component\Web\Error\Symfony4\Controllers\WebErrorController;
 use Untek\Component\Web\HtmlRender\Application\Services\HtmlRenderInterface;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 
 DeprecateHelper::hardThrow();
 

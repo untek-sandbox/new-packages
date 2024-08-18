@@ -3,7 +3,7 @@
 namespace Untek\Component\Web\WebApp;
 
 use Untek\Core\Bundle\Base\BaseBundle;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 
 DeprecateHelper::hardThrow();
 

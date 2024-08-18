@@ -6,7 +6,7 @@ use Doctrine\Persistence\ObjectRepository;
 use Psr\Container\ContainerInterface;
 use Untek\Component\Relation\Interfaces\RelationInterface;
 use Untek\Component\Relations\interfaces\CrudRepositoryInterface;
-use Untek\Core\Code\Factories\PropertyAccess;
+use Untek\Component\Code\Factories\PropertyAccess;
 
 abstract class BaseRelation implements RelationInterface
 {

@@ -3,7 +3,7 @@
 namespace Untek\Component\Render\Services;
 
 use Untek\Component\Render\Infrastructure\Helpers\RenderHelper;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 
 DeprecateHelper::hardThrow();
 

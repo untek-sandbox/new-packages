@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Untek\Component\Web\Widget\Widgets\Toastr\Application\Services\ToastrServiceInterface;
 use Untek\Component\Web\HtmlRender\Application\Services\HtmlRenderInterface;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Container\Helpers\ContainerHelper;
 use Untek\Core\Text\Helpers\TemplateHelper;
 use Untek\Component\Web\View\Libs\View;

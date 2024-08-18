@@ -3,7 +3,7 @@
 namespace Untek\Component\I18Next\Facades;
 
 use Untek\Component\I18Next\Services\NullTranslationService;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Container\Traits\ContainerAwareStaticAttributeTrait;
 use Untek\Component\Translation\Interfaces\Services\TranslationServiceInterface;
 

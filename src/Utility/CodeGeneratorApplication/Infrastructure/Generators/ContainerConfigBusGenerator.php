@@ -2,7 +2,7 @@
 
 namespace Untek\Utility\CodeGeneratorApplication\Infrastructure\Generators;
 
-use Untek\Core\Code\Helpers\ComposerHelper;
+use Untek\Component\Code\Helpers\ComposerHelper;
 use Untek\Utility\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\Application\Dto\GenerateResultCollection;
 use Untek\Utility\CodeGenerator\Infrastructure\Generator\PhpConfigGenerator;

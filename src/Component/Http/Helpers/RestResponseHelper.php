@@ -8,7 +8,7 @@ use Untek\Model\DataProvider\Entities\DataProviderEntity;
 use Untek\Component\Http\Enums\HttpHeaderEnum;
 use Untek\Component\FormatAdapter\Store;
 
-\Untek\Core\Code\Helpers\DeprecateHelper::hardThrow();
+\Untek\Component\Code\Helpers\DeprecateHelper::hardThrow();
 
 class RestResponseHelper
 {

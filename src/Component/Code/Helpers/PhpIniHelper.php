@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Core\Code\Helpers;
+namespace Untek\Component\Code\Helpers;
 
 /**
  * Работа с конфигурацией PHP (php.ini)

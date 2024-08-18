@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Core\Code\Entities;
+namespace Untek\Component\Code\Entities;
 
 class PhpTokenEntity
 {

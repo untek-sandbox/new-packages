@@ -2,7 +2,7 @@
 
 namespace Untek\Lib\Components\Byte\Enums;
 
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Enum\Interfaces\GetLabelsInterface;
 
 /**

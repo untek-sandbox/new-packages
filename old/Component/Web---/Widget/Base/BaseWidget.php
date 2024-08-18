@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Web\Widget\Base;
 
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Instance\Helpers\ClassHelper;
 
 use Untek\Core\Text\Helpers\TemplateHelper;

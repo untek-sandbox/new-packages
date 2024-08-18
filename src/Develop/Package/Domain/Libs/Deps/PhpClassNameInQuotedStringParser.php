@@ -2,7 +2,7 @@
 
 namespace Untek\Develop\Package\Domain\Libs\Deps;
 
-use Untek\Core\Code\Helpers\PhpTokenHelper;
+use Untek\Component\Code\Helpers\PhpTokenHelper;
 use Untek\Core\Instance\Helpers\ClassHelper;
 use Untek\Core\Text\Helpers\TextHelper;
 

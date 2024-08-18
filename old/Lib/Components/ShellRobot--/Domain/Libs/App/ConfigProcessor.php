@@ -3,7 +3,7 @@
 namespace Untek\Lib\Components\ShellRobot\Domain\Libs\App;
 
 use Untek\Core\Arr\Helpers\ArrayHelper;
-use Untek\Core\Code\Helpers\DeprecateHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Lib\Components\ShellRobot\Domain\Factories\ShellFactory;
 
 DeprecateHelper::hardThrow();
