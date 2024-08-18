@@ -4,6 +4,13 @@ namespace Untek\Framework\RestApi\Presentation\Http\Symfony\Controllers;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Untek\Core\Instance\Helpers\MappingHelper;
 use Untek\Core\Instance\Helpers\PropertyHelper;
@@ -11,7 +18,6 @@ use Untek\Framework\RestApi\Presentation\Http\Serializer\DefaultResponseSerializ
 use Untek\Framework\RestApi\Presentation\Http\Serializer\ResponseSerializerInterface;
 use Untek\Framework\RestApi\Presentation\Http\Symfony\Helpers\RestApiHelper;
 use Untek\Framework\RestApi\Presentation\Http\Symfony\Interfaces\RestApiSchemaInterface;
-use Untek\Framework\RestApi\Presentation\Http\Symfony\Libs\RestApiSerializer;
 
 abstract class AbstractRestApiController
 {
@@ -67,13 +73,13 @@ abstract class AbstractRestApiController
 //        return $this->getSerializer()->denormalize($data, $type);
     }
 
-    protected function error(string $message, int $statusCode = 500): JsonResponse
+    /*protected function error(string $message, int $statusCode = 500): JsonResponse
     {
         $data = [
             'message' => $message
         ];
         return new JsonResponse($data, $statusCode);
-    }
+    }*/
 
     protected function emptyResponse(): JsonResponse
     {
@@ -87,8 +93,8 @@ abstract class AbstractRestApiController
         }
         /** @var JsonResponse $response */
         $this->checkSchema();
-        $response = $this->getResponseSerializer()->encode($data);
-        return $response;
+        $normalizedData = $this->getSerializer()->normalize($data);
+        return new JsonResponse($normalizedData);
     }
 
     private function getResponseSerializer(): ResponseSerializerInterface
@@ -99,6 +105,16 @@ abstract class AbstractRestApiController
 
     protected function getSerializer(): SerializerInterface
     {
-        return new RestApiSerializer();
+        $encoders = [
+            new XmlEncoder(),
+            new JsonEncoder(),
+        ];
+        $normalizers = [
+            new DateTimeNormalizer(),
+            new ArrayDenormalizer(),
+            new ObjectNormalizer(),
+//            new ObjectNormalizer(null, new CamelCaseToSnakeCaseNameConverter()),
+        ];
+        return new Serializer($normalizers, $encoders);
     }
 }

@@ -8,9 +8,11 @@ use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Model\DataProvider\Libs\DataProvider;
-use Untek\Framework\Rpc\Domain\Model\RpcResponseEntity;
+
+DeprecateHelper::hardThrow();
 
 class DefaultResponseSerializer implements ResponseSerializerInterface
 {
@@ -22,7 +24,7 @@ class DefaultResponseSerializer implements ResponseSerializerInterface
     {
     }
 
-    public function setAttributesOnly(array $attributesOnly): void
+    /*public function setAttributesOnly(array $attributesOnly): void
     {
         $this->attributesOnly = $attributesOnly;
     }
@@ -30,15 +32,15 @@ class DefaultResponseSerializer implements ResponseSerializerInterface
     public function setAttributesExclude(array $attributesExclude): void
     {
         $this->attributesExclude = $attributesExclude;
-    }
+    }*/
 
     public function encode($data): Response
     {
-        if ($data instanceof Enumerable) {
-            $result = $this->encodeCollection($data);
-        } elseif ($data instanceof DataProvider) {
-            $result = $this->encodeDataProvider($data);
-        } elseif (is_object($data)) {
+//        if ($data instanceof Enumerable) {
+//            $result = $this->encodeCollection($data);
+//        } elseif ($data instanceof DataProvider) {
+//            $result = $this->encodeDataProvider($data);
+        /*} else*/if (is_object($data)) {
             $result = $this->encodeEntity($data);
         } elseif (is_array($data)) {
             $result = $this->encodeArray($data);
@@ -48,29 +50,29 @@ class DefaultResponseSerializer implements ResponseSerializerInterface
         return new JsonResponse($result);
     }
 
-    protected function normalizers(): array
-    {
-        return [
-            new DateTimeNormalizer(),
-            new ObjectNormalizer(),
-        ];
-    }
 
     protected function encodeEntity(object $entity)
     {
         $array = $this->serializer->normalize($entity);
-        $array = $this->filterEntityAttributes($array);
+//        $array = $this->filterEntityAttributes($array);
         return $array;
     }
 
     protected function encodeArray(array $entity)
     {
         $array = $this->serializer->normalize($entity);
-        $array = $this->filterEntityAttributes($array);
+//        $array = $this->filterEntityAttributes($array);
         return $array;
     }
 
-    protected function filterEntityAttributes(array $array): array
+    /*protected function normalizers(): array
+    {
+        return [
+            new DateTimeNormalizer(),
+            new ObjectNormalizer(),
+        ];
+    }*/
+    /*protected function filterEntityAttributes(array $array): array
     {
         if ($this->attributesOnly) {
             $array = ArrayHelper::filter($array, $this->attributesOnly);
@@ -81,18 +83,18 @@ class DefaultResponseSerializer implements ResponseSerializerInterface
             }
         }
         return $array;
-    }
+    }*/
 
-    protected function encodeCollection(Enumerable $collection)
+    /*protected function encodeCollection(Enumerable $collection)
     {
         $array = [];
         foreach ($collection as $entity) {
             $array[] = $this->encodeEntity($entity);
         }
         return $array;
-    }
+    }*/
 
-    protected function encodeDataProvider(DataProvider $dataProvider)
+    /*protected function encodeDataProvider(DataProvider $dataProvider)
     {
         $body = $this->encodeCollection($dataProvider->getCollection());
         $meta = $this->encodePaginate($dataProvider);
@@ -102,13 +104,13 @@ class DefaultResponseSerializer implements ResponseSerializerInterface
             $response->addMeta($metaKey, $metaValue);
         }
         return $response;
-    }
+    }*/
 
-    protected function encodePaginate(DataProvider $dataProvider)
+    /*protected function encodePaginate(DataProvider $dataProvider)
     {
         $meta['perPage'] = $dataProvider->getPageSize();
         $meta['totalCount'] = $dataProvider->getTotalCount();
         $meta['page'] = $dataProvider->getPage();
         return $meta;
-    }
+    }*/
 }

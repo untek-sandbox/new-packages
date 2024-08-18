@@ -15,26 +15,29 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Contract\Common\Exceptions\NotImplementedMethodException;
 use Untek\Framework\RestApi\Presentation\Http\Serializer\DefaultResponseSerializer;
 use Untek\Framework\RestApi\Presentation\Http\Serializer\ResponseSerializerInterface;
 
+DeprecateHelper::hardThrow();
+
 class RestApiSerializer implements SerializerInterface, DecoderInterface, DenormalizerInterface, NormalizerInterface
 {
 
-    private ResponseSerializerInterface $serializer;
+    /*private ResponseSerializerInterface $serializer;
 
     public function __construct()
     {
         $this->serializer = $this->getResponseSerializer();
-    }
+    }*/
 
     public function getSupportedTypes(?string $format): array
     {
         throw new NotImplementedMethodException();
     }
 
-    public function encode($data): Response
+    /*public function encode($data): Response
     {
         return $this->serializer->encode($data);
     }
@@ -43,7 +46,7 @@ class RestApiSerializer implements SerializerInterface, DecoderInterface, Denorm
     {
         $serializer = $this->getSerializer();
         return new DefaultResponseSerializer($serializer);
-    }
+    }*/
 
     protected function getSerializer(): SerializerInterface
     {

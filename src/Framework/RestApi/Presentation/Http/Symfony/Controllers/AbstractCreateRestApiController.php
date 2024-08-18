@@ -4,9 +4,8 @@ namespace Untek\Framework\RestApi\Presentation\Http\Symfony\Controllers;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Untek\Component\Http\Enums\HttpHeaderEnum;
 use Untek\Component\Code\Factories\PropertyAccess;
-use Untek\Framework\RestApi\Presentation\Http\Symfony\Controllers\AbstractRestApiController;
+use Untek\Component\Http\Enums\HttpHeaderEnum;
 
 abstract class AbstractCreateRestApiController extends AbstractRestApiController
 {

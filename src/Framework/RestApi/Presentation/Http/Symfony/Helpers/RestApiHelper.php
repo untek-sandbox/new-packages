@@ -19,7 +19,7 @@ class RestApiHelper
             $extensions = (new MimeTypes)->getExtensions($mimeType);
             $format = ArrayHelper::first($extensions);
         }
-        if($format == null) {
+        if ($format == null) {
             $format = self::FORM_URLENCODED;
         }
         return $format;

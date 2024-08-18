@@ -3,14 +3,13 @@
 namespace Untek\Framework\RestApi\Presentation\Http\Symfony\Helpers;
 
 use Symfony\Component\HttpFoundation\Request;
-use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Instance\Helpers\MappingHelper;
 use Untek\Model\DataProvider\Dto\PageRequest;
 use Untek\Model\DataProvider\Interfaces\ExpandQueryInterface;
+use Untek\Model\DataProvider\Interfaces\FilterLanguageInterface;
 use Untek\Model\DataProvider\Interfaces\FilterQueryInterface;
 use Untek\Model\DataProvider\Interfaces\PageQueryInterface;
 use Untek\Model\DataProvider\Interfaces\SortQueryInterface;
-use Untek\Model\DataProvider\Interfaces\FilterLanguageInterface;
 
 class QueryParameterHelper
 {
@@ -18,9 +17,9 @@ class QueryParameterHelper
     public static function removeEmptyFilters(object $query): void
     {
         $filter = $query->getFilter();
-        if($filter) {
+        if ($filter) {
             foreach ($filter as $name => $value) {
-                if(empty($value)) {
+                if (empty($value)) {
                     unset($filter[$name]);
                 }
             }
@@ -95,7 +94,7 @@ class QueryParameterHelper
 
     public static function extractPage(mixed $page, int $defaultPageSize = 10): PageRequest
     {
-        if(!isset($page['size'])) {
+        if (!isset($page['size'])) {
             $page['size'] = $defaultPageSize;
         }
         /** @var PageRequest $pageDto */
