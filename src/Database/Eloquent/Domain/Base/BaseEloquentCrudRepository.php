@@ -7,7 +7,7 @@ use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Model\Query\Entities\Query;
-use Untek\Model\Query\Enums\OperatorEnum;
+use Untek\Database\Base\Enums\OperatorEnum;
 use Untek\Model\QueryFilter\Interfaces\ForgeQueryByFilterInterface;
 use Untek\Model\QueryFilter\Traits\ForgeQueryFilterTrait;
 use Untek\Model\QueryFilter\Traits\QueryFilterTrait;

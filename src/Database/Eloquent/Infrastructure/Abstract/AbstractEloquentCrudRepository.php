@@ -10,7 +10,7 @@ use Untek\Model\Contract\Interfaces\RepositoryCreateInterface;
 use Untek\Model\Contract\Interfaces\RepositoryDeleteByIdInterface;
 use Untek\Model\Contract\Interfaces\RepositoryFindOneByIdInterface;
 use Untek\Model\Contract\Interfaces\RepositoryUpdateInterface;
-use Untek\Model\Query\Enums\OperatorEnum;
+use Untek\Database\Base\Enums\OperatorEnum;
 use Untek\Model\QueryFilter\Traits\QueryFilterTrait;
 
 abstract class AbstractEloquentCrudRepository extends AbstractEloquentRepository implements

@@ -2,10 +2,7 @@
 
 namespace Untek\Database\Base\Hydrator;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
-interface DbNormalizerInterface //extends DenormalizerInterface, NormalizerInterface
+interface DbNormalizerInterface
 {
 
     public function denormalize(array $data, string $type): object;

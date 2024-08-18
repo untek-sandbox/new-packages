@@ -7,7 +7,7 @@ use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Core\Contract\Common\Exceptions\InvalidMethodParameterException;
 use Untek\Component\Text\Helpers\Inflector;
 use Untek\Model\Shared\Enums\EventEnum;
-use Untek\Model\Entity\Exceptions\AlreadyExistsException;
+use Untek\Model\Contract\Exceptions\AlreadyExistsException;
 use Untek\Core\Contract\Common\Exceptions\NotFoundException;
 use Untek\Model\Entity\Interfaces\EntityIdInterface;
 use Untek\Model\Entity\Interfaces\UniqueInterface;

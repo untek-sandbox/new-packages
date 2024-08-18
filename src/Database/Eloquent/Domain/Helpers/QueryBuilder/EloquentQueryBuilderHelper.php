@@ -6,7 +6,7 @@ use Illuminate\Database\Query\Builder;
 //use Illuminate\Support\Str;
 use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Model\Query\Entities\Join;
-use Untek\Model\Query\Enums\OperatorEnum;
+use Untek\Database\Base\Enums\OperatorEnum;
 use Untek\Database\Base\Domain\Enums\DbDriverEnum;
 use Untek\Database\Base\Domain\Helpers\DbHelper;
 use Untek\Database\Base\Domain\Interfaces\QueryBuilderInterface;

@@ -10,7 +10,7 @@ use Untek\Database\Base\Domain\Interfaces\QueryBuilderInterface;
 use Untek\Model\Query\Entities\Join;
 use Untek\Model\Query\Entities\Query;
 use Untek\Model\Query\Entities\Where;
-use Untek\Model\Query\Enums\OperatorEnum;
+use Untek\Database\Base\Enums\OperatorEnum;
 
 class EloquentQueryBuilderHelper implements QueryBuilderInterface
 {

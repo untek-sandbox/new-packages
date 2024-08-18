@@ -6,7 +6,7 @@ use Illuminate\Database\Query\Builder;
 use Untek\Component\Text\Helpers\Inflector;
 use Untek\Database\Base\Domain\Helpers\DbHelper;
 use Untek\Database\Base\Domain\Interfaces\QueryBuilderInterface;
-use Untek\Model\Query\Enums\OperatorEnum;
+use Untek\Database\Base\Enums\OperatorEnum;
 use Untek\Model\Query\Entities\Query;
 use Untek\Model\Query\Entities\Where;
 use Doctrine\DBAL\Query\QueryBuilder;
