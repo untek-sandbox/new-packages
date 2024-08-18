@@ -2,7 +2,10 @@
 
 namespace Untek\Model\Repository\Traits;
 
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Model\Shared\Interfaces\GetEntityClassInterface;
+
+DeprecateHelper::hardThrow();
 
 trait RepositoryAwareTrait
 {

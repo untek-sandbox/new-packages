@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Utility\Test;
+namespace Untek\Develop\Test;
 
 use Illuminate\Database\Capsule\Manager;
 

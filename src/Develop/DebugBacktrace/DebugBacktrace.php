@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Tool\Dev\Trace\Facades;
+namespace Untek\Develop\DebugBacktrace;
 
 use axy\backtrace\helpers\Represent;
 use axy\backtrace\Trace;

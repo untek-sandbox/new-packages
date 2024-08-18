@@ -3,6 +3,7 @@
 namespace Untek\Model\Repository\Traits;
 
 use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;
@@ -12,6 +13,8 @@ use Untek\Model\Entity\Helpers\EntityHelper;
 use Untek\Model\Entity\Interfaces\EntityIdInterface;
 use Untek\Model\Repository\Libs\MapperEncoder;
 use Untek\Component\Encoder\Encoders\ChainEncoder;
+
+DeprecateHelper::hardThrow();
 
 trait RepositoryMapperTrait
 {

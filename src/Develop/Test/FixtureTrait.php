@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Utility\Test;
+namespace Untek\Develop\Test;
 
 use Doctrine\DBAL\Connection;
 use Untek\Database\Seed\Application\Commands\ImportSeedCommand;

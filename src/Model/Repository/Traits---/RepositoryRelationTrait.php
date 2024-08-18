@@ -2,9 +2,12 @@
 
 namespace Untek\Model\Repository\Traits;
 
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Model\Query\Entities\Query;
 use Untek\Model\Relation\Libs\RelationLoader;
+
+DeprecateHelper::hardThrow();
 
 trait RepositoryRelationTrait
 {
