@@ -32,12 +32,6 @@ abstract class AbstractEloquentRepository implements ObjectRepository
         $this->setCapsule($capsule);
     }
 
-    protected function getConnection(): Connection
-    {
-        DeprecateHelper::hardThrow();
-        return $this->connection;
-    }
-
     protected function tableNameForQuery(): string
     {
         return 'c';

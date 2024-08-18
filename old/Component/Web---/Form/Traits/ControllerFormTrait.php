@@ -79,12 +79,6 @@ trait ControllerFormTrait
         $this->type = $type;
     }
 
-    public function createFormRender(FormInterface $buildForm): FormRender
-    {
-        DeprecateHelper::hardThrow();
-        return new FormRender($buildForm->createView(), $this->getTokenManager());
-    }
-
     public function buildForm(object $form, Request $request): FormInterface
     {
         /** @var BuildFormInterface $form */

@@ -10,16 +10,6 @@ use function GuzzleHttp\Psr7\parse_query;
 class UrlHelper
 {
 
-    public static function requestUri(): string
-    {
-        global $_SERVER;
-
-        \Untek\Component\Code\Helpers\DeprecateHelper::hardThrow();
-
-        $baseUrl = explode('?', $_SERVER['REQUEST_URI'])[0];
-        return $baseUrl;
-    }
-
     /**
      * Returns a value indicating whether a URL is relative.
      * A relative URL does not have host info part.

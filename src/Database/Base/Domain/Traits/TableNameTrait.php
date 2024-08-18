@@ -21,12 +21,6 @@ trait TableNameTrait
             ->getConnectionNameByTableName($this->getTableName());
     }
 
-    public function tableName(): string
-    {
-        DeprecateHelper::hardThrow();
-        return $this->tableName;
-    }
-
     public function getTableName(): string
     {
         return $this->tableName;

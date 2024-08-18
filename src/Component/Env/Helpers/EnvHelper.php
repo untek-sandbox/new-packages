@@ -8,30 +8,9 @@ use Untek\Component\Env\Enums\EnvEnum;
 class EnvHelper
 {
 
-    /*public static function isWeb(): bool
-    {
-        return !self::isConsole();
-    }
-
-    public static function isConsole(): bool
-    {
-        return in_array(PHP_SAPI, ['cli', 'phpdbg']);
-    }*/
-
     public static function isDebug(): bool
     {
         return self::getAppDebug();
-    }
-
-    /*public static function isProd(): bool
-    {
-        return self::getAppEnv() == EnvEnum::PRODUCTION;
-    }*/
-
-    public static function isDev(): bool
-    {
-        DeprecateHelper::hardThrow();
-        return self::getAppEnv() == EnvEnum::DEVELOP;
     }
 
     public static function isTest(): bool

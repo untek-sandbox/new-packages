@@ -40,24 +40,6 @@ class InstanceProvider
         }*/
     }
 
-    public function createInstance($definition, array $constructorParameters = []): object
-    {
-        DeprecateHelper::hardThrow();
-
-        if (is_object($definition)) {
-            $instance = $definition;
-        } else {
-            $definition = ClassHelper::normalizeComponentConfig($definition);
-            if (isset($definition['__construct'])) {
-                $constructorParameters = ArrayHelper::merge($constructorParameters, $definition['__construct']);
-                unset($definition['__construct']);
-            }
-            $instance = ClassHelper::createInstance($definition, $constructorParameters, $this->container);
-            //$instance = $this->container->make($definition, $constructorParameters);
-        }
-        return $instance;
-    }
-
     private function checkExistsMethod(object $instance, string $methodName): void
     {
         if (!method_exists($instance, $methodName)) {

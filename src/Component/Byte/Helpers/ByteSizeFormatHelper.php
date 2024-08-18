@@ -2,11 +2,8 @@
 
 namespace Untek\Component\Byte\Helpers;
 
-use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Component\Measure\Byte\Enums\ByteEnum;
 use Untek\Component\Enum\Helpers\EnumHelper;
-
-DeprecateHelper::hardThrow();
 
 class ByteSizeFormatHelper
 {

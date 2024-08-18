@@ -13,38 +13,6 @@ class InstanceResolver
 
     use ContainerAwareTrait;
 
-    public function callMethod(object $instance, string $methodName, array $parameters = [])
-    {
-        DeprecateHelper::hardThrow();
-
-//        return $this->callMethod2($instance, $methodName, $parameters);
-        $parameters = $this->prepareParameters(get_class($instance), $methodName, $parameters);
-        return call_user_func_array([$instance, $methodName], $parameters);
-    }
-
-    public function callMethod2(object $instance, string $methodName, array $parameters = [])
-    {
-        DeprecateHelper::hardThrow();
-
-        $callable = [$instance, $methodName];
-        $argumentResolver = new ArgumentMetadataResolver($this->container);
-//        $argumentResolver = $this->container->get(ArgumentMetadataResolver::class);
-        $parameters = $argumentResolver->resolve($callable, $parameters);
-//        $parameters = $this->prepareParameters(get_class($instance), $methodName, $parameters);
-        return call_user_func_array($callable, $parameters);
-    }
-
-    public function make(string $definition, array $constructParams = []): object
-    {
-        DeprecateHelper::hardThrow();
-
-        $callable = [$definition, '__construct'];
-        /** @var ArgumentMetadataResolver $argumentResolver */
-        $argumentResolver = $this->container->get(ArgumentMetadataResolver::class);
-        $resolvedArguments = $argumentResolver->resolve($callable, $constructParams);
-        return $this->create($definition, $resolvedArguments);
-    }
-
     /**
      * Создать класс
      * @param $definition
@@ -67,23 +35,6 @@ class InstanceResolver
 
         ClassHelper::configure($handlerInstance, $definition);
         return $handlerInstance;
-    }
-
-    /**
-     * Обеспечить инстанс класса
-     * Если придет объект в определении класса, то он его вернет, иначе создаст новый класс.
-     * @param $definition
-     * @param array $constructParams
-     * @return object
-     */
-    public function ensure($definition, $constructParams = []): object
-    {
-        DeprecateHelper::hardThrow();
-
-        if (is_object($definition)) {
-            return $definition;
-        }
-        return $this->create($definition, $constructParams);
     }
 
     private function prepareParameters(string $className, string $methodName, array $constructionArgs): array

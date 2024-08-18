@@ -54,42 +54,6 @@ abstract class BaseWebController //implements ControllerLayoutInterface
         $this->baseUri = $baseUri;
     }
 
-    public function getLayoutManager(): LayoutManager
-    {
-        DeprecateHelper::hardThrow();
-        return $this->layoutManager;
-    }
-
-    /*public function setLayoutManager(LayoutManager $layoutManager): void
-    {
-        $this->layoutManager = $layoutManager;
-    }*/
-
-    /*public function getLayout(): ?string
-    {
-        return $this->layout;
-    }*/
-
-    /*public function setLayout(?string $layout): void
-    {
-        $this->layout = $layout;
-    }*/
-
-    /*public function getLayoutParams(): array
-    {
-        return $this->layoutParams;
-    }*/
-
-    /*public function setLayoutParams(array $layoutParams): void
-    {
-        $this->layoutParams = $layoutParams;
-    }*/
-
-    /*public function addLayoutParam(string $name, $value): void
-    {
-        $this->layoutParams[$name] = $value;
-    }*/
-
     public function getViewsDir(): ?string
     {
         return $this->viewsDir;

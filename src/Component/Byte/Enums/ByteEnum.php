@@ -2,14 +2,9 @@
 
 namespace Untek\Component\Byte\Enums;
 
-use Untek\Component\Code\Helpers\DeprecateHelper;
-
 /**
  * Единицы измерения информации в байтах
  */
-
-DeprecateHelper::hardThrow();
-
 class ByteEnum
 {
 
