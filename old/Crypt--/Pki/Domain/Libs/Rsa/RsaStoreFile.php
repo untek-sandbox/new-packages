@@ -2,7 +2,7 @@
 
 namespace Untek\Crypt\Pki\Domain\Libs\Rsa;
 
-use Untek\Core\FileSystem\Helpers\FileStorageHelper;
+use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Core\Contract\Common\Exceptions\NotFoundException;
 
 class RsaStoreFile extends BaseRsaStore implements RsaStoreInterface

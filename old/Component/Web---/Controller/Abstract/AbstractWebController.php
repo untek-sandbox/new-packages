@@ -12,7 +12,7 @@ use Untek\Component\Web\Widget\Widgets\Toastr\Application\Services\ToastrService
 use Untek\Component\Web\HtmlRender\Application\Services\HtmlRenderInterface;
 use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Container\Helpers\ContainerHelper;
-use Untek\Core\Text\Helpers\TemplateHelper;
+use Untek\Component\Text\Helpers\TemplateHelper;
 use Untek\Component\Web\View\Libs\View;
 use Untek\Model\Entity\Helpers\EntityHelper;
 use Untek\Component\Http\Enums\HttpStatusCodeEnum;

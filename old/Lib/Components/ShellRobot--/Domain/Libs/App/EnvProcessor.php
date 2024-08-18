@@ -3,8 +3,11 @@
 namespace Untek\Lib\Components\ShellRobot\Domain\Libs\App;
 
 use Symfony\Component\Process\Process;
-use Untek\Core\Pattern\Singleton\SingletonTrait;
+use Untek\Component\Code\Helpers\DeprecateHelper;
+use Untek\Component\Pattern\Singleton\SingletonTrait;
 use Untek\Framework\Console\Domain\Helpers\CommandLineHelper;
+
+DeprecateHelper::hardThrow();
 
 class EnvProcessor
 {

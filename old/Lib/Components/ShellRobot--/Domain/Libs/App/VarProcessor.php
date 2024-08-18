@@ -4,7 +4,7 @@ namespace Untek\Lib\Components\ShellRobot\Domain\Libs\App;
 
 use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\Code\Helpers\DeprecateHelper;
-use Untek\Core\Text\Helpers\TemplateHelper;
+use Untek\Component\Text\Helpers\TemplateHelper;
 
 DeprecateHelper::hardThrow();
 

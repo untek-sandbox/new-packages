@@ -3,7 +3,7 @@
 namespace Untek\Crypt\Pki\JsonDSig\Domain\Libs\Encoders;
 
 
-use Untek\Core\Text\Helpers\TextHelper;
+use Untek\Component\Text\Helpers\TextHelper;
 
 class HexEncoder extends BaseEncoder
 {

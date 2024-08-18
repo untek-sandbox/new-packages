@@ -5,9 +5,9 @@ namespace Untek\Crypt\Pki\XmlDSig\Domain\Libs\KeyLoaders;
 use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;
-use Untek\Core\FileSystem\Helpers\FileHelper;
-use Untek\Core\FileSystem\Helpers\FileStorageHelper;
-use Untek\Core\FileSystem\Helpers\FindFileHelper;
+use Untek\Component\FileSystem\Helpers\FileHelper;
+use Untek\Component\FileSystem\Helpers\FileStorageHelper;
+use Untek\Component\FileSystem\Helpers\FindFileHelper;
 use Untek\Crypt\Pki\XmlDSig\Domain\Entities\KeyEntity;
 use Untek\Domain\Entity\Helpers\EntityHelper;
 

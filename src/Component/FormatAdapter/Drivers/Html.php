@@ -2,7 +2,7 @@
 
 namespace Untek\Component\FormatAdapter\Drivers;
 
-use Untek\Core\FileSystem\Helpers\FileStorageHelper;
+use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 
 class Html implements DriverInterface
 {

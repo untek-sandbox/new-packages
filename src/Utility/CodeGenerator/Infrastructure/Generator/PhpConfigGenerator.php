@@ -3,7 +3,7 @@
 namespace Untek\Utility\CodeGenerator\Infrastructure\Generator;
 
 use Symfony\Component\Filesystem\Filesystem;
-use Untek\Core\FileSystem\Helpers\FileHelper;
+use Untek\Component\FileSystem\Helpers\FileHelper;
 use Untek\Utility\CodeGenerator\Application\Dto\GenerateResultCollection;
 
 class PhpConfigGenerator

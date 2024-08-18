@@ -4,7 +4,7 @@ use Untek\Core\Container\Interfaces\ContainerConfiguratorInterface;
 use Untek\Core\Container\Libs\Container;
 use Symfony\Component\Console\Application;
 use Untek\Core\Container\Helpers\ContainerHelper;
-use Untek\Core\FileSystem\Helpers\FilePathHelper;
+use Untek\Component\FileSystem\Helpers\FilePathHelper;
 use Untek\Framework\Console\Symfony4\Helpers\CommandHelper;
 use Untek\Crypt\Pki\Domain\Libs\Rsa\RsaStoreFile;
 use Untek\Lib\Components\Time\Enums\TimeEnum;
@@ -13,7 +13,7 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\HttpFoundation\Request;
 use Untek\Lib\Rest\Symfony4\Helpers\RestApiControllerHelper;
-use Untek\Core\FileSystem\Helpers\FileHelper;
+use Untek\Component\FileSystem\Helpers\FileHelper;
 
 /**
  * @var Application $application

@@ -6,7 +6,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Untek\Component\Web\Widget\Widgets\Toastr\Domain\Enums\FlashMessageTypeEnum;
 use Untek\Lib\Components\Status\Enums\StatusEnum;
-use Untek\Core\Enum\Helpers\EnumHelper;
+use Untek\Component\Enum\Helpers\EnumHelper;
 use Untek\Model\Components\Constraints\Enum;
 use Untek\Model\Validator\Interfaces\ValidationByMetadataInterface;
 

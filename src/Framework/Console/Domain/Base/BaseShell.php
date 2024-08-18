@@ -2,8 +2,8 @@
 
 namespace Untek\Framework\Console\Domain\Base;
 
-use Untek\Core\Env\Enums\OsFamilyEnum;
-use Untek\Core\Env\Helpers\OsHelper;
+use Untek\Component\Env\Enums\OsFamilyEnum;
+use Untek\Component\Env\Helpers\OsHelper;
 use Untek\Framework\Console\Domain\Exceptions\ShellException;
 
 abstract class BaseShell

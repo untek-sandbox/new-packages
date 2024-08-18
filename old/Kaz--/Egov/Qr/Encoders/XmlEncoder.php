@@ -7,7 +7,7 @@ use Symfony\Component\Serializer\Encoder\XmlEncoder as SymfonyXmlEncoder;
 use Exception;
 use InvalidArgumentException;
 use DomainException;
-use Untek\Core\Text\Helpers\TextHelper;
+use Untek\Component\Text\Helpers\TextHelper;
 
 class XmlEncoder implements EncoderInterface
 {

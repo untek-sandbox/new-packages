@@ -4,7 +4,7 @@ namespace Untek\Framework\Console\Symfony4\Style;
 
 use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 use Untek\Model\Entity\Helpers\EntityHelper;
 use Untek\Model\Validator\Entities\ValidationErrorEntity;
 use Untek\Model\Validator\Exceptions\UnprocessibleEntityException;

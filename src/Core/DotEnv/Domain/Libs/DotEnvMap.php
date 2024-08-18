@@ -3,7 +3,7 @@
 namespace Untek\Core\DotEnv\Domain\Libs;
 
 use Untek\Component\Arr\Helpers\ArrayHelper;
-use Untek\Core\Pattern\Singleton\SingletonTrait;
+use Untek\Component\Pattern\Singleton\SingletonTrait;
 
 class DotEnvMap
 {
@@ -22,7 +22,7 @@ class DotEnvMap
         return self::getInstance()->getValue($path, $default);
     }
 
-    public function getValue(string $path = null, $default = null)
+    private function getValue(string $path = null, $default = null)
     {
         return ArrayHelper::getValue($this->map, $path, $default);
     }

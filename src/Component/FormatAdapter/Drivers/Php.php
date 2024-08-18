@@ -4,10 +4,10 @@ namespace Untek\Component\FormatAdapter\Drivers;
 
 use Symfony\Component\VarExporter\VarExporter;
 use Untek\Component\Arr\Helpers\ArrayHelper;
-use Untek\Core\FileSystem\Helpers\FileStorageHelper;
+use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Component\FormatAdapter\Helpers\FileGeneratorHelper;
 
-use Untek\Core\Text\Helpers\TextHelper;
+use Untek\Component\Text\Helpers\TextHelper;
 
 class Php implements DriverInterface
 {

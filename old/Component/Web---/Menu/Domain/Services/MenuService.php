@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 use Untek\Model\Query\Entities\Query;
 use Untek\Model\Service\Base\BaseCrudService;
 use Untek\Component\I18Next\Exceptions\NotFoundBundleException;

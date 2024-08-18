@@ -2,14 +2,12 @@
 
 namespace Untek\Kaz\Iin\Domain\Enums;
 
-use Untek\Core\Enum\Interfaces\GetLabelsInterface;
-
-class TypeEnum implements GetLabelsInterface
+class TypeEnum
 {
 
     const INDIVIDUAL = 'individual';
     const JURIDICAL = 'juridical';
-    
+
     public static function getLabels()
     {
         return [

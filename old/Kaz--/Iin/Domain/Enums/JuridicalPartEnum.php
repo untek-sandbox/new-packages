@@ -2,9 +2,7 @@
 
 namespace Untek\Kaz\Iin\Domain\Enums;
 
-use Untek\Core\Enum\Interfaces\GetLabelsInterface;
-
-class JuridicalPartEnum implements GetLabelsInterface
+class JuridicalPartEnum
 {
 
     const HEAD = 0;

@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Untek\Component\Web\Widget\Widgets\Toastr\Application\Services\ToastrServiceInterface;
 use Untek\Component\Web\HtmlRender\Application\Services\HtmlRenderInterface;
 use Untek\Core\Container\Helpers\ContainerHelper;
-use Untek\Core\Text\Helpers\TemplateHelper;
+use Untek\Component\Text\Helpers\TemplateHelper;
 use Untek\Model\Entity\Helpers\EntityHelper;
 use Untek\Component\Http\Enums\HttpStatusCodeEnum;
 use Untek\Component\I18Next\Facades\I18Next;

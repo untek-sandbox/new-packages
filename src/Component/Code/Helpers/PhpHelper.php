@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Code\Helpers;
 
-use Untek\Core\FileSystem\Helpers\FilePathHelper;
+use Untek\Component\FileSystem\Helpers\FilePathHelper;
 
 class PhpHelper
 {

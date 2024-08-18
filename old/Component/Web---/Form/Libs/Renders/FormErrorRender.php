@@ -6,7 +6,7 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\Validator\ConstraintViolation;
 use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\Web\Html\Helpers\Html;
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 use Untek\Component\I18Next\Facades\I18Next;
 use Untek\Component\Web\Form\Helpers\FormErrorHelper;
 

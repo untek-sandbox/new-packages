@@ -2,7 +2,7 @@
 
 namespace Untek\Utility\Init\Presentation\Cli\Tasks;
 
-use Untek\Core\Text\Libs\RandomString;
+use Untek\Component\Text\Libs\RandomString;
 
 class RandomTask extends BaseTask
 {

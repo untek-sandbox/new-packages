@@ -3,7 +3,7 @@
 namespace Untek\Component\Office\Domain\Libs;
 
 use App\Common\Base\BaseController;
-use Untek\Core\Text\Helpers\TemplateHelper;
+use Untek\Component\Text\Helpers\TemplateHelper;
 use Untek\Component\Zip\Libs\Zip;
 
 class DocX

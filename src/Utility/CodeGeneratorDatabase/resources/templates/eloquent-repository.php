@@ -8,7 +8,7 @@
 
 use Untek\Utility\CodeGeneratorApplication\Presentation\Enums\PropertyTypeEnum;
 use Laminas\Code\Generator\PropertyGenerator;
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 use Untek\Core\Instance\Helpers\ClassHelper;
 
 ?>

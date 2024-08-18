@@ -3,7 +3,7 @@
 namespace Untek\Database\Doctrine\Domain\Helpers\QueryBuilder;
 
 use Illuminate\Database\Query\Builder;
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 use Untek\Database\Base\Domain\Helpers\DbHelper;
 use Untek\Database\Base\Domain\Interfaces\QueryBuilderInterface;
 use Untek\Model\Query\Enums\OperatorEnum;

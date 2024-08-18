@@ -5,7 +5,7 @@ namespace Untek\Model\Repository\Traits;
 use Untek\Component\Code\Factories\PropertyAccess;
 use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Core\Contract\Common\Exceptions\InvalidMethodParameterException;
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 use Untek\Model\Shared\Enums\EventEnum;
 use Untek\Model\Entity\Exceptions\AlreadyExistsException;
 use Untek\Core\Contract\Common\Exceptions\NotFoundException;

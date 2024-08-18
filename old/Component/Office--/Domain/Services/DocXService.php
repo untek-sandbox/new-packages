@@ -3,7 +3,7 @@
 namespace Untek\Component\Office\Domain\Services;
 
 
-use Untek\Core\Text\Helpers\TemplateHelper;
+use Untek\Component\Text\Helpers\TemplateHelper;
 use Untek\Domain\EntityManager\Interfaces\EntityManagerInterface;
 use Untek\Domain\Service\Base\BaseCrudService;
 use Untek\Component\Office\Domain\Entities\DocXEntity;

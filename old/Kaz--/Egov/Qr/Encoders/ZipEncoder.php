@@ -5,7 +5,7 @@ namespace Untek\Kaz\Egov\Qr\Encoders;
 use Exception;
 use Symfony\Component\Uid\Uuid;
 use ZipArchive;
-use Untek\Core\FileSystem\Helpers\FileHelper;
+use Untek\Component\FileSystem\Helpers\FileHelper;
 
 class ZipEncoder implements EncoderInterface
 {

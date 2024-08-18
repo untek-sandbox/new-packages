@@ -16,7 +16,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use Untek\Component\Translator\Infrastructure\Exceptions\NotFoundLanguageException;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
 use Untek\Core\Contract\Common\Exceptions\NotFoundException;
-use Untek\Core\Env\Helpers\EnvHelper;
+use Untek\Component\Env\Helpers\EnvHelper;
 use Untek\FrameworkPlugin\RestApiErrorHandle\Presentation\Http\Symfony\Interfaces\RestApiErrorControllerInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 

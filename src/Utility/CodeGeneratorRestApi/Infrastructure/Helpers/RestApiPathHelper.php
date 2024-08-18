@@ -3,7 +3,7 @@
 namespace Untek\Utility\CodeGeneratorRestApi\Infrastructure\Helpers;
 
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 use Untek\Utility\CodeGeneratorApplication\Infrastructure\Helpers\ApplicationPathHelper;
 use Untek\Utility\CodeGeneratorRestApi\Application\Commands\GenerateRestApiCommand;
 use Untek\Utility\CodeGeneratorRestApi\Application\Helpers\CommandHelper;

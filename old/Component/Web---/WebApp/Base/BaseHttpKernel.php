@@ -26,7 +26,6 @@ use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\HttpKernel\TerminableInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Untek\Component\Code\Helpers\DeprecateHelper;
-use Untek\Core\EventDispatcher\Traits\EventDispatcherTrait;
 
 DeprecateHelper::hardThrow();
 

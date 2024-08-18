@@ -4,7 +4,7 @@ namespace Untek\Utility\CodeGeneratorCli\Infrastructure\Helpers;
 
 use Untek\Utility\CodeGeneratorCli\Application\Commands\GenerateCliCommand;
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 use Untek\Utility\CodeGeneratorRestApi\Application\Helpers\CommandHelper;
 
 class CliPathHelper

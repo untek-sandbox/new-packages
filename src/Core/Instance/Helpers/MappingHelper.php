@@ -4,7 +4,7 @@ namespace Untek\Core\Instance\Helpers;
 
 use ReflectionException;
 use ReflectionParameter;
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 
 class MappingHelper
 {

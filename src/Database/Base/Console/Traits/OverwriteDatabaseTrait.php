@@ -6,7 +6,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 use Untek\Core\Container\Helpers\ContainerHelper;
-use Untek\Core\Text\Helpers\TextHelper;
+use Untek\Component\Text\Helpers\TextHelper;
 use Untek\Database\Base\Domain\Repositories\Eloquent\SchemaRepository;
 use Untek\Component\Http\Helpers\UrlHelper;
 use Untek\Database\Eloquent\Domain\Capsule\Manager;

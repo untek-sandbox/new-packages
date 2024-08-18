@@ -7,7 +7,7 @@ use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 use Untek\Model\Entity\Helpers\EntityHelper;
 use Untek\Model\Entity\Interfaces\EntityIdInterface;
 use Untek\Model\Repository\Libs\MapperEncoder;

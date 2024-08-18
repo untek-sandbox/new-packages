@@ -2,7 +2,7 @@
 
 namespace Untek\Utility\CodeGeneratorDatabase\Infrastructure\Helpers;
 
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 use Untek\Utility\CodeGeneratorDatabase\Application\Commands\GenerateDatabaseCommand;
 
 class DatabasePathHelper

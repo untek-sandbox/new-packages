@@ -3,7 +3,7 @@
 namespace Untek\Kaz\Iin\Domain\Helpers;
 
 
-use Untek\Core\Text\Helpers\TextHelper;
+use Untek\Component\Text\Helpers\TextHelper;
 use Untek\Kaz\Iin\Domain\Entities\IndividualEntity;
 use Untek\Kaz\Iin\Domain\Libs\CheckSum;
 

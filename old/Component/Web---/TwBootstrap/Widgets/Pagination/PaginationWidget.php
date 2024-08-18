@@ -3,7 +3,7 @@
 namespace Untek\Component\Web\TwBootstrap\Widgets\Pagination;
 
 use Symfony\Component\HttpFoundation\Request;
-use Untek\Core\Text\Helpers\TemplateHelper;
+use Untek\Component\Text\Helpers\TemplateHelper;
 use Untek\Model\DataProvider\Dto\CollectionData;
 use Untek\Model\DataProvider\Entities\DataProviderEntity;
 //use Untek\Model\DataProvider\Libs\DataProvider;

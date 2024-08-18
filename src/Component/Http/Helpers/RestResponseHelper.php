@@ -3,7 +3,7 @@
 namespace Untek\Component\Http\Helpers;
 
 use Psr\Http\Message\ResponseInterface;
-use Untek\Core\FileSystem\Helpers\MimeTypeHelper;
+use Untek\Component\FileSystem\Helpers\MimeTypeHelper;
 use Untek\Model\DataProvider\Entities\DataProviderEntity;
 use Untek\Component\Http\Enums\HttpHeaderEnum;
 use Untek\Component\FormatAdapter\Store;

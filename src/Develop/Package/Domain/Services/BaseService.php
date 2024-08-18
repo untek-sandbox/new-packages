@@ -2,11 +2,8 @@
 
 namespace Untek\Develop\Package\Domain\Services;
 
-use Untek\Model\Shared\Interfaces\GetEntityClassInterface;
-use Untek\Model\EntityManager\Traits\EntityManagerAwareTrait;
-use Untek\Core\EventDispatcher\Traits\EventDispatcherTrait;
-use Untek\Model\Repository\Traits\RepositoryAwareTrait;
 use Untek\Model\Service\Interfaces\CreateEntityInterface;
+use Untek\Model\Shared\Interfaces\GetEntityClassInterface;
 
 abstract class BaseService //implements GetEntityClassInterface, CreateEntityInterface
 {

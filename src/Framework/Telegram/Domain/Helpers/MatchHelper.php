@@ -3,7 +3,7 @@
 namespace Untek\Framework\Telegram\Domain\Helpers;
 
 
-use Untek\Core\Text\Helpers\TextHelper;
+use Untek\Component\Text\Helpers\TextHelper;
 
 class MatchHelper
 {

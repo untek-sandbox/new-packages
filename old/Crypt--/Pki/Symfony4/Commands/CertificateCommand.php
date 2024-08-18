@@ -4,8 +4,8 @@ namespace Untek\Crypt\Pki\Symfony4\Commands;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Untek\Core\FileSystem\Helpers\FilePathHelper;
-use Untek\Core\FileSystem\Helpers\FindFileHelper;
+use Untek\Component\FileSystem\Helpers\FilePathHelper;
+use Untek\Component\FileSystem\Helpers\FindFileHelper;
 use Untek\Lib\Components\Time\Enums\TimeEnum;
 use Untek\Crypt\Base\Domain\Entities\CertificateInfoEntity;
 use Untek\Crypt\Base\Domain\Enums\HashAlgoEnum;

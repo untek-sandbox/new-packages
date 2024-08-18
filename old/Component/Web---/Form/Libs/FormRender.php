@@ -5,7 +5,7 @@ namespace Untek\Component\Web\Form\Libs;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Untek\Component\Arr\Helpers\ArrayHelper;
-use Untek\Core\Text\Helpers\TemplateHelper;
+use Untek\Component\Text\Helpers\TemplateHelper;
 use Untek\Component\Web\Form\Libs\Renders\BaseRender;
 use Untek\Component\Web\Form\Libs\Renders\ButtonRender;
 use Untek\Component\Web\Form\Libs\Renders\CheckboxRender;

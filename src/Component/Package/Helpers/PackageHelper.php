@@ -4,7 +4,7 @@ namespace Untek\Component\Package\Helpers;
 
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;
-use Untek\Core\FileSystem\Helpers\FilePathHelper;
+use Untek\Component\FileSystem\Helpers\FilePathHelper;
 use Untek\Component\FormatAdapter\StoreFile;
 use Untek\Develop\Package\Domain\Entities\ConfigEntity;
 use Untek\Develop\Package\Domain\Entities\GroupEntity;

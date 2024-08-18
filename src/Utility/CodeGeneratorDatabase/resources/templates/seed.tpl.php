@@ -24,7 +24,7 @@ class <?= $className ?>
             $item = [
 <?php foreach ($properties as $attribute){
     $propertyName = $attribute->getName();
-    $fieldName = \Untek\Core\Text\Helpers\Inflector::underscore($propertyName);
+    $fieldName = \Untek\Component\Text\Helpers\Inflector::underscore($propertyName);
     $propertyType = $attribute->getType()->generate();
 $value = null;
 if($propertyName == 'id') {

@@ -3,8 +3,8 @@
 namespace Untek\Component\LogReader\Infrastructure\Persistence\JsonFile;
 
 use Untek\Component\Arr\Helpers\ArrayHelper;
-use Untek\Core\FileSystem\Helpers\FilePathHelper;
-use Untek\Core\FileSystem\Helpers\FindFileHelper;
+use Untek\Component\FileSystem\Helpers\FilePathHelper;
+use Untek\Component\FileSystem\Helpers\FindFileHelper;
 
 class DateRepository
 {

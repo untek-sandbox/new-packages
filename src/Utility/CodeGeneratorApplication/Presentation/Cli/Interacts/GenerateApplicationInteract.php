@@ -4,7 +4,7 @@
 namespace Untek\Utility\CodeGeneratorApplication\Presentation\Cli\Interacts;
 
 use Symfony\Component\Console\Question\Question;
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 use Untek\Framework\Console\Infrastructure\Validators\ClassNameValidator;
 use Untek\Framework\Console\Infrastructure\Validators\NotBlankValidator;
 use Untek\Framework\Console\Infrastructure\Validators\PropertyNameValidator;

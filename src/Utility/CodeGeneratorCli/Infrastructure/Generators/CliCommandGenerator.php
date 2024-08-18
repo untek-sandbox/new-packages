@@ -3,7 +3,7 @@
 namespace Untek\Utility\CodeGeneratorCli\Infrastructure\Generators;
 
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 use Untek\Utility\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\Application\Dto\GenerateResultCollection;
 use Untek\Utility\CodeGenerator\Infrastructure\Generator\CodeGenerator;

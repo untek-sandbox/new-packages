@@ -3,8 +3,11 @@
 namespace Untek\Core\Contract\Common\Exceptions;
 
 use Exception;
-use Untek\Core\Env\Helpers\EnvHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
+use Untek\Component\Env\Helpers\EnvHelper;
 use Untek\Core\Instance\Helpers\ClassHelper;
+
+DeprecateHelper::hardThrow();
 
 /**
  * Значение атрибута объекта только для чтения

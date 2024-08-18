@@ -2,7 +2,7 @@
 
 namespace Untek\Crypt\Pki\Domain\Helpers;
 
-use Untek\Core\FileSystem\Helpers\FileStorageHelper;
+use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Crypt\Pki\Domain\Libs\Rsa\RsaStoreInterface;
 use Untek\Crypt\Pki\Domain\Libs\Rsa\RsaStoreRam;
 

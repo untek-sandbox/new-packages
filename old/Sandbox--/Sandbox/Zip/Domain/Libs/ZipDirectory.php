@@ -5,8 +5,8 @@ namespace Untek\Sandbox\Sandbox\Zip\Domain\Libs;
 use Exception;
 use Symfony\Component\Uid\Uuid;
 use ZipArchive;
-use Untek\Core\FileSystem\Helpers\FileHelper;
-use Untek\Core\FileSystem\Helpers\FindFileHelper;
+use Untek\Component\FileSystem\Helpers\FileHelper;
+use Untek\Component\FileSystem\Helpers\FindFileHelper;
 
 class ZipDirectory
 {

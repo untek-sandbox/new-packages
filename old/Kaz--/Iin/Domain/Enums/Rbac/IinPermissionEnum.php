@@ -2,9 +2,7 @@
 
 namespace Untek\Kaz\Iin\Domain\Enums\Rbac;
 
-use Untek\Core\Enum\Interfaces\GetLabelsInterface;
-
-class IinPermissionEnum implements GetLabelsInterface
+class IinPermissionEnum
 {
 
     const GET_INFO = 'oIinGetInfo';

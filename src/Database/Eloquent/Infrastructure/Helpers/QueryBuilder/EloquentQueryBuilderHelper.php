@@ -4,7 +4,7 @@ namespace Untek\Database\Eloquent\Infrastructure\Helpers\QueryBuilder;
 
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Builder as QueryBuilder;
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 use Untek\Database\Base\Domain\Helpers\DbHelper;
 use Untek\Database\Base\Domain\Interfaces\QueryBuilderInterface;
 use Untek\Model\Query\Entities\Join;

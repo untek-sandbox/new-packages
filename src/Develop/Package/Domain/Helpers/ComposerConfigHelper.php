@@ -2,8 +2,8 @@
 
 namespace Untek\Develop\Package\Domain\Helpers;
 
-use Untek\Core\FileSystem\Helpers\FileHelper;
-use Untek\Core\FileSystem\Helpers\FileStorageHelper;
+use Untek\Component\FileSystem\Helpers\FileHelper;
+use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Develop\Package\Domain\Entities\ConfigEntity;
 

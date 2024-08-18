@@ -4,7 +4,7 @@ namespace Untek\Component\Code\Libs;
 
 use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\Contract\Common\Exceptions\InternalServerErrorException;
-use Untek\Core\Text\Libs\RandomString;
+use Untek\Component\Text\Libs\RandomString;
 
 /**
  * Замер производительности в произвольных местах кода.

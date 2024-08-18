@@ -2,7 +2,7 @@
 
 namespace Untek\Develop\Package\Domain\Repositories\File;
 
-use Untek\Core\FileSystem\Helpers\FindFileHelper;
+use Untek\Component\FileSystem\Helpers\FindFileHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;
 use Untek\Model\Entity\Interfaces\EntityIdInterface;

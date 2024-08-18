@@ -5,7 +5,7 @@ namespace Untek\Kaz\Eds\Domain\Helpers;
 use phpseclib\File\X509;
 use Untek\Component\Encoder\Encoders\XmlEncoder;
 
-use Untek\Core\Text\Helpers\TextHelper;
+use Untek\Component\Text\Helpers\TextHelper;
 use Untek\Crypt\Base\Domain\Exceptions\CertificateExpiredException;
 use Untek\Crypt\Base\Domain\Exceptions\FailCertificateSignatureException;
 

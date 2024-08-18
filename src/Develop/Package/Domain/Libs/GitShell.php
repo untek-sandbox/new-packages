@@ -5,9 +5,9 @@ namespace Untek\Develop\Package\Domain\Libs;
 //use Illuminate\Support\Arr;
 
 use Untek\Component\Arr\Helpers\ArrayHelper;
-use Untek\Core\FileSystem\Helpers\FileHelper;
-use Untek\Core\FileSystem\Helpers\FilePathHelper;
-use Untek\Core\Text\Helpers\TextHelper;
+use Untek\Component\FileSystem\Helpers\FileHelper;
+use Untek\Component\FileSystem\Helpers\FilePathHelper;
+use Untek\Component\Text\Helpers\TextHelper;
 use Untek\Framework\Console\Domain\Base\BaseShell;
 use Untek\Framework\Console\Domain\Exceptions\ShellException;
 

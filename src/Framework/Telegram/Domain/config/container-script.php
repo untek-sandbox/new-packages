@@ -3,7 +3,7 @@
 use Psr\Container\ContainerInterface;
 use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\ConfigManager\Interfaces\ConfigManagerInterface;
-use Untek\Core\Env\Helpers\EnvHelper;
+use Untek\Component\Env\Helpers\EnvHelper;
 use Untek\Framework\Telegram\Domain\Interfaces\Repositories\ResponseRepositoryInterface;
 use Untek\Framework\Telegram\Domain\Repositories\File\ConfigRepository;
 use Untek\Framework\Telegram\Domain\Repositories\Telegram\ResponseRepository as TelegramResponseRepository;

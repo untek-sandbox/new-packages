@@ -2,30 +2,26 @@
 
 namespace Untek\User\Authentication\Application\Handlers;
 
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Symfony\Contracts\Translation\TranslatorInterface;
-use Untek\Model\Cqrs\Application\Abstract\CqrsHandlerInterface;
-use Untek\User\Authentication\Application\Commands\GenerateTokenByPasswordCommand;
-use Untek\User\Authentication\Application\Validators\GenerateTokenByPasswordCommandValidator;
-use Untek\User\Authentication\Domain\Entities\CredentialEntity;
-use Untek\User\Authentication\Domain\Exceptions\BadPasswordException;
-use Untek\User\Authentication\Domain\Exceptions\BlockedUserException;
-use Untek\User\Authentication\Domain\Interfaces\Repositories\IdentityRepositoryInterface;
-use Untek\User\Authentication\Domain\Model\Token;
-use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Untek\Core\EventDispatcher\Traits\EventDispatcherTrait;
+use Symfony\Contracts\Translation\TranslatorInterface;
+use Untek\Model\Cqrs\Application\Abstract\CqrsHandlerInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Untek\Model\Validator\Interfaces\ValidatorInterface;
+use Untek\User\Authentication\Application\Commands\GenerateTokenByPasswordCommand;
+use Untek\User\Authentication\Application\Validators\GenerateTokenByPasswordCommandValidator;
+use Untek\User\Authentication\Domain\Entities\CredentialEntity;
 use Untek\User\Authentication\Domain\Enums\AuthEventEnum;
 use Untek\User\Authentication\Domain\Events\AuthEvent;
+use Untek\User\Authentication\Domain\Exceptions\BadPasswordException;
+use Untek\User\Authentication\Domain\Exceptions\BlockedUserException;
 use Untek\User\Authentication\Domain\Forms\AuthForm;
+use Untek\User\Authentication\Domain\Interfaces\Repositories\IdentityRepositoryInterface;
 use Untek\User\Authentication\Domain\Interfaces\Services\AuthServiceInterface;
 use Untek\User\Authentication\Domain\Interfaces\Services\CredentialServiceInterface;
 use Untek\User\Authentication\Domain\Interfaces\Services\TokenServiceInterface;
+use Untek\User\Authentication\Domain\Model\Token;
 use Untek\User\Authentication\Infrastructure\Libs\CredentialsPasswordValidator;
 use Untek\User\Identity\Domain\Interfaces\UserIdentityInterface;
 
@@ -50,7 +46,8 @@ class GenerateTokenByPasswordCommandHandler implements CqrsHandlerInterface
         private array $credentialTypes
 //        EventDispatcherInterface $eventDispatcher,
 
-    ) {
+    )
+    {
 //        $this->setEventDispatcher($eventDispatcher);
     }
 
@@ -66,7 +63,7 @@ class GenerateTokenByPasswordCommandHandler implements CqrsHandlerInterface
 
         $userEntity = $this->getIdentityByForm($command);
 
-        if(!$userEntity->isEnabled()) {
+        if (!$userEntity->isEnabled()) {
             throw new BlockedUserException($this->translator->trans('userBlocked', [], 'user'));
         }
 
@@ -93,7 +90,7 @@ class GenerateTokenByPasswordCommandHandler implements CqrsHandlerInterface
         /** @var CredentialEntity[] $credentials */
         $credentials = $this->credentialService->findByCredential($command->getLogin(), $this->credentialTypes);
 
-        if(empty($credentials)) {
+        if (empty($credentials)) {
             throw new UserNotFoundException($this->translator->trans('userNotFound', [], 'user'));
         }
 

@@ -5,8 +5,8 @@ namespace Untek\Database\Migration\Infrastructure\Persistence\FileSystem\Reposit
 use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\Code\Exceptions\DeprecatedException;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
-use Untek\Core\FileSystem\Helpers\FilePathHelper;
-use Untek\Core\FileSystem\Helpers\FindFileHelper;
+use Untek\Component\FileSystem\Helpers\FilePathHelper;
+use Untek\Component\FileSystem\Helpers\FindFileHelper;
 use Untek\Database\Migration\Domain\Model\Migration;
 
 class SourceRepository

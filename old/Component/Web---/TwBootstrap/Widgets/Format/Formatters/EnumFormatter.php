@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters;
 
-use Untek\Core\Enum\Helpers\EnumHelper;
+use Untek\Component\Enum\Helpers\EnumHelper;
 
 class EnumFormatter extends BaseFormatter implements FormatterInterface
 {

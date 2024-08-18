@@ -4,8 +4,8 @@ namespace Untek\Database\Seed\Application\Handlers;
 
 use Doctrine\DBAL\Connection;
 use Untek\Component\FormatAdapter\StoreFile;
-use Untek\Core\FileSystem\Helpers\FileHelper;
-use Untek\Core\FileSystem\Helpers\FilePathHelper;
+use Untek\Component\FileSystem\Helpers\FileHelper;
+use Untek\Component\FileSystem\Helpers\FilePathHelper;
 use Untek\Database\Base\Domain\Libs\Dependency;
 use Untek\Database\Seed\Application\Commands\ImportSeedCommand;
 use Untek\Database\Seed\Application\Validators\ImportSeedCommandValidator;

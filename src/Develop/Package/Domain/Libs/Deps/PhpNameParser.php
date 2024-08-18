@@ -5,7 +5,7 @@ namespace Untek\Develop\Package\Domain\Libs\Deps;
 use Untek\Component\Code\Helpers\PhpHelper;
 use Untek\Component\Code\Helpers\PhpTokenHelper;
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Core\Text\Helpers\TextHelper;
+use Untek\Component\Text\Helpers\TextHelper;
 
 class PhpNameParser
 {

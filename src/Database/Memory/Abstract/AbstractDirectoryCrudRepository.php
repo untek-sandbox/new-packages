@@ -3,7 +3,7 @@
 namespace Untek\Database\Memory\Abstract;
 
 use Untek\Component\FormatAdapter\StoreFile;
-use Untek\Core\FileSystem\Helpers\FindFileHelper;
+use Untek\Component\FileSystem\Helpers\FindFileHelper;
 use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Model\Contract\Interfaces\RepositoryCountByInterface;
 use Untek\Model\Contract\Interfaces\RepositoryCreateInterface;

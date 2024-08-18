@@ -28,7 +28,7 @@ class <?= $className ?> implements RestApiSchemaInterface
     <?php foreach ($properties as $attribute):
         $propertyName = $attribute['name'];
         $propertyType = $attribute['type'];
-        $camelCaseName = \Untek\Core\Text\Helpers\Inflector::camelize($propertyName);
+        $camelCaseName = \Untek\Component\Text\Helpers\Inflector::camelize($propertyName);
         $lcCamelCaseName = lcfirst($camelCaseName);
         ?>
         <?php

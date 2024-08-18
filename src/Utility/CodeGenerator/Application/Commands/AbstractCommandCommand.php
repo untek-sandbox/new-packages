@@ -2,8 +2,8 @@
 
 namespace Untek\Utility\CodeGenerator\Application\Commands;
 
-use Untek\Core\Enum\Helpers\EnumHelper;
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Enum\Helpers\EnumHelper;
+use Untek\Component\Text\Helpers\Inflector;
 use Untek\Utility\CodeGeneratorApplication\Application\Enums\TypeEnum;
 
 abstract class AbstractCommandCommand //extends AbstractCommand

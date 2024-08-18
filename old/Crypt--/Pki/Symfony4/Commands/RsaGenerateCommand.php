@@ -5,7 +5,7 @@ namespace Untek\Crypt\Pki\Symfony4\Commands;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
-use Untek\Core\FileSystem\Helpers\FilePathHelper;
+use Untek\Component\FileSystem\Helpers\FilePathHelper;
 use Untek\Crypt\Base\Domain\Entities\CertificateInfoEntity;
 use Untek\Crypt\Pki\Domain\Libs\Rsa\RsaStoreFile;
 use Untek\Crypt\Pki\Domain\Services\RsaService;

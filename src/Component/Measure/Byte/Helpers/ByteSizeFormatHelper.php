@@ -3,7 +3,7 @@
 namespace Untek\Component\Measure\Byte\Helpers;
 
 use Untek\Component\Measure\Byte\Enums\ByteEnum;
-use Untek\Core\Enum\Helpers\EnumHelper;
+use Untek\Component\Enum\Helpers\EnumHelper;
 
 class ByteSizeFormatHelper
 {

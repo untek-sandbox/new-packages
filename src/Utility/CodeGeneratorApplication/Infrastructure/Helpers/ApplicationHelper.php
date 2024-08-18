@@ -4,7 +4,7 @@ namespace Untek\Utility\CodeGeneratorApplication\Infrastructure\Helpers;
 
 use Laminas\Code\Generator\PropertyGenerator;
 use Laminas\Code\Generator\TypeGenerator;
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 
 class ApplicationHelper
 {

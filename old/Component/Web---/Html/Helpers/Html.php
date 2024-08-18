@@ -9,10 +9,10 @@ namespace Untek\Component\Web\Html\Helpers;
 
 use Symfony\Component\HttpFoundation\Request;
 use Untek\Component\Arr\Helpers\ArrayHelper;
-use Untek\Core\FileSystem\Helpers\FileHelper;
+use Untek\Component\FileSystem\Helpers\FileHelper;
 use Untek\Core\Contract\Common\Exceptions\InvalidArgumentException;
-use Untek\Core\FileSystem\Helpers\FileStorageHelper;
-use Untek\Core\FileSystem\Helpers\MimeTypeHelper;
+use Untek\Component\FileSystem\Helpers\FileStorageHelper;
+use Untek\Component\FileSystem\Helpers\MimeTypeHelper;
 use Untek\Core\Base\Legacy\Yii\Base\Model;
 use Untek\Component\Web\Html\Helpers\Url;
 

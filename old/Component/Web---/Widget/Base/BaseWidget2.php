@@ -8,7 +8,7 @@ use Untek\Core\Instance\Helpers\ClassHelper;
 
 use Untek\Component\Web\HtmlRender\Infrastructure\Helpers\RenderHelper;
 use Untek\Component\Web\Widget\Interfaces\WidgetInterface2;
-use Untek\Core\Text\Helpers\TemplateHelper;
+use Untek\Component\Text\Helpers\TemplateHelper;
 
 abstract class BaseWidget2 implements WidgetInterface2
 {

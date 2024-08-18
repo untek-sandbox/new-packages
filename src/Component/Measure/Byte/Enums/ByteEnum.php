@@ -2,12 +2,10 @@
 
 namespace Untek\Component\Measure\Byte\Enums;
 
-use Untek\Core\Enum\Interfaces\GetLabelsInterface;
-
 /**
  * Единицы измерения информации в байтах
  */
-class ByteEnum implements GetLabelsInterface
+class ByteEnum
 {
 
     const BIT_PER_BYTE = 8;

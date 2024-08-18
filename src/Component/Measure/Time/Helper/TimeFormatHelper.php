@@ -3,8 +3,8 @@
 namespace Untek\Component\Measure\Time\Helper;
 
 use Untek\Component\Measure\Time\Enums\TimeEnum;
-use Untek\Core\Text\Helpers\TextHelper;
-use Untek\Core\Text\Libs\TemplateRender;
+use Untek\Component\Text\Helpers\TextHelper;
+use Untek\Component\Text\Libs\TemplateRender;
 
 class TimeFormatHelper
 {

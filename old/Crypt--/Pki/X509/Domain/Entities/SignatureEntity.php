@@ -3,7 +3,7 @@
 namespace Untek\Crypt\Pki\X509\Domain\Entities;
 
 
-use Untek\Core\Text\Helpers\TextHelper;
+use Untek\Component\Text\Helpers\TextHelper;
 use Untek\Crypt\Pki\Domain\Helpers\RsaKeyHelper;
 
 class SignatureEntity

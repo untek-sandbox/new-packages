@@ -5,7 +5,7 @@ namespace Untek\Core\Instance\Helpers;
 use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Lib\Components\DynamicEntity\Interfaces\DynamicEntityAttributesInterface;
 use Throwable;
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 use Untek\Component\Code\Factories\PropertyAccess;
 
 /**

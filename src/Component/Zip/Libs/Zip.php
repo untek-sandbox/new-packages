@@ -4,7 +4,7 @@ namespace Untek\Component\Zip\Libs;
 
 use App\Common\Base\BaseController;
 use Exception;
-use Untek\Core\FileSystem\Helpers\FileStorageHelper;
+use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use ZipArchive;
 
 class Zip

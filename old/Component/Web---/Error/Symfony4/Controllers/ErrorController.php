@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
 use Untek\Core\Contract\Common\Exceptions\NotFoundException;
-use Untek\Core\Env\Helpers\EnvHelper;
+use Untek\Component\Env\Helpers\EnvHelper;
 use Untek\Component\Web\Controller\Base\BaseWebController;
 use Untek\Component\Web\Error\Symfony4\Interfaces\ErrorControllerInterface;
 use Untek\User\Authentication\Symfony4\Web\Enums\WebUserEnum;

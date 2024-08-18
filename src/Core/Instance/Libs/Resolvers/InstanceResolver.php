@@ -2,6 +2,7 @@
 
 namespace Untek\Core\Instance\Libs\Resolvers;
 
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Container\Traits\ContainerAwareTrait;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
 use Untek\Core\Instance\Exceptions\ClassNotFoundException;
@@ -14,6 +15,8 @@ class InstanceResolver
 
     public function callMethod(object $instance, string $methodName, array $parameters = [])
     {
+        DeprecateHelper::hardThrow();
+
 //        return $this->callMethod2($instance, $methodName, $parameters);
         $parameters = $this->prepareParameters(get_class($instance), $methodName, $parameters);
         return call_user_func_array([$instance, $methodName], $parameters);
@@ -21,6 +24,8 @@ class InstanceResolver
 
     public function callMethod2(object $instance, string $methodName, array $parameters = [])
     {
+        DeprecateHelper::hardThrow();
+
         $callable = [$instance, $methodName];
         $argumentResolver = new ArgumentMetadataResolver($this->container);
 //        $argumentResolver = $this->container->get(ArgumentMetadataResolver::class);
@@ -31,6 +36,8 @@ class InstanceResolver
 
     public function make(string $definition, array $constructParams = []): object
     {
+        DeprecateHelper::hardThrow();
+
         $callable = [$definition, '__construct'];
         /** @var ArgumentMetadataResolver $argumentResolver */
         $argumentResolver = $this->container->get(ArgumentMetadataResolver::class);
@@ -71,6 +78,8 @@ class InstanceResolver
      */
     public function ensure($definition, $constructParams = []): object
     {
+        DeprecateHelper::hardThrow();
+
         if (is_object($definition)) {
             return $definition;
         }

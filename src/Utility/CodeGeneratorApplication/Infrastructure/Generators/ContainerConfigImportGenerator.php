@@ -3,7 +3,7 @@
 namespace Untek\Utility\CodeGeneratorApplication\Infrastructure\Generators;
 
 use Untek\Component\Code\Helpers\ComposerHelper;
-use Untek\Core\FileSystem\Helpers\FilePathHelper;
+use Untek\Component\FileSystem\Helpers\FilePathHelper;
 use Untek\Utility\CodeGenerator\Infrastructure\Generator\ContainerLoadConfigGenerator;
 use Untek\Utility\CodeGenerator\Infrastructure\Helpers\GeneratorFileHelper;
 use Untek\Utility\CodeGeneratorApplication\Application\Commands\GenerateApplicationCommand;

@@ -9,7 +9,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Lock\Exception\LockAcquiringException;
 use Symfony\Component\Lock\LockFactory;
-use Untek\Core\Env\Helpers\EnvHelper;
+use Untek\Component\Env\Helpers\EnvHelper;
 use Untek\Core\Container\Traits\ContainerAwareTrait;
 use Untek\Framework\Console\Symfony4\Traits\IOTrait;
 use Untek\Framework\Console\Symfony4\Traits\LockTrait;

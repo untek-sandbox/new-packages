@@ -3,7 +3,7 @@
 namespace Untek\Crypt\Pki\X509\Domain\Helpers;
 
 use Untek\Component\Arr\Helpers\ArrayHelper;
-use Untek\Core\FileSystem\Helpers\FileStorageHelper;
+use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;
 

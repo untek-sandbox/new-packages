@@ -5,7 +5,7 @@ namespace Untek\Component\Web\Widget\Base;
 use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Instance\Helpers\ClassHelper;
 
-use Untek\Core\Text\Helpers\TemplateHelper;
+use Untek\Component\Text\Helpers\TemplateHelper;
 use Untek\Component\Web\Widget\Interfaces\WidgetInterface;
 
 //DeprecateHelper::hardThrow();

@@ -2,9 +2,9 @@
 
 namespace Untek\Lib\Components\ShellRobot\Domain\Repositories\Shell;
 
-use Untek\Core\Env\Helpers\TempHelper;
-use Untek\Core\FileSystem\Helpers\FileHelper;
-use Untek\Core\FileSystem\Helpers\FileStorageHelper;
+use Untek\Component\Env\Helpers\TempHelper;
+use Untek\Component\FileSystem\Helpers\FileHelper;
+use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Lib\Components\ShellRobot\Domain\Base\BaseShellDriver;
 use Untek\Framework\Console\Domain\Libs\ShellParsers\ShellItemsParser;
 

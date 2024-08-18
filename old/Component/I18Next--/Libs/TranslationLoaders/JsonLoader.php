@@ -2,7 +2,7 @@
 
 namespace Untek\Component\I18Next\Libs\TranslationLoaders;
 
-use Untek\Core\FileSystem\Helpers\FilePathHelper;
+use Untek\Component\FileSystem\Helpers\FilePathHelper;
 use Untek\Component\I18Next\Interfaces\TranslationLoaders\TranslationLoaderInterface;
 
 class JsonLoader implements TranslationLoaderInterface

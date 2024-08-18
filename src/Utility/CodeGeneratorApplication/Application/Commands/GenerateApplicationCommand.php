@@ -2,7 +2,7 @@
 
 namespace Untek\Utility\CodeGeneratorApplication\Application\Commands;
 
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 use Untek\Utility\CodeGenerator\Application\Commands\AbstractCommand;
 use Untek\Utility\CodeGenerator\Application\Commands\AbstractCommandCommand;
 use Untek\Utility\CodeGenerator\Application\Traits\CommandNamespaceTrait;

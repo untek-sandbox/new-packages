@@ -3,8 +3,8 @@
 namespace Untek\Component\FormatAdapter;
 
 use Untek\Component\Arr\Helpers\ArrayHelper;
-use Untek\Core\FileSystem\Helpers\FilePathHelper;
-use Untek\Core\FileSystem\Helpers\FileStorageHelper;
+use Untek\Component\FileSystem\Helpers\FilePathHelper;
+use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Core\Instance\Helpers\ClassHelper;
 use Untek\Core\Instance\Libs\Resolvers\InstanceResolver;
 use Untek\Component\FormatAdapter\Drivers\DriverInterface;

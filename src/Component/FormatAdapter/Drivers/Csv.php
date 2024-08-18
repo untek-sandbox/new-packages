@@ -2,7 +2,7 @@
 
 namespace Untek\Component\FormatAdapter\Drivers;
 
-use Untek\Core\Text\Helpers\TextHelper;
+use Untek\Component\Text\Helpers\TextHelper;
 
 class Csv implements DriverInterface
 {

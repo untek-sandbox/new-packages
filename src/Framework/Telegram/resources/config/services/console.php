@@ -6,7 +6,7 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 use Symfony\Component\Lock\LockFactory;
 use Symfony\Component\Lock\PersistingStoreInterface;
 use Symfony\Component\Lock\Store\SemaphoreStore;
-use Untek\Core\Env\Helpers\EnvHelper;
+use Untek\Component\Env\Helpers\EnvHelper;
 use Untek\Core\Instance\Libs\InstanceProvider;
 use Untek\Core\Instance\Libs\Resolvers\InstanceResolver;
 use Untek\Framework\Telegram\Domain\Interfaces\Repositories\ResponseRepositoryInterface;

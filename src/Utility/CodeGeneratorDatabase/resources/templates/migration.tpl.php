@@ -7,7 +7,7 @@
  */
 
 use Untek\Utility\CodeGeneratorApplication\Presentation\Enums\PropertyTypeEnum;
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 
 ?>
 

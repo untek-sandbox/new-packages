@@ -128,7 +128,7 @@ class Url
 //            return static::toRoute($url, $scheme);
 //        }
 
-//        $url = \Untek\Core\FileSystem\Helpers\FileHelper::getAlias($url);
+//        $url = \Untek\Component\FileSystem\Helpers\FileHelper::getAlias($url);
         /*if ($url === '') {
             $url = Yii::$app->getRequest()->getUrl();
         }*/
@@ -286,7 +286,7 @@ class Url
      */
     /*protected static function normalizeRoute($route)
     {
-        $route = \Untek\Core\FileSystem\Helpers\FileHelper::getAlias((string)$route);
+        $route = \Untek\Component\FileSystem\Helpers\FileHelper::getAlias((string)$route);
         if (strncmp($route, '/', 1) === 0) {
             // absolute route
             return ltrim($route, '/');

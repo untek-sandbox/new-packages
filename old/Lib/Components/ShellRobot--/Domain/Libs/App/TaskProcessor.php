@@ -4,8 +4,8 @@ namespace Untek\Lib\Components\ShellRobot\Domain\Libs\App;
 
 use Untek\Core\Container\Helpers\ContainerHelper;
 use Untek\Core\Instance\Helpers\InstanceHelper;
-use Untek\Core\Pattern\Singleton\SingletonTrait;
-use Untek\Core\Text\Helpers\TemplateHelper;
+use Untek\Component\Pattern\Singleton\SingletonTrait;
+use Untek\Component\Text\Helpers\TemplateHelper;
 use Untek\Lib\Components\ShellRobot\Domain\Factories\ShellFactory;
 use Untek\Lib\Components\ShellRobot\Domain\Interfaces\TaskInterface;
 use Untek\Framework\Console\Domain\Base\BaseShellNew;

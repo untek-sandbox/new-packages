@@ -2,7 +2,7 @@
 
 namespace Untek\Utility\CodeGenerator\Application\Dto;
 
-use Untek\Core\FileSystem\Helpers\FileHelper;
+use Untek\Component\FileSystem\Helpers\FileHelper;
 use Untek\Utility\CodeGenerator\Application\Interfaces\ResultInterface;
 
 class FileResult implements ResultInterface

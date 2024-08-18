@@ -9,7 +9,7 @@
 use Untek\Component\Web\HtmlRender\Application\Services\HtmlRenderInterface;
 use Untek\Component\Code\Factories\PropertyAccess;
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 use Untek\Component\Http\Helpers\UrlHelper;
 use Untek\Component\Web\TwBootstrap\Widgets\Filter\FilterGenerator;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Entities\AttributeEntity;

@@ -3,7 +3,7 @@
 namespace Untek\Lib\Components\ShellRobot\Domain\Repositories\File;
 
 use Untek\Component\Arr\Helpers\ArrayHelper;
-use Untek\Core\Text\Helpers\TemplateHelper;
+use Untek\Component\Text\Helpers\TemplateHelper;
 use Untek\Lib\Components\ShellRobot\Domain\Interfaces\Repositories\VarRepositoryInterface;
 
 class VarRepository implements VarRepositoryInterface

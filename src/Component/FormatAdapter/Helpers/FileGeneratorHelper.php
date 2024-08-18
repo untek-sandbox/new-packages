@@ -3,7 +3,7 @@
 namespace Untek\Component\FormatAdapter\Helpers;
 
 use Untek\Component\Arr\Helpers\ArrayHelper;
-use Untek\Core\FileSystem\Helpers\FileStorageHelper;
+use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 
 class FileGeneratorHelper
 {

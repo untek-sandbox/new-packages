@@ -2,7 +2,7 @@
 
 namespace Untek\Utility\CodeGeneratorApplication\Application\Helpers;
 
-use Untek\Core\Text\Helpers\Inflector;
+use Untek\Component\Text\Helpers\Inflector;
 use Untek\Utility\CodeGeneratorApplication\Application\Enums\TypeEnum;
 
 class TypeHelper

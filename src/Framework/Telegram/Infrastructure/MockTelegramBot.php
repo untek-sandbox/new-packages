@@ -3,7 +3,7 @@
 namespace Untek\Framework\Telegram\Infrastructure;
 
 use RuntimeException;
-use Untek\Core\Enum\Helpers\EnumHelper;
+use Untek\Component\Enum\Helpers\EnumHelper;
 use Untek\Core\Instance\Helpers\MappingHelper;
 use Untek\Framework\Telegram\Application\Services\TelegramBotInterface;
 use Untek\Framework\Telegram\Domain\Dto\EditMessageResult;

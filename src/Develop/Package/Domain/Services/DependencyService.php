@@ -4,7 +4,7 @@ namespace Untek\Develop\Package\Domain\Services;
 
 use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\Code\Helpers\ComposerHelper;
-use Untek\Core\FileSystem\Helpers\FileHelper;
+use Untek\Component\FileSystem\Helpers\FileHelper;
 use Untek\Develop\Package\Domain\Entities\PackageEntity;
 use Untek\Develop\Package\Domain\Helpers\PackageHelper;
 use Untek\Develop\Package\Domain\Libs\Deps\PhpClassNameInQuotedStringParser;
