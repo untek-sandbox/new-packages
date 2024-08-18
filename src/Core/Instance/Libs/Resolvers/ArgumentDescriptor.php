@@ -2,9 +2,12 @@
 
 namespace Untek\Core\Instance\Libs\Resolvers;
 
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Instance\Fork\Argument\ArgumentDescription;
 use Untek\Core\Instance\Fork\Argument\ArgumentDescriptions;
 use Doctrine\Common\Util\ClassUtils;
+
+DeprecateHelper::hardThrow();
 
 class ArgumentDescriptor extends \Untek\Core\Instance\Fork\Argument\ArgumentDescriptor
 {

@@ -4,6 +4,7 @@ namespace Untek\Core\Instance\Libs;
 
 use Psr\Container\ContainerInterface;
 use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Instance\Exceptions\MethodNotFoundException;
 use Untek\Core\Instance\Helpers\ClassHelper;
 use Untek\Core\Instance\Libs\Resolvers\InstanceResolver;
@@ -41,6 +42,8 @@ class InstanceProvider
 
     public function createInstance($definition, array $constructorParameters = []): object
     {
+        DeprecateHelper::hardThrow();
+
         if (is_object($definition)) {
             $instance = $definition;
         } else {

@@ -3,7 +3,10 @@
 namespace Untek\Core\Instance\Helpers;
 
 use Psr\Container\ContainerInterface;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Instance\Libs\Resolvers\InstanceResolver;
+
+DeprecateHelper::hardThrow();
 
 /**
  * Работа с объектами
@@ -21,6 +24,8 @@ class InstanceHelper
      */
     public static function create($definition, array $constructParams = [], ContainerInterface $container = null): object
     {
+        DeprecateHelper::hardThrow();
+
 //        return self::ensure($definition, $constructParams, $container);
         return self::getInstanceResolver($container)->create($definition, $constructParams);
     }
@@ -35,6 +40,8 @@ class InstanceHelper
      */
     public static function ensure($definition, $constructParams = [], ContainerInterface $container = null): object
     {
+        DeprecateHelper::hardThrow();
+
         return self::getInstanceResolver($container)->ensure($definition, $constructParams);
     }
 
