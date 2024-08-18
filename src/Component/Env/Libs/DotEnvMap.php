@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Core\DotEnv\Domain\Libs;
+namespace Untek\Component\Env\Libs;
 
 use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\Pattern\Singleton\SingletonTrait;

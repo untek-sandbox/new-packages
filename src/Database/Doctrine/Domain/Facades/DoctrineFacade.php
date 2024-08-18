@@ -5,7 +5,7 @@ namespace Untek\Database\Doctrine\Domain\Facades;
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
-use Untek\Core\DotEnv\Domain\Libs\DotEnvMap;
+use Untek\Component\Env\Libs\DotEnvMap;
 use Untek\Database\Base\Domain\Helpers\ConfigHelper;
 
 class DoctrineFacade
