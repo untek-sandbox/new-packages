@@ -2,6 +2,8 @@
 
 namespace Untek\Component\Http\Enums;
 
+\Untek\Core\Code\Helpers\DeprecateHelper::hardThrow();
+
 /**
  * Имена ключей массива $_SERVER
  */

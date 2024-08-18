@@ -13,6 +13,9 @@ class UrlHelper
     public static function requestUri(): string
     {
         global $_SERVER;
+
+        \Untek\Core\Code\Helpers\DeprecateHelper::hardThrow();
+
         $baseUrl = explode('?', $_SERVER['REQUEST_URI'])[0];
         return $baseUrl;
     }
@@ -74,13 +77,6 @@ class UrlHelper
 
         return $url;
     }
-
-    /*public static function splitUri(string $uri): array
-    {
-        $uri = trim($uri, '/');
-        $uriSegments = explode('/', $uri);
-        return $uriSegments;
-    }*/
 
     public static function parse($url, $key = null)
     {

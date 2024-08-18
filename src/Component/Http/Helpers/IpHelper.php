@@ -2,6 +2,8 @@
 
 namespace Untek\Component\Http\Helpers;
 
+\Untek\Core\Code\Helpers\DeprecateHelper::hardThrow();
+
 class IpHelper
 {
 

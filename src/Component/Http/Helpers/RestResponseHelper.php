@@ -8,6 +8,8 @@ use Untek\Model\DataProvider\Entities\DataProviderEntity;
 use Untek\Component\Http\Enums\HttpHeaderEnum;
 use Untek\Component\FormatAdapter\Store;
 
+\Untek\Core\Code\Helpers\DeprecateHelper::hardThrow();
+
 class RestResponseHelper
 {
 
@@ -73,13 +75,4 @@ class RestResponseHelper
         $parts = array_map('trim', $parts);
         return $parts;
     }
-
-    /*private static function mimeToFileExtension(string $contentType, string $default = 'html'): string
-    {
-        $mimeTypes = include __DIR__ . '/../../../../untek-core/base/src/Legacy/Yii/Helpers/mimeTypes.php';
-        $mimeTypes = array_flip($mimeTypes);
-        $extension = ArrayHelper::getValue($mimeTypes, $contentType, $default);
-        return strtolower($extension);
-    }*/
-
 }

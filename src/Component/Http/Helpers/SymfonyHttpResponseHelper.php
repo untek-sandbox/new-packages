@@ -7,6 +7,8 @@ use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+\Untek\Core\Code\Helpers\DeprecateHelper::hardThrow();
+
 class SymfonyHttpResponseHelper
 {
 
