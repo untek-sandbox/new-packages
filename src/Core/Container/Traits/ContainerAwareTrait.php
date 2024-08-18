@@ -3,14 +3,15 @@
 namespace Untek\Core\Container\Traits;
 
 use Psr\Container\ContainerInterface;
+use Untek\Component\Code\Helpers\DeprecateHelper;
+
+DeprecateHelper::hardThrow();
 
 trait ContainerAwareTrait
 {
 
-    use ContainerAwareAttributeTrait;
-
-    public function __construct(ContainerInterface $container = null)
+    public function __construct(protected ?ContainerInterface $container = null)
     {
-        $this->setContainer($container);
+        $this->container = $container;
     }
 }

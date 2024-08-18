@@ -20,7 +20,7 @@ use Untek\Framework\Telegram\Domain\Services\LongPullService;
 class LongPullCommand extends Command
 {
 
-    use ContainerAwareTrait;
+//    use ContainerAwareTrait;
 //    use LockTrait;
     use LockableTrait;
     use LoopTrait;
@@ -34,14 +34,14 @@ class LongPullCommand extends Command
         LongPullService $longPullService,
         ConfigRepository $configRepository,
         LockFactory $lockFactory,
-        ContainerInterface $container
+//        ContainerInterface $container
     )
     {
         parent::__construct(self::$defaultName);
         $this->longPullService = $longPullService;
         $this->configRepository = $configRepository;
         $this->setLockFactory($lockFactory);
-        $this->setContainer($container);
+//        $this->setContainer($container);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

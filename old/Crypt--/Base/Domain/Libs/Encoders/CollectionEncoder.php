@@ -3,6 +3,7 @@
 namespace Untek\Crypt\Base\Domain\Libs\Encoders;
 
 use Psr\Container\ContainerInterface;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Container\Traits\ContainerAwareTrait;
 use Untek\Core\Instance\Helpers\InstanceHelper;
 use Untek\Core\Contract\Encoder\Interfaces\DecodeInterface;
@@ -10,17 +11,16 @@ use Untek\Core\Contract\Encoder\Interfaces\EncodeInterface;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Model\Entity\Helpers\EntityHelper;
 
+DeprecateHelper::hardThrow();
+
 class CollectionEncoder implements EncoderInterface
 {
 
-    use ContainerAwareTrait;
-
     private $encoderCollection;
 
-    public function __construct(Enumerable $encoderCollection, ContainerInterface $container = null)
+    public function __construct(Enumerable $encoderCollection, private ?ContainerInterface $container = null)
     {
         $this->encoderCollection = $encoderCollection;
-        $this->setContainer($container);
     }
 
     public function encode($data)

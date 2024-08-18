@@ -2,7 +2,11 @@
 
 namespace Untek\Core\Container\Traits;
 
+use JetBrains\PhpStorm\Deprecated;
 use Psr\Container\ContainerInterface;
+use Untek\Component\Code\Helpers\DeprecateHelper;
+
+DeprecateHelper::hardThrow();
 
 trait ContainerAwareAttributeTrait
 {

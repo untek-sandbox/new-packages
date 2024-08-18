@@ -2,8 +2,7 @@
 
 namespace Untek\Core\Instance\Libs\Resolvers;
 
-use Untek\Component\Code\Helpers\DeprecateHelper;
-use Untek\Core\Container\Traits\ContainerAwareTrait;
+use Psr\Container\ContainerInterface;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
 use Untek\Core\Instance\Exceptions\ClassNotFoundException;
 use Untek\Core\Instance\Helpers\ClassHelper;
@@ -11,7 +10,10 @@ use Untek\Core\Instance\Helpers\ClassHelper;
 class InstanceResolver
 {
 
-    use ContainerAwareTrait;
+    public function __construct(protected ?ContainerInterface $container = null)
+    {
+        $this->container = $container;
+    }
 
     /**
      * Создать класс
@@ -39,8 +41,7 @@ class InstanceResolver
 
     private function prepareParameters(string $className, string $methodName, array $constructionArgs): array
     {
-        $container = $this->ensureContainer();
-        $methodParametersResolver = new MethodParametersResolver($container, $this);
+        $methodParametersResolver = new MethodParametersResolver($this->container, $this);
         return $methodParametersResolver->resolve($className, $methodName, $constructionArgs);
     }
 

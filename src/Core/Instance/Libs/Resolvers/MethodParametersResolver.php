@@ -13,14 +13,11 @@ use Untek\Core\Container\Traits\ContainerAwareTrait;
 class MethodParametersResolver
 {
 
-    use ContainerAwareTrait;
-
-    private $instanceResolver;
-
-    public function __construct(ContainerInterface $container = null, InstanceResolver $instanceResolver = null)
+    public function __construct(
+        private ?ContainerInterface $container = null,
+        private ?InstanceResolver $instanceResolver = null
+    )
     {
-        $this->setContainer($container);
-        $this->instanceResolver = $instanceResolver;
     }
 
     public function resolveClosure($closure, /*string $className, string $methodName,*/ array $constructionArgs = []): array
@@ -95,8 +92,8 @@ class MethodParametersResolver
             $parameterType = $constructorParameter->getType();
             $className = $parameterType->getName();
             if (class_exists($className)) {
-                if ($this->ensureContainer()) {
-                    return $this->getContainer()->get($className);
+                if ($this->container) {
+                    return $this->container->get($className);
                 } else {
                     $instanceResolver = $this->getInstanceResolver();
                     return $instanceResolver->create($className);

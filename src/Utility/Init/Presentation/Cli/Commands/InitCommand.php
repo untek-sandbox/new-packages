@@ -2,15 +2,13 @@
 
 namespace Untek\Utility\Init\Presentation\Cli\Commands;
 
-use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\String\Slugger\AsciiSlugger;
-use Untek\Core\Container\Traits\ContainerAwareAttributeTrait;
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
 use Untek\Component\Text\Libs\TemplateRender;
+use Untek\Core\Contract\Common\Exceptions\NotFoundException;
 use Untek\Framework\Console\Symfony4\Question\ChoiceQuestion;
 use Untek\Framework\Console\Symfony4\Style\SymfonyStyle;
 use Untek\Framework\Console\Symfony4\Traits\IOTrait;
@@ -19,14 +17,12 @@ use Untek\Utility\Init\Presentation\Libs\Init;
 class InitCommand extends Command
 {
     use IOTrait;
-    use ContainerAwareAttributeTrait;
 
     protected static $defaultName = 'init';
 
-    public function __construct(ContainerInterface $container)
+    public function __construct()
     {
         parent::__construct(self::$defaultName);
-        $this->setContainer($container);
     }
 
     protected function configure()
