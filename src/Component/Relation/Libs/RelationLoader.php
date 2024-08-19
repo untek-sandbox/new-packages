@@ -20,7 +20,7 @@ class RelationLoader
 
     private function getContainer(): ContainerInterface
     {
-        return $this->container ?: ContainerHelper::getContainer();
+        return $this->container; // ?: ContainerHelper::getContainer();
     }
 
     public function load(ObjectRepository $repository, array $collection, array $with = []): void

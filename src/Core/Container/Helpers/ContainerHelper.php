@@ -3,6 +3,7 @@
 namespace Untek\Core\Container\Helpers;
 
 use Psr\Container\ContainerInterface;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Container\Libs\ContainerWrapper;
 use Untek\Core\Contract\Common\Exceptions\ReadOnlyException;
 use Untek\Develop\DebugBacktrace\DebugBacktrace;
@@ -22,6 +23,7 @@ class ContainerHelper
 
     public static function getContainer(): ContainerInterface
     {
+        DeprecateHelper::hardThrow();
 //        DebugBacktrace::dump();
 //        return null;
         return ContainerWrapper::getContainer();

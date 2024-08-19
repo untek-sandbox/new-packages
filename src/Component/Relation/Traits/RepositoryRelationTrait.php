@@ -14,11 +14,13 @@ trait RepositoryRelationTrait
 {
     
     protected ?ContainerInterface $container = null;
+    private RelationLoader $relationLoader;
 
     #[Required]
     public function setContainer(ContainerInterface $container): ?ContainerInterface
     {
         $this->container = $container;
+        $this->relationLoader = new RelationLoader($this->container);
         return $container;
     }
     
@@ -40,7 +42,7 @@ trait RepositoryRelationTrait
         if ($relations->isEmpty()) {
             return;
         }
-        $relationLoader = new RelationLoader();
-        $relationLoader->load($this, $collection, $with);
+//        $relationLoader = new RelationLoader($this->container);
+        $this->relationLoader->load($this, $collection, $with);
     }
 }
