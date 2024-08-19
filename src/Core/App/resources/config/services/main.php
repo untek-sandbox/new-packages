@@ -11,5 +11,5 @@ return static function (ContainerConfigurator $configurator): void {
     $services->set(ControllerAccessChecker::class);
     $services
         ->set(ContainerInterface::class)
-        ->factory([ContainerFactory::class, 'create']);
+        ->factory([ContainerFactory::class, 'get']);
 };

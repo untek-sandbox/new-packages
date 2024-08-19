@@ -3,6 +3,9 @@
 namespace Untek\Component\FormatAdapter;
 
 use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
+
+DeprecateHelper::hardThrow();
 
 class ActiveStore
 {

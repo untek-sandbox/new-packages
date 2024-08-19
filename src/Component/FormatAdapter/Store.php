@@ -5,19 +5,15 @@ namespace Untek\Component\FormatAdapter;
 use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\FileSystem\Helpers\FilePathHelper;
 use Untek\Component\FileSystem\Helpers\FileStorageHelper;
-use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Core\Instance\Libs\Resolvers\InstanceResolver;
 use Untek\Component\FormatAdapter\Drivers\DriverInterface;
+use Untek\Core\Instance\Libs\Resolvers\InstanceResolver;
 
 class Store
 {
 
-    protected $driver;
+    protected string $driver;
 
-    /**
-     * @var DriverInterface
-     */
-    protected $driverInstance;
+    protected DriverInterface $driverInstance;
 
     public function setDriver($driver)
     {
@@ -27,18 +23,8 @@ class Store
         $driverClass = 'Untek\\Component\\FormatAdapter\\Drivers\\' . $driver;
 
         $instanceResolver = new InstanceResolver();
-        $this->driverInstance = $instanceResolver->create($driverClass);
-        ClassHelper::checkInstanceOf($this->driverInstance, DriverInterface::class);
-
-
-        /*if (!class_exists($driverClass)) {
-            throw new ClassNotFoundException($driverClass);
-        }
-        $implements = class_implements($driverClass);
-        if (!array_key_exists(DriverInterface::class, $implements)) {
-            throw new \Exception('No implements interface of driver class');
-        }
-        $this->driverInstance = new $driverClass;*/
+        $this->driverInstance = new $driverClass();
+//        $this->driverInstance = $instanceResolver->create($driverClass);
     }
 
     public function getDriver()
