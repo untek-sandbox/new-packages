@@ -10,8 +10,6 @@ use Untek\Model\Contract\Interfaces\RepositoryCreateInterface;
 use Untek\Model\Contract\Interfaces\RepositoryDeleteByIdInterface;
 use Untek\Model\Contract\Interfaces\RepositoryFindOneByIdInterface;
 use Untek\Model\Contract\Interfaces\RepositoryUpdateInterface;
-use Untek\Database\Base\Enums\OperatorEnum;
-use Untek\Model\QueryFilter\Traits\QueryFilterTrait;
 
 abstract class AbstractEloquentCrudRepository extends AbstractEloquentRepository implements
     RepositoryCountByInterface,
@@ -64,7 +62,7 @@ abstract class AbstractEloquentCrudRepository extends AbstractEloquentRepository
     {
         $queryBuilder = $this->createQueryBuilder();
         foreach ($condition as $key => $value) {
-            $queryBuilder->where($key, OperatorEnum::EQUAL, $value);
+            $queryBuilder->where($key, '=', $value);
         }
         $queryBuilder->delete();
     }
@@ -77,7 +75,7 @@ abstract class AbstractEloquentCrudRepository extends AbstractEloquentRepository
     {
         $existEntity = $this->findOneById($entity->getId());
         $queryBuilder = $this->createQueryBuilder();
-        $queryBuilder->where('id', OperatorEnum::EQUAL, $existEntity->getId());
+        $queryBuilder->where('id', '=', $existEntity->getId());
         $data = $this->normalize($entity);
         $queryBuilder->update($data);
     }

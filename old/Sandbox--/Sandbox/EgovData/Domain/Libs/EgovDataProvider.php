@@ -4,8 +4,6 @@ namespace Untek\Sandbox\Sandbox\EgovData\Domain\Libs;
 
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;
-use Untek\Domain\Query\Entities\Where;
-use Untek\Model\Query\Entities\Query;
 
 class EgovDataProvider
 {

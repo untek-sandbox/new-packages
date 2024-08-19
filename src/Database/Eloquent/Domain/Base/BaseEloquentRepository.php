@@ -10,7 +10,6 @@ use Untek\Database\Eloquent\Domain\Helpers\QueryBuilder\EloquentQueryBuilderHelp
 use Untek\Database\Eloquent\Domain\Traits\EloquentTrait;
 use Untek\Model\EntityManager\Interfaces\EntityManagerInterface;
 use Untek\Model\EntityManager\Traits\EntityManagerAwareTrait;
-use Untek\Model\Query\Entities\Query;
 use Untek\Model\Repository\Traits\RepositoryDispatchEventTrait;
 use Untek\Model\Repository\Traits\RepositoryMapperTrait;
 use Untek\Model\Repository\Traits\RepositoryQueryTrait;

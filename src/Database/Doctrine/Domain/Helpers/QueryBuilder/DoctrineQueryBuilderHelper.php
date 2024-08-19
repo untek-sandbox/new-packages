@@ -6,9 +6,6 @@ use Illuminate\Database\Query\Builder;
 use Untek\Component\Text\Helpers\Inflector;
 use Untek\Database\Base\Domain\Helpers\DbHelper;
 use Untek\Database\Base\Domain\Interfaces\QueryBuilderInterface;
-use Untek\Database\Base\Enums\OperatorEnum;
-use Untek\Model\Query\Entities\Query;
-use Untek\Model\Query\Entities\Where;
 use Doctrine\DBAL\Query\QueryBuilder;
 
 class DoctrineQueryBuilderHelper implements QueryBuilderInterface
@@ -104,39 +101,39 @@ class DoctrineQueryBuilderHelper implements QueryBuilderInterface
                     $predicates->add($expr->in(/*'c.' .*/ $where->column, $where->value));
                     //$queryBuilder->whereIn($where->column, $where->value, $where->boolean, $where->not);
                 } else {
-                    if($where->operator == OperatorEnum::EQUAL) {
+                    if($where->operator == '=') {
                         if($where->not) {
                             $predicates->add($expr->eq(/*'c.' .*/ $where->column, $where->value));
                         } else {
                             $predicates->add($expr->neq(/*'c.' .*/ $where->column, $where->value));
                         }
-                    } elseif ($where->operator == OperatorEnum::NOT_EQUAL) {
+                    } elseif ($where->operator == '<>') {
                         if($where->not) {
                             $predicates->add($expr->neq(/*'c.' .*/ $where->column, $where->value));
                         } else {
                             $predicates->add($expr->eq(/*'c.' .*/ $where->column, $where->value));
                         }
-                    } elseif ($where->operator == OperatorEnum::NULL) {
+                    } elseif ($where->operator == 'NULL') {
                         if($where->not) {
                             $predicates->add($expr->isNotNull($where->column));
                         } else {
                             $predicates->add($expr->isNull($where->column));
                         }
-                    } elseif ($where->operator == OperatorEnum::NOT_NULL) {
+                    } elseif ($where->operator == 'NOT NULL') {
                         if($where->not) {
                             $predicates->add($expr->isNull($where->column));
                         } else {
                             $predicates->add($expr->isNotNull($where->column));
                         }
-                    } elseif ($where->operator == OperatorEnum::LESS) {
+                    } elseif ($where->operator == '<') {
                         $predicates->add($expr->lt($where->column, $where->value));
-                    } elseif ($where->operator == OperatorEnum::LESS_OR_EQUAL) {
+                    } elseif ($where->operator == '<=') {
                         $predicates->add($expr->lte($where->column, $where->value));
-                    } elseif ($where->operator == OperatorEnum::GREATER) {
+                    } elseif ($where->operator == '>') {
                         $predicates->add($expr->gt($where->column, $where->value));
-                    } elseif ($where->operator == OperatorEnum::GREATER_OR_EQUAL) {
+                    } elseif ($where->operator == '>=') {
                         $predicates->add($expr->gte($where->column, $where->value));
-                    } elseif ($where->operator == OperatorEnum::LIKE) {
+                    } elseif ($where->operator == 'like') {
                         if($where->not) {
                             $predicates->add($expr->notLike($where->column, $where->value));
                         } else {

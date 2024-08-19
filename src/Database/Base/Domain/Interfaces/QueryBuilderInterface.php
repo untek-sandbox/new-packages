@@ -2,8 +2,6 @@
 
 namespace Untek\Database\Base\Domain\Interfaces;
 
-use Untek\Model\Query\Entities\Query;
-
 interface QueryBuilderInterface
 {
 

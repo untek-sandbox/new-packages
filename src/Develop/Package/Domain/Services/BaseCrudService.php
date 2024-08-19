@@ -12,7 +12,6 @@ use Untek\Model\Shared\Traits\ForgeQueryTrait;
 use Untek\Core\Contract\Common\Exceptions\NotFoundException;
 use Untek\Model\Entity\Interfaces\EntityIdInterface;
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Model\Query\Entities\Query;
 use Untek\Model\QueryFilter\Interfaces\ForgeQueryByFilterInterface;
 use Untek\Model\Repository\Interfaces\CrudRepositoryInterface;
 use Untek\Model\Service\Interfaces\CrudServiceInterface;

@@ -7,10 +7,6 @@ use Illuminate\Database\Query\Builder as QueryBuilder;
 use Untek\Component\Text\Helpers\Inflector;
 use Untek\Database\Base\Domain\Helpers\DbHelper;
 use Untek\Database\Base\Domain\Interfaces\QueryBuilderInterface;
-use Untek\Model\Query\Entities\Join;
-use Untek\Model\Query\Entities\Query;
-use Untek\Model\Query\Entities\Where;
-use Untek\Database\Base\Enums\OperatorEnum;
 
 class EloquentQueryBuilderHelper implements QueryBuilderInterface
 {

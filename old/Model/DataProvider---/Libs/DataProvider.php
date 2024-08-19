@@ -7,7 +7,6 @@ use Untek\Model\DataProvider\Entities\DataProviderEntity;
 use Untek\Model\DataProvider\Interfaces\DataProviderInterface;
 use Untek\Model\Shared\Interfaces\ReadAllInterface;
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Model\Query\Entities\Query;
 use Untek\Model\QueryFilter\Interfaces\ForgeQueryByFilterInterface;
 
 class DataProvider implements DataProviderInterface

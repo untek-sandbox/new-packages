@@ -6,7 +6,6 @@ use Untek\Component\FileSystem\Helpers\FindFileHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;
 use Untek\Model\Entity\Interfaces\EntityIdInterface;
-use Untek\Model\Query\Entities\Query;
 use Untek\Component\FormatAdapter\StoreFile;
 use Untek\Develop\Package\Domain\Entities\ConfigEntity;
 use Untek\Develop\Package\Domain\Entities\GroupEntity;

@@ -6,7 +6,6 @@ use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Helpers\CollectionHelper;
 use Untek\Database\Base\Hydrator\Traits\NormalizerTrait;
 use Untek\Model\Entity\Interfaces\EntityIdInterface;
-use Untek\Model\Query\Entities\Query;
 use Untek\Model\Repository\Interfaces\ReadRepositoryInterface;
 use Untek\Component\FormatAdapter\StoreFile;
 use Untek\Develop\Package\Domain\Entities\GroupEntity;

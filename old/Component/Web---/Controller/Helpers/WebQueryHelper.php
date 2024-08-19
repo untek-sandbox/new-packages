@@ -2,9 +2,6 @@
 
 namespace Untek\Component\Web\Controller\Helpers;
 
-use Untek\Model\Query\Entities\Query;
-use Untek\Model\Query\Entities\Where;
-
 /**
  *
  */
