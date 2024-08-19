@@ -6,7 +6,6 @@ use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\FileSystem\Helpers\FilePathHelper;
 use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Component\FormatAdapter\Drivers\DriverInterface;
-use Untek\Core\Instance\Libs\Resolvers\InstanceResolver;
 
 class Store
 {
@@ -22,9 +21,7 @@ class Store
         $this->driver = $driver;
         $driverClass = 'Untek\\Component\\FormatAdapter\\Drivers\\' . $driver;
 
-        $instanceResolver = new InstanceResolver();
         $this->driverInstance = new $driverClass();
-//        $this->driverInstance = $instanceResolver->create($driverClass);
     }
 
     public function getDriver()
