@@ -23,8 +23,8 @@ class ContainerWrapper implements ContainerInterface {
         return self::$globalContainer->has($id);
     }
 
-    public static function getContainer(): ?ContainerInterface
+    /*public static function getContainer(): ?ContainerInterface
     {
         return self::$globalContainer;
-    }
+    }*/
 }
