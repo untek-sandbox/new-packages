@@ -5,29 +5,26 @@ namespace Untek\Core\Container\Libs;
 use Psr\Container\ContainerInterface;
 
 class ContainerWrapper implements ContainerInterface {
+    
     static $globalContainer;
     
-    private ContainerInterface $container;
-    
-    public function __construct(?ContainerInterface $container = null)
+    public function __construct(ContainerInterface $container)
     {
-        if($container) {
-            $this->container = $container;
-            self::$globalContainer = $container;
-        } elseif(self::$globalContainer) {
-            $this->container = self::$globalContainer;
-        } else {
-            throw new \RuntimeException('Not found container!');
-        }
+        self::$globalContainer = $container;
     }
 
     public function get(string $id): mixed
     {
-        return $this->container->get($id);
+        return self::$globalContainer->get($id);
     }
 
     public function has(string $id): bool
     {
-        return $this->container->has($id);
+        return self::$globalContainer->has($id);
+    }
+
+    public static function getContainer(): ?ContainerInterface
+    {
+        return self::$globalContainer;
     }
 }

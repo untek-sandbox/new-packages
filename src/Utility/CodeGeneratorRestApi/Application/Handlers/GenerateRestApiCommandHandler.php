@@ -21,7 +21,10 @@ use Untek\Utility\CodeGeneratorRestApi\Infrastructure\Generators\RoutConfigImpor
 class GenerateRestApiCommandHandler implements CqrsHandlerInterface
 {
 
-    public function __construct(protected GenerateResultCollection $collection)
+    public function __construct(
+        protected GenerateResultCollection $collection,
+        private GenerateRestApiCommandValidator $commandValidator,
+    )
     {
     }
 
@@ -31,8 +34,8 @@ class GenerateRestApiCommandHandler implements CqrsHandlerInterface
      */
     public function __invoke(GenerateRestApiCommand $command)
     {
-        $validator = new GenerateRestApiCommandValidator();
-        $validator->validate($command);
+//        $validator = new GenerateRestApiCommandValidator();
+        $this->commandValidator->validate($command);
 
         $generators = [
             new ControllerGenerator($this->collection),

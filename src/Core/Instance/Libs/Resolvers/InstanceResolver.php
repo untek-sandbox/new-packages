@@ -12,7 +12,6 @@ class InstanceResolver
 
     public function __construct(protected ?ContainerInterface $container = null)
     {
-        $this->container = $container;
     }
 
     /**
@@ -39,6 +38,18 @@ class InstanceResolver
         return $handlerInstance;
     }
 
+    public function createObjectInstance(string $className, array $constructionArgs): object
+    {
+        if (count($constructionArgs) && method_exists($className, '__construct')) {
+            $instance = new $className(...$constructionArgs);
+//            $reflectionClass = new \ReflectionClass($className);
+//            $instance = $reflectionClass->newInstanceArgs($constructionArgs);
+        } else {
+            $instance = new $className();
+        }
+        return $instance;
+    }
+
     private function prepareParameters(string $className, string $methodName, array $constructionArgs): array
     {
         $methodParametersResolver = new MethodParametersResolver($this->container, $this);
@@ -54,22 +65,9 @@ class InstanceResolver
     private function createObject(string $className, array $constructionArgs = []): object
     {
         if (!class_exists($className)) {
-//            dd($className);
             throw new ClassNotFoundException($className);
         }
         $constructionArgs = $this->prepareParameters($className, '__construct', $constructionArgs);
         return $this->createObjectInstance($className, $constructionArgs);
-    }
-
-    public function createObjectInstance(string $className, array $constructionArgs): object
-    {
-        if (count($constructionArgs) && method_exists($className, '__construct')) {
-//            $instance = new $className(...$constructionArgs);
-            $reflectionClass = new \ReflectionClass($className);
-            $instance = $reflectionClass->newInstanceArgs($constructionArgs);
-        } else {
-            $instance = new $className();
-        }
-        return $instance;
     }
 }

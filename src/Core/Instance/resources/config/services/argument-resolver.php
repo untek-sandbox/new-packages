@@ -14,7 +14,7 @@ return static function (ContainerConfigurator $configurator): void {
 //    $services
 //        ->load('Untek\Core\Instance\\', __DIR__ . '/../../..')
 //        ->exclude([
-//            __DIR__ . '/../../../{resources,Domain,Application/Commands,Application/Queries,Application/Validators}',
+//            __DIR__ . '/../../../{resources,Domain,Application/Commands,Application/Queries}',
 //            __DIR__ . '/../../../**/*{Event.php,Helper.php,Message.php,Task.php,Relation.php,Schema.php,Normalizer.php}',
 //            __DIR__ . '/../../../**/{Dto,Enums}',
 //        ]);

@@ -18,7 +18,10 @@ use Untek\Utility\CodeGeneratorCli\Infrastructure\Generators\ContainerConfigGene
 class GenerateCliCommandHandler implements CqrsHandlerInterface
 {
 
-    public function __construct(protected GenerateResultCollection $collection)
+    public function __construct(
+        protected GenerateResultCollection $collection,
+        private GenerateCliCommandValidator $commandValidator,
+    )
     {
     }
 
@@ -28,8 +31,8 @@ class GenerateCliCommandHandler implements CqrsHandlerInterface
      */
     public function __invoke(GenerateCliCommand $command)
     {
-        $validator = new GenerateCliCommandValidator();
-        $validator->validate($command);
+//        $validator = new GenerateCliCommandValidator();
+        $this->commandValidator->validate($command);
 
         $generators = [
             new CliCommandGenerator($this->collection),

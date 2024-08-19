@@ -43,9 +43,9 @@ class GenerateTokenByPasswordCommandHandler implements CqrsHandlerInterface
         private LoggerInterface $logger,
 //        private ValidatorInterface $validator,
         private IdentityRepositoryInterface $identityRepository,
-        private array $credentialTypes
+        private array $credentialTypes,
 //        EventDispatcherInterface $eventDispatcher,
-
+        private GenerateTokenByPasswordCommandValidator $commandValidator,
     )
     {
 //        $this->setEventDispatcher($eventDispatcher);
@@ -58,8 +58,8 @@ class GenerateTokenByPasswordCommandHandler implements CqrsHandlerInterface
      */
     public function __invoke(GenerateTokenByPasswordCommand $command): Token
     {
-        $validator = new GenerateTokenByPasswordCommandValidator($this->translator);
-        $validator->validate($command);
+//        $validator = new GenerateTokenByPasswordCommandValidator($this->translator);
+        $this->commandValidator->validate($command);
 
         $userEntity = $this->getIdentityByForm($command);
 

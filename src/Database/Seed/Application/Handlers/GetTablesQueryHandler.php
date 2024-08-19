@@ -5,11 +5,16 @@ namespace Untek\Database\Seed\Application\Handlers;
 use Doctrine\DBAL\Connection;
 use Untek\Model\Cqrs\Application\Abstract\CqrsHandlerInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
+use Untek\Database\Seed\Application\Validators\GetTablesQueryValidator;
 
 class GetTablesQueryHandler implements CqrsHandlerInterface
 {
 
-    public function __construct(private Connection $connection, private array $excludeTables)
+    public function __construct(
+        private Connection $connection,
+        private array $excludeTables,
+        private GetTablesQueryValidator $commandValidator,
+    )
     {
     }
 
@@ -19,8 +24,8 @@ class GetTablesQueryHandler implements CqrsHandlerInterface
      */
     public function __invoke(\Untek\Database\Seed\Application\Queries\GetTablesQuery $command)
     {
-        $validator = new \Untek\Database\Seed\Application\Validators\GetTablesQueryValidator();
-        $validator->validate($command);
+//        $validator = new GetTablesQueryValidator();
+        $this->commandValidator->validate($command);
 
         $tableNames = $this->connection->getSchemaManager()->listTableNames();
         $tableNames = $this->fileterTables($tableNames);

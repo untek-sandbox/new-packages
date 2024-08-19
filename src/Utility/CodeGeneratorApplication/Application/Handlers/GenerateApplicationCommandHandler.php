@@ -17,7 +17,9 @@ use Untek\Utility\CodeGeneratorApplication\Infrastructure\Generators\ContainerCo
 class GenerateApplicationCommandHandler implements CqrsHandlerInterface
 {
 
-    public function __construct(protected GenerateResultCollection $collection)
+    public function __construct(
+        protected GenerateResultCollection $collection,
+    )
     {
     }
 

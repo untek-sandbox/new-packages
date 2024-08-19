@@ -18,7 +18,8 @@ class ImportSeedCommandHandler implements CqrsHandlerInterface
     public function __construct(
         private Dependency $dependency,
         private Connection $connection,
-        private string $seedDirectory
+        private string $seedDirectory,
+        private ImportSeedCommandValidator $commandValidator,
     )
     {
     }
@@ -29,8 +30,8 @@ class ImportSeedCommandHandler implements CqrsHandlerInterface
      */
     public function __invoke(ImportSeedCommand $command)
     {
-        $validator = new ImportSeedCommandValidator();
-        $validator->validate($command);
+//        $validator = new ImportSeedCommandValidator();
+        $this->commandValidator->validate($command);
 
         $tables = $command->getTables();
 

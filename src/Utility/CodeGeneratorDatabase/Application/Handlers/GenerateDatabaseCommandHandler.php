@@ -22,7 +22,10 @@ use Untek\Utility\CodeGeneratorDatabase\Infrastructure\Generators\SeedGenerator;
 class GenerateDatabaseCommandHandler implements CqrsHandlerInterface
 {
 
-    public function __construct(protected GenerateResultCollection $collection)
+    public function __construct(
+        protected GenerateResultCollection $collection,
+        private GenerateDatabaseCommandValidator $commandValidator,
+    )
     {
     }
 
@@ -32,8 +35,8 @@ class GenerateDatabaseCommandHandler implements CqrsHandlerInterface
      */
     public function __invoke(GenerateDatabaseCommand $command)
     {
-        $validator = new GenerateDatabaseCommandValidator();
-        $validator->validate($command);
+//        $validator = new GenerateDatabaseCommandValidator();
+        $this->commandValidator->validate($command);
 
         $generators = [
             new RepositoryInterfaceGenerator($this->collection),

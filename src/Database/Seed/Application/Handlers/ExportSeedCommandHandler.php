@@ -7,6 +7,7 @@ use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Database\Eloquent\Domain\Capsule\Manager;
 use Untek\Model\Cqrs\Application\Abstract\CqrsHandlerInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
+use Untek\Database\Seed\Application\Validators\ExportSeedCommandValidator;
 
 class ExportSeedCommandHandler implements CqrsHandlerInterface
 {
@@ -14,6 +15,7 @@ class ExportSeedCommandHandler implements CqrsHandlerInterface
     public function __construct(
         private Manager $manager,
         private string $seedDirectory,
+        private ExportSeedCommandValidator $commandValidator,
     )
     {
     }
@@ -24,8 +26,8 @@ class ExportSeedCommandHandler implements CqrsHandlerInterface
      */
     public function __invoke(\Untek\Database\Seed\Application\Commands\ExportSeedCommand $command)
     {
-        $validator = new \Untek\Database\Seed\Application\Validators\ExportSeedCommandValidator();
-        $validator->validate($command);
+//        $validator = new ExportSeedCommandValidator();
+        $this->commandValidator->validate($command);
 
         $cb = $command->getProgressCallback();
         foreach ($command->getTables() as $table) {
