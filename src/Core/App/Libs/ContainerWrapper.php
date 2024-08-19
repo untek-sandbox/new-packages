@@ -1,8 +1,11 @@
 <?php
 
-namespace Untek\Core\Container\Libs;
+namespace Untek\Core\App\Libs;
 
 use Psr\Container\ContainerInterface;
+use Untek\Component\Code\Helpers\DeprecateHelper;
+
+DeprecateHelper::hardThrow();
 
 class ContainerWrapper implements ContainerInterface
 {

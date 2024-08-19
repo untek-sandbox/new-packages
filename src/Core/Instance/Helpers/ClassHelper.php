@@ -4,8 +4,6 @@ namespace Untek\Core\Instance\Helpers;
 
 use Illuminate\Container\Container;
 use Psr\Container\ContainerInterface;
-use Untek\Core\Instance\Helpers\PropertyHelper;
-use Untek\Core\Container\Helpers\ContainerHelper;
 use Untek\Core\Contract\Common\Exceptions\InvalidArgumentException;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
 use Untek\Core\Instance\Exceptions\NotInstanceOfException;
@@ -156,14 +154,7 @@ class ClassHelper
             return $definition;
         }
         $definition = self::normalizeComponentConfig($definition);
-        if ($container == null) {
-            $container = ContainerHelper::getContainer();
-        }
-        if($container instanceof Container) {
-            $instance = $container->make($definition['class'], $params);
-        } else {
-            $instance = clone $container->get($definition['class']);
-        }
+        $instance = clone $container->get($definition['class']);
 
         self::configure($instance, $definition);
         return $instance;

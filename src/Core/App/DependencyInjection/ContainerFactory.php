@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Core\App\Bootstrap;
+namespace Untek\Core\App\DependencyInjection;
 
 use Psr\Container\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

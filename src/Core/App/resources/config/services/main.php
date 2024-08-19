@@ -3,7 +3,7 @@
 use Psr\Container\ContainerInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Untek\Core\App\Services\ControllerAccessChecker;
-use Untek\Core\App\Bootstrap\ContainerFactory;
+use Untek\Core\App\DependencyInjection\ContainerFactory;
 
 return static function (ContainerConfigurator $configurator): void {
     $services = $configurator->services()->defaults()->public()->autowire();
