@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Untek\Framework\Socket\Application\Commands\SendMessageToWebSocketCommand;
-use Untek\Model\Cqrs\Application\Services\CommandBusInterface;
+use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
 
 class SendMessageToSocketCommand extends Command
 {

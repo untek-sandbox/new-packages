@@ -8,7 +8,7 @@ use Untek\Framework\Socket\Infrastructure\Services\SocketDaemonTest;
 use Untek\Framework\Socket\Infrastructure\Storage\ConnectionRamStorage;
 use Untek\Framework\Socket\Presentation\Cli\Commands\SendMessageToSocketCommand;
 use Untek\Framework\Socket\Presentation\Cli\Commands\SocketCommand;
-use Untek\Model\Cqrs\Application\Services\CommandBusInterface;
+use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
 use Untek\User\Authentication\Domain\Interfaces\Services\TokenServiceInterface;
 use Untek\Framework\Socket\Application\Services\SocketDaemonInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;

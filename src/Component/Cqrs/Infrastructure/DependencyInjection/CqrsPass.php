@@ -1,11 +1,11 @@
 <?php
 
-namespace Untek\Model\Cqrs\Infrastructure\DependencyInjection;
+namespace Untek\Component\Cqrs\Infrastructure\DependencyInjection;
 
 use ReflectionMethod;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Untek\Model\Cqrs\Application\Services\CommandBusConfiguratorInterface;
+use Untek\Component\Cqrs\Application\Services\CommandBusConfiguratorInterface;
 
 // todo: задокументировать декларацию обработчиков команд
 

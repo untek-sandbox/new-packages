@@ -14,7 +14,7 @@ use Untek\Component\Web\View\Libs\View;
 use Untek\Component\Web\Form\Libs\FormManager;
 use Untek\Component\Web\Widget\Widgets\Toastr\Application\Services\ToastrServiceInterface;
 use Untek\FrameworkPlugin\HttpAuthentication\Application\Services\WebAuthentication;
-use Untek\Model\Cqrs\Application\Services\CommandBusInterface;
+use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Untek\Model\Validator\Exceptions\UnprocessibleEntityException;
 use Untek\User\Authentication\Application\Commands\GenerateTokenByPasswordCommand;

@@ -2,7 +2,7 @@
 
 namespace Untek\Utility\CodeGeneratorDatabase\Application\Handlers;
 
-use Untek\Model\Cqrs\Application\Abstract\CqrsHandlerInterface;
+use Untek\Component\Cqrs\Application\Abstract\CqrsHandlerInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Untek\Utility\CodeGenerator\Application\Dto\GenerateResultCollection;
 use Untek\Utility\CodeGenerator\Infrastructure\Helpers\GeneratorHelper;

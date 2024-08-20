@@ -13,7 +13,7 @@ use Untek\Component\FileSystem\Helpers\FileHelper;
 use Untek\Component\Text\Helpers\TemplateHelper;
 use Untek\Framework\Console\Symfony4\Style\SymfonyStyle;
 use Untek\Component\Measure\Byte\Helpers\ByteSizeFormatHelper;
-use Untek\Model\Cqrs\Application\Services\CommandBusInterface;
+use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Untek\Utility\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\Application\Dto\GenerateResultCollection;

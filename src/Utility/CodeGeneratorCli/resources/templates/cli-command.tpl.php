@@ -18,7 +18,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Untek\Framework\Console\Infrastructure\Validators\NotBlankValidator;
 use Untek\Framework\Console\Symfony4\Style\SymfonyStyle;
-use Untek\Model\Cqrs\Application\Services\CommandBusInterface;
+use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
 use <?= $commandFullClassName ?>;
 
 class <?= $className ?> extends Command

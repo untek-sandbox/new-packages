@@ -1,15 +1,15 @@
 <?php
 
-namespace Untek\Model\Cqrs;
+namespace Untek\Component\Cqrs;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
-use Untek\Model\Cqrs\Application\Abstract\CqrsHandlerInterface;
-use Untek\Model\Cqrs\Infrastructure\DependencyInjection\CqrsExtension;
-use Untek\Model\Cqrs\Infrastructure\DependencyInjection\CqrsPass;
+use Untek\Component\Cqrs\Application\Abstract\CqrsHandlerInterface;
+use Untek\Component\Cqrs\Infrastructure\DependencyInjection\CqrsExtension;
+use Untek\Component\Cqrs\Infrastructure\DependencyInjection\CqrsPass;
 
 class CqrsBundle extends AbstractBundle
 {

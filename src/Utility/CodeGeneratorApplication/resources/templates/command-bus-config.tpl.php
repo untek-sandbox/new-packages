@@ -8,7 +8,7 @@
 
 ?>
 
-use Untek\Model\Cqrs\Application\Services\CommandBusConfiguratorInterface;
+use Untek\Component\Cqrs\Application\Services\CommandBusConfiguratorInterface;
 
 return function (CommandBusConfiguratorInterface $configurator) {
 };

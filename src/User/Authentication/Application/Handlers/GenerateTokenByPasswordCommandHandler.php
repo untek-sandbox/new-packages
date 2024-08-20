@@ -6,7 +6,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Untek\Model\Cqrs\Application\Abstract\CqrsHandlerInterface;
+use Untek\Component\Cqrs\Application\Abstract\CqrsHandlerInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Untek\Model\Validator\Interfaces\ValidatorInterface;
 use Untek\User\Authentication\Application\Commands\GenerateTokenByPasswordCommand;

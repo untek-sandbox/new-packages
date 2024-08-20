@@ -5,7 +5,7 @@ namespace Untek\Model\EntityManager\DependencyInjection;
 use ReflectionMethod;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Untek\Model\Cqrs\Application\Services\CommandBusConfiguratorInterface;
+use Untek\Component\Cqrs\Application\Services\CommandBusConfiguratorInterface;
 use Untek\Model\EntityManager\Interfaces\EntityManagerConfiguratorInterface;
 use Doctrine\Persistence\ObjectRepository;
 

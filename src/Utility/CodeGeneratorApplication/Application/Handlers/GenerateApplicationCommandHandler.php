@@ -2,7 +2,7 @@
 
 namespace Untek\Utility\CodeGeneratorApplication\Application\Handlers;
 
-use Untek\Model\Cqrs\Application\Abstract\CqrsHandlerInterface;
+use Untek\Component\Cqrs\Application\Abstract\CqrsHandlerInterface;
 use Untek\Utility\CodeGenerator\Application\Dto\GenerateResultCollection;
 use Untek\Utility\CodeGenerator\Infrastructure\Helpers\GeneratorHelper;
 use Untek\Utility\CodeGeneratorApplication\Application\Commands\GenerateApplicationCommand;

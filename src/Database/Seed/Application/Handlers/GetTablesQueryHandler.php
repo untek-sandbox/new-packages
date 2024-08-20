@@ -3,7 +3,7 @@
 namespace Untek\Database\Seed\Application\Handlers;
 
 use Doctrine\DBAL\Connection;
-use Untek\Model\Cqrs\Application\Abstract\CqrsHandlerInterface;
+use Untek\Component\Cqrs\Application\Abstract\CqrsHandlerInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Untek\Database\Seed\Application\Validators\GetTablesQueryValidator;
 

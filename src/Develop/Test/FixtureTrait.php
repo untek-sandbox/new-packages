@@ -4,7 +4,7 @@ namespace Untek\Develop\Test;
 
 use Doctrine\DBAL\Connection;
 use Untek\Database\Seed\Application\Commands\ImportSeedCommand;
-use Untek\Model\Cqrs\Application\Services\CommandBusInterface;
+use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
 
 trait FixtureTrait
 {
