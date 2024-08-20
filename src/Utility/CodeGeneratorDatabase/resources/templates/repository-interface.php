@@ -9,18 +9,9 @@
 
 namespace <?= $namespace ?>;
 
-use Untek\Model\Contract\Interfaces\RepositoryCreateInterface;
-use Untek\Model\Contract\Interfaces\RepositoryDeleteByIdInterface;
-use Untek\Model\Contract\Interfaces\RepositoryFindOneByIdInterface;
-use Untek\Model\Contract\Interfaces\RepositoryUpdateInterface;
-use Untek\Model\Contract\Interfaces\RepositoryCountByInterface;
+use Untek\Model\Contract\Interfaces\RepositoryCrudInterface;
 
-interface <?= $className ?> extends
-    RepositoryCountByInterface,
-    RepositoryCreateInterface,
-    RepositoryDeleteByIdInterface,
-    RepositoryFindOneByIdInterface,
-    RepositoryUpdateInterface
+interface <?= $className ?> extends RepositoryCrudInterface
 {
 
 }

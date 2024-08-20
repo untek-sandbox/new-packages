@@ -3,21 +3,12 @@
 namespace Untek\Database\Doctrine\Domain\Base;
 
 use Doctrine\DBAL\Exception;
-use Untek\Model\Contract\Interfaces\RepositoryCreateInterface;
-use Untek\Model\Contract\Interfaces\RepositoryDeleteByIdInterface;
-use Untek\Model\Contract\Interfaces\RepositoryFindOneByIdInterface;
-use Untek\Model\Contract\Interfaces\RepositoryUpdateInterface;
-use Untek\Model\Contract\Interfaces\RepositoryCountByInterface;
 use Untek\Core\Contract\Common\Exceptions\NotFoundException;
 use Untek\Database\Doctrine\Domain\Helpers\QueryBuilder\DoctrineQueryBuilderHelper;
+use Untek\Model\Contract\Interfaces\RepositoryCrudInterface;
 use Untek\Model\Entity\Helpers\EntityHelper;
 
-abstract class AbstractDoctrineCrudRepository extends AbstractDoctrineRepository implements
-    RepositoryCountByInterface,
-    RepositoryCreateInterface,
-    RepositoryDeleteByIdInterface,
-    RepositoryFindOneByIdInterface,
-    RepositoryUpdateInterface
+abstract class AbstractDoctrineCrudRepository extends AbstractDoctrineRepository implements RepositoryCrudInterface
 {
 
     /**

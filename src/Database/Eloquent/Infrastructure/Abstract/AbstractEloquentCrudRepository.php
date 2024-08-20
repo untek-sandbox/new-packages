@@ -2,27 +2,13 @@
 
 namespace Untek\Database\Eloquent\Infrastructure\Abstract;
 
-use Doctrine\DBAL\Exception;
 use Untek\Core\Contract\Common\Exceptions\NotFoundException;
 use Untek\Database\Eloquent\Infrastructure\Helpers\QueryBuilder\EloquentQueryBuilderHelper;
-use Untek\Model\Contract\Interfaces\RepositoryCountByInterface;
-use Untek\Model\Contract\Interfaces\RepositoryCreateInterface;
-use Untek\Model\Contract\Interfaces\RepositoryDeleteByIdInterface;
-use Untek\Model\Contract\Interfaces\RepositoryFindOneByIdInterface;
-use Untek\Model\Contract\Interfaces\RepositoryUpdateInterface;
+use Untek\Model\Contract\Interfaces\RepositoryCrudInterface;
 
-abstract class AbstractEloquentCrudRepository extends AbstractEloquentRepository implements
-    RepositoryCountByInterface,
-    RepositoryCreateInterface,
-    RepositoryDeleteByIdInterface,
-    RepositoryFindOneByIdInterface,
-    RepositoryUpdateInterface
+abstract class AbstractEloquentCrudRepository extends AbstractEloquentRepository implements RepositoryCrudInterface
 {
 
-    /**
-     * @inheritdoc
-     * @throws Exception
-     */
     public function findOneById(int $id, ?array $relations = null): object
     {
         $entity = $this->find($id, $relations);
@@ -32,11 +18,6 @@ abstract class AbstractEloquentCrudRepository extends AbstractEloquentRepository
         return $entity;
     }
 
-    /**
-     * @inheritdoc
-     * @throws Exception
-     * @throws \Doctrine\DBAL\Driver\Exception
-     */
     public function countBy(array $criteria): int
     {
         $queryBuilder = $this->createQueryBuilder();
@@ -47,10 +28,6 @@ abstract class AbstractEloquentCrudRepository extends AbstractEloquentRepository
         return $queryBuilder->count();
     }
 
-    /**
-     * @inheritdoc
-     * @throws Exception
-     */
     public function deleteById(int $id): void
     {
         $entity = $this->findOneById($id);
@@ -67,10 +44,6 @@ abstract class AbstractEloquentCrudRepository extends AbstractEloquentRepository
         $queryBuilder->delete();
     }
 
-    /**
-     * @inheritdoc
-     * @throws Exception
-     */
     public function update(object $entity): void
     {
         $existEntity = $this->findOneById($entity->getId());
@@ -80,10 +53,6 @@ abstract class AbstractEloquentCrudRepository extends AbstractEloquentRepository
         $queryBuilder->update($data);
     }
 
-    /**
-     * @inheritdoc
-     * @throws Exception
-     */
     public function create(object $entity): void
     {
         $queryBuilder = $this->createQueryBuilder();

@@ -2,22 +2,12 @@
 
 namespace Untek\Database\Memory\Abstract;
 
-use Untek\Component\FormatAdapter\StoreFile;
 use Untek\Component\FileSystem\Helpers\FindFileHelper;
-use Untek\Core\Instance\Helpers\PropertyHelper;
-use Untek\Model\Contract\Interfaces\RepositoryCountByInterface;
-use Untek\Model\Contract\Interfaces\RepositoryCreateInterface;
-use Untek\Model\Contract\Interfaces\RepositoryDeleteByIdInterface;
-use Untek\Model\Contract\Interfaces\RepositoryFindOneByIdInterface;
-use Untek\Model\Contract\Interfaces\RepositoryUpdateInterface;
+use Untek\Component\FormatAdapter\StoreFile;
 use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Model\Contract\Interfaces\RepositoryCrudInterface;
 
-abstract class AbstractDirectoryCrudRepository extends AbstractMemoryRepository implements
-    RepositoryCountByInterface,
-    RepositoryCreateInterface,
-    RepositoryDeleteByIdInterface,
-    RepositoryFindOneByIdInterface,
-    RepositoryUpdateInterface
+abstract class AbstractDirectoryCrudRepository extends AbstractMemoryRepository implements RepositoryCrudInterface
 {
 
     protected array $collection = [];
@@ -56,11 +46,7 @@ abstract class AbstractDirectoryCrudRepository extends AbstractMemoryRepository 
         $storeFile = new StoreFile($fileName);
         $storeFile->save($itemsRaw);
     }
-    
-    
-    
-    
-    
+
 
     public function countBy(array $criteria): int
     {
@@ -95,8 +81,9 @@ abstract class AbstractDirectoryCrudRepository extends AbstractMemoryRepository 
     {
         $entity = $this->findOneById($entity->getId());
     }
-    
-    protected function lastInsertId(): int {
+
+    protected function lastInsertId(): int
+    {
         $collection = $this->findAll();
         $lastId = 0;
         foreach ($collection as $item) {

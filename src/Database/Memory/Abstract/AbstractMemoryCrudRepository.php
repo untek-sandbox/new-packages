@@ -2,20 +2,10 @@
 
 namespace Untek\Database\Memory\Abstract;
 
-use Untek\Core\Instance\Helpers\PropertyHelper;
-use Untek\Model\Contract\Interfaces\RepositoryCountByInterface;
-use Untek\Model\Contract\Interfaces\RepositoryCreateInterface;
-use Untek\Model\Contract\Interfaces\RepositoryDeleteByIdInterface;
-use Untek\Model\Contract\Interfaces\RepositoryFindOneByIdInterface;
-use Untek\Model\Contract\Interfaces\RepositoryUpdateInterface;
 use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Model\Contract\Interfaces\RepositoryCrudInterface;
 
-abstract class AbstractMemoryCrudRepository extends AbstractMemoryRepository implements
-    RepositoryCountByInterface,
-    RepositoryCreateInterface,
-    RepositoryDeleteByIdInterface,
-    RepositoryFindOneByIdInterface,
-    RepositoryUpdateInterface
+abstract class AbstractMemoryCrudRepository extends AbstractMemoryRepository implements RepositoryCrudInterface
 {
 
     protected array $collection = [];
@@ -64,7 +54,8 @@ abstract class AbstractMemoryCrudRepository extends AbstractMemoryRepository imp
         $this->insert($entity);
     }
 
-    protected function lastInsertId(): int {
+    protected function lastInsertId(): int
+    {
         $collection = $this->findAll();
         $lastId = 0;
         foreach ($collection as $item) {
@@ -75,17 +66,20 @@ abstract class AbstractMemoryCrudRepository extends AbstractMemoryRepository imp
         return $lastId;
     }
 
-    protected function insert(object $entity) {
+    protected function insert(object $entity)
+    {
         $this->loadCollection();
         $this->collection[] = $entity;
         $this->dumpCollection();
     }
 
-    protected function dumpCollection(): void {
+    protected function dumpCollection(): void
+    {
 
     }
 
-    protected function loadCollection(): void {
+    protected function loadCollection(): void
+    {
 
     }
 
