@@ -14,8 +14,8 @@ namespace <?= $namespace ?>;
 
 use Untek\Core\Contract\Common\Exceptions\NotFoundException;
 use Untek\Core\Instance\Helpers\PropertyHelper;
-use Untek\Model\Contract\Interfaces\RepositoryFindOneByIdInterface;
-use Untek\Model\Contract\Interfaces\RepositoryUpdateInterface;
+use Untek\Persistence\Contract\Interfaces\RepositoryFindOneByIdInterface;
+use Untek\Persistence\Contract\Interfaces\RepositoryUpdateInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Symfony\Contracts\Translation\TranslatorInterface;
 

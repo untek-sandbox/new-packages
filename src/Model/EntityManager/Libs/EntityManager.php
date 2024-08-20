@@ -10,7 +10,7 @@ use Untek\Core\Collection\Libs\Collection;
 use Untek\Core\Container\Interfaces\ContainerConfiguratorInterface;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
 use Untek\Core\Contract\Common\Exceptions\InvalidMethodParameterException;
-use Untek\Model\Contract\Exceptions\AlreadyExistsException;
+use Untek\Persistence\Contract\Exceptions\AlreadyExistsException;
 use Untek\Core\Contract\Common\Exceptions\NotFoundException;
 use Untek\Model\Entity\Helpers\EntityHelper;
 use Untek\Model\Entity\Interfaces\EntityIdInterface;

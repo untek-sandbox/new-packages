@@ -2,7 +2,7 @@
 
 namespace Untek\User\Authentication\Application\Services;
 
-use Untek\Model\Contract\Interfaces\RepositoryCrudInterface;
+use Untek\Persistence\Contract\Interfaces\RepositoryCrudInterface;
 use Untek\User\Authentication\Domain\Model\UserAssignedRoles;
 
 interface UserAssignedRolesRepositoryInterface extends RepositoryCrudInterface

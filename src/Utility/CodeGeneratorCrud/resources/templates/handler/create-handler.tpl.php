@@ -12,7 +12,7 @@
 
 namespace <?= $namespace ?>;
 
-use Untek\Model\Contract\Interfaces\RepositoryCreateInterface;
+use Untek\Persistence\Contract\Interfaces\RepositoryCreateInterface;
 use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Symfony\Contracts\Translation\TranslatorInterface;

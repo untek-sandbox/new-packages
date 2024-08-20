@@ -9,7 +9,7 @@
 
 namespace <?= $namespace ?>;
 
-use Untek\Model\Contract\Interfaces\RepositoryCrudInterface;
+use Untek\Persistence\Contract\Interfaces\RepositoryCrudInterface;
 
 interface <?= $className ?> extends RepositoryCrudInterface
 {

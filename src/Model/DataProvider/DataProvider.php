@@ -4,7 +4,7 @@ namespace Untek\Model\DataProvider;
 
 use Doctrine\Persistence\ObjectRepository;
 use Untek\Core\Contract\Common\Exceptions\NotFoundException;
-use Untek\Model\Contract\Interfaces\RepositoryCountByInterface;
+use Untek\Persistence\Contract\Interfaces\RepositoryCountByInterface;
 use Untek\Model\DataProvider\Dto\CollectionData;
 use Untek\Model\DataProvider\Dto\PageResponse;
 use Untek\Model\DataProvider\Exceptions\GreaterMaxPageException;

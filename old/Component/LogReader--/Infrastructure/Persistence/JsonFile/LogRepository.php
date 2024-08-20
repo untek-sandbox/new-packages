@@ -10,7 +10,7 @@ use Untek\Component\LogReader\Infrastructure\Persistence\Normalizer\LogItemNorma
 use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Database\Base\Hydrator\DbNormalizerInterface;
 use Untek\Database\Base\Hydrator\Traits\NormalizerTrait;
-use Untek\Model\Contract\Interfaces\RepositoryCountByInterface;
+use Untek\Persistence\Contract\Interfaces\RepositoryCountByInterface;
 
 class LogRepository implements ObjectRepository, RepositoryCountByInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Model\Contract\Interfaces;
+namespace Untek\Persistence\Contract\Interfaces;
 
 use Untek\Core\Contract\Common\Exceptions\NotFoundException;
 
