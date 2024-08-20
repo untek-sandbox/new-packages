@@ -4,7 +4,7 @@ namespace Untek\Database\Memory\Abstract;
 
 use Untek\Component\FileSystem\Helpers\FindFileHelper;
 use Untek\Component\FormatAdapter\StoreFile;
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\Persistence\Contract\Interfaces\RepositoryCrudInterface;
 
 abstract class AbstractDirectoryCrudRepository extends AbstractMemoryRepository implements RepositoryCrudInterface

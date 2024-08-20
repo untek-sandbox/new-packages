@@ -4,7 +4,7 @@ namespace Untek\Framework\Socket\Infrastructure\Services;
 
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\Framework\Socket\Application\Services\MessageTransportInterface;
 use Untek\Framework\Socket\Application\Services\SocketDaemonInterface;
 use Untek\Framework\Socket\Domain\Enums\SocketEventEnum;

@@ -6,7 +6,7 @@ use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Untek\Core\Contract\Common\Exceptions\InvalidMethodParameterException;
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\User\Authentication\Domain\Helpers\TokenHelper;
 use Untek\User\Authentication\Domain\Interfaces\Repositories\IdentityRepositoryInterface;
 use Untek\User\Authentication\Domain\Interfaces\Services\TokenServiceInterface;

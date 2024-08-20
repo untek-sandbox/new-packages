@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\Component\Env\Helpers\EnvHelper;
 use Untek\Component\Web\Controller\Base\BaseWebController;
 use Untek\Component\Web\Error\Symfony4\Interfaces\ErrorControllerInterface;

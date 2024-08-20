@@ -3,7 +3,7 @@
 namespace Untek\User\Authentication\Domain\Interfaces\Repositories;
 
 use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\Model\Repository\Interfaces\CrudRepositoryInterface;
 use Untek\User\Authentication\Domain\Entities\CredentialEntity;
 use Untek\User\Authentication\Domain\Enums\CredentialTypeEnum;

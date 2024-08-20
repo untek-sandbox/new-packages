@@ -3,7 +3,7 @@
 namespace Untek\User\Authentication\Domain\Interfaces\Services;
 
 use Symfony\Component\Security\Core\User\UserInterface;
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\User\Authentication\Domain\Entities\TokenValueEntity;
 
 interface TokenServiceInterface

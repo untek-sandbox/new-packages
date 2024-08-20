@@ -3,7 +3,7 @@
 namespace Untek\Model\DataProvider;
 
 use Doctrine\Persistence\ObjectRepository;
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\Persistence\Contract\Interfaces\RepositoryCountByInterface;
 use Untek\Model\DataProvider\Dto\CollectionData;
 use Untek\Model\DataProvider\Dto\PageResponse;

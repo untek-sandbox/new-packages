@@ -12,7 +12,7 @@
 
 namespace <?= $namespace ?>;
 
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Persistence\Contract\Interfaces\RepositoryFindOneByIdInterface;
 use Untek\Persistence\Contract\Interfaces\RepositoryUpdateInterface;

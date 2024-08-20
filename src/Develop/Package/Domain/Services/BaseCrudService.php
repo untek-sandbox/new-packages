@@ -9,7 +9,7 @@ use Untek\Model\Shared\Enums\EventEnum;
 use Untek\Model\Shared\Events\QueryEvent;
 use Untek\Model\Shared\Traits\DispatchEventTrait;
 use Untek\Model\Shared\Traits\ForgeQueryTrait;
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\Model\Entity\Interfaces\EntityIdInterface;
 use Untek\Core\Instance\Helpers\ClassHelper;
 use Untek\Model\QueryFilter\Interfaces\ForgeQueryByFilterInterface;

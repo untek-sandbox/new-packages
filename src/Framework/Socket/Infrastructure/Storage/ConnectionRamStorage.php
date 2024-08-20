@@ -2,7 +2,7 @@
 
 namespace Untek\Framework\Socket\Infrastructure\Storage;
 
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Workerman\Connection\ConnectionInterface;
 
 class ConnectionRamStorage {

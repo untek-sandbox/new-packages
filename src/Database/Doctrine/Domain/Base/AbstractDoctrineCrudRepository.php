@@ -3,7 +3,7 @@
 namespace Untek\Database\Doctrine\Domain\Base;
 
 use Doctrine\DBAL\Exception;
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\Database\Doctrine\Domain\Helpers\QueryBuilder\DoctrineQueryBuilderHelper;
 use Untek\Persistence\Contract\Interfaces\RepositoryCrudInterface;
 use Untek\Model\Entity\Helpers\EntityHelper;

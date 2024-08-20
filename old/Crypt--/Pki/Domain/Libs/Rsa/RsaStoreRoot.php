@@ -3,7 +3,7 @@
 namespace Untek\Crypt\Pki\Domain\Libs\Rsa;
 
 use Untek\Crypt\Base\Domain\Libs\Encoders\EncoderInterface;
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 
 
 class RsaStoreRoot extends BaseRsaStore implements RsaStoreInterface

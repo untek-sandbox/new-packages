@@ -2,7 +2,7 @@
 
 namespace Untek\Persistence\Contract\Interfaces;
 
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 
 interface RepositoryUpdateInterface
 {

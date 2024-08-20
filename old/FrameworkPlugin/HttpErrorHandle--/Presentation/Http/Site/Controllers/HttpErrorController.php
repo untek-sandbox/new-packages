@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Untek\Component\Http\Enums\HttpStatusCodeEnum;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\Component\Env\Helpers\EnvHelper;
 
 class HttpErrorController

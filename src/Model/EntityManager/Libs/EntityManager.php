@@ -11,7 +11,7 @@ use Untek\Core\Container\Interfaces\ContainerConfiguratorInterface;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
 use Untek\Core\Contract\Common\Exceptions\InvalidMethodParameterException;
 use Untek\Persistence\Contract\Exceptions\AlreadyExistsException;
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\Model\Entity\Helpers\EntityHelper;
 use Untek\Model\Entity\Interfaces\EntityIdInterface;
 use Untek\Model\Entity\Interfaces\UniqueInterface;

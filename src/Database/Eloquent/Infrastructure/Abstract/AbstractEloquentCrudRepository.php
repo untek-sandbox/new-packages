@@ -2,7 +2,7 @@
 
 namespace Untek\Database\Eloquent\Infrastructure\Abstract;
 
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\Database\Eloquent\Infrastructure\Helpers\QueryBuilder\EloquentQueryBuilderHelper;
 use Untek\Persistence\Contract\Interfaces\RepositoryCrudInterface;
 

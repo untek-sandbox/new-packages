@@ -2,7 +2,7 @@
 
 namespace Untek\Database\Memory\Abstract;
 
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\Persistence\Contract\Interfaces\RepositoryCrudInterface;
 
 abstract class AbstractMemoryCrudRepository extends AbstractMemoryRepository implements RepositoryCrudInterface

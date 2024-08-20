@@ -2,7 +2,7 @@
 
 namespace Untek\Crypt\Pki\Domain\Libs\Rsa;
 
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 
 class RsaStoreRam implements RsaStoreInterface
 {

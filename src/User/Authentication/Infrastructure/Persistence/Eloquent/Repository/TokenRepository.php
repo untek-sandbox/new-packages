@@ -3,7 +3,7 @@
 namespace Untek\User\Authentication\Infrastructure\Persistence\Eloquent\Repository;
 
 use Symfony\Component\Security\Core\User\UserInterface;
-use Untek\Core\Contract\Common\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\Component\Text\Libs\RandomString;
 use Untek\Database\Doctrine\Domain\Base\AbstractDoctrineCrudRepository;
 use Untek\Database\Eloquent\Infrastructure\Abstract\AbstractEloquentCrudRepository;
