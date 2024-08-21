@@ -47,7 +47,7 @@ trait EloquentTrait
     public function getQueryBuilderByTableName(string $name): QueryBuilder
     {
         $targetTableName = $this->encodeTableName($name);
-        $connection = $this->getCapsule()->getConnectionByTableName($name);
+        $connection = $this->getCapsule()->getConnection();
         return $connection->table($targetTableName);
     }
 

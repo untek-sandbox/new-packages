@@ -6,6 +6,7 @@ use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\DotEnv\Domain\Libs\DotEnv;
 use Untek\Database\Eloquent\Domain\Capsule\Manager;
 use Untek\Database\Base\Domain\Libs\TableAlias;
+use function Kreait\Firebase\Auth\CreateSessionCookie\response;
 
 trait TableNameTrait
 {
@@ -28,23 +29,26 @@ trait TableNameTrait
 
     public function tableNameAlias(): string
     {
-        return $this->encodeTableName($this->getTableName());
+        return $this->getTableName();
+//        return $this->encodeTableName($this->getTableName());
     }
 
-    protected function getAlias(): TableAlias
+    /*protected function getAlias(): TableAlias
     {
         return $this
             ->getCapsule()
             ->getAlias();
-    }
+    }*/
     
     public function encodeTableName(string $sourceTableName, string $connectionName = null): string
     {
-        $connectionName = $connectionName ?: $this->connectionName();
+        return $sourceTableName;
+
+        /*$connectionName = $connectionName ?: $this->connectionName();
         $targetTableName = $this
             ->getCapsule()
             ->getAlias()
             ->encode($connectionName, $sourceTableName);
-        return $targetTableName;
+        return $targetTableName;*/
     }
 }

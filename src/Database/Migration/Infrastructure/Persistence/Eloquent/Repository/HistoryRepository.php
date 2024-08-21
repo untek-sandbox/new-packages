@@ -63,7 +63,8 @@ class HistoryRepository extends BaseEloquentRepository
 
         $targetTableName = $this->encodeTableName(self::MIGRATION_TABLE_NAME, $connectionName);
         //$queryBuilder = $this->getQueryBuilder();
-        $queryBuilder = $this->getCapsule()->getQueryBuilderByConnectionName($connectionName, $this->tableNameAlias());
+        $queryBuilder = $this->getCapsule()->getConnection()->table($this->tableNameAlias());
+//        $queryBuilder = $this->getCapsule()->getQueryBuilderByConnectionName($connectionName, $this->tableNameAlias());
         $queryBuilder->insert([
             'version' => $version,
             'executed_at' => new \DateTime(),
@@ -77,7 +78,8 @@ class HistoryRepository extends BaseEloquentRepository
 
 //        $targetTableName = $this->encodeTableName(self::MIGRATION_TABLE_NAME, $connectionName);
         //$queryBuilder = $this->getQueryBuilder();
-        $queryBuilder = $this->getCapsule()->getQueryBuilderByConnectionName($connectionName, $this->tableNameAlias());
+//        $queryBuilder = $this->getCapsule()->getQueryBuilderByConnectionName($connectionName, $this->tableNameAlias());
+        $queryBuilder = $this->getCapsule()->getConnection()->table($this->tableNameAlias());
         $queryBuilder->where('version', $version);
         $queryBuilder->delete();
     }
@@ -86,8 +88,8 @@ class HistoryRepository extends BaseEloquentRepository
     {
         $migration = $this->createMigrationClass($class);
 
-        $tableName = $migration->getTableName();
-        $schema = $this->getCapsule()->getSchemaByTableName($tableName);
+//        $tableName = $migration->getTableName();
+        $schema = $this->getCapsule()->getConnection()->getSchemaBuilder();
 
         //$connection = $migration->getConnection();
         $connection = $schema->getConnection();
@@ -133,25 +135,29 @@ class HistoryRepository extends BaseEloquentRepository
 
     public function findAll($connectionName = 'default')
     {
+        $connection = $this->getCapsule()->getConnection($connectionName);
+        $queryBuilder = $connection->table($this->tableNameAlias(), null);
 
-        $connections = $this->getCapsule()->getConnectionNames();
+        $collection = [];
+        try {
+            $array = $queryBuilder->get()->toArray();
+            foreach ($array as $item) {
+                $entityClass = $this->getEntityClass();
+                $entity = new $entityClass;
+                $entity->version = $item->version;
+                //$entity->className = $className;
+                $collection[] = $entity;
+            }
+        } catch (\Throwable $e) {}
+
+        /*$connections = $this->getCapsule()->getConnectionNames();
 
         $collection = [];
         //dd($connections);
         foreach ($connections as $connectionName) {
 //            $this->forgeMigrationTable($connectionName);
             $queryBuilder = $this->getCapsule()->getQueryBuilderByConnectionName($connectionName, $this->tableNameAlias());
-            try {
-                $array = $queryBuilder->get()->toArray();
-                foreach ($array as $item) {
-                    $entityClass = $this->getEntityClass();
-                    $entity = new $entityClass;
-                    $entity->version = $item->version;
-                    //$entity->className = $className;
-                    $collection[] = $entity;
-                }
-            } catch (\Throwable $e) {}
-        }
+        }*/
 
         return $collection;
     }

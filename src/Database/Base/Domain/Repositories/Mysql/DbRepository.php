@@ -122,7 +122,7 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
 
     public function allTables(): Enumerable
     {
-        $tableAlias = $this->getCapsule()->getAlias();
+//        $tableAlias = $this->getCapsule()->getAlias();
         /* @var Builder|MySqlBuilder|PostgresBuilder $schema */
         $schema = $this->getSchema();
 
@@ -145,7 +145,8 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
             }
             foreach ($tableCollection as $tableEntity) {
                 $tableName = StructHelper::getTableNameFromEntity($tableEntity);
-                $sourceTableName = $tableAlias->decode('default', $tableName);
+                $sourceTableName = $tableName;
+//                $sourceTableName = $tableAlias->decode('default', $tableName);
                 $tableEntity1 = new TableEntity();
                 $tableEntity1->setName($tableName);
                 $tableEntity1->setSchemaName($tableEntity->getSchema()->getName());

@@ -121,7 +121,7 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
 
     public function allTables(): Enumerable
     {
-        $tableAlias = $this->getCapsule()->getAlias();
+//        $tableAlias = $this->getCapsule()->getAlias();
         /* @var Builder|MySqlBuilder|PostgresBuilder $schema */
         $schema = $this->getSchema();
 

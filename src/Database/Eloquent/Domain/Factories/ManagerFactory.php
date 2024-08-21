@@ -30,13 +30,13 @@ class ManagerFactory
         }
 
 //        $config = LoadHelper::loadConfig(getenv('DATABASE_CONFIG_FILE'));
-        $connectionMap = ArrayHelper::getValue($config, 'connection.connectionMap', []);
+//        $connectionMap = ArrayHelper::getValue($config, 'connection.connectionMap', []);
 
         $map = ArrayHelper::getValue($config, 'connection.map', []);
-        $tableAlias = self::createTableAlias($connections, $map);
+//        $tableAlias = self::createTableAlias($connections, $map);
         $capsule = new Manager();
-        $capsule->setConnectionMap($connectionMap);
-        $capsule->setTableAlias($tableAlias);
+//        $capsule->setConnectionMap($connectionMap);
+//        $capsule->setTableAlias($tableAlias);
 
         self::touchSqlite($connections);
 
