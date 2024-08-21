@@ -13,5 +13,5 @@ interface RepositoryFindOneByIdInterface
      * @return object
      * @throws NotFoundException
      */
-    public function findOneById(int $id, ?array $relations = null): object;
+    public function findOneById(mixed $id, ?array $relations = null): object;
 }

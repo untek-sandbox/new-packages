@@ -57,7 +57,7 @@ abstract class AbstractDirectoryCrudRepository extends AbstractMemoryRepository 
     /**
      * @inheritdoc
      */
-    public function findOneById(int $id, ?array $relations = null): object
+    public function findOneById(mixed $id, ?array $relations = null): object
     {
         $entity = $this->find($id, $relations);
         if (empty($entity)) {
@@ -69,7 +69,7 @@ abstract class AbstractDirectoryCrudRepository extends AbstractMemoryRepository 
     /**
      * @inheritdoc
      */
-    public function deleteById(int $id): void
+    public function deleteById(mixed $id): void
     {
         $entity = $this->findOneById($id);
     }

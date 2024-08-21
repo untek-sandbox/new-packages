@@ -11,5 +11,5 @@ interface RepositoryDeleteByIdInterface
      * @param int $id
      * @throws NotFoundException
      */
-    public function deleteById(int $id): void;
+    public function deleteById(mixed $id): void;
 }
