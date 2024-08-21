@@ -8,7 +8,9 @@ interface RepositoryDeleteByIdInterface
 {
 
     /**
-     * @param int $id
+     * Удалить сущность из хранилища по ее ID.
+     *
+     * @param mixed $id
      * @throws NotFoundException
      */
     public function deleteById(mixed $id): void;

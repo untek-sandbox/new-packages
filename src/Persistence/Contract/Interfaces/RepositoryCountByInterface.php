@@ -6,6 +6,8 @@ interface RepositoryCountByInterface
 {
 
     /**
+     * Посчитать количестов записей, удовлетворяющих определенным критериям.
+     *
      * @param array $criteria
      * @return int
      */

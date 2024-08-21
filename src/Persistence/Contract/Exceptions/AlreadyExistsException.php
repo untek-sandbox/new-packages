@@ -5,19 +5,21 @@ namespace Untek\Persistence\Contract\Exceptions;
 use Exception;
 
 /**
- * Сущность уже существует в хранилище
+ * Сущность уже существует в хранилище.
  */
 class AlreadyExistsException extends Exception
 {
 
     /**
-     * Сущность
+     * Сущность.
+     *
      * @var object
      */
     private $entity;
 
     /**
-     * Уникальные поля сущности, по которым оно найдено в хранилище
+     * Уникальные поля сущности, по которым оно найдено в хранилище.
+     *
      * @var array 
      */
     private $fields = [];

@@ -8,6 +8,8 @@ interface RepositoryUpdateInterface
 {
 
     /**
+     * Обновить сущность в хранилище.
+     *
      * @param object $entity
      * @throws NotFoundException
      */

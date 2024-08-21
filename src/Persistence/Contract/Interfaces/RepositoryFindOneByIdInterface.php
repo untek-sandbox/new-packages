@@ -8,7 +8,9 @@ interface RepositoryFindOneByIdInterface
 {
 
     /**
-     * @param int $id
+     * Найти сущность по ее ID.
+     *
+     * @param mixed $id
      * @param array|null $relations
      * @return object
      * @throws NotFoundException
