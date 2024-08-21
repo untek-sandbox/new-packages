@@ -88,7 +88,10 @@ abstract class AbstractEloquentRepository implements ObjectRepository
 
     protected function createQueryBuilder(): \Illuminate\Database\Query\Builder
     {
-        return $this->getQueryBuilderByTableName($this->getTableName());
+        $connection = $this->getCapsule()->getConnection();
+        return $connection->table($this->getTableName());
+
+//        return $this->getQueryBuilderByTableName($this->getTableName());
     }
 
     /**

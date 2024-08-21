@@ -29,10 +29,10 @@ class DbRepository
         $this->setCapsule($capsule);
     }
 
-    public function connectionName()
+    /*public function connectionName()
     {
         return 'default';
-    }
+    }*/
 
     /*public function getConnection(): Connection
     {

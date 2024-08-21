@@ -12,7 +12,7 @@ trait EloquentTrait
 
     private Manager $capsule;
 
-    abstract public function connectionName();
+//    abstract public function connectionName();
 
     public function setCapsule(Manager $capsule): void
     {
@@ -26,7 +26,7 @@ trait EloquentTrait
 
     public function getConnection(string $connectionName = null): Connection
     {
-        $connectionName = $connectionName ?: $this->connectionName();
+        $connectionName = $connectionName /*?: $this->connectionName()*/;
         return $this
             ->getCapsule()
             ->getConnection($connectionName);
@@ -44,12 +44,12 @@ trait EloquentTrait
         return $this->getAlias()->encode($connectionName, $name);
     }*/
 
-    public function getQueryBuilderByTableName(string $name): QueryBuilder
+    /*public function getQueryBuilderByTableName(string $name): QueryBuilder
     {
-        $targetTableName = $this->encodeTableName($name);
+//        $targetTableName = $this->encodeTableName($name);
         $connection = $this->getCapsule()->getConnection();
-        return $connection->table($targetTableName);
-    }
+        return $connection->table($name);
+    }*/
 
     /*public function getConnectionByTableName(string $name) {
         return $this->getCapsule()->getConnectionByTableName($name);

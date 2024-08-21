@@ -61,9 +61,10 @@ class HistoryRepository extends BaseEloquentRepository
 //        $tableAlias = $this->getCapsule()->getAlias();
 //        $targetTableName = $tableAlias->encode($connectionName, self::MIGRATION_TABLE_NAME);
 
-        $targetTableName = $this->encodeTableName(self::MIGRATION_TABLE_NAME, $connectionName);
+//        $targetTableName = $this->encodeTableName(self::MIGRATION_TABLE_NAME, $connectionName);
+//        $targetTableName = self::MIGRATION_TABLE_NAME;
         //$queryBuilder = $this->getQueryBuilder();
-        $queryBuilder = $this->getCapsule()->getConnection()->table($this->tableNameAlias());
+        $queryBuilder = $this->getCapsule()->getConnection()->table($this->getTableName());
 //        $queryBuilder = $this->getCapsule()->getQueryBuilderByConnectionName($connectionName, $this->tableNameAlias());
         $queryBuilder->insert([
             'version' => $version,
@@ -79,7 +80,7 @@ class HistoryRepository extends BaseEloquentRepository
 //        $targetTableName = $this->encodeTableName(self::MIGRATION_TABLE_NAME, $connectionName);
         //$queryBuilder = $this->getQueryBuilder();
 //        $queryBuilder = $this->getCapsule()->getQueryBuilderByConnectionName($connectionName, $this->tableNameAlias());
-        $queryBuilder = $this->getCapsule()->getConnection()->table($this->tableNameAlias());
+        $queryBuilder = $this->getCapsule()->getConnection()->table($this->getTableName());
         $queryBuilder->where('version', $version);
         $queryBuilder->delete();
     }
@@ -136,7 +137,7 @@ class HistoryRepository extends BaseEloquentRepository
     public function findAll($connectionName = 'default')
     {
         $connection = $this->getCapsule()->getConnection($connectionName);
-        $queryBuilder = $connection->table($this->tableNameAlias(), null);
+        $queryBuilder = $connection->table($this->getTableName(), null);
 
         $collection = [];
         try {
@@ -168,7 +169,8 @@ class HistoryRepository extends BaseEloquentRepository
         //$schema = $this->getSchema($connectionName);
 //        $tableAlias = $this->getCapsule()->getAlias();
 
-        $targetTableName = $this->encodeTableName(self::MIGRATION_TABLE_NAME, $connectionName);
+//        $targetTableName = $this->encodeTableName(self::MIGRATION_TABLE_NAME, $connectionName);
+        $targetTableName = self::MIGRATION_TABLE_NAME;
 
 //        $targetTableName = $tableAlias->encode($connectionName, self::MIGRATION_TABLE_NAME);
         $hasTable = $this->getSchema($connectionName)->hasTable($targetTableName);
@@ -190,7 +192,9 @@ class HistoryRepository extends BaseEloquentRepository
 //        $tableAlias = $this->getCapsule()->getAlias();
 //        $targetTableName = $tableAlias->encode($connectionName, self::MIGRATION_TABLE_NAME);
 
-        $targetTableName = $this->encodeTableName(self::MIGRATION_TABLE_NAME, $connectionName);
+//        $targetTableName = $this->encodeTableName(self::MIGRATION_TABLE_NAME, $connectionName);
+        $targetTableName = self::MIGRATION_TABLE_NAME;
+
 
         $this->getSchema($connectionName)->create($targetTableName, $tableSchema);
     }

@@ -15,23 +15,23 @@ trait TableNameTrait
 
     abstract public function getCapsule(): Manager;
 
-    public function connectionName()
+    /*public function connectionName()
     {
         return $this
             ->getCapsule()
             ->getConnectionNameByTableName($this->getTableName());
-    }
+    }*/
 
     public function getTableName(): string
     {
         return $this->tableName;
     }
 
-    public function tableNameAlias(): string
+    /*public function tableNameAlias(): string
     {
         return $this->getTableName();
 //        return $this->encodeTableName($this->getTableName());
-    }
+    }*/
 
     /*protected function getAlias(): TableAlias
     {
@@ -40,15 +40,15 @@ trait TableNameTrait
             ->getAlias();
     }*/
     
-    public function encodeTableName(string $sourceTableName, string $connectionName = null): string
-    {
-        return $sourceTableName;
-
-        /*$connectionName = $connectionName ?: $this->connectionName();
-        $targetTableName = $this
-            ->getCapsule()
-            ->getAlias()
-            ->encode($connectionName, $sourceTableName);
-        return $targetTableName;*/
-    }
+//    public function encodeTableName(string $sourceTableName, string $connectionName = null): string
+//    {
+//        return $sourceTableName;
+//
+//        /*$connectionName = $connectionName ?: $this->connectionName();
+//        $targetTableName = $this
+//            ->getCapsule()
+//            ->getAlias()
+//            ->encode($connectionName, $sourceTableName);
+//        return $targetTableName;*/
+//    }
 }

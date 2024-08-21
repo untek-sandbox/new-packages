@@ -11,9 +11,9 @@ abstract class BaseColumnMigration extends BaseCreateTableMigration
 
     public function up(Builder $schema)
     {
-        $isHasSchema = SqlHelper::isHasSchemaInTableName($this->tableNameAlias());
+        $isHasSchema = SqlHelper::isHasSchemaInTableName($this->getTableName());
         if ($isHasSchema) {
-            $schemaName = SqlHelper::extractSchemaFormTableName($this->tableNameAlias());
+            $schemaName = SqlHelper::extractSchemaFormTableName($this->getTableName());
             $this->getConnection()->statement('CREATE SCHEMA IF NOT EXISTS "' . $schemaName . '";');
         }
 
@@ -26,6 +26,6 @@ abstract class BaseColumnMigration extends BaseCreateTableMigration
             $closure = $this->tableSchema();
         }
 
-        $schema->table($this->tableNameAlias(), $closure);
+        $schema->table($this->getTableName(), $closure);
     }
 }

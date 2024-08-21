@@ -31,10 +31,10 @@ abstract class BaseCreateTableMigration extends BaseMigration implements Migrati
         };
     }
 
-    public function connectionName()
+    /*public function connectionName()
     {
         return 'default';
-    }
+    }*/
 
     /*public function isInOneDatabase(string $tableName): bool
     {
@@ -47,7 +47,8 @@ abstract class BaseCreateTableMigration extends BaseMigration implements Migrati
             $table
                 ->foreign($foreignColumns)
                 ->references($referencesColumns)
-                ->on($this->encodeTableName($onTable))
+                ->on($onTable)
+//                ->on($this->encodeTableName($onTable))
                 ->onDelete($onDelete)
                 ->onUpdate($onUpdate);
 //        }
@@ -55,9 +56,9 @@ abstract class BaseCreateTableMigration extends BaseMigration implements Migrati
 
     public function up(Builder $schema)
     {
-        $isHasSchema = SqlHelper::isHasSchemaInTableName($this->tableNameAlias());
+        $isHasSchema = SqlHelper::isHasSchemaInTableName($this->getTableName());
         if ($isHasSchema) {
-            $schemaName = SqlHelper::extractSchemaFormTableName($this->tableNameAlias());
+            $schemaName = SqlHelper::extractSchemaFormTableName($this->getTableName());
             $this->getConnection()->statement('CREATE SCHEMA IF NOT EXISTS "' . $schemaName . '";');
         }
 
@@ -70,7 +71,7 @@ abstract class BaseCreateTableMigration extends BaseMigration implements Migrati
             $closure = $this->tableSchema();
         }
 
-        $schema->create($this->tableNameAlias(), $closure);
+        $schema->create($this->getTableName(), $closure);
 
         if ($this->tableComment) {
             $this->addTableComment($schema);
@@ -79,14 +80,14 @@ abstract class BaseCreateTableMigration extends BaseMigration implements Migrati
 
     public function down(Builder $schema)
     {
-        $schema->dropIfExists($this->tableNameAlias());
+        $schema->dropIfExists($this->getTableName());
     }
 
     private function addTableComment(Builder $schema)
     {
         $connection = $this->getConnection();
         $driver = $connection->getConfig('driver');
-        $table = $this->tableNameAlias();
+        $table = $this->getTableName();
         $quotedTableName = SqlHelper::generateRawTableName($table);
         $tableComment = $this->tableComment;
         $sql = '';
