@@ -31,10 +31,10 @@ class DbRepository
 //        $this->setCapsule($capsule);
     }
 
-    public function getCapsule(): Manager
+    /*public function getCapsule(): Manager
     {
         return $this->capsule;
-    }
+    }*/
 
     /*public function connectionName()
     {
@@ -96,7 +96,7 @@ JOIN information_schema.constraint_column_usage AS ccu
   ON ccu.constraint_name = tc.constraint_name
 WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
         $connection = $this
-            ->getCapsule()
+            ->capsule
             ->getConnection();
         $array = $connection->select($sql);
         $collection = new Collection();
@@ -134,7 +134,7 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
 //        $tableAlias = $this->getCapsule()->getAlias();
         /* @var Builder|MySqlBuilder|PostgresBuilder $schema */
         $schema = $this
-            ->getCapsule()
+            ->capsule
             ->getConnection()
             ->getSchemaBuilder();
 
@@ -181,7 +181,7 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
     public function getColumnsByTable(string $tableName): Enumerable
     {
         $schema = $this
-            ->getCapsule()
+            ->capsule
             ->getConnection()
             ->getSchemaBuilder();
         $columnList = $schema->getColumnListing($tableName);
