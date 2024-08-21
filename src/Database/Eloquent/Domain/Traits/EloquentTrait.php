@@ -12,17 +12,17 @@ trait EloquentTrait
 
     private Manager $capsule;
 
+    public function getCapsule(): Manager
+    {
+        return $this->capsule;
+    }
+
 //    abstract public function connectionName();
 
     /*public function setCapsule(Manager $capsule): void
     {
         $this->capsule = $capsule;
     }*/
-
-    public function getCapsule(): Manager
-    {
-        return $this->capsule;
-    }
 
     /*public function getConnection(string $connectionName = null): Connection
     {

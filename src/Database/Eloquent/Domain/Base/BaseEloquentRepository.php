@@ -21,11 +21,15 @@ abstract class BaseEloquentRepository //implements GetEntityClassInterface
 {
 
     use EloquentTrait;
-    use TableNameTrait;
+//    use TableNameTrait;
     use EntityManagerAwareTrait;
 //    use RepositoryMapperTrait;
 //    use DispatchEventTrait;
 //    use ForgeQueryTrait;
+
+//    protected $tableName;
+
+    abstract public function getTableName(): string;
 
     protected function forgeQuery(Query $query = null): Query
     {

@@ -18,8 +18,13 @@ class HistoryRepository extends BaseEloquentRepository
 
     const MIGRATION_TABLE_NAME = 'eq_migration';
 
-    protected $tableName = self::MIGRATION_TABLE_NAME;
+//    protected $tableName = self::MIGRATION_TABLE_NAME;
     protected ContainerInterface $container;
+
+    public function getTableName(): string
+    {
+        return self::MIGRATION_TABLE_NAME;
+    }
 
     public function getEntityClass(): string
     {

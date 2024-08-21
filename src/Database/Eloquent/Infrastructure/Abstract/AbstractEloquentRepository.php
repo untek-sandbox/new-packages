@@ -20,10 +20,11 @@ abstract class AbstractEloquentRepository implements ObjectRepository
 
     use RepositoryRelationTrait;
     use EloquentTrait;
-    use TableNameTrait;
+//    use TableNameTrait;
     use NormalizerTrait;
 
     private Connection $connection;
+//    protected $tableName;
 
     abstract public function getTableName(): string;
 

@@ -8,10 +8,17 @@ use Illuminate\Database\Capsule\Manager;
 use Untek\Database\Base\Domain\Libs\TableAlias;
 use function Kreait\Firebase\Auth\CreateSessionCookie\response;
 
+DeprecateHelper::hardThrow();
+
 trait TableNameTrait
 {
 
     protected $tableName;
+
+    public function getTableName(): string
+    {
+        return $this->tableName;
+    }
 
 //    abstract public function getCapsule(): Manager;
 
@@ -21,11 +28,6 @@ trait TableNameTrait
             ->getCapsule()
             ->getConnectionNameByTableName($this->getTableName());
     }*/
-
-    public function getTableName(): string
-    {
-        return $this->tableName;
-    }
 
     /*public function tableNameAlias(): string
     {

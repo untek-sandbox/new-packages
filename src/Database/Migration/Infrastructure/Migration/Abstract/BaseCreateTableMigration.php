@@ -13,11 +13,16 @@ use Untek\Database\Migration\Infrastructure\Migration\Interfaces\MigrationInterf
 abstract class BaseCreateTableMigration extends BaseMigration implements MigrationInterface
 {
 
-    use TableNameTrait;
+//    use TableNameTrait;
 
     protected $blueprint;
     protected $tableComment = '';
+    protected $tableName;
 
+    public function getTableName(): string
+    {
+        return $this->tableName;
+    }
     public function tableStructure(Blueprint $table): void
     {
 
