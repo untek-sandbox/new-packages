@@ -89,7 +89,10 @@ JOIN information_schema.key_column_usage AS kcu
 JOIN information_schema.constraint_column_usage AS ccu
   ON ccu.constraint_name = tc.constraint_name
 WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
-        $array = $this->getConnection()->select($sql);
+        $connection = $this
+            ->getCapsule()
+            ->getConnection();
+        $array = $connection->select($sql);
         $collection = new Collection();
         foreach ($array as $item) {
             $relationEntity = new RelationEntity();
@@ -125,6 +128,7 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
 //        $tableAlias = $this->getCapsule()->getAlias();
         /* @var Builder|MySqlBuilder|PostgresBuilder $schema */
         $schema = $this
+            ->getCapsule()
             ->getConnection()
             ->getSchemaBuilder();
 
@@ -171,6 +175,7 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
     public function getColumnsByTable(string $tableName): Enumerable
     {
         $schema = $this
+            ->getCapsule()
             ->getConnection()
             ->getSchemaBuilder();
         $columnList = $schema->getColumnListing($tableName);

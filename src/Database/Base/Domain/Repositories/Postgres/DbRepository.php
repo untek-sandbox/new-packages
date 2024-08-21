@@ -15,7 +15,9 @@ class DbRepository extends \Untek\Database\Base\Domain\Repositories\Base\DbRepos
 
     public function allTables(): Enumerable
     {
-        $connection = $this->getConnection();
+        $connection = $this
+            ->getCapsule()
+            ->getConnection();
         $schemas = $this->allSchemas();
         $tableCollection = new Collection();
         foreach ($schemas as $schemaName) {
@@ -46,7 +48,10 @@ JOIN information_schema.key_column_usage AS kcu
 JOIN information_schema.constraint_column_usage AS ccu
   ON ccu.constraint_name = tc.constraint_name
 WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
-        $array = $this->getConnection()->select($sql);
+        $connection = $this
+            ->getCapsule()
+            ->getConnection();
+        $array = $connection->select($sql);
         $collection = new Collection();
         foreach ($array as $item) {
             $relationEntity = new RelationEntity();
@@ -62,7 +67,9 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
 
     private function allSchemas(): array
     {
-        $connection = $this->getConnection();
+        $connection = $this
+            ->getCapsule()
+            ->getConnection();
         $schemaCollection = $connection->select("select schema_name from information_schema.schemata;");
         $schemaNames = ArrayHelper::getColumn($schemaCollection, 'schema_name');
         $excludes = [
@@ -78,7 +85,9 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
 
     public function allColumnsByTable(string $tableName, string $schemaName = 'public'): Enumerable
     {
-        $connection = $this->getConnection();
+        $connection = $this
+            ->getCapsule()
+            ->getConnection();
         /*$schemaCollection = $connection->select("SELECT column_name, data_type
 FROM information_schema.columns
 WHERE table_name = '$tableName' AND table_schema = '$schemaName';");

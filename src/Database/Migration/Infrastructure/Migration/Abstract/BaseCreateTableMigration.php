@@ -59,7 +59,10 @@ abstract class BaseCreateTableMigration extends BaseMigration implements Migrati
         $isHasSchema = SqlHelper::isHasSchemaInTableName($this->getTableName());
         if ($isHasSchema) {
             $schemaName = SqlHelper::extractSchemaFormTableName($this->getTableName());
-            $this->getConnection()->statement('CREATE SCHEMA IF NOT EXISTS "' . $schemaName . '";');
+            $connection = $this
+                ->getCapsule()
+                ->getConnection();
+            $connection->statement('CREATE SCHEMA IF NOT EXISTS "' . $schemaName . '";');
         }
 
         if(method_exists($this, 'tableStructure')) {
@@ -85,7 +88,9 @@ abstract class BaseCreateTableMigration extends BaseMigration implements Migrati
 
     private function addTableComment(Builder $schema)
     {
-        $connection = $this->getConnection();
+        $connection = $this
+            ->getCapsule()
+            ->getConnection();
         $driver = $connection->getConfig('driver');
         $table = $this->getTableName();
         $quotedTableName = SqlHelper::generateRawTableName($table);

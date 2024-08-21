@@ -174,6 +174,7 @@ class HistoryRepository extends BaseEloquentRepository
 
 //        $targetTableName = $tableAlias->encode($connectionName, self::MIGRATION_TABLE_NAME);
         $schema = $this
+            ->getCapsule()
             ->getConnection($connectionName)
             ->getSchemaBuilder();
         $hasTable = $schema->hasTable($targetTableName);
@@ -200,6 +201,7 @@ class HistoryRepository extends BaseEloquentRepository
         $targetTableName = self::MIGRATION_TABLE_NAME;
 
         $schema = $this
+            ->getCapsule()
             ->getConnection($connectionName)
             ->getSchemaBuilder();
 

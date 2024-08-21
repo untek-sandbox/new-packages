@@ -24,20 +24,20 @@ trait EloquentTrait
         return $this->capsule;
     }
 
-    public function getConnection(string $connectionName = null): Connection
+    /*public function getConnection(string $connectionName = null): Connection
     {
 //        $connectionName = $connectionName ?: $this->connectionName();
         return $this
             ->getCapsule()
             ->getConnection($connectionName);
-    }
+    }*/
 
-    protected function getSchema(string $connectionName = null): SchemaBuilder
+    /*protected function getSchema(string $connectionName = null): SchemaBuilder
     {
         return $this
             ->getConnection($connectionName)
             ->getSchemaBuilder();
-    }
+    }*/
 
     /*public function encodeTableName(string $name, string $connectionName = null): string {
         $connectionName = $connectionName ?: $this->connectionName();
