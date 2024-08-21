@@ -52,7 +52,9 @@ abstract class DbRepository
      */
     public function allColumnsByTable(string $tableName, string $schemaName = 'public'): Enumerable
     {
-        $schema = $this->getSchema();
+        $schema = $this
+            ->getConnection()
+            ->getSchemaBuilder();
         $columnList = $schema->getColumnListing($tableName);
         $columnCollection = new Collection();
         foreach ($columnList as $columnName) {

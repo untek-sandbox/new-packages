@@ -26,7 +26,7 @@ trait EloquentTrait
 
     public function getConnection(string $connectionName = null): Connection
     {
-        $connectionName = $connectionName /*?: $this->connectionName()*/;
+//        $connectionName = $connectionName ?: $this->connectionName();
         return $this
             ->getCapsule()
             ->getConnection($connectionName);

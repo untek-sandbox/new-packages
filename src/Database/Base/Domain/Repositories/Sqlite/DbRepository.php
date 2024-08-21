@@ -124,7 +124,9 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
     {
 //        $tableAlias = $this->getCapsule()->getAlias();
         /* @var Builder|MySqlBuilder|PostgresBuilder $schema */
-        $schema = $this->getSchema();
+        $schema = $this
+            ->getConnection()
+            ->getSchemaBuilder();
 
         $dbName = $schema->getConnection()->getDatabaseName();
         $collection = new Collection();
@@ -168,7 +170,9 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
      */
     public function getColumnsByTable(string $tableName): Enumerable
     {
-        $schema = $this->getSchema();
+        $schema = $this
+            ->getConnection()
+            ->getSchemaBuilder();
         $columnList = $schema->getColumnListing($tableName);
         $columnCollection = new Collection();
         foreach ($columnList as $columnName) {

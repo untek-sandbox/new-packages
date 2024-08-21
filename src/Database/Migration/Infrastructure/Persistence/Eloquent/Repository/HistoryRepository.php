@@ -173,7 +173,11 @@ class HistoryRepository extends BaseEloquentRepository
         $targetTableName = self::MIGRATION_TABLE_NAME;
 
 //        $targetTableName = $tableAlias->encode($connectionName, self::MIGRATION_TABLE_NAME);
-        $hasTable = $this->getSchema($connectionName)->hasTable($targetTableName);
+        $schema = $this
+            ->getConnection($connectionName)
+            ->getSchemaBuilder();
+        $hasTable = $schema->hasTable($targetTableName);
+
 
         if ($hasTable) {
             return;
@@ -195,8 +199,11 @@ class HistoryRepository extends BaseEloquentRepository
 //        $targetTableName = $this->encodeTableName(self::MIGRATION_TABLE_NAME, $connectionName);
         $targetTableName = self::MIGRATION_TABLE_NAME;
 
+        $schema = $this
+            ->getConnection($connectionName)
+            ->getSchemaBuilder();
 
-        $this->getSchema($connectionName)->create($targetTableName, $tableSchema);
+        $schema->create($targetTableName, $tableSchema);
     }
 
 }
