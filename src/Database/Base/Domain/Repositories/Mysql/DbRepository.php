@@ -21,9 +21,10 @@ use Untek\Database\Fixture\Domain\Helpers\StructHelper;
 class DbRepository
 {
 
-    use EloquentTrait;
+//    use EloquentTrait;
 
 //    private $capsule;
+    protected Manager $capsule;
 
     public function __construct(Manager $capsule)
     {
@@ -31,6 +32,10 @@ class DbRepository
 //        $this->setCapsule($capsule);
     }
 
+    public function getCapsule(): Manager
+    {
+        return $this->capsule;
+    }
     /*public function connectionName()
     {
         return 'default';

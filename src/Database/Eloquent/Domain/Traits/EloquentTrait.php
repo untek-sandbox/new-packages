@@ -6,6 +6,9 @@ use Illuminate\Database\Connection;
 use Illuminate\Database\Schema\Builder as SchemaBuilder;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Capsule\Manager;
+use Untek\Component\Code\Helpers\DeprecateHelper;
+
+DeprecateHelper::hardThrow();
 
 trait EloquentTrait
 {

@@ -10,17 +10,23 @@ use Untek\Database\Base\Domain\Repositories\Eloquent\SchemaRepository;
 abstract class BaseMigration
 {
 
-    use EloquentTrait;
+//    use EloquentTrait;
 
 //    protected $capsule;
 
 //    protected $schemaRepository;
+    protected Manager $capsule;
 
     public function __construct(Manager $capsule/*, SchemaRepository $schemaRepository*/)
     {
         $this->capsule = $capsule;
 //        $this->setCapsule($capsule);
 //        $this->schemaRepository = $schemaRepository;
+    }
+
+    public function getCapsule(): Manager
+    {
+        return $this->capsule;
     }
 
     /*public function getCapsule(): Manager

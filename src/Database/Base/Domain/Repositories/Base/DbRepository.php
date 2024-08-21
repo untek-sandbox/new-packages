@@ -12,14 +12,20 @@ use Untek\Database\Eloquent\Domain\Traits\EloquentTrait;
 abstract class DbRepository
 {
 
-    use EloquentTrait;
+//    use EloquentTrait;
 
 //    private $capsule;
+    protected Manager $capsule;
 
     public function __construct(Manager $capsule)
     {
         $this->capsule = $capsule;
 //        $this->setCapsule($capsule);
+    }
+
+    public function getCapsule(): Manager
+    {
+        return $this->capsule;
     }
 
     /*public function connectionName()

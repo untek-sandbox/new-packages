@@ -19,12 +19,18 @@ abstract class AbstractEloquentRepository implements ObjectRepository
 {
 
     use RepositoryRelationTrait;
-    use EloquentTrait;
+//    use EloquentTrait;
 //    use TableNameTrait;
     use NormalizerTrait;
 
     private Connection $connection;
 //    protected $tableName;
+    protected Manager $capsule;
+
+    public function getCapsule(): Manager
+    {
+        return $this->capsule;
+    }
 
     abstract public function getTableName(): string;
 

@@ -20,7 +20,7 @@ use Untek\Model\Shared\Traits\ForgeQueryTrait;
 abstract class BaseEloquentRepository //implements GetEntityClassInterface
 {
 
-    use EloquentTrait;
+//    use EloquentTrait;
 //    use TableNameTrait;
     use EntityManagerAwareTrait;
 //    use RepositoryMapperTrait;
@@ -28,6 +28,12 @@ abstract class BaseEloquentRepository //implements GetEntityClassInterface
 //    use ForgeQueryTrait;
 
 //    protected $tableName;
+    protected Manager $capsule;
+
+    public function getCapsule(): Manager
+    {
+        return $this->capsule;
+    }
 
     abstract public function getTableName(): string;
 
