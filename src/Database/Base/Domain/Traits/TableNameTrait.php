@@ -13,7 +13,7 @@ trait TableNameTrait
 
     protected $tableName;
 
-    abstract public function getCapsule(): Manager;
+//    abstract public function getCapsule(): Manager;
 
     /*public function connectionName()
     {

@@ -29,7 +29,8 @@ abstract class AbstractEloquentRepository implements ObjectRepository
 
     public function __construct(Manager $capsule)
     {
-        $this->setCapsule($capsule);
+        $this->capsule = $capsule;
+//        $this->setCapsule($capsule);
     }
 
     protected function tableNameForQuery(): string

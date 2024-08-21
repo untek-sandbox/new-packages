@@ -36,7 +36,8 @@ abstract class BaseEloquentRepository //implements GetEntityClassInterface
 
     public function __construct(EntityManagerInterface $em, Manager $capsule)
     {
-        $this->setCapsule($capsule);
+        $this->capsule = $capsule;
+//        $this->setCapsule($capsule);
         $this->setEntityManager($em);
     }
 

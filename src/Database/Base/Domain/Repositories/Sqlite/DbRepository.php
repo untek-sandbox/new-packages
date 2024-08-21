@@ -26,7 +26,8 @@ class DbRepository
 
     public function __construct(Manager $capsule)
     {
-        $this->setCapsule($capsule);
+        $this->capsule = $capsule;
+//        $this->setCapsule($capsule);
     }
 
     /*public function connectionName()

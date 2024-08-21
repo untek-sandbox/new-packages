@@ -14,10 +14,10 @@ trait EloquentTrait
 
 //    abstract public function connectionName();
 
-    public function setCapsule(Manager $capsule): void
+    /*public function setCapsule(Manager $capsule): void
     {
         $this->capsule = $capsule;
-    }
+    }*/
 
     public function getCapsule(): Manager
     {
