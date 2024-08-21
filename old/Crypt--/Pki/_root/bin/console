@@ -5,7 +5,7 @@ use Symfony\Component\Console\Application;
 use Untek\Core\DotEnv\Domain\Libs\DotEnv;
 use Untek\Core\Container\Libs\Container;
 use Untek\Database\Eloquent\Domain\Factories\ManagerFactory;
-use Untek\Database\Eloquent\Domain\Capsule\Manager;
+use Illuminate\Database\Capsule\Manager;
 
 require __DIR__ . '/../../../autoload.php';
 DotEnv::init();

@@ -9,7 +9,7 @@ use Untek\Core\Container\Helpers\ContainerHelper;
 use Untek\Component\Text\Helpers\TextHelper;
 use Untek\Database\Base\Domain\Repositories\Eloquent\SchemaRepository;
 use Untek\Component\Http\Helpers\UrlHelper;
-use Untek\Database\Eloquent\Domain\Capsule\Manager;
+use Illuminate\Database\Capsule\Manager;
 
 trait OverwriteDatabaseTrait
 {

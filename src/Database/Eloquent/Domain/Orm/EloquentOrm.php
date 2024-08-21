@@ -3,7 +3,7 @@
 namespace Untek\Database\Eloquent\Domain\Orm;
 
 use Untek\Model\EntityManager\Interfaces\OrmInterface;
-use Untek\Database\Eloquent\Domain\Capsule\Manager;
+use Illuminate\Database\Capsule\Manager;
 
 class EloquentOrm implements OrmInterface
 {

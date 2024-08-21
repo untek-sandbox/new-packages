@@ -3,7 +3,7 @@
 use Psr\Container\ContainerInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Untek\Database\Base\Domain\Repositories\Eloquent\SchemaRepository;
-use Untek\Database\Eloquent\Domain\Capsule\Manager;
+use Illuminate\Database\Capsule\Manager;
 use Untek\Database\Migration\Infrastructure\Persistence\Eloquent\Repository\HistoryRepository;
 use Untek\Database\Migration\Infrastructure\Persistence\FileSystem\Repository\SourceRepository;
 use Untek\Database\Migration\Application\Services\MigrationService;

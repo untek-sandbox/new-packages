@@ -9,7 +9,7 @@ use Untek\Database\Base\Domain\Entities\ColumnEntity;
 use Untek\Database\Base\Domain\Entities\RelationEntity;
 use Untek\Database\Base\Domain\Entities\TableEntity;
 use Untek\Database\Base\Domain\Enums\DbDriverEnum;
-use Untek\Database\Eloquent\Domain\Capsule\Manager;
+use Illuminate\Database\Capsule\Manager;
 use Untek\Database\Eloquent\Domain\Traits\EloquentTrait;
 
 class SchemaRepository

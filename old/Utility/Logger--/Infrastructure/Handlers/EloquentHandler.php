@@ -6,7 +6,7 @@ use DateTimeImmutable;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\LogRecord;
 use Monolog\Level;
-use Untek\Database\Eloquent\Domain\Capsule\Manager;
+use Illuminate\Database\Capsule\Manager;
 
 class EloquentHandler extends AbstractProcessingHandler
 {

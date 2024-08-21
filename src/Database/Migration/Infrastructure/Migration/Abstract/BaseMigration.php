@@ -3,7 +3,7 @@
 namespace Untek\Database\Migration\Infrastructure\Migration\Abstract;
 
 use Illuminate\Database\Schema\Builder;
-use Untek\Database\Eloquent\Domain\Capsule\Manager;
+use Illuminate\Database\Capsule\Manager;
 use Untek\Database\Eloquent\Domain\Traits\EloquentTrait;
 use Untek\Database\Base\Domain\Repositories\Eloquent\SchemaRepository;
 

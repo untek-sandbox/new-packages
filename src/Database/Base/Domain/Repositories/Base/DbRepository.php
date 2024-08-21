@@ -6,7 +6,7 @@ use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;
 use Untek\Model\Shared\Helpers\EntityHelper;
 use Untek\Database\Base\Domain\Entities\ColumnEntity;
-use Untek\Database\Eloquent\Domain\Capsule\Manager;
+use Illuminate\Database\Capsule\Manager;
 use Untek\Database\Eloquent\Domain\Traits\EloquentTrait;
 
 abstract class DbRepository

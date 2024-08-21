@@ -9,7 +9,7 @@ use Untek\Core\Instance\Helpers\ClassHelper;
 use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Model\EntityManager\Interfaces\EntityManagerInterface;
 use Untek\Database\Eloquent\Domain\Base\BaseEloquentRepository;
-use Untek\Database\Eloquent\Domain\Capsule\Manager;
+use Illuminate\Database\Capsule\Manager;
 use Untek\Database\Migration\Domain\Model\Migration;
 use Untek\Database\Migration\Infrastructure\Migration\Interfaces\MigrationInterface;
 

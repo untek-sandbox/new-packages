@@ -8,7 +8,7 @@ use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Database\Base\Domain\Enums\DbDriverEnum;
 use Untek\Database\Base\Domain\Facades\DbFacade;
 use Untek\Database\Base\Domain\Libs\TableAlias;
-use Untek\Database\Eloquent\Domain\Capsule\Manager;
+use Illuminate\Database\Capsule\Manager;
 use Untek\Component\FormatAdapter\Helpers\StoreHelper;
 
 class ManagerFactory

@@ -5,7 +5,7 @@ namespace Untek\Database\Eloquent\Domain\Base;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Database\Base\Domain\Traits\TableNameTrait;
-use Untek\Database\Eloquent\Domain\Capsule\Manager;
+use Illuminate\Database\Capsule\Manager;
 use Untek\Database\Eloquent\Domain\Helpers\QueryBuilder\EloquentQueryBuilderHelper;
 use Untek\Database\Eloquent\Domain\Traits\EloquentTrait;
 use Untek\Model\EntityManager\Interfaces\EntityManagerInterface;

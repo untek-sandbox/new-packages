@@ -13,7 +13,7 @@ use Untek\Core\Collection\Libs\Collection;
 use Untek\Database\Base\Domain\Entities\ColumnEntity;
 use Untek\Database\Base\Domain\Entities\RelationEntity;
 use Untek\Database\Base\Domain\Entities\TableEntity;
-use Untek\Database\Eloquent\Domain\Capsule\Manager;
+use Illuminate\Database\Capsule\Manager;
 use Untek\Database\Eloquent\Domain\Traits\EloquentTrait;
 use Untek\Database\Fixture\Domain\Helpers\StructHelper;
 

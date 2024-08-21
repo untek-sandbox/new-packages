@@ -10,6 +10,8 @@ use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Database\Base\Domain\Libs\TableAlias;
 
+DeprecateHelper::hardThrow();
+
 class Manager extends CapsuleManager
 {
 

@@ -4,7 +4,7 @@ namespace Untek\Database\Base\Domain\Traits;
 
 use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\DotEnv\Domain\Libs\DotEnv;
-use Untek\Database\Eloquent\Domain\Capsule\Manager;
+use Illuminate\Database\Capsule\Manager;
 use Untek\Database\Base\Domain\Libs\TableAlias;
 use function Kreait\Firebase\Auth\CreateSessionCookie\response;
 

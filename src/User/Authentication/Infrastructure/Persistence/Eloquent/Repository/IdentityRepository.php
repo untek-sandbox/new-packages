@@ -7,7 +7,7 @@ use Doctrine\Persistence\ObjectRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Untek\Component\Relation\Interfaces\RelationConfigInterface;
 use Untek\Database\Doctrine\Domain\Base\AbstractDoctrineCrudRepository;
-use Untek\Database\Eloquent\Domain\Capsule\Manager;
+use Illuminate\Database\Capsule\Manager;
 use Untek\Database\Eloquent\Infrastructure\Abstract\AbstractEloquentCrudRepository;
 use Untek\User\Authentication\Application\Services\UserAssignedRolesRepositoryInterface;
 use Untek\User\Authentication\Domain\Interfaces\Repositories\IdentityRepositoryInterface;
