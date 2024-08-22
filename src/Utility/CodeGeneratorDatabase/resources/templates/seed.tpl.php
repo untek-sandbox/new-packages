@@ -24,7 +24,7 @@ class <?= $className ?>
             $item = [
 <?php foreach ($properties as $attribute){
     $propertyName = $attribute->getName();
-    $fieldName = \Untek\Component\Text\Helpers\Inflector::underscore($propertyName);
+    $fieldName = (new \Yiisoft\Strings\Inflector())->pascalCaseToId($propertyName, '_');
     $propertyType = $attribute->getType()->generate();
 $value = null;
 if($propertyName == 'id') {

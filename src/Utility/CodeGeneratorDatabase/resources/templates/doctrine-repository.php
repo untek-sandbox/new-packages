@@ -7,7 +7,7 @@
 
 use Untek\Utility\CodeGeneratorApplication\Presentation\Enums\PropertyTypeEnum;
 use Laminas\Code\Generator\PropertyGenerator;
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 
 ?>
 
@@ -27,6 +27,6 @@ class <?= $className ?> extends AbstractDoctrineCrudRepository implements <?= $c
 
     public function getClassName(): string
     {
-        return <?= Inflector::camelize($tableName) ?>::class;
+        return <?= (new Inflector())->toCamelCase($tableName) ?>::class;
     }
 }

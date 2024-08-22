@@ -9,7 +9,7 @@
 use Untek\Component\Web\HtmlRender\Application\Services\HtmlRenderInterface;
 use Untek\Component\Code\Factories\PropertyAccess;
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 use Untek\Component\Http\Helpers\UrlHelper;
 use Untek\Component\Web\TwBootstrap\Widgets\Filter\FilterGenerator;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Entities\AttributeEntity;
@@ -20,7 +20,7 @@ $propertyAccessor = PropertyAccess::createPropertyAccessor();
 $isExists = false;
 foreach ($attributes as $attributeEntity) {
     $attributeName = $attributeEntity->getAttributeName();
-    $attributeNameCamelCase = Inflector::variablize($attributeName);
+    $attributeNameCamelCase = (new Inflector())->toCamelCase($attributeName);
     if (property_exists($filterModel, $attributeNameCamelCase)) {
         $isExists = true;
     }
@@ -36,7 +36,7 @@ foreach ($attributes as $attributeEntity) {
                 <th>
                     <?php
                     $attributeName = $attributeEntity->getAttributeName();
-                    $attributeNameCamelCase = Inflector::variablize($attributeName);
+                    $attributeNameCamelCase = (new Inflector())->toCamelCase($attributeName);
                     if ($attributeEntity->getFormatter()) {
                         $formatter = ClassHelper::createObject($attributeEntity->getFormatter());
                         if ($formatter instanceof ActionFormatter) {

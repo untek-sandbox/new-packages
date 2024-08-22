@@ -4,7 +4,7 @@ namespace Untek\Utility\CodeGeneratorCli\Infrastructure\Helpers;
 
 use Untek\Utility\CodeGeneratorCli\Application\Commands\GenerateCliCommand;
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 use Untek\Utility\CodeGeneratorRestApi\Application\Helpers\CommandHelper;
 
 class CliPathHelper
@@ -13,7 +13,7 @@ class CliPathHelper
     public static function getCliCommandClass(GenerateCliCommand $command): string
     {
         $commandClassName = ClassHelper::getClassOfClassName($command->getCommandClass());
-        $commandClassName = Inflector::camelize($commandClassName);
+        $commandClassName = (new Inflector())->toCamelCase($commandClassName);
         $endCommandClassName = CommandHelper::getType($command->getCommandClass());
         $pureCommandClassName = substr($commandClassName, 0, 0 - strlen($endCommandClassName));
         return $command->getNamespace() . '\\Presentation\\Cli\\Commands\\' . $pureCommandClassName . 'CliCommand';

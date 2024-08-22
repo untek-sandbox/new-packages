@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Web\TwBootstrap\Widgets\TabContent;
 
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 use Untek\Component\Web\Widget\Base\BaseWidget2;
 
 class TabContentWidget extends BaseWidget2

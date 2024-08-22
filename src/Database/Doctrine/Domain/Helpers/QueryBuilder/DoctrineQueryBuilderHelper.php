@@ -3,7 +3,7 @@
 namespace Untek\Database\Doctrine\Domain\Helpers\QueryBuilder;
 
 use Illuminate\Database\Query\Builder;
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 use Untek\Database\Base\Domain\Helpers\DbHelper;
 use Untek\Database\Base\Domain\Interfaces\QueryBuilderInterface;
 use Doctrine\DBAL\Query\QueryBuilder;
@@ -38,7 +38,7 @@ class DoctrineQueryBuilderHelper implements QueryBuilderInterface
     public static function addWhere(array $criteria, QueryBuilder $queryBuilder): void
     {
         foreach ($criteria as $key => $value) {
-            $key = Inflector::underscore($key);
+            $key = (new Inflector())->pascalCaseToId($key, '_');
             if (is_array($value)) {
                 $expression = $queryBuilder->expr()->in($key, self::fixArrayStringExpression($value));
             } else {

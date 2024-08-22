@@ -4,7 +4,7 @@ namespace Untek\Core\Instance\Helpers;
 
 use ReflectionException;
 use ReflectionParameter;
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 
 class MappingHelper
 {
@@ -15,7 +15,7 @@ class MappingHelper
         foreach ($data as $fieldName => $fieldValue) {
             if (!is_scalar($fieldValue)) {
                 try {
-                    $methodName = 'set' . Inflector::camelize($fieldName);
+                    $methodName = 'set' . (new Inflector())->toCamelCase($fieldName);
                     $param = new ReflectionParameter([$object, $methodName], 0);
                     $fieldClassName = $param->getType()->getName();
                     if(class_exists($fieldClassName)) {

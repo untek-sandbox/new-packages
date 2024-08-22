@@ -8,7 +8,7 @@ use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Component\Code\Helpers\ReflectionHelper;
 use Untek\Core\Instance\Exceptions\NotInstanceOfException;
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 use ReflectionException;
 
 /**
@@ -162,7 +162,7 @@ class EnumHelper
             $labels = array_flip($all);
             $labels = array_map(function ($value) {
                 $value = strtolower($value);
-                return Inflector::titleize($value);
+                return (new Inflector())->toSentence($value);
             }, $labels);
         }
         return $labels;

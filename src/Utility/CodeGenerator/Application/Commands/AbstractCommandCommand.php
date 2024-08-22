@@ -3,7 +3,7 @@
 namespace Untek\Utility\CodeGenerator\Application\Commands;
 
 use Untek\Component\Enum\Helpers\EnumHelper;
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 use Untek\Utility\CodeGeneratorApplication\Application\Enums\TypeEnum;
 
 abstract class AbstractCommandCommand //extends AbstractCommand
@@ -14,8 +14,8 @@ abstract class AbstractCommandCommand //extends AbstractCommand
 
     public function getCamelizeName(): string
     {
-        $camelizeName = Inflector::camelize($this->getCommandName());
-        return $camelizeName . Inflector::camelize($this->getCommandType());
+        $camelizeName = (new Inflector())->toCamelCase($this->getCommandName());
+        return $camelizeName . (new Inflector())->toCamelCase($this->getCommandType());
     }
 
     public function getCommandName(): string

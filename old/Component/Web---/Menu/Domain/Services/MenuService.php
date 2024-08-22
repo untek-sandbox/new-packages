@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 use Untek\Model\Service\Base\BaseCrudService;
 use Untek\Component\I18Next\Exceptions\NotFoundBundleException;
 use Untek\Component\I18Next\Facades\I18Next;
@@ -164,7 +164,7 @@ class MenuService extends BaseCrudService implements MenuServiceInterface
             }
         } catch (NotFoundBundleException $e) {
             $label = $menuEntity->getModule() . ' ' . $menuEntity->getController();
-            $label = Inflector::titleize($label);
+            $label = (new Inflector())->toSentence($label);
         }
         $menuEntity->setLabel($label);
     }

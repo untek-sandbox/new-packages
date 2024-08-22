@@ -4,7 +4,7 @@ namespace Untek\Utility\CodeGeneratorApplication\Infrastructure\Helpers;
 
 use Laminas\Code\Generator\PropertyGenerator;
 use Laminas\Code\Generator\TypeGenerator;
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 
 class ApplicationHelper
 {
@@ -13,7 +13,7 @@ class ApplicationHelper
     {
         $properties = [];
         foreach ($command->getProperties() as &$commandAttribute) {
-            $name = Inflector::variablize($commandAttribute['name']);
+            $name = (new Inflector())->toCamelCase($commandAttribute['name']);
             $type = $commandAttribute['type'];
             if (!empty($commandAttribute['nullable'])) {
                 $type = '?' . $type;

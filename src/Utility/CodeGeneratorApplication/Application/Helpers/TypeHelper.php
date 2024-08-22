@@ -2,7 +2,7 @@
 
 namespace Untek\Utility\CodeGeneratorApplication\Application\Helpers;
 
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 use Untek\Utility\CodeGeneratorApplication\Application\Enums\TypeEnum;
 
 class TypeHelper
@@ -10,7 +10,7 @@ class TypeHelper
 
     public static function generateCommandName(string $type, string $commandName)
     {
-        $commandName = Inflector::camelize($commandName);
+        $commandName = (new Inflector())->toCamelCase($commandName);
         if ($type === TypeEnum::COMMAND) {
             $commandClass = 'Commands\\' . $commandName . 'Command';
         } elseif ($type === TypeEnum::QUERY) {

@@ -7,7 +7,7 @@
  */
 
 use Untek\Utility\CodeGeneratorApplication\Presentation\Enums\PropertyTypeEnum;
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 
 ?>
 
@@ -19,13 +19,13 @@ use Untek\Database\Migration\Infrastructure\Migration\Abstract\BaseCreateTableMi
 class <?= $className ?> extends BaseCreateTableMigration
 {
 
-    protected $tableName = '<?= Inflector::underscore($tableName) ?>';
+    protected $tableName = '<?= (new Inflector())->pascalCaseToId($tableName, '_') ?>';
     protected $tableComment = '';
 
     public function tableStructure(Blueprint $table): void
     {
 <?php foreach ($properties as $attribute):
-    $propertyName = Inflector::underscore($attribute->getName());
+    $propertyName = (new Inflector())->pascalCaseToId($attribute->getName(), '_');
     $propertyType = $attribute->getType()->generate();
     ?>
     <?php

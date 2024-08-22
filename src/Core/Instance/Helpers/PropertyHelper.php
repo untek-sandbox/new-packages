@@ -5,7 +5,7 @@ namespace Untek\Core\Instance\Helpers;
 use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Lib\Components\DynamicEntity\Interfaces\DynamicEntityAttributesInterface;
 use Throwable;
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 use Untek\Component\Code\Factories\PropertyAccess;
 
 /**
@@ -140,7 +140,7 @@ class PropertyHelper
 
         $propertyAccessor = PropertyAccess::createPropertyAccessor();
         foreach ($data as $name => $value) {
-            $name = Inflector::variablize($name);
+            $name = (new Inflector())->toCamelCase($name);
             $isAllow = empty($filedsOnly) || in_array($name, $filedsOnly);
             if ($isAllow) {
                 $isWritable = $propertyAccessor->isWritable($entity, $name);

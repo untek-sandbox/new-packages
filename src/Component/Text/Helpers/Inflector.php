@@ -3,14 +3,14 @@
 namespace Untek\Component\Text\Helpers;
 
 use Untek\Core\Contract\Common\Exceptions\InvalidMethodParameterException;
-use Yiisoft\Strings\Inflector as YiiInflector;
+use Yiisoft\Strings\Inflector as Inflector;
 
 class Inflector
 {
 
-    public const CAMEL_CASE = 'CAMEL_CASE';
+    /*public const CAMEL_CASE = 'CAMEL_CASE';
     public const SNACK_CASE = 'SNACK_CASE';
-    public const KEBAB_CASE = 'KEBAB_CASE';
+    public const KEBAB_CASE = 'KEBAB_CASE';*/
 
     /*public static function toCase(string $name, string $case): string
     {
@@ -33,10 +33,10 @@ class Inflector
      * @param bool $ucAll whether to set all words to uppercase
      * @return string
      */
-    public static function titleize($words, $ucAll = false)
+    /*public static function titleize($words, $ucAll = false)
     {
-        return (new YiiInflector)->toSentence($words, $ucAll);
-    }
+        return (new Inflector())->toSentence($words, $ucAll);
+    }*/
 
     /**
      * Returns given word as CamelCased.
@@ -48,10 +48,10 @@ class Inflector
      * @return string
      * @see variablize()
      */
-    public static function camelize($word)
+    /*public static function camelize($word)
     {
-        return (new YiiInflector)->toCamelCase($word);
-    }
+        return (new Inflector())->toCamelCase($word);
+    }*/
 
     /**
      * Converts a CamelCase name into space-separated words.
@@ -62,7 +62,7 @@ class Inflector
      */
     /*public static function camel2words($name, $ucwords = true)
     {
-        return (new YiiInflector)->toWords($name);
+        return (new Inflector())->toWords($name);
 
     }*/
 
@@ -75,10 +75,10 @@ class Inflector
      * @param bool|string $strict whether to insert a separator between two consecutive uppercase chars, defaults to false
      * @return string the resulting ID
      */
-    public static function camel2id($name, $separator = '-', $strict = false)
+    /*public static function camel2id($name, $separator = '-', $strict = false)
     {
-        return (new YiiInflector)->pascalCaseToId($name, $separator, $strict);
-    }
+        return (new Inflector())->pascalCaseToId($name, $separator, $strict);
+    }*/
 
     /**
      * Converts an ID into a CamelCase name.
@@ -90,7 +90,7 @@ class Inflector
      */
     /*public static function id2camel($id, $separator = '-')
     {
-        return (new YiiInflector)->toCamelCase($id, $separator);
+        return (new Inflector())->toCamelCase($id, $separator);
     }*/
 
     /**
@@ -100,6 +100,8 @@ class Inflector
      */
     public static function underscore($words)
     {
+        return (new Inflector())->pascalCaseToId($words, '_');
+
         // ссылка на источник функции https://stackoverflow.com/questions/1993721/how-to-convert-pascalcase-to-pascal-case
         preg_match_all('!([A-Z][A-Z0-9]*(?=$|[A-Z][a-z0-9])|[A-Za-z][a-z0-9]+)!', $words, $matches);
         $ret = $matches[0];
@@ -118,7 +120,7 @@ class Inflector
      */
     /*public static function humanize($word, $ucAll = false)
     {
-        return (new YiiInflector)->toHumanReadable($word, $ucAll);
+        return (new Inflector())->toHumanReadable($word, $ucAll);
     }*/
 
     /**
@@ -130,10 +132,10 @@ class Inflector
      * @param string $word to lowerCamelCase
      * @return string
      */
-    public static function variablize($word)
+    /*public static function variablize($word)
     {
-        return (new YiiInflector)->toCamelCase($word);
-    }
+        return (new Inflector())->toCamelCase($word);
+    }*/
 
     /**
      * Converts a class name to its table name (pluralized) naming conventions.
@@ -142,10 +144,10 @@ class Inflector
      * @param string $className the class name for getting related table_name
      * @return string
      */
-    public static function tableize($className)
+    /*public static function tableize($className)
     {
-        return (new YiiInflector)->classToTable($className);
-    }
+        return (new Inflector())->classToTable($className);
+    }*/
 
     /**
      * @return bool if intl extension is loaded

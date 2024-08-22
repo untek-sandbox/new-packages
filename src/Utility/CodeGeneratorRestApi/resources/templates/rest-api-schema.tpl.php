@@ -6,13 +6,14 @@
  * @var string $commandClassName
  * @var string $commandFullClassName
  */
-
+use Yiisoft\Strings\Inflector;
 ?>
 
 namespace <?= $namespace ?>;
 
 use Untek\Framework\RestApi\Presentation\Http\Symfony\Interfaces\RestApiSchemaInterface;
 use Untek\Core\Instance\Helpers\PropertyHelper;
+
 <?php if($modelClassName): ?>
 use <?= $modelClassName ?>;
 <?php endif; ?>
@@ -28,7 +29,7 @@ class <?= $className ?> implements RestApiSchemaInterface
     <?php foreach ($properties as $attribute):
         $propertyName = $attribute['name'];
         $propertyType = $attribute['type'];
-        $camelCaseName = \Untek\Component\Text\Helpers\Inflector::camelize($propertyName);
+        $camelCaseName = (new Inflector())->toCamelCase($propertyName);
         $lcCamelCaseName = lcfirst($camelCaseName);
         ?>
         <?php

@@ -3,7 +3,7 @@
 namespace Untek\Utility\CodeGeneratorRestApi\Infrastructure\Generators;
 
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 use Untek\Utility\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\Application\Dto\GenerateResultCollection;
 use Untek\Utility\CodeGenerator\Infrastructure\Generator\CodeGenerator;
@@ -27,7 +27,7 @@ class ControllerGenerator
     {
         $commandFullClassName = ApplicationPathHelper::getCommandClass($command);
         $commandClassName = ClassHelper::getClassOfClassName($commandFullClassName);
-        $commandClassName = Inflector::camelize($commandClassName);
+        $commandClassName = (new Inflector())->toCamelCase($commandClassName);
         $controllerClassName = RestApiPathHelper::getControllerClass($command);
         $schemaClassName = RestApiPathHelper::getRestApiSchemaClass($command);
         $params = [

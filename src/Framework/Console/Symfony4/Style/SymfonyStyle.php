@@ -4,7 +4,7 @@ namespace Untek\Framework\Console\Symfony4\Style;
 
 use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 use Untek\Model\Entity\Helpers\EntityHelper;
 use Untek\Model\Validator\Entities\ValidationErrorEntity;
 use Untek\Model\Validator\Exceptions\UnprocessibleEntityException;
@@ -42,7 +42,7 @@ class SymfonyStyle extends \Symfony\Component\Console\Style\SymfonyStyle
         foreach ($attributes as $attributeName) {
             $value = PropertyHelper::getValue($reportForm, $attributeName);
 //            if (!is_object($value)) {
-                $attributeTitle = Inflector::titleize($attributeName);
+                $attributeTitle = (new Inflector())->toSentence($attributeName);
 //                $value = $this->inputString("Input \"$attributeTitle\"");
                 $value = $this->ask($attributeTitle, $value);
                 PropertyHelper::setValue($reportForm, $attributeName, $value);

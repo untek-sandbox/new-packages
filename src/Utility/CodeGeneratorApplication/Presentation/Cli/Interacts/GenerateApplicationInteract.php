@@ -4,7 +4,7 @@
 namespace Untek\Utility\CodeGeneratorApplication\Presentation\Cli\Interacts;
 
 use Symfony\Component\Console\Question\Question;
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 use Untek\Framework\Console\Infrastructure\Validators\ClassNameValidator;
 use Untek\Framework\Console\Infrastructure\Validators\NotBlankValidator;
 use Untek\Framework\Console\Infrastructure\Validators\PropertyNameValidator;
@@ -101,7 +101,7 @@ class GenerateApplicationInteract implements InteractInterface
     private function getDefaultTypeByPropertyName(string $propertyName): ?string
     {
         $defaultType = null;
-        $snakeCasedPropertyName = Inflector::underscore($propertyName);
+        $snakeCasedPropertyName = (new Inflector())->pascalCaseToId($propertyName, '_');
 
         if (str_ends_with($snakeCasedPropertyName, '_at')) {
             $defaultType = PropertyTypeEnum::DATE_TIME;

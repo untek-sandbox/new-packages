@@ -20,7 +20,7 @@ class <?= $className ?> extends DatabaseItemNormalizer
         $data = parent::normalize($object);
 <?php foreach ($properties as $attribute){
     $propertyName = $attribute['name'];
-    $fieldName = \Untek\Component\Text\Helpers\Inflector::underscore($propertyName);
+    $fieldName = (new \Yiisoft\Strings\Inflector())->pascalCaseToId($propertyName, '_');
     $propertyType = $attribute['type'];
     if($propertyType == 'array') {
         echo "\t\t\$data['$fieldName'] = json_encode(\$data['$fieldName'], JSON_UNESCAPED_UNICODE);\n";
@@ -33,7 +33,7 @@ class <?= $className ?> extends DatabaseItemNormalizer
     {
 <?php foreach ($properties as $attribute){
     $propertyName = $attribute['name'];
-    $fieldName = \Untek\Component\Text\Helpers\Inflector::underscore($propertyName);
+    $fieldName = (new \Yiisoft\Strings\Inflector())->pascalCaseToId($propertyName, '_');
     $propertyType = $attribute['type'];
     if($propertyType == 'array') {
         echo "\t\t\$data['$fieldName'] = json_decode(\$data['$fieldName'], true);\n";

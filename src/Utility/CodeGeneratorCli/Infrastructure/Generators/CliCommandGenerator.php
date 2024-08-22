@@ -3,7 +3,7 @@
 namespace Untek\Utility\CodeGeneratorCli\Infrastructure\Generators;
 
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 use Untek\Utility\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\Application\Dto\GenerateResultCollection;
 use Untek\Utility\CodeGenerator\Infrastructure\Generator\CodeGenerator;
@@ -27,7 +27,7 @@ class CliCommandGenerator
     {
         $commandFullClassName = $command->getCommandClass();
         $commandClassName = ClassHelper::getClassOfClassName($command->getCommandClass());
-        $commandClassName = Inflector::camelize($commandClassName);
+        $commandClassName = (new Inflector())->toCamelCase($commandClassName);
         $cliCommandClassName = CliPathHelper::getCliCommandClass($command);
         $params = [
             'commandClassName' => $commandClassName,

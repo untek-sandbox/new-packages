@@ -3,7 +3,7 @@
 namespace Untek\Utility\CodeGeneratorRestApi\Infrastructure\Factories;
 
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 use Untek\Utility\CodeGeneratorApplication\Application\Helpers\TypeHelper;
 use Untek\Utility\CodeGeneratorApplication\Infrastructure\Helpers\ApplicationPathHelper;
 use Untek\Utility\CodeGeneratorRestApi\Application\Commands\GenerateRestApiCommand;

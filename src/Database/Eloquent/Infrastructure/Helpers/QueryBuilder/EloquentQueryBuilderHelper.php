@@ -4,7 +4,7 @@ namespace Untek\Database\Eloquent\Infrastructure\Helpers\QueryBuilder;
 
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Builder as QueryBuilder;
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 use Untek\Database\Base\Domain\Helpers\DbHelper;
 use Untek\Database\Base\Domain\Interfaces\QueryBuilderInterface;
 
@@ -39,7 +39,7 @@ class EloquentQueryBuilderHelper implements QueryBuilderInterface
     {
         if (!empty($criteria)) {
             foreach ($criteria as $key => $value) {
-                $key = Inflector::underscore($key);
+                $key = (new Inflector())->pascalCaseToId($key, '_');
                 $column = self::forgeColumnName($key, $queryBuilder);
                 if (is_array($value)) {
                     $queryBuilder->whereIn($column, $value);

@@ -2,7 +2,7 @@
 
 namespace Untek\Utility\CodeGeneratorDatabase\Application\Commands;
 
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 use Untek\Utility\CodeGenerator\Application\Commands\AbstractCommand;
 use Untek\Utility\CodeGenerator\Application\Traits\CommandNamespaceTrait;
 use Untek\Utility\CodeGenerator\Application\Traits\CommandParameterTrait;
@@ -75,7 +75,7 @@ class GenerateDatabaseCommand //extends AbstractCommand
         if($this->modelName) {
             return $this->modelName;
         }
-        return Inflector::camelize($this->getTableName());
+        return (new Inflector())->toCamelCase($this->getTableName());
     }
 
     public function setModelName(?string $modelName): void

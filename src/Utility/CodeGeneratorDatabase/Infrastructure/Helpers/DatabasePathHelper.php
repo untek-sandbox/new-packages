@@ -2,7 +2,7 @@
 
 namespace Untek\Utility\CodeGeneratorDatabase\Infrastructure\Helpers;
 
-use Untek\Component\Text\Helpers\Inflector;
+use Yiisoft\Strings\Inflector;
 use Untek\Utility\CodeGeneratorDatabase\Application\Commands\GenerateDatabaseCommand;
 
 class DatabasePathHelper
@@ -35,7 +35,7 @@ class DatabasePathHelper
 
     public static function getRepositoryClass(object $command, string $driver): string
     {
-        $driverName = Inflector::camelize($driver);
+        $driverName = (new Inflector())->toCamelCase($driver);
         return $command->getNamespace() . '\\Infrastructure\\Persistence\\' . $driverName . '\\Repository\\' . $command->getModelName() . 'Repository';
     }
 }
