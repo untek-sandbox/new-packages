@@ -3,7 +3,10 @@
 namespace Untek\Database\Base\Hydrator;
 
 use DateTime;
+use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
+use Symfony\Component\Serializer\Mapping\Loader\AttributeLoader;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
@@ -16,10 +19,11 @@ class DatabaseItemNormalizer implements DbNormalizerInterface
 
     protected function getSerializer(): SerializerInterface
     {
+        $classMetadataFactory = new ClassMetadataFactory(new AttributeLoader());
         $normalizers = [
             new DateTimeNormalizer(),
             new ArrayDenormalizer(),
-            new ObjectNormalizer(null, new CamelCaseToSnakeCaseNameConverter()),
+            new ObjectNormalizer($classMetadataFactory, new CamelCaseToSnakeCaseNameConverter()),
         ];
         return new Serializer($normalizers);
     }
@@ -32,6 +36,11 @@ class DatabaseItemNormalizer implements DbNormalizerInterface
     }
 
     protected function ignoreFields(): array
+    {
+        return [];
+    }
+
+    protected function onlyFields(): array
     {
         return [];
     }
@@ -58,7 +67,16 @@ class DatabaseItemNormalizer implements DbNormalizerInterface
     public function normalize(object $object): array
     {
         $serializer = $this->getSerializer();
-        $normalized = $serializer->normalize($object);
+        $context = [];
+        $ignoreFields = $this->ignoreFields();
+        /*if ($ignoreFields) {
+            $context[AbstractNormalizer::IGNORED_ATTRIBUTES] = $ignoreFields;
+        }
+        $onlyFields = $this->onlyFields();
+        if ($onlyFields) {
+            $context[AbstractNormalizer::ATTRIBUTES] = $onlyFields;
+        }*/
+        $normalized = $serializer->normalize($object, null, $context);
         $normalized = $this->removeIgnoreFields($normalized);
         return $normalized;
     }
