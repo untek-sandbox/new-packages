@@ -9,7 +9,7 @@ namespace Untek\Component\FileSystem\Helpers;
 
 use ErrorException;
 use Untek\Core\Contract\Common\Exceptions\InvalidArgumentException;
-use Untek\Component\Text\Helpers\StringHelper;
+use Yiisoft\Strings\StringHelper;
 
 /**
  * BaseFileHelper provides concrete implementation for [[FileHelper]].
@@ -532,7 +532,7 @@ class FileHelper
         } elseif ($flags & self::PATTERN_ENDSWITH) {
             /* "*literal" matching against "fooliteral" */
             $n = StringHelper::byteLength($pattern);
-            if (StringHelper::byteSubstr($pattern, 1, $n) === StringHelper::byteSubstr($baseName, -$n, $n)) {
+            if (StringHelper::byteSubstring($pattern, 1, $n) === StringHelper::byteSubstring($baseName, -$n, $n)) {
                 return true;
             }
         }
@@ -561,14 +561,14 @@ class FileHelper
     {
         // match with FNM_PATHNAME; the pattern has base implicitly in front of it.
         if (isset($pattern[0]) && $pattern[0] === '/') {
-            $pattern = StringHelper::byteSubstr($pattern, 1, StringHelper::byteLength($pattern));
+            $pattern = StringHelper::byteSubstring($pattern, 1, StringHelper::byteLength($pattern));
             if ($firstWildcard !== false && $firstWildcard !== 0) {
                 $firstWildcard--;
             }
         }
 
         $namelen = StringHelper::byteLength($path) - (empty($basePath) ? 0 : StringHelper::byteLength($basePath) + 1);
-        $name = StringHelper::byteSubstr($path, -$namelen, $namelen);
+        $name = StringHelper::byteSubstring($path, -$namelen, $namelen);
 
         if ($firstWildcard !== 0) {
             if ($firstWildcard === false) {
@@ -582,8 +582,8 @@ class FileHelper
             if (strncmp($pattern, $name, $firstWildcard)) {
                 return false;
             }
-            $pattern = StringHelper::byteSubstr($pattern, $firstWildcard, StringHelper::byteLength($pattern));
-            $name = StringHelper::byteSubstr($name, $firstWildcard, $namelen);
+            $pattern = StringHelper::byteSubstring($pattern, $firstWildcard, StringHelper::byteLength($pattern));
+            $name = StringHelper::byteSubstring($name, $firstWildcard, $namelen);
 
             // If the whole pattern did not have a wildcard, then our prefix match is all we need; we do not need to call fnmatch at all.
             if (empty($pattern) && empty($name)) {
@@ -672,17 +672,17 @@ class FileHelper
 
         if ($pattern[0] === '!') {
             $result['flags'] |= self::PATTERN_NEGATIVE;
-            $pattern = StringHelper::byteSubstr($pattern, 1, StringHelper::byteLength($pattern));
+            $pattern = StringHelper::byteSubstring($pattern, 1, StringHelper::byteLength($pattern));
         }
-        if (StringHelper::byteLength($pattern) && StringHelper::byteSubstr($pattern, -1, 1) === '/') {
-            $pattern = StringHelper::byteSubstr($pattern, 0, -1);
+        if (StringHelper::byteLength($pattern) && StringHelper::byteSubstring($pattern, -1, 1) === '/') {
+            $pattern = StringHelper::byteSubstring($pattern, 0, -1);
             $result['flags'] |= self::PATTERN_MUSTBEDIR;
         }
         if (strpos($pattern, '/') === false) {
             $result['flags'] |= self::PATTERN_NODIR;
         }
         $result['firstWildcard'] = self::firstWildcardInPattern($pattern);
-        if ($pattern[0] === '*' && self::firstWildcardInPattern(StringHelper::byteSubstr($pattern, 1, StringHelper::byteLength($pattern))) === false) {
+        if ($pattern[0] === '*' && self::firstWildcardInPattern(StringHelper::byteSubstring($pattern, 1, StringHelper::byteLength($pattern))) === false) {
             $result['flags'] |= self::PATTERN_ENDSWITH;
         }
         $result['pattern'] = $pattern;

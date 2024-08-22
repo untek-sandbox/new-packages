@@ -5,7 +5,7 @@ namespace Untek\Component\Code\Helpers;
 use Laminas\Code\Generator\MethodGenerator;
 use Laminas\Code\Generator\ParameterGenerator;
 use Laminas\Code\Generator\ValueGenerator;
-use Untek\Component\Text\Helpers\StringHelper;
+use Yiisoft\Strings\StringHelper;
 use Untek\Component\Text\Helpers\TextHelper;
 use Untek\Tool\Package\Domain\Libs\Deps\PhpUsesParser;
 

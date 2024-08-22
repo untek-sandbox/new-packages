@@ -7,6 +7,8 @@
 
 namespace Untek\Component\Text\Helpers;
 
+use Yiisoft\Strings\StringHelper as YiiStringHelper;
+
 /**
  * StringHelper.
  *
@@ -25,7 +27,7 @@ class StringHelper
      */
     public static function byteLength($string)
     {
-        return mb_strlen($string, '8bit');
+        return YiiStringHelper::byteLength($string);
     }
 
     /**
@@ -38,10 +40,10 @@ class StringHelper
      * @return string the extracted part of string, or FALSE on failure or an empty string.
      * @see https://secure.php.net/manual/en/function.substr.php
      */
-    public static function byteSubstr($string, $start, $length = null)
+    /*public static function byteSubstr($string, $start, $length = null)
     {
-        return mb_substr($string, $start, $length === null ? mb_strlen($string, '8bit') : $length, '8bit');
-    }
+        return YiiStringHelper::byteSubstring($string, $start, $length);
+    }*/
 
     /**
      * Returns the trailing name component of a path.
@@ -56,18 +58,10 @@ class StringHelper
      * @return string the trailing name component of the given path.
      * @see https://secure.php.net/manual/en/function.basename.php
      */
-    public static function basename($path, $suffix = '')
+    /*public static function basename($path, $suffix = '')
     {
-        if (($len = mb_strlen($suffix)) > 0 && mb_substr($path, -$len) === $suffix) {
-            $path = mb_substr($path, 0, -$len);
-        }
-        $path = rtrim(str_replace('\\', '/', $path), '/\\');
-        if (($pos = mb_strrpos($path, '/')) !== false) {
-            return mb_substr($path, $pos + 1);
-        }
-
-        return $path;
-    }
+        return YiiStringHelper::baseName($path, $suffix);
+    }*/
 
     /**
      * Returns parent directory's path.
@@ -78,15 +72,10 @@ class StringHelper
      * @return string the parent directory's path.
      * @see https://secure.php.net/manual/en/function.basename.php
      */
-    public static function dirname($path)
+    /*public static function dirname($path)
     {
-        $pos = mb_strrpos(str_replace('\\', '/', $path), '/');
-        if ($pos !== false) {
-            return mb_substr($path, 0, $pos);
-        }
-
-        return '';
-    }
+        return YiiStringHelper::directoryName($path);
+    }*/
 
     /**
      * Truncates a string to the number of characters specified.
@@ -99,8 +88,10 @@ class StringHelper
      * This parameter is available since version 2.0.1.
      * @return string the truncated string.
      */
-    public static function truncate($string, $length, $suffix = '...', $encoding = null, $asHtml = false)
+    /*public static function truncate($string, $length, $suffix = '...', $encoding = null, $asHtml = false)
     {
+        return YiiStringHelper::tru($path);
+
         if ($encoding === null) {
             $encoding = 'UTF-8';
             //$encoding = Yii::$app ? Yii::$app->charset : 'UTF-8';
@@ -114,7 +105,7 @@ class StringHelper
         }
 
         return $string;
-    }
+    }*/
 
     /**
      * Truncates a string to the number of words specified.
@@ -126,7 +117,7 @@ class StringHelper
      * This parameter is available since version 2.0.1.
      * @return string the truncated string.
      */
-    public static function truncateWords($string, $count, $suffix = '...', $asHtml = false)
+    /*public static function truncateWords($string, $count, $suffix = '...', $asHtml = false)
     {
         if ($asHtml) {
             return static::truncateHtml($string, $count, $suffix);
@@ -138,7 +129,7 @@ class StringHelper
         }
 
         return $string;
-    }
+    }*/
 
     /**
      * Truncate a string while preserving the HTML.
@@ -150,7 +141,7 @@ class StringHelper
      * @return string
      * @since 2.0.1
      */
-    protected static function truncateHtml($string, $count, $suffix, $encoding = false)
+    /*protected static function truncateHtml($string, $count, $suffix, $encoding = false)
     {
         $config = \HTMLPurifier_Config::create(null);
         if (Yii::$app !== null) {
@@ -200,7 +191,7 @@ class StringHelper
         $context = new \HTMLPurifier_Context();
         $generator = new \HTMLPurifier_Generator($config, $context);
         return $generator->generateFromTokens($truncated) . ($totalCount >= $count ? $suffix : '');
-    }
+    }*/
 
     /**
      * Check if given string starts with specified substring.
@@ -211,7 +202,7 @@ class StringHelper
      * @param bool $caseSensitive Case sensitive search. Default is true. When case sensitive is enabled, $with must exactly match the starting of the string in order to get a true value.
      * @return bool Returns true if first input starts with second input, false otherwise
      */
-    public static function startsWith($string, $with, $caseSensitive = true)
+    /*public static function startsWith($string, $with, $caseSensitive = true)
     {
         if (!$bytes = static::byteLength($with)) {
             return true;
@@ -222,7 +213,7 @@ class StringHelper
         }
         $encoding = Yii::$app ? Yii::$app->charset : 'UTF-8';
         return mb_strtolower(mb_substr($string, 0, $bytes, '8bit'), $encoding) === mb_strtolower($with, $encoding);
-    }
+    }*/
 
     /**
      * Check if given string ends with specified substring.
@@ -233,7 +224,7 @@ class StringHelper
      * @param bool $caseSensitive Case sensitive search. Default is true. When case sensitive is enabled, $with must exactly match the ending of the string in order to get a true value.
      * @return bool Returns true if first input ends with second input, false otherwise
      */
-    public static function endsWith($string, $with, $caseSensitive = true)
+    /*public static function endsWith($string, $with, $caseSensitive = true)
     {
         if (!$bytes = static::byteLength($with)) {
             return true;
@@ -249,7 +240,7 @@ class StringHelper
 
         $encoding = Yii::$app ? Yii::$app->charset : 'UTF-8';
         return mb_strtolower(mb_substr($string, -$bytes, mb_strlen($string, '8bit'), '8bit'), $encoding) === mb_strtolower($with, $encoding);
-    }
+    }*/
 
     /**
      * Explodes string into array, optionally trims values and skips empty ones.
@@ -264,7 +255,7 @@ class StringHelper
      * @return array
      * @since 2.0.4
      */
-    public static function explode($string, $delimiter = ',', $trim = true, $skipEmpty = false)
+    /*public static function explode($string, $delimiter = ',', $trim = true, $skipEmpty = false)
     {
         $result = explode($delimiter, $string);
         if ($trim !== false) {
@@ -285,7 +276,7 @@ class StringHelper
         }
 
         return $result;
-    }
+    }*/
 
     /**
      * Counts words in a string.
@@ -294,10 +285,10 @@ class StringHelper
      * @since 2.0.8
      *
      */
-    public static function countWords($string)
+    /*public static function countWords($string)
     {
         return count(preg_split('/\s+/u', $string, null, PREG_SPLIT_NO_EMPTY));
-    }
+    }*/
 
     /**
      * Returns string representation of number value with replaced commas to dots, if decimal point
@@ -306,7 +297,7 @@ class StringHelper
      * @return string
      * @since 2.0.11
      */
-    public static function normalizeNumber($value)
+    /*public static function normalizeNumber($value)
     {
         $value = (string)$value;
 
@@ -318,7 +309,7 @@ class StringHelper
         }
 
         return $value;
-    }
+    }*/
 
     /**
      * Encodes string into "Base 64 Encoding with URL and Filename Safe Alphabet" (RFC 4648).
@@ -331,10 +322,10 @@ class StringHelper
      * @return string encoded string.
      * @since 2.0.12
      */
-    public static function base64UrlEncode($input)
+    /*public static function base64UrlEncode($input)
     {
         return strtr(base64_encode($input), '+/', '-_');
-    }
+    }*/
 
     /**
      * Decodes "Base 64 Encoding with URL and Filename Safe Alphabet" (RFC 4648).
@@ -344,10 +335,10 @@ class StringHelper
      * @return string decoded string.
      * @since 2.0.12
      */
-    public static function base64UrlDecode($input)
+    /*public static function base64UrlDecode($input)
     {
         return base64_decode(strtr($input, '-_', '+/'));
-    }
+    }*/
 
     /**
      * Safely casts a float to string independent of the current locale.
@@ -357,12 +348,12 @@ class StringHelper
      * @return string the string representation of the number.
      * @since 2.0.13
      */
-    public static function floatToString($number)
+    /*public static function floatToString($number)
     {
         // . and , are the only decimal separators known in ICU data,
         // so its safe to call str_replace here
         return str_replace(',', '.', (string)$number);
-    }
+    }*/
 
     /**
      * Checks if the passed string would match the given shell wildcard pattern.
@@ -378,80 +369,80 @@ class StringHelper
      * @return bool whether the string matches pattern or not.
      * @since 2.0.14
      */
-    public static function matchWildcard($pattern, $string, $options = [])
-    {
-        if ($pattern === '*' && empty($options['filePath'])) {
-            return true;
-        }
-
-        $replacements = [
-            '\\\\\\\\' => '\\\\',
-            '\\\\\\*' => '[*]',
-            '\\\\\\?' => '[?]',
-            '\*' => '.*',
-            '\?' => '.',
-            '\[\!' => '[^',
-            '\[' => '[',
-            '\]' => ']',
-            '\-' => '-',
-        ];
-
-        if (isset($options['escape']) && !$options['escape']) {
-            unset($replacements['\\\\\\\\']);
-            unset($replacements['\\\\\\*']);
-            unset($replacements['\\\\\\?']);
-        }
-
-        if (!empty($options['filePath'])) {
-            $replacements['\*'] = '[^/\\\\]*';
-            $replacements['\?'] = '[^/\\\\]';
-        }
-
-        $pattern = strtr(preg_quote($pattern, '#'), $replacements);
-        $pattern = '#^' . $pattern . '$#us';
-
-        if (isset($options['caseSensitive']) && !$options['caseSensitive']) {
-            $pattern .= 'i';
-        }
-
-        return preg_match($pattern, $string) === 1;
-    }
-
-    /**
-     * This method provides a unicode-safe implementation of built-in PHP function `ucfirst()`.
-     *
-     * @param string $string the string to be proceeded
-     * @param string $encoding Optional, defaults to "UTF-8"
-     * @return string
-     * @see https://secure.php.net/manual/en/function.ucfirst.php
-     * @since 2.0.16
-     */
-    public static function mb_ucfirst($string, $encoding = 'UTF-8')
-    {
-        $firstChar = mb_substr($string, 0, 1, $encoding);
-        $rest = mb_substr($string, 1, null, $encoding);
-
-        return mb_strtoupper($firstChar, $encoding) . $rest;
-    }
-
-    /**
-     * This method provides a unicode-safe implementation of built-in PHP function `ucwords()`.
-     *
-     * @param string $string the string to be proceeded
-     * @param string $encoding Optional, defaults to "UTF-8"
-     * @return string
-     * @see https://secure.php.net/manual/en/function.ucwords.php
-     * @since 2.0.16
-     */
-    public static function mb_ucwords($string, $encoding = 'UTF-8')
-    {
-        $words = preg_split("/\s/u", $string, -1, PREG_SPLIT_NO_EMPTY);
-
-        $titelized = array_map(function ($word) use ($encoding) {
-            return static::mb_ucfirst($word, $encoding);
-        }, $words);
-
-        return implode(' ', $titelized);
-    }
+//    public static function matchWildcard($pattern, $string, $options = [])
+//    {
+//        if ($pattern === '*' && empty($options['filePath'])) {
+//            return true;
+//        }
+//
+//        $replacements = [
+//            '\\\\\\\\' => '\\\\',
+//            '\\\\\\*' => '[*]',
+//            '\\\\\\?' => '[?]',
+//            '\*' => '.*',
+//            '\?' => '.',
+//            '\[\!' => '[^',
+//            '\[' => '[',
+//            '\]' => ']',
+//            '\-' => '-',
+//        ];
+//
+//        if (isset($options['escape']) && !$options['escape']) {
+//            unset($replacements['\\\\\\\\']);
+//            unset($replacements['\\\\\\*']);
+//            unset($replacements['\\\\\\?']);
+//        }
+//
+//        if (!empty($options['filePath'])) {
+//            $replacements['\*'] = '[^/\\\\]*';
+//            $replacements['\?'] = '[^/\\\\]';
+//        }
+//
+//        $pattern = strtr(preg_quote($pattern, '#'), $replacements);
+//        $pattern = '#^' . $pattern . '$#us';
+//
+//        if (isset($options['caseSensitive']) && !$options['caseSensitive']) {
+//            $pattern .= 'i';
+//        }
+//
+//        return preg_match($pattern, $string) === 1;
+//    }
+//
+//    /**
+//     * This method provides a unicode-safe implementation of built-in PHP function `ucfirst()`.
+//     *
+//     * @param string $string the string to be proceeded
+//     * @param string $encoding Optional, defaults to "UTF-8"
+//     * @return string
+//     * @see https://secure.php.net/manual/en/function.ucfirst.php
+//     * @since 2.0.16
+//     */
+//    public static function mb_ucfirst($string, $encoding = 'UTF-8')
+//    {
+//        $firstChar = mb_substr($string, 0, 1, $encoding);
+//        $rest = mb_substr($string, 1, null, $encoding);
+//
+//        return mb_strtoupper($firstChar, $encoding) . $rest;
+//    }
+//
+//    /**
+//     * This method provides a unicode-safe implementation of built-in PHP function `ucwords()`.
+//     *
+//     * @param string $string the string to be proceeded
+//     * @param string $encoding Optional, defaults to "UTF-8"
+//     * @return string
+//     * @see https://secure.php.net/manual/en/function.ucwords.php
+//     * @since 2.0.16
+//     */
+//    public static function mb_ucwords($string, $encoding = 'UTF-8')
+//    {
+//        $words = preg_split("/\s/u", $string, -1, PREG_SPLIT_NO_EMPTY);
+//
+//        $titelized = array_map(function ($word) use ($encoding) {
+//            return static::mb_ucfirst($word, $encoding);
+//        }, $words);
+//
+//        return implode(' ', $titelized);
+//    }
 
 }

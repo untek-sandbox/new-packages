@@ -3,7 +3,7 @@
 namespace Untek\Lib\Components\ShellRobot\Domain\Repositories\Shell;
 
 use Untek\Component\Arr\Helpers\ArrayHelper;
-use Untek\Component\Text\Helpers\StringHelper;
+use Yiisoft\Strings\StringHelper;
 use Untek\Component\Text\Helpers\TextHelper;
 use Untek\Lib\Components\ShellRobot\Domain\Base\BaseShellDriver;
 
