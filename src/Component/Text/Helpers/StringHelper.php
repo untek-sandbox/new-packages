@@ -7,7 +7,10 @@
 
 namespace Untek\Component\Text\Helpers;
 
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Yiisoft\Strings\StringHelper as YiiStringHelper;
+
+DeprecateHelper::hardThrow();
 
 /**
  * StringHelper.

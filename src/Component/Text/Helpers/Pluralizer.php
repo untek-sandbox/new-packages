@@ -2,6 +2,11 @@
 
 namespace Untek\Component\Text\Helpers;
 
+use Untek\Component\Code\Helpers\DeprecateHelper;
+use Yiisoft\Strings\Inflector;
+
+DeprecateHelper::hardThrow();
+
 class Pluralizer
 {
 
@@ -215,16 +220,7 @@ class Pluralizer
      */
     public static function pluralize($word)
     {
-        if (isset(static::$specials[$word])) {
-            return static::$specials[$word];
-        }
-        foreach (static::$plurals as $rule => $replacement) {
-            if (preg_match($rule, $word)) {
-                return preg_replace($rule, $replacement, $word);
-            }
-        }
-
-        return $word;
+        return (new Inflector())->toPlural($word);
     }
 
     /**

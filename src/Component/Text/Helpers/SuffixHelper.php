@@ -2,6 +2,10 @@
 
 namespace Untek\Component\Text\Helpers;
 
+use Untek\Component\Code\Helpers\DeprecateHelper;
+
+DeprecateHelper::hardThrow();
+
 class SuffixHelper
 {
 
