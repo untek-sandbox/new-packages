@@ -3,6 +3,7 @@
 namespace Untek\Component\Text\Helpers;
 
 use Untek\Core\Contract\Common\Exceptions\InvalidMethodParameterException;
+use Yiisoft\Strings\Inflector as YiiInflector;
 
 class Inflector
 {
@@ -11,7 +12,7 @@ class Inflector
     public const SNACK_CASE = 'SNACK_CASE';
     public const KEBAB_CASE = 'KEBAB_CASE';
 
-    public static function toCase(string $name, string $case): string
+    /*public static function toCase(string $name, string $case): string
     {
         if ($case == self::CAMEL_CASE) {
             return self::variablize($name);
@@ -23,7 +24,7 @@ class Inflector
             return self::camel2id(self::camelize($name));
         }
         throw new InvalidMethodParameterException('Unsupported ' . $case);
-    }
+    }*/
 
     /**
      * Converts an underscored or CamelCase word into a English
@@ -34,9 +35,7 @@ class Inflector
      */
     public static function titleize($words, $ucAll = false)
     {
-        $words = static::humanize(static::underscore($words), $ucAll);
-
-        return $ucAll ? StringHelper::mb_ucwords($words, self::encoding()) : StringHelper::mb_ucfirst($words, self::encoding());
+        return (new YiiInflector)->toSentence($words, $ucAll);
     }
 
     /**
@@ -51,7 +50,7 @@ class Inflector
      */
     public static function camelize($word)
     {
-        return str_replace(' ', '', StringHelper::mb_ucwords(preg_replace('/[^\pL\pN]+/u', ' ', $word), self::encoding()));
+        return (new YiiInflector)->toCamelCase($word);
     }
 
     /**
@@ -61,16 +60,11 @@ class Inflector
      * @param bool $ucwords whether to capitalize the first letter in each word
      * @return string the resulting words
      */
-    public static function camel2words($name, $ucwords = true)
+    /*public static function camel2words($name, $ucwords = true)
     {
-        $label = mb_strtolower(trim(str_replace([
-            '-',
-            '_',
-            '.',
-        ], ' ', preg_replace('/(?<!\p{Lu})(\p{Lu})|(\p{Lu})(?=\p{Ll})/u', ' \0', $name))), self::encoding());
+        return (new YiiInflector)->toWords($name);
 
-        return $ucwords ? StringHelper::mb_ucwords($label, self::encoding()) : $label;
-    }
+    }*/
 
     /**
      * Converts a CamelCase name into an ID in lowercase.
@@ -83,12 +77,7 @@ class Inflector
      */
     public static function camel2id($name, $separator = '-', $strict = false)
     {
-        $regex = $strict ? '/\p{Lu}/u' : '/(?<!\p{Lu})\p{Lu}/u';
-        if ($separator === '_') {
-            return mb_strtolower(trim(preg_replace($regex, '_\0', $name), '_'), self::encoding());
-        }
-
-        return mb_strtolower(trim(str_replace('_', $separator, preg_replace($regex, $separator . '\0', $name)), $separator), self::encoding());
+        return (new YiiInflector)->pascalCaseToId($name, $separator, $strict);
     }
 
     /**
@@ -99,10 +88,10 @@ class Inflector
      * @param string $separator the character used to separate the words in the ID
      * @return string the resulting CamelCase name
      */
-    public static function id2camel($id, $separator = '-')
+    /*public static function id2camel($id, $separator = '-')
     {
-        return str_replace(' ', '', StringHelper::mb_ucwords(str_replace($separator, ' ', $id), self::encoding()));
-    }
+        return (new YiiInflector)->toCamelCase($id, $separator);
+    }*/
 
     /**
      * Converts any "CamelCased" into an "underscored_word".
@@ -127,13 +116,10 @@ class Inflector
      * @param bool $ucAll whether to set all words to uppercase or not
      * @return string
      */
-    public static function humanize($word, $ucAll = false)
+    /*public static function humanize($word, $ucAll = false)
     {
-        $word = str_replace('_', ' ', preg_replace('/_id$/', '', $word));
-        $encoding = self::encoding();
-
-        return $ucAll ? StringHelper::mb_ucwords($word, $encoding) : StringHelper::mb_ucfirst($word, $encoding);
-    }
+        return (new YiiInflector)->toHumanReadable($word, $ucAll);
+    }*/
 
     /**
      * Same as camelize but first char is in lowercase.
@@ -146,9 +132,7 @@ class Inflector
      */
     public static function variablize($word)
     {
-        $word = static::camelize($word);
-
-        return mb_strtolower(mb_substr($word, 0, 1, self::encoding())) . mb_substr($word, 1, null, self::encoding());
+        return (new YiiInflector)->toCamelCase($word);
     }
 
     /**
@@ -160,16 +144,16 @@ class Inflector
      */
     public static function tableize($className)
     {
-        return Pluralizer::pluralize(static::underscore($className));
+        return (new YiiInflector)->classToTable($className);
     }
 
     /**
      * @return bool if intl extension is loaded
      */
-    protected static function hasIntl()
+    /*protected static function hasIntl()
     {
         return extension_loaded('intl');
-    }
+    }*/
 
     /**
      * Converts a table name to its class name.
@@ -178,17 +162,17 @@ class Inflector
      * @param string $tableName
      * @return string
      */
-    public static function classify($tableName)
+    /*public static function classify($tableName)
     {
         return static::camelize(Pluralizer::singularize($tableName));
-    }
+    }*/
 
     /**
      * Converts number to its ordinal English form. For example, converts 13 to 13th, 2 to 2nd ...
      * @param int $number the number to get its ordinal value
      * @return string
      */
-    public static function ordinalize($number)
+    /*public static function ordinalize($number)
     {
         if (in_array($number % 100, range(11, 13))) {
             return $number . 'th';
@@ -203,7 +187,7 @@ class Inflector
             default:
                 return $number . 'th';
         }
-    }
+    }*/
 
     /**
      * Converts a list of words into a sentence.
@@ -233,7 +217,7 @@ class Inflector
      * @return string the generated sentence
      * @since 2.0.1
      */
-    public static function sentence(array $words, $twoWordsConnector = null, $lastWordConnector = null, $connector = ', ')
+    /*public static function sentence(array $words, $twoWordsConnector = null, $lastWordConnector = null, $connector = ', ')
     {
         if ($twoWordsConnector === null) {
             $twoWordsConnector = \Yii::t('yii', ' and ');
@@ -251,14 +235,14 @@ class Inflector
             default:
                 return implode($connector, array_slice($words, 0, -1)) . $lastWordConnector . end($words);
         }
-    }
+    }*/
 
     /**
      * @return string
      */
-    private static function encoding()
+    /*private static function encoding()
     {
         return 'UTF-8'; //return isset(Yii::$app) ? Yii::$app->charset : 'UTF-8';
-    }
+    }*/
 
 }
