@@ -5,7 +5,7 @@ namespace Untek\Framework\Telegram\Infrastructure\Normalizer;
 use ArrayObject;
 use Untek\Core\Contract\Common\Exceptions\NotImplementedMethodException;
 use Untek\Core\Instance\Helpers\MappingHelper;
-use Untek\Database\Base\Hydrator\DatabaseItemNormalizer;
+use Untek\Persistence\Normalizer\DatabaseItemNormalizer;
 use Untek\Framework\Telegram\Domain\Dto\Photo;
 use Untek\Framework\Telegram\Domain\Dto\SendPhotoResult;
 

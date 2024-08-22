@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Database\Base\Hydrator;
+namespace Untek\Persistence\Normalizer;
 
 interface DbNormalizerInterface
 {

@@ -7,7 +7,7 @@ use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\Persistence\ObjectRepository;
 use Untek\Component\Relation\Traits\RepositoryRelationTrait;
-use Untek\Database\Base\Hydrator\Traits\NormalizerTrait;
+use Untek\Persistence\Normalizer\Traits\NormalizerTrait;
 use Untek\Database\Doctrine\Domain\Helpers\QueryBuilder\DoctrineQueryBuilderHelper;
 
 abstract class AbstractDoctrineRepository implements ObjectRepository

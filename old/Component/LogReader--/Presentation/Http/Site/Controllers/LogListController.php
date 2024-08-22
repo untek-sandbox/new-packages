@@ -2,7 +2,7 @@
 
 namespace Untek\Component\LogReader\Presentation\Http\Site\Controllers;
 
-use Forecast\Map\Core\CarPark\Application\Queries\GetCarParkListQuery;
+use Untek\Component\LogReader\Application\Queries\LogListQuery;
 use Untek\Component\LogReader\Infrastructure\Persistence\JsonFile\DateRepository;
 use Untek\Component\LogReader\Infrastructure\Persistence\JsonFile\LogRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,7 +34,7 @@ class LogListController extends AbstractWebController
     {
         $this->accessChecker->denyAccessUnlessGranted('ROLE_ADMIN');
 
-        $query = new GetCarParkListQuery();
+        $query = new LogListQuery();
         QueryParameterHelper::fillQueryFromRequest($request, $query);
         QueryParameterHelper::removeEmptyFilters($query);
 

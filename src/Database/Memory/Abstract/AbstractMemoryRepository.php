@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\Expr\Comparison;
 use Doctrine\Persistence\ObjectRepository;
 use Untek\Component\Relation\Traits\RepositoryRelationTrait;
 use Untek\Core\Collection\Libs\Collection;
-use Untek\Database\Base\Hydrator\Traits\NormalizerTrait;
+use Untek\Persistence\Normalizer\Traits\NormalizerTrait;
 
 abstract class AbstractMemoryRepository implements ObjectRepository
 {

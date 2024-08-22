@@ -8,8 +8,8 @@ use SplFileObject;
 use Untek\Component\LogReader\Domain\Model\LogItem;
 use Untek\Component\LogReader\Infrastructure\Persistence\Normalizer\LogItemNormalizer;
 use Untek\Component\Arr\Helpers\ArrayHelper;
-use Untek\Database\Base\Hydrator\DbNormalizerInterface;
-use Untek\Database\Base\Hydrator\Traits\NormalizerTrait;
+use Untek\Persistence\Normalizer\DbNormalizerInterface;
+use Untek\Persistence\Normalizer\Traits\NormalizerTrait;
 use Untek\Persistence\Contract\Interfaces\RepositoryCountByInterface;
 
 class LogRepository implements ObjectRepository, RepositoryCountByInterface

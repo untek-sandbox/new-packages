@@ -10,7 +10,7 @@ use Illuminate\Database\Query\Builder;
 use Untek\Component\Relation\Traits\RepositoryRelationTrait;
 use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Database\Base\Domain\Traits\TableNameTrait;
-use Untek\Database\Base\Hydrator\Traits\NormalizerTrait;
+use Untek\Persistence\Normalizer\Traits\NormalizerTrait;
 use Illuminate\Database\Capsule\Manager;
 use Untek\Database\Eloquent\Domain\Traits\EloquentTrait;
 use Untek\Database\Eloquent\Infrastructure\Helpers\QueryBuilder\EloquentQueryBuilderHelper;

@@ -3,7 +3,7 @@
 namespace Untek\Component\LogReader\Infrastructure\Persistence\Normalizer;
 
 use DateTime;
-use Untek\Database\Base\Hydrator\DatabaseItemNormalizer;
+use Untek\Persistence\Normalizer\DatabaseItemNormalizer;
 
 class LogItemNormalizer extends DatabaseItemNormalizer
 {

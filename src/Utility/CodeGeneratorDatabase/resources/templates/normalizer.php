@@ -9,7 +9,7 @@
 
 namespace <?= $namespace ?>;
 
-use Untek\Database\Base\Hydrator\DatabaseItemNormalizer;
+use Untek\Persistence\Normalizer\DatabaseItemNormalizer;
 use ArrayObject;
 
 class <?= $className ?> extends DatabaseItemNormalizer

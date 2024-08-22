@@ -3,7 +3,7 @@
 namespace Untek\Component\RestApiRepository\Abstract;
 
 use Untek\Component\RestApiRepository\Helpers\RequestHelper;
-use Untek\Database\Base\Hydrator\Traits\NormalizerTrait;
+use Untek\Persistence\Normalizer\Traits\NormalizerTrait;
 
 abstract class AbstractRestApiRepository
 {

@@ -4,7 +4,7 @@ namespace Untek\Develop\Package\Domain\Repositories\File;
 
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Helpers\CollectionHelper;
-use Untek\Database\Base\Hydrator\Traits\NormalizerTrait;
+use Untek\Persistence\Normalizer\Traits\NormalizerTrait;
 use Untek\Model\Entity\Interfaces\EntityIdInterface;
 use Untek\Model\Repository\Interfaces\ReadRepositoryInterface;
 use Untek\Component\FormatAdapter\StoreFile;

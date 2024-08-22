@@ -1,9 +1,9 @@
 <?php
 
-namespace Untek\Database\Base\Hydrator\Traits;
+namespace Untek\Persistence\Normalizer\Traits;
 
-use Untek\Database\Base\Hydrator\DatabaseItemNormalizer;
-use Untek\Database\Base\Hydrator\DbNormalizerInterface;
+use Untek\Persistence\Normalizer\DatabaseItemNormalizer;
+use Untek\Persistence\Normalizer\DbNormalizerInterface;
 
 trait NormalizerTrait
 {
