@@ -8,6 +8,7 @@
 namespace Untek\Component\FileSystem\Helpers;
 
 use ErrorException;
+use Symfony\Component\Filesystem\Filesystem;
 use Untek\Core\Contract\Common\Exceptions\InvalidArgumentException;
 use Yiisoft\Strings\StringHelper;
 
@@ -47,7 +48,9 @@ class FileHelper
      */
     public static function normalizePath($path, $ds = DIRECTORY_SEPARATOR)
     {
-        $path = rtrim(strtr($path, '/\\', $ds . $ds), $ds);
+        return $path;
+
+        /*$path = rtrim(strtr($path, '/\\', $ds . $ds), $ds);
         if (strpos($ds . $path, "{$ds}.") === false && strpos($path, "{$ds}{$ds}") === false) {
             return $path;
         }
@@ -73,7 +76,7 @@ class FileHelper
             }
         }
         $path = implode($ds, $parts);
-        return $path === '' ? '.' : $path;
+        return $path === '' ? '.' : $path;*/
     }
 
     /**
@@ -121,7 +124,12 @@ class FileHelper
      */
     public static function copyDirectory($src, $dst, $options = [])
     {
-        $src = static::normalizePath($src);
+        $fs = new Filesystem();
+        $fs->mirror($src, $dst);
+        return;
+
+
+        /*$src = static::normalizePath($src);
         $dst = static::normalizePath($dst);
 
         if ($src === $dst || strpos($dst, $src . DIRECTORY_SEPARATOR) === 0) {
@@ -173,7 +181,7 @@ class FileHelper
                 }
             }
         }
-        closedir($handle);
+        closedir($handle);*/
     }
 
     /**

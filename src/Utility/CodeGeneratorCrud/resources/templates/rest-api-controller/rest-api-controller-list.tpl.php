@@ -24,9 +24,9 @@ class <?= $className ?> extends AbstractGetListRestApiController
 
     public function __construct(
         private CommandBusInterface $bus,
+        protected <?= \Untek\Core\Instance\Helpers\ClassHelper::getClassOfClassName($schemaClassName) ?> $schema,
     )
     {
-        $this->schema = new <?= \Untek\Core\Instance\Helpers\ClassHelper::getClassOfClassName($schemaClassName) ?>();
     }
 
     public function __invoke(Request $request): JsonResponse

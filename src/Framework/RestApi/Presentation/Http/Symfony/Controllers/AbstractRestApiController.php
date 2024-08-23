@@ -18,14 +18,26 @@ use Untek\Framework\RestApi\Presentation\Http\Serializer\ResponseSerializerInter
 use Untek\Framework\RestApi\Presentation\Http\Symfony\Helpers\RestApiHelper;
 use Untek\Framework\RestApi\Presentation\Http\Symfony\Interfaces\RestApiSchemaInterface;
 
+/**
+ * @property RestApiSchemaInterface $schema
+ */
 abstract class AbstractRestApiController
 {
 
-    protected RestApiSchemaInterface $schema;
+//    protected RestApiSchemaInterface $schema;
+
+    protected function getSchema(): ?RestApiSchemaInterface
+    {
+        if(isset($this->schema)) {
+            return $this->schema;
+        }
+    }
 
     protected function checkSchema()
     {
-        if (!isset($this->schema) && getenv('REST_API_SCHEMA_STRICT')) {
+        return;
+
+        if (!isset($this->schema)) {
             throw new \RuntimeException('REST API schema not defined.');
         }
     }
@@ -33,10 +45,10 @@ abstract class AbstractRestApiController
     protected function encodeObject(mixed $data): array
     {
         $this->checkSchema();
-        if (!isset($this->schema)) {
-            return PropertyHelper::toArray($data);
+        if (isset($this->schema)) {
+            return $this->schema->encode($data);
         }
-        return $this->schema->encode($data);
+        return PropertyHelper::toArray($data);
     }
 
     protected function encodeList(array $data): array

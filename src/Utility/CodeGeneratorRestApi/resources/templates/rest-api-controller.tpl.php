@@ -22,9 +22,12 @@ use <?= $schemaClassName ?>;
 class <?= $className ?> extends AbstractRestApiController
 {
 
-    public function __construct(private CommandBusInterface $bus, private UrlGeneratorInterface $urlGenerator)
+    public function __construct(
+        private CommandBusInterface $bus,
+        private UrlGeneratorInterface $urlGenerator,
+        protected <?= \Untek\Core\Instance\Helpers\ClassHelper::getClassOfClassName($schemaClassName) ?> $schema,
+    )
     {
-        $this->schema = new <?= \Untek\Core\Instance\Helpers\ClassHelper::getClassOfClassName($schemaClassName) ?>();
     }
 
     /**

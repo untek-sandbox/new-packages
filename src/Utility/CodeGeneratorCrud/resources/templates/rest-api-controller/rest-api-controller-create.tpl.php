@@ -28,12 +28,11 @@ class <?= $className ?> extends AbstractCreateRestApiController
 
     public function __construct(
         private CommandBusInterface $bus,
-        UrlGeneratorInterface $urlGenerator,
+        private UrlGeneratorInterface $urlGenerator,
         private ControllerAccessChecker $accessChecker,
+        protected <?= \Untek\Core\Instance\Helpers\ClassHelper::getClassOfClassName($schemaClassName) ?> $schema,
     )
     {
-        $this->urlGenerator = $urlGenerator;
-        $this->schema = new <?= \Untek\Core\Instance\Helpers\ClassHelper::getClassOfClassName($schemaClassName) ?>();
     }
 
     public function __invoke(Request $request): JsonResponse
