@@ -11,5 +11,5 @@
 
 ?>
 #!/bin/sh
-cd ..
-php console <?= $cliCommandName ?>
+cd ../..
+docker exec -it sf-blank-php_service-1 php bin/console <?= $cliCommandName ?>

@@ -21,7 +21,7 @@ class MigrationConfigGenerator
     public function generate(GenerateDatabaseCommand $command): void
     {
         $fileName = PackageHelper::pathByNamespace($this->namespace) . '/resources/migrations';
-        $fileName = (new Filesystem())->makePathRelative($fileName, realpath(__DIR__ . '/../../../../../../../sf-blank'));
+        $fileName = (new Filesystem())->makePathRelative($fileName, realpath(__DIR__ . '/../../../../../../../..'));
         $fileName = rtrim($fileName, '/');
         $concreteCode = $fileName;
         $codeForAppend = "    __DIR__ . '/../../$fileName',";

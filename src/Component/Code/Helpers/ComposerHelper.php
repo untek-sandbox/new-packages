@@ -24,7 +24,7 @@ class ComposerHelper
     {
         if (!self::$composerVendorClassLoader) {
             $loaders = ClassLoader::getRegisteredLoaders();
-            $vendorDir = realpath(__DIR__ . '/../../../../../vendor');
+            $vendorDir = realpath(__DIR__ . '/../../../../../../');
             self::$composerVendorClassLoader = $loaders[$vendorDir];
         }
         return self::$composerVendorClassLoader;
@@ -63,34 +63,34 @@ class ComposerHelper
         self::getComposerVendorClassLoader()->addPsr4($namespace . '\\', $path);
     }
 
-    public static function getPsr4PathStrict($path)
-    {
-//        dd(get_declared_classes());
-//        $directories = collect(get_declared_classes())
-//            // filter only those that begin with 'MyVendor\MyPackage'
-//            ->filter(function ($item, $key) use ($path) {
-//                dd($item, $key);
-//                // put a backslash to the end of the namespace (and escape it) if needed
-//                return \Illuminate\Support\Str::startsWith($item, $path);
-//            })
-//            // get reflection class, then get filename from it, then just the dirname part
-//            /*->map(function ($item) {
-//                return (string) Str::of((new \ReflectionClass($item))->getFileName())->dirname();
-//            })
-//            // remove duplicates
-//            ->unique()*/
-//            ->dump();
-//        dd($directories);
-
-
-        $path = str_replace('/', '\\', $path);
-        $autoloadPsr4 = self::getComposerVendorClassLoader()->getPrefixesPsr4();
-        foreach ($autoloadPsr4 as $key => $item) {
-            dump($key, $item, $path);
-        }
-//        \Illuminate\Support\Str::startsWith($item, 'MyVendor\MyPackage')
-        dd($path, $autoloadPsr4);
-    }
+//    public static function getPsr4PathStrict($path)
+//    {
+////        dd(get_declared_classes());
+////        $directories = collect(get_declared_classes())
+////            // filter only those that begin with 'MyVendor\MyPackage'
+////            ->filter(function ($item, $key) use ($path) {
+////                dd($item, $key);
+////                // put a backslash to the end of the namespace (and escape it) if needed
+////                return \Illuminate\Support\Str::startsWith($item, $path);
+////            })
+////            // get reflection class, then get filename from it, then just the dirname part
+////            /*->map(function ($item) {
+////                return (string) Str::of((new \ReflectionClass($item))->getFileName())->dirname();
+////            })
+////            // remove duplicates
+////            ->unique()*/
+////            ->dump();
+////        dd($directories);
+//
+//
+//        $path = str_replace('/', '\\', $path);
+//        $autoloadPsr4 = self::getComposerVendorClassLoader()->getPrefixesPsr4();
+//        foreach ($autoloadPsr4 as $key => $item) {
+//            dump($key, $item, $path);
+//        }
+////        \Illuminate\Support\Str::startsWith($item, 'MyVendor\MyPackage')
+//        dd($path, $autoloadPsr4);
+//    }
     
     /**
      * Получить имя директории из namespace

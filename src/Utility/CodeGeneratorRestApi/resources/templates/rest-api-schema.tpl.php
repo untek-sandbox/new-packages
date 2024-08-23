@@ -29,7 +29,7 @@ class <?= $className ?> implements RestApiSchemaInterface
     <?php foreach ($properties as $attribute):
         $propertyName = $attribute['name'];
         $propertyType = $attribute['type'];
-        $camelCaseName = (new Inflector())->toCamelCase($propertyName);
+        $camelCaseName = (new Inflector())->toPascalCase($propertyName);
         $lcCamelCaseName = lcfirst($camelCaseName);
         ?>
         <?php

@@ -14,8 +14,8 @@ abstract class AbstractCommandCommand //extends AbstractCommand
 
     public function getCamelizeName(): string
     {
-        $camelizeName = (new Inflector())->toCamelCase($this->getCommandName());
-        return $camelizeName . (new Inflector())->toCamelCase($this->getCommandType());
+        $camelizeName = (new Inflector())->toPascalCase($this->getCommandName());
+        return $camelizeName . (new Inflector())->toPascalCase($this->getCommandType());
     }
 
     public function getCommandName(): string

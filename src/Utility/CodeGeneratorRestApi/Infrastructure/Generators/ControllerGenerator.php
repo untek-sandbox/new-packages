@@ -27,7 +27,7 @@ class ControllerGenerator
     {
         $commandFullClassName = ApplicationPathHelper::getCommandClass($command);
         $commandClassName = ClassHelper::getClassOfClassName($commandFullClassName);
-        $commandClassName = (new Inflector())->toCamelCase($commandClassName);
+        $commandClassName = (new Inflector())->toPascalCase($commandClassName);
         $controllerClassName = RestApiPathHelper::getControllerClass($command);
         $schemaClassName = RestApiPathHelper::getRestApiSchemaClass($command);
         $params = [

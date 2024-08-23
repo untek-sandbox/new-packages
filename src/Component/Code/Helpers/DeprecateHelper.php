@@ -80,6 +80,8 @@ class DeprecateHelper
 
     private static function log(string $message = '', $trace = [], $level = \Monolog\Logger::NOTICE)
     {
+        return;
+
         $container = ContainerHelper::getContainer();
         if (!$container instanceof ContainerInterface) {
             return;

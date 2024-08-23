@@ -13,7 +13,7 @@ class CliPathHelper
     public static function getCliCommandClass(GenerateCliCommand $command): string
     {
         $commandClassName = ClassHelper::getClassOfClassName($command->getCommandClass());
-        $commandClassName = (new Inflector())->toCamelCase($commandClassName);
+        $commandClassName = (new Inflector())->toPascalCase($commandClassName);
         $endCommandClassName = CommandHelper::getType($command->getCommandClass());
         $pureCommandClassName = substr($commandClassName, 0, 0 - strlen($endCommandClassName));
         return $command->getNamespace() . '\\Presentation\\Cli\\Commands\\' . $pureCommandClassName . 'CliCommand';

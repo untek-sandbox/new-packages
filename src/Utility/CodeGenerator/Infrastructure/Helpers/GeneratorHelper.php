@@ -3,6 +3,7 @@
 namespace Untek\Utility\CodeGenerator\Infrastructure\Helpers;
 
 use Symfony\Component\Filesystem\Filesystem;
+use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Utility\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\Application\Interfaces\GeneratorInterface;
 use Untek\Utility\CodeGenerator\Application\Dto\GenerateResultCollection;
@@ -23,7 +24,14 @@ class GeneratorHelper
         $fs = new Filesystem();
         foreach ($collection->getAll() as $result) {
             if($result instanceof FileResult) {
-                $fs->dumpFile($result->getName(), $result->getContent());
+                if($result->getName() != '') {
+                    $dir = dirname($result->getName());
+                    if(!is_dir($dir)) {
+                        dump($result);
+                        mkdir($dir, recursive: true);
+                    }
+                    $fs->dumpFile($result->getName(), $result->getContent());
+                }
             }
         }
     }

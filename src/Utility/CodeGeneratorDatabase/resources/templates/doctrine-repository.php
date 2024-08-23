@@ -27,6 +27,6 @@ class <?= $className ?> extends AbstractDoctrineCrudRepository implements <?= $c
 
     public function getClassName(): string
     {
-        return <?= (new Inflector())->toCamelCase($tableName) ?>::class;
+        return <?= (new Inflector())->toPascalCase($tableName) ?>::class;
     }
 }

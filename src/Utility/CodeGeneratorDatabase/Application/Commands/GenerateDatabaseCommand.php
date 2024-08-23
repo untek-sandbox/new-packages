@@ -75,7 +75,7 @@ class GenerateDatabaseCommand //extends AbstractCommand
         if($this->modelName) {
             return $this->modelName;
         }
-        return (new Inflector())->toCamelCase($this->getTableName());
+        return (new Inflector())->toPascalCase($this->getTableName());
     }
 
     public function setModelName(?string $modelName): void

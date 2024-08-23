@@ -10,7 +10,7 @@ class TypeHelper
 
     public static function generateCommandName(string $type, string $commandName)
     {
-        $commandName = (new Inflector())->toCamelCase($commandName);
+        $commandName = (new Inflector())->toPascalCase($commandName);
         if ($type === TypeEnum::COMMAND) {
             $commandClass = 'Commands\\' . $commandName . 'Command';
         } elseif ($type === TypeEnum::QUERY) {

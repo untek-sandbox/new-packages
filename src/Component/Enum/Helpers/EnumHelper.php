@@ -82,7 +82,7 @@ class EnumHelper
      */
     public static function getLabel(string $className, $constValue): string
     {
-        DeprecateHelper::hardThrow();
+//        DeprecateHelper::hardThrow();
         $labels = self::getLabels($className);
         return $labels[$constValue];
     }
@@ -96,7 +96,7 @@ class EnumHelper
      */
     public static function getLabels(string $className): array
     {
-        DeprecateHelper::hardThrow();
+//        DeprecateHelper::hardThrow();
         $labels = $className::getLabels();
         return $labels;
     }

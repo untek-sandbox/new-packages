@@ -30,7 +30,7 @@ class GenerateApplicationCommandHandler implements CqrsHandlerInterface
             new CommandHandlerGenerator($this->collection),
             new CommandValidatorGenerator($this->collection),
             new ContainerConfigGenerator($this->collection),
-            new ContainerConfigImportGenerator($this->collection),
+//            new ContainerConfigImportGenerator($this->collection),
 //            new ContainerConfigBusGenerator($this->collection),
 //            new ContainerConfigBusImportGenerator($this->collection),
         ];

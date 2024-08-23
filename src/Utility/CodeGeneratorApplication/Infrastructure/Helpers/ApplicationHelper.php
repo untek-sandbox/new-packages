@@ -13,7 +13,7 @@ class ApplicationHelper
     {
         $properties = [];
         foreach ($command->getProperties() as &$commandAttribute) {
-            $name = (new Inflector())->toCamelCase($commandAttribute['name']);
+            $name = (new Inflector())->toPascalCase($commandAttribute['name']);
             $type = $commandAttribute['type'];
             if (!empty($commandAttribute['nullable'])) {
                 $type = '?' . $type;

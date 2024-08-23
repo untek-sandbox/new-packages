@@ -35,7 +35,7 @@ class DatabasePathHelper
 
     public static function getRepositoryClass(object $command, string $driver): string
     {
-        $driverName = (new Inflector())->toCamelCase($driver);
+        $driverName = (new Inflector())->toPascalCase($driver);
         return $command->getNamespace() . '\\Infrastructure\\Persistence\\' . $driverName . '\\Repository\\' . $command->getModelName() . 'Repository';
     }
 }

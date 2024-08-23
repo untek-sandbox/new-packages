@@ -2,6 +2,7 @@
 
 namespace Untek\Utility\CodeGenerator\Presentation\Cli\Commands;
 
+use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -28,10 +29,16 @@ class GenerateCodeCommand extends Command
     public function __construct(
         string $name = null,
         private CommandBusInterface $bus,
-        private array $interacts
+        private ContainerInterface $container,
+        private array $interacts = [],
     )
     {
         parent::__construct($name);
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'code-generator:generate';
     }
 
     protected function configure()
@@ -94,7 +101,7 @@ class GenerateCodeCommand extends Command
         foreach ($commands as $command) {
             $this->bus->handle($command);
         }
-        $collection = ContainerHelper::getContainer()->get(GenerateResultCollection::class);
+        $collection = $this->container->get(GenerateResultCollection::class);
         GeneratorHelper::dump($collection);
         return $this->sortCollection($collection);
     }

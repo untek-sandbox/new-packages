@@ -15,7 +15,7 @@ class RestApiPathHelper
     {
         $commandFullClassName = ApplicationPathHelper::getCommandClass($command);
         $commandClassName = ClassHelper::getClassOfClassName($commandFullClassName);
-        $commandClassName = (new Inflector())->toCamelCase($commandClassName);
+        $commandClassName = (new Inflector())->toPascalCase($commandClassName);
 //        $endCommandClassName = CommandHelper::getType($command->getCommandClass());
         $pureCommandClassName = substr($commandClassName, 0, 0 - strlen($command->getCommandType()));
         return $command->getNamespace() . '\\Presentation\\Http\\RestApi\\Schema\\' . $pureCommandClassName . 'Schema';
@@ -25,7 +25,7 @@ class RestApiPathHelper
     {
         $commandFullClassName = ApplicationPathHelper::getCommandClass($command);
         $commandClassName = ClassHelper::getClassOfClassName($commandFullClassName);
-        $commandClassName = (new Inflector())->toCamelCase($commandClassName);
+        $commandClassName = (new Inflector())->toPascalCase($commandClassName);
 //        $endCommandClassName = CommandHelper::getType($command->getCommandClass());
         $pureCommandClassName = substr($commandClassName, 0, 0 - strlen($command->getCommandType()));
         return $command->getNamespace() . '\\Presentation\\Http\\RestApi\\Controllers\\' . $pureCommandClassName . 'Controller';
@@ -35,7 +35,7 @@ class RestApiPathHelper
     {
         $commandFullClassName = ApplicationPathHelper::getCommandClass($command);
         $commandClassName = ClassHelper::getClassOfClassName($commandFullClassName);
-        $commandClassName = (new Inflector())->toCamelCase($commandClassName);
+        $commandClassName = (new Inflector())->toPascalCase($commandClassName);
 //        $endCommandClassName = CommandHelper::getType($command->getCommandClass());
         $pureCommandClassName = substr($commandClassName, 0, 0 - strlen($command->getCommandType()));
         return 'Tests\\RestApi\\'.$command->getModuleName().'\\' . $pureCommandClassName . 'Test';
