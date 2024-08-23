@@ -41,11 +41,11 @@ class FileStorageHelper
         return false;
     }
 
-    public static function copy(string $sourceFile, string $targetFile, $dirAccess = 0777)
+    /*public static function copy(string $sourceFile, string $targetFile, $dirAccess = 0777)
     {
         $sourceData = FileStorageHelper::load($sourceFile);
         FileStorageHelper::save($targetFile, $sourceData, 0, null, $dirAccess);
-    }
+    }*/
 
     public static function touchFile($fileName, $data = null, $flags = 0, $context = null, int $dirAccess = 0777)
     {

@@ -21,7 +21,7 @@ class FilePathHelper
         return $root;
     }
 
-    public static function prepareRootPath($path)
+    /*public static function prepareRootPath($path)
     {
         $rootDir = __DIR__ . '/../../../../untek-sandbox';
         $path = str_replace('\\', '/', $path);
@@ -29,7 +29,7 @@ class FilePathHelper
             return $rootDir . $path;
         }
         return $path;
-    }
+    }*/
 
     public static function mb_basename($name, $ds = DIRECTORY_SEPARATOR)
     {

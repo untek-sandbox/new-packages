@@ -9,8 +9,8 @@ use BaconQrCode\Renderer\ImageRenderer;
 use BaconQrCode\Renderer\PlainTextRenderer;
 use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 use BaconQrCode\Writer;
+use Symfony\Component\Mime\MimeTypes;
 use Untek\Component\Enum\Helpers\EnumHelper;
-use Untek\Component\FileSystem\Helpers\MimeTypeHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;
 use Untek\Kaz\Egov\Qr\Enums\ImageExtensionEnum;
@@ -72,7 +72,10 @@ class QrService
     {
         $fileEntity = new FileEntity();
         $fileEntity->setExtension($extension);
-        $mimeType = MimeTypeHelper::getMimeTypeByExt($extension);
+
+        $mimeTypes = (new MimeTypes())->getMimeTypes($extension);
+        $mimeType = $mimeTypes[0];
+
         $fileEntity->setMimeType($mimeType);
         $fileEntity->setContent($content);
         return $fileEntity;

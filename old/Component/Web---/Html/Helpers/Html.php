@@ -8,11 +8,11 @@
 namespace Untek\Component\Web\Html\Helpers;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mime\MimeTypes;
 use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Component\FileSystem\Helpers\FileHelper;
 use Untek\Core\Contract\Common\Exceptions\InvalidArgumentException;
 use Untek\Component\FileSystem\Helpers\FileStorageHelper;
-use Untek\Component\FileSystem\Helpers\MimeTypeHelper;
 use Untek\Core\Base\Legacy\Yii\Base\Model;
 use Untek\Component\Web\Html\Helpers\Url;
 
@@ -184,7 +184,7 @@ class Html
             return null;
         }
         $content = FileStorageHelper::load($fileName);
-        $mimeType = MimeTypeHelper::getMimeTypeByFileName($fileName);
+        $mimeType = (new MimeTypes())->guessMimeType($fileName);
 //        $mimeType = FileHelper::getMimeType($fileName);
         $base64code = 'data:'.$mimeType.';base64, ' . base64_encode($content);
         return $base64code;
