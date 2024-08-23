@@ -2,7 +2,6 @@
 
 namespace Untek\Utility\CodeGenerator\Application\Dto;
 
-use Untek\Component\FileSystem\Helpers\FileHelper;
 use Untek\Utility\CodeGenerator\Application\Interfaces\ResultInterface;
 
 class FileResult implements ResultInterface
@@ -18,7 +17,6 @@ class FileResult implements ResultInterface
         ?bool $isNew = null,
     )
     {
-        $name = FileHelper::normalizePath($name);
         $this->name = $name;
         $this->content = $content;
         $this->isNew = $isNew === null ? !file_exists($name) : $isNew;

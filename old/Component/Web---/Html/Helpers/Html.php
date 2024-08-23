@@ -10,11 +10,9 @@ namespace Untek\Component\Web\Html\Helpers;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mime\MimeTypes;
 use Untek\Component\Arr\Helpers\ArrayHelper;
-use Untek\Component\FileSystem\Helpers\FileHelper;
-use Untek\Core\Contract\Common\Exceptions\InvalidArgumentException;
 use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Core\Base\Legacy\Yii\Base\Model;
-use Untek\Component\Web\Html\Helpers\Url;
+use Untek\Core\Contract\Common\Exceptions\InvalidArgumentException;
 
 /**
  * Html provides a set of static methods for generating commonly used HTML tags.
@@ -103,63 +101,69 @@ class Html
     public static $dataAttributes = ['data', 'data-ng', 'ng'];
 
 
-    public static function renderBoolean($value) {
+    public static function renderBoolean($value)
+    {
         $value = boolval($value);
         return $value ? '<i class="fa fa-check text-success"></i>' : '<i class="fa fa-times text-danger"></i>';
     }
 
-    public static function ulRaw($items, $options = []) {
+    public static function ulRaw($items, $options = [])
+    {
         $options['item'] = [self::class, 'renderLine'];
         return self::ul($items, $options);
     }
 
-    public static function renderLine($item) {
+    public static function renderLine($item)
+    {
         return Html::tag('li', $item);
     }
 
-    public static function defineFont($font, $path, $extList = ['ttf']) {
+    public static function defineFont($font, $path, $extList = ['ttf'])
+    {
         $typesCss = '';
-        foreach($extList as $ext) {
-            if($ext == 'eot') {
+        foreach ($extList as $ext) {
+            if ($ext == 'eot') {
                 $typesCss .= '
-                    src: url("'.$path.'.eot");
-                    src: url("'.$path.'.eot?#iefix")format("embedded-opentype"),';
+                    src: url("' . $path . '.eot");
+                    src: url("' . $path . '.eot?#iefix")format("embedded-opentype"),';
             }
-            if($ext == 'woff') {
+            if ($ext == 'woff') {
                 $typesCss .= '
-                    url("'.$path.'.woff") format("woff"),';
+                    url("' . $path . '.woff") format("woff"),';
             }
-            if($ext == 'ttf') {
+            if ($ext == 'ttf') {
                 $typesCss .= '
-                    url("'.$path.'.ttf") format("truetype")';
+                    url("' . $path . '.ttf") format("truetype")';
             }
         }
         $css = '
             @font-face {
-                font-family: "'.$font.'";
-                '.$typesCss.';
+                font-family: "' . $font . '";
+                ' . $typesCss . ';
             }
         ';
         Yii::$app->view->registerCss($css);
     }
 
-    public static function setFont($fontName) {
+    public static function setFont($fontName)
+    {
         $css = '
             html, body, h1, h2, h3, h4, h5, h6
             {
-                font-family: \''.$fontName.'\';
+                font-family: \'' . $fontName . '\';
             }
         ';
         Yii::$app->view->registerCss($css);
     }
 
-    public static function recursiveHtmlEntities($val) {
-        if(is_object($val)) {
-            $val = (array) $val;
+    public static function recursiveHtmlEntities($val)
+    {
+        if (is_object($val)) {
+            $val = (array)$val;
         }
-        if(is_array($val)) {
-            $closure = function($v) {
-                if( ! is_array($v) && ! is_object($v)) {
+        if (is_array($val)) {
+            $closure = function ($v) {
+                if (!is_array($v) && !is_object($v)) {
                     $v = htmlentities($v);
                 }
                 return $v;
@@ -171,22 +175,23 @@ class Html
         return $val;
     }
 
-    public static function generateDataUrl($fileName) {
+    public static function generateDataUrl($fileName)
+    {
         $resp = RestHelper::get($fileName);
         $mimeType = $resp->getHeader('content-type', 1)[0];
-        $base64code = 'data:'.$mimeType.';base64, ' . base64_encode($resp->content);
+        $base64code = 'data:' . $mimeType . ';base64, ' . base64_encode($resp->content);
         return $base64code;
     }
 
-    public static function getDataUrl($fileName) {
-        $fileName = FileHelper::normalizePath($fileName);
-        if(!FileStorageHelper::has($fileName)) {
+    public static function getDataUrl($fileName)
+    {
+        if (!FileStorageHelper::has($fileName)) {
             return null;
         }
         $content = FileStorageHelper::load($fileName);
         $mimeType = (new MimeTypes())->guessMimeType($fileName);
 //        $mimeType = FileHelper::getMimeType($fileName);
-        $base64code = 'data:'.$mimeType.';base64, ' . base64_encode($content);
+        $base64code = 'data:' . $mimeType . ';base64, ' . base64_encode($content);
         return $base64code;
     }
 
@@ -197,7 +202,7 @@ class Html
 
     public static function icon($icon, $options = [], $prefix = 'fa fa-', $tag = 'i')
     {
-        if(!is_array($options)) {
+        if (!is_array($options)) {
             $type = $options;
             $options = [];
             $options['class'] = $type ? ' text-' . $type : '';
@@ -346,7 +351,7 @@ class Html
      */
     public static function cssFile($url, $options = [])
     {
-        if ( ! isset($options['rel'])) {
+        if (!isset($options['rel'])) {
             $options['rel'] = 'stylesheet';
         }
         $options['href'] = Url::to($url);
@@ -461,7 +466,7 @@ class Html
             }*/
         }
 
-        if ( ! strcasecmp($method, 'get') && ($pos = strpos($action, '?')) !== false) {
+        if (!strcasecmp($method, 'get') && ($pos = strpos($action, '?')) !== false) {
             // query parameters in the action are ignored for GET method
             // we use hidden fields to add them back
             foreach (explode('&', substr($action, $pos + 1)) as $pair) {
@@ -480,7 +485,7 @@ class Html
         $options['action'] = $action;
         $options['method'] = $method;
         $form = static::beginTag('form', $options);
-        if ( ! empty($hiddenInputs)) {
+        if (!empty($hiddenInputs)) {
             $form .= "\n" . implode("\n", $hiddenInputs);
         }
 
@@ -572,7 +577,7 @@ class Html
             $options['srcset'] = implode(',', $srcset);
         }
 
-        if ( ! isset($options['alt'])) {
+        if (!isset($options['alt'])) {
             $options['alt'] = '';
         }
 
@@ -611,7 +616,7 @@ class Html
      */
     public static function button($content = 'Button', $options = [])
     {
-        if ( ! isset($options['type'])) {
+        if (!isset($options['type'])) {
             $options['type'] = 'button';
         }
 
@@ -669,11 +674,11 @@ class Html
      */
     public static function input($type, $name = null, $value = null, $options = [])
     {
-        if ( ! isset($options['type'])) {
+        if (!isset($options['type'])) {
             $options['type'] = $type;
         }
         $options['name'] = $name;
-        $options['value'] = $value === null ? null : (string) $value;
+        $options['value'] = $value === null ? null : (string)$value;
         return static::tag('input', '', $options);
     }
 
@@ -866,8 +871,8 @@ class Html
     protected static function booleanInput($type, $name, $checked = false, $options = [])
     {
         // 'checked' option has priority over $checked argument
-        if ( ! isset($options['checked'])) {
-            $options['checked'] = (bool) $checked;
+        if (!isset($options['checked'])) {
+            $options['checked'] = (bool)$checked;
         }
         $value = array_key_exists('value', $options) ? $options['value'] : '1';
         if (isset($options['uncheck'])) {
@@ -877,7 +882,7 @@ class Html
                 $hiddenOptions['form'] = $options['form'];
             }
             // make sure disabled input is not sending any value
-            if ( ! empty($options['disabled'])) {
+            if (!empty($options['disabled'])) {
                 $hiddenOptions['disabled'] = $options['disabled'];
             }
             $hidden = static::hiddenInput($name, $options['uncheck'], $hiddenOptions);
@@ -942,7 +947,7 @@ class Html
      */
     public static function dropDownList($name, $selection = null, $items = [], $options = [])
     {
-        if ( ! empty($options['multiple'])) {
+        if (!empty($options['multiple'])) {
             return static::listBox($name, $selection, $items, $options);
         }
         $options['name'] = $name;
@@ -1000,21 +1005,21 @@ class Html
      */
     public static function listBox($name, $selection = null, $items = [], $options = [])
     {
-        if ( ! array_key_exists('size', $options)) {
+        if (!array_key_exists('size', $options)) {
             $options['size'] = 4;
         }
-        if ( ! empty($options['multiple']) && ! empty($name) && substr_compare($name, '[]', -2, 2)) {
+        if (!empty($options['multiple']) && !empty($name) && substr_compare($name, '[]', -2, 2)) {
             $name .= '[]';
         }
         $options['name'] = $name;
         if (isset($options['unselect'])) {
             // add a hidden field so that if the list box has no option being selected, it still submits a value
-            if ( ! empty($name) && substr_compare($name, '[]', -2, 2) === 0) {
+            if (!empty($name) && substr_compare($name, '[]', -2, 2) === 0) {
                 $name = substr($name, 0, -2);
             }
             $hiddenOptions = [];
             // make sure disabled input is not sending any value
-            if ( ! empty($options['disabled'])) {
+            if (!empty($options['disabled'])) {
                 $hiddenOptions['disabled'] = $options['disabled'];
             }
             $hidden = static::hiddenInput($name, $options['unselect'], $hiddenOptions);
@@ -1068,7 +1073,7 @@ class Html
             $name .= '[]';
         }
         if (ArrayHelper::isTraversable($selection)) {
-            $selection = array_map('strval', (array) $selection);
+            $selection = array_map('strval', (array)$selection);
         }
 
         $formatter = ArrayHelper::remove($options, 'item');
@@ -1081,8 +1086,8 @@ class Html
         $index = 0;
         foreach ($items as $value => $label) {
             $checked = $selection !== null &&
-                ( ! ArrayHelper::isTraversable($selection) && ! strcmp($value, $selection)
-                    || ArrayHelper::isTraversable($selection) && ArrayHelper::isIn((string) $value, $selection));
+                (!ArrayHelper::isTraversable($selection) && !strcmp($value, $selection)
+                    || ArrayHelper::isTraversable($selection) && ArrayHelper::isIn((string)$value, $selection));
             if ($formatter !== null) {
                 $lines[] = call_user_func($formatter, $index, $label, $name, $checked, $value);
             } else {
@@ -1099,7 +1104,7 @@ class Html
             $name2 = substr($name, -2) === '[]' ? substr($name, 0, -2) : $name;
             $hiddenOptions = [];
             // make sure disabled input is not sending any value
-            if ( ! empty($options['disabled'])) {
+            if (!empty($options['disabled'])) {
                 $hiddenOptions['disabled'] = $options['disabled'];
             }
             $hidden = static::hiddenInput($name2, $options['unselect'], $hiddenOptions);
@@ -1155,7 +1160,7 @@ class Html
     public static function radioList($name, $selection = null, $items = [], $options = [])
     {
         if (ArrayHelper::isTraversable($selection)) {
-            $selection = array_map('strval', (array) $selection);
+            $selection = array_map('strval', (array)$selection);
         }
 
         $formatter = ArrayHelper::remove($options, 'item');
@@ -1169,7 +1174,7 @@ class Html
             // add a hidden field so that if the list box has no option being selected, it still submits a value
             $hiddenOptions = [];
             // make sure disabled input is not sending any value
-            if ( ! empty($options['disabled'])) {
+            if (!empty($options['disabled'])) {
                 $hiddenOptions['disabled'] = $options['disabled'];
             }
             $hidden = static::hiddenInput($name, $options['unselect'], $hiddenOptions);
@@ -1180,8 +1185,8 @@ class Html
         $index = 0;
         foreach ($items as $value => $label) {
             $checked = $selection !== null &&
-                ( ! ArrayHelper::isTraversable($selection) && ! strcmp($value, $selection)
-                    || ArrayHelper::isTraversable($selection) && ArrayHelper::isIn((string) $value, $selection));
+                (!ArrayHelper::isTraversable($selection) && !strcmp($value, $selection)
+                    || ArrayHelper::isTraversable($selection) && ArrayHelper::isIn((string)$value, $selection));
             if ($formatter !== null) {
                 $lines[] = call_user_func($formatter, $index, $label, $name, $checked, $value);
             } else {
@@ -1391,7 +1396,7 @@ class Html
     private static function collectErrors($models, $encode, $showAllErrors)
     {
         $lines = [];
-        if ( ! is_array($models)) {
+        if (!is_array($models)) {
             $models = [$models];
         }
 
@@ -1465,7 +1470,7 @@ class Html
     {
         $name = isset($options['name']) ? $options['name'] : static::getInputName($model, $attribute);
         $value = isset($options['value']) ? $options['value'] : static::getAttributeValue($model, $attribute);
-        if ( ! array_key_exists('id', $options)) {
+        if (!array_key_exists('id', $options)) {
             $options['id'] = static::getInputId($model, $attribute);
         }
 
@@ -1604,7 +1609,7 @@ class Html
             $hiddenOptions['name'] = $options['name'];
         }
         // make sure disabled input is not sending any value
-        if ( ! empty($options['disabled'])) {
+        if (!empty($options['disabled'])) {
             $hiddenOptions['disabled'] = $options['disabled'];
         }
         $hiddenOptions = ArrayHelper::merge($hiddenOptions, ArrayHelper::remove($options, 'hiddenOptions', []));
@@ -1646,7 +1651,7 @@ class Html
         } else {
             $value = static::getAttributeValue($model, $attribute);
         }
-        if ( ! array_key_exists('id', $options)) {
+        if (!array_key_exists('id', $options)) {
             $options['id'] = static::getInputId($model, $attribute);
         }
         self::normalizeMaxLength($model, $attribute, $options);
@@ -1703,15 +1708,15 @@ class Html
         $name = isset($options['name']) ? $options['name'] : static::getInputName($model, $attribute);
         $value = static::getAttributeValue($model, $attribute);
 
-        if ( ! array_key_exists('value', $options)) {
+        if (!array_key_exists('value', $options)) {
             $options['value'] = '1';
         }
-        if ( ! array_key_exists('uncheck', $options)) {
+        if (!array_key_exists('uncheck', $options)) {
             $options['uncheck'] = '0';
         } elseif ($options['uncheck'] === false) {
             unset($options['uncheck']);
         }
-        if ( ! array_key_exists('label', $options)) {
+        if (!array_key_exists('label', $options)) {
             $options['label'] = static::encode($model->getAttributeLabel(static::getAttributeName($attribute)));
         } elseif ($options['label'] === false) {
             unset($options['label']);
@@ -1719,7 +1724,7 @@ class Html
 
         $checked = "$value" === "{$options['value']}";
 
-        if ( ! array_key_exists('id', $options)) {
+        if (!array_key_exists('id', $options)) {
             $options['id'] = static::getInputId($model, $attribute);
         }
 
@@ -1938,10 +1943,10 @@ class Html
     {
         $name = isset($options['name']) ? $options['name'] : static::getInputName($model, $attribute);
         $selection = isset($options['value']) ? $options['value'] : static::getAttributeValue($model, $attribute);
-        if ( ! array_key_exists('unselect', $options)) {
+        if (!array_key_exists('unselect', $options)) {
             $options['unselect'] = '';
         }
-        if ( ! array_key_exists('id', $options)) {
+        if (!array_key_exists('id', $options)) {
             $options['id'] = static::getInputId($model, $attribute);
         }
 
@@ -1968,7 +1973,7 @@ class Html
     public static function renderSelectOptions($selection, $items, &$tagOptions = [])
     {
         if (ArrayHelper::isTraversable($selection)) {
-            $selection = array_map('strval', (array) $selection);
+            $selection = array_map('strval', (array)$selection);
         }
 
         $lines = [];
@@ -1998,7 +2003,7 @@ class Html
         foreach ($items as $key => $value) {
             if (is_array($value)) {
                 $groupAttrs = isset($groups[$key]) ? $groups[$key] : [];
-                if ( ! isset($groupAttrs['label'])) {
+                if (!isset($groupAttrs['label'])) {
                     $groupAttrs['label'] = $key;
                 }
                 $attrs = ['options' => $options, 'groups' => $groups, 'encodeSpaces' => $encodeSpaces, 'encode' => $encode];
@@ -2006,11 +2011,11 @@ class Html
                 $lines[] = static::tag('optgroup', "\n" . $content . "\n", $groupAttrs);
             } else {
                 $attrs = isset($options[$key]) ? $options[$key] : [];
-                $attrs['value'] = (string) $key;
-                if ( ! array_key_exists('selected', $attrs)) {
+                $attrs['value'] = (string)$key;
+                if (!array_key_exists('selected', $attrs)) {
                     $attrs['selected'] = $selection !== null &&
-                        ( ! ArrayHelper::isTraversable($selection) && ! strcmp($key, $selection)
-                            || ArrayHelper::isTraversable($selection) && ArrayHelper::isIn((string) $key, $selection));
+                        (!ArrayHelper::isTraversable($selection) && !strcmp($key, $selection)
+                            || ArrayHelper::isTraversable($selection) && ArrayHelper::isIn((string)$key, $selection));
                 }
                 $text = $encode ? static::encode($value) : $value;
                 if ($encodeSpaces) {
@@ -2116,10 +2121,10 @@ class Html
     {
         if (isset($options['class'])) {
             if (is_array($options['class'])) {
-                $options['class'] = self::mergeCssClasses($options['class'], (array) $class);
+                $options['class'] = self::mergeCssClasses($options['class'], (array)$class);
             } else {
                 $classes = preg_split('/\s+/', $options['class'], -1, PREG_SPLIT_NO_EMPTY);
-                $options['class'] = implode(' ', self::mergeCssClasses($classes, (array) $class));
+                $options['class'] = implode(' ', self::mergeCssClasses($classes, (array)$class));
             }
         } else {
             $options['class'] = $class;
@@ -2137,9 +2142,9 @@ class Html
     private static function mergeCssClasses(array $existingClasses, array $additionalClasses)
     {
         foreach ($additionalClasses as $key => $class) {
-            if (is_int($key) && ! in_array($class, $existingClasses)) {
+            if (is_int($key) && !in_array($class, $existingClasses)) {
                 $existingClasses[] = $class;
-            } elseif ( ! isset($existingClasses[$key])) {
+            } elseif (!isset($existingClasses[$key])) {
                 $existingClasses[$key] = $class;
             }
         }
@@ -2157,7 +2162,7 @@ class Html
     {
         if (isset($options['class'])) {
             if (is_array($options['class'])) {
-                $classes = array_diff($options['class'], (array) $class);
+                $classes = array_diff($options['class'], (array)$class);
                 if (empty($classes)) {
                     unset($options['class']);
                 } else {
@@ -2165,7 +2170,7 @@ class Html
                 }
             } else {
                 $classes = preg_split('/\s+/', $options['class'], -1, PREG_SPLIT_NO_EMPTY);
-                $classes = array_diff($classes, (array) $class);
+                $classes = array_diff($classes, (array)$class);
                 if (empty($classes)) {
                     unset($options['class']);
                 } else {
@@ -2199,10 +2204,10 @@ class Html
      */
     public static function addCssStyle(&$options, $style, $overwrite = true)
     {
-        if ( ! empty($options['style'])) {
+        if (!empty($options['style'])) {
             $oldStyle = is_array($options['style']) ? $options['style'] : static::cssStyleToArray($options['style']);
             $newStyle = is_array($style) ? $style : static::cssStyleToArray($style);
-            if ( ! $overwrite) {
+            if (!$overwrite) {
                 foreach ($newStyle as $property => $value) {
                     if (isset($oldStyle[$property])) {
                         unset($newStyle[$property]);
@@ -2230,9 +2235,9 @@ class Html
      */
     public static function removeCssStyle(&$options, $properties)
     {
-        if ( ! empty($options['style'])) {
+        if (!empty($options['style'])) {
             $style = is_array($options['style']) ? $options['style'] : static::cssStyleToArray($options['style']);
-            foreach ((array) $properties as $property) {
+            foreach ((array)$properties as $property) {
                 unset($style[$property]);
             }
             $options['style'] = static::cssStyleFromArray($style);
@@ -2334,7 +2339,7 @@ class Html
      */
     public static function getAttributeValue($model, $attribute)
     {
-        if ( ! preg_match(static::$attributeRegex, $attribute, $matches)) {
+        if (!preg_match(static::$attributeRegex, $attribute, $matches)) {
             throw new InvalidArgumentException('Attribute name must contain word characters only.');
         }
         $attribute = $matches[2];
@@ -2384,7 +2389,7 @@ class Html
     public static function getInputName($model, $attribute)
     {
         $formName = $model->formName();
-        if ( ! preg_match(static::$attributeRegex, $attribute, $matches)) {
+        if (!preg_match(static::$attributeRegex, $attribute, $matches)) {
             throw new InvalidArgumentException('Attribute name must contain word characters only.');
         }
         $prefix = $matches[1];
@@ -2433,7 +2438,7 @@ class Html
         } else {
             $pattern = substr($pattern, 0, $pos + 1);
         }
-        if ( ! empty($flag)) {
+        if (!empty($flag)) {
             $pattern .= preg_replace('/[^igmu]/', '', $flag);
         }
 

@@ -17,10 +17,10 @@ class StoreFile
         $this->file = $file;
     }
 
-    public function update($key, $value)
+    /*public function update($key, $value)
     {
         $this->store->update($this->file, $key, $value);
-    }
+    }*/
 
     public function load($key = null)
     {

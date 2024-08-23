@@ -2,7 +2,6 @@
 
 namespace Untek\Utility\CodeGenerator\Application\Dto;
 
-use Untek\Component\FileSystem\Helpers\FileHelper;
 use Untek\Utility\CodeGenerator\Application\Interfaces\ResultInterface;
 
 class GenerateResultCollection
@@ -35,8 +34,8 @@ class GenerateResultCollection
 
     public function add(ResultInterface $result): self
     {
-        $name = FileHelper::normalizePath($result->getName());
-        if($this->has($name)) {
+        $name = $result->getName();
+        if ($this->has($name)) {
             $this->get($name)->setContent($result->getContent());
         }
         $this->items[$name] = $result;
@@ -45,13 +44,11 @@ class GenerateResultCollection
 
     public function get(string $name): ResultInterface
     {
-        $name = FileHelper::normalizePath($name);
         return $this->items[$name];
     }
 
     public function has(string $name): bool
     {
-        $name = FileHelper::normalizePath($name);
         return isset($this->items[$name]);
     }
 

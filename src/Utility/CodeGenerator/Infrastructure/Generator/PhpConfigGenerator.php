@@ -3,7 +3,6 @@
 namespace Untek\Utility\CodeGenerator\Infrastructure\Generator;
 
 use Symfony\Component\Filesystem\Filesystem;
-use Untek\Component\FileSystem\Helpers\FileHelper;
 use Untek\Utility\CodeGenerator\Application\Dto\GenerateResultCollection;
 
 class PhpConfigGenerator
@@ -28,7 +27,6 @@ class PhpConfigGenerator
 
     protected function getCode(string $name): ?string
     {
-        $name = FileHelper::normalizePath($name);
         $fs = new Filesystem();
         if ($this->collection->has($name)) {
             $result = $this->collection->get($name);

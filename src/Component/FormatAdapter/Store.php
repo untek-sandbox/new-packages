@@ -2,9 +2,8 @@
 
 namespace Untek\Component\FormatAdapter;
 
+use Symfony\Component\Filesystem\Filesystem;
 use Untek\Component\Arr\Helpers\ArrayHelper;
-use Untek\Component\FileSystem\Helpers\FilePathHelper;
-use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Component\FormatAdapter\Drivers\DriverInterface;
 
 class Store
@@ -51,17 +50,16 @@ class Store
         return $this->driverInstance->encode($data);
     }
 
-    public function update($fileAlias, $key, $value)
+    /*public function update($fileAlias, $key, $value)
     {
         $data = $this->load($fileAlias);
         ArrayHelper::set($data, $key, $value);
         $this->save($fileAlias, $data);
-    }
+    }*/
 
-    public function load($fileAlias, $key = null)
+    public function load($fileName, $key = null)
     {
-        $fileName = FilePathHelper::pathToAbsolute($fileAlias);
-        if (!FileStorageHelper::has($fileName)) {
+        if (!file_exists($fileName)) {
             return null;
         }
         if (method_exists($this->driverInstance, 'load')) {
@@ -70,21 +68,20 @@ class Store
             }
             return $this->driverInstance->load($fileName);
         }
-        $content = FileStorageHelper::load($fileName);
+        $content = file_get_contents($fileName);
         if (func_num_args() > 1) {
             return $this->decode($content, $key);
         }
         return $this->decode($content);
     }
 
-    public function save($fileAlias, $data)
+    public function save($fileName, $data)
     {
-        $fileName = FilePathHelper::pathToAbsolute($fileAlias);
         if (method_exists($this->driverInstance, 'save')) {
             return $this->driverInstance->save($fileName, $data);
         }
         $content = $this->encode($data);
-        FileStorageHelper::save($fileName, $content);
+        (new Filesystem())->dumpFile($fileName, $content);
     }
 
 }

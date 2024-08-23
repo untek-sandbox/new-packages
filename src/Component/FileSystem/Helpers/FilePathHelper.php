@@ -2,6 +2,8 @@
 
 namespace Untek\Component\FileSystem\Helpers;
 
+use Symfony\Component\Filesystem\Path;
+
 class FilePathHelper
 {
 
@@ -31,9 +33,8 @@ class FilePathHelper
         return $path;
     }*/
 
-    public static function mb_basename($name, $ds = DIRECTORY_SEPARATOR)
+    private static function mb_basename($name, $ds = DIRECTORY_SEPARATOR)
     {
-        $name = FileHelper::normalizePath($name);
         $nameArray = explode($ds, $name);
         $name = end($nameArray);
         return $name;
@@ -41,7 +42,10 @@ class FilePathHelper
 
     public static function fileExt($name)
     {
-        return pathinfo($name, \PATHINFO_EXTENSION);
+        return Path::getExtension($name);
+
+//        return pathinfo($name, \PATHINFO_EXTENSION);
+
         /*$name = trim($name);
         $baseName = self::mb_basename($name);
         $start = strrpos($baseName, '.');
@@ -70,14 +74,14 @@ class FilePathHelper
         return $name;
     }
 
-    public static function pathToAbsolute($path)
+    /*public static function pathToAbsolute($path)
     {
         $path = FileHelper::normalizePath($path);
         if (self::isAbsolute($path)) {
             return $path;
         }
         return self::rootPath() . DIRECTORY_SEPARATOR . $path;
-    }
+    }*/
 
     public static function isAbsolute($path)
     {
@@ -85,28 +89,26 @@ class FilePathHelper
         return (bool)preg_match("#$pattern#Ai", $path);
     }
 
-    public static function rootPath()
+    private static function rootPath()
     {
         return self::up(__DIR__, 7);
     }
 
-    public static function trimRootPath($path)
+    /*public static function trimRootPath($path)
     {
         if (!self::isAbsolute($path)) {
             return $path;
         }
         $rootLen = strlen(self::rootPath());
         return substr($path, $rootLen + 1);
-    }
+    }*/
 
     public static function up($dir, $level = 1)
     {
-        $dir = FileHelper::normalizePath($dir);
         $dir = rtrim($dir, DIRECTORY_SEPARATOR);
         for ($i = 0; $i < $level; $i++) {
             $dir = dirname($dir);
         }
         return $dir;
     }
-
 }

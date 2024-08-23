@@ -27,7 +27,7 @@ class UnprocessableEntityException extends Exception
         return $this;
     }
 
-    public static function create($message, ?string $messageTemplate, array $parameters, $root, ?string $propertyPath, $invalidValue, int $plural = null, string $code = null): self
+    /*public static function create($message, ?string $messageTemplate, array $parameters, $root, ?string $propertyPath, $invalidValue, int $plural = null, string $code = null): self
     {
         DeprecateHelper::hardThrow();
         $unprocessable = new UnprocessableEntityException();
@@ -35,7 +35,7 @@ class UnprocessableEntityException extends Exception
             new ConstraintViolation($message, $messageTemplate, $parameters, $root, $propertyPath, $invalidValue),
         ]));
         throw $unprocessable;
-    }
+    }*/
 
     public static function throwException($message, ?string $propertyPath, ?string $messageTemplate = null, array $parameters = [], $root = null, $invalidValue = null, int $plural = null, string $code = null): void
     {

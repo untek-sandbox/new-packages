@@ -177,7 +177,7 @@ class GenerateCodeCommand extends Command
         $list = [];
         foreach ($collection->getAll() as $result) {
             if ($result instanceof FileResult) {
-                $file = GeneratorFileHelper::fileNameTotoRelative(FileHelper::normalizePath($result->getName()));
+                $file = GeneratorFileHelper::fileNameTotoRelative($result->getName());
                 $prefix = $result->isNew() ? '<bg=green>ADD</>' : '<bg=blue>UPD</>';
                 $list[] = $prefix . ' ' . $file;
             }

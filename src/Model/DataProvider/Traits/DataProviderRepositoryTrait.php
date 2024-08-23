@@ -10,6 +10,8 @@ use Untek\Model\DataProvider\Interfaces\FilterQueryInterface;
 use Untek\Model\DataProvider\Interfaces\PageQueryInterface;
 use Untek\Model\DataProvider\Interfaces\SortQueryInterface;
 
+// todo: убрать зависимость от Eloquent или переместить в пакет Eloquent
+
 trait DataProviderRepositoryTrait
 {
 

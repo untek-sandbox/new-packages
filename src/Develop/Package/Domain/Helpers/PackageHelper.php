@@ -68,7 +68,7 @@ class PackageHelper
             $partName = trim($partName, '\\');
             $fileName = $nsArray['path'] . '\\' . $partName;
         } else {
-            $fileName = FilePathHelper::rootPath() . '\\' . $namespace;
+            $fileName = realpath(__DIR__ . '/../../../../../../../..') . '\\' . $namespace;
         }
         $fileName = str_replace('\\', '/', $fileName);
         return $fileName;

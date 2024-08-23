@@ -122,67 +122,67 @@ class FileHelper
      *   Defaults to true. This option is available since version 2.0.12. Before 2.0.12 empty directories are always copied.
      * @throws InvalidArgumentException if unable to open directory
      */
-    public static function copyDirectory($src, $dst, $options = [])
-    {
-        $fs = new Filesystem();
-        $fs->mirror($src, $dst);
-        return;
-
-
-        /*$src = static::normalizePath($src);
-        $dst = static::normalizePath($dst);
-
-        if ($src === $dst || strpos($dst, $src . DIRECTORY_SEPARATOR) === 0) {
-            throw new InvalidArgumentException('Trying to copy a directory to itself or a subdirectory.');
-        }
-        $dstExists = is_dir($dst);
-        if (!$dstExists && (!isset($options['copyEmptyDirectories']) || $options['copyEmptyDirectories'])) {
-            static::createDirectory($dst, isset($options['dirMode']) ? $options['dirMode'] : 0775, true);
-            $dstExists = true;
-        }
-
-        $handle = opendir($src);
-        if ($handle === false) {
-            throw new InvalidArgumentException("Unable to open directory: $src");
-        }
-        if (!isset($options['basePath'])) {
-            // this should be done only once
-            $options['basePath'] = realpath($src);
-            $options = static::normalizeOptions($options);
-        }
-        while (($file = readdir($handle)) !== false) {
-            if ($file === '.' || $file === '..') {
-                continue;
-            }
-            $from = $src . DIRECTORY_SEPARATOR . $file;
-            $to = $dst . DIRECTORY_SEPARATOR . $file;
-            if (static::filterPath($from, $options)) {
-                if (isset($options['beforeCopy']) && !call_user_func($options['beforeCopy'], $from, $to)) {
-                    continue;
-                }
-                if (is_file($from)) {
-                    if (!$dstExists) {
-                        // delay creation of destination directory until the first file is copied to avoid creating empty directories
-                        static::createDirectory($dst, isset($options['dirMode']) ? $options['dirMode'] : 0775, true);
-                        $dstExists = true;
-                    }
-                    copy($from, $to);
-                    if (isset($options['fileMode'])) {
-                        @chmod($to, $options['fileMode']);
-                    }
-                } else {
-                    // recursive copy, defaults to true
-                    if (!isset($options['recursive']) || $options['recursive']) {
-                        static::copyDirectory($from, $to, $options);
-                    }
-                }
-                if (isset($options['afterCopy'])) {
-                    call_user_func($options['afterCopy'], $from, $to);
-                }
-            }
-        }
-        closedir($handle);*/
-    }
+//    public static function copyDirectory($src, $dst, $options = [])
+//    {
+//        $fs = new Filesystem();
+//        $fs->mirror($src, $dst);
+//        return;
+//
+//
+//        /*$src = static::normalizePath($src);
+//        $dst = static::normalizePath($dst);
+//
+//        if ($src === $dst || strpos($dst, $src . DIRECTORY_SEPARATOR) === 0) {
+//            throw new InvalidArgumentException('Trying to copy a directory to itself or a subdirectory.');
+//        }
+//        $dstExists = is_dir($dst);
+//        if (!$dstExists && (!isset($options['copyEmptyDirectories']) || $options['copyEmptyDirectories'])) {
+//            static::createDirectory($dst, isset($options['dirMode']) ? $options['dirMode'] : 0775, true);
+//            $dstExists = true;
+//        }
+//
+//        $handle = opendir($src);
+//        if ($handle === false) {
+//            throw new InvalidArgumentException("Unable to open directory: $src");
+//        }
+//        if (!isset($options['basePath'])) {
+//            // this should be done only once
+//            $options['basePath'] = realpath($src);
+//            $options = static::normalizeOptions($options);
+//        }
+//        while (($file = readdir($handle)) !== false) {
+//            if ($file === '.' || $file === '..') {
+//                continue;
+//            }
+//            $from = $src . DIRECTORY_SEPARATOR . $file;
+//            $to = $dst . DIRECTORY_SEPARATOR . $file;
+//            if (static::filterPath($from, $options)) {
+//                if (isset($options['beforeCopy']) && !call_user_func($options['beforeCopy'], $from, $to)) {
+//                    continue;
+//                }
+//                if (is_file($from)) {
+//                    if (!$dstExists) {
+//                        // delay creation of destination directory until the first file is copied to avoid creating empty directories
+//                        static::createDirectory($dst, isset($options['dirMode']) ? $options['dirMode'] : 0775, true);
+//                        $dstExists = true;
+//                    }
+//                    copy($from, $to);
+//                    if (isset($options['fileMode'])) {
+//                        @chmod($to, $options['fileMode']);
+//                    }
+//                } else {
+//                    // recursive copy, defaults to true
+//                    if (!isset($options['recursive']) || $options['recursive']) {
+//                        static::copyDirectory($from, $to, $options);
+//                    }
+//                }
+//                if (isset($options['afterCopy'])) {
+//                    call_user_func($options['afterCopy'], $from, $to);
+//                }
+//            }
+//        }
+//        closedir($handle);*/
+//    }
 
     /**
      * Removes a directory (and all its content) recursively.

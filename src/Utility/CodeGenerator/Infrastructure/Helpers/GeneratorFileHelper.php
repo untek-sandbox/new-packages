@@ -21,7 +21,6 @@ class GeneratorFileHelper
         if ($fs->isAbsolutePath($filename)) {
             $filename = str_replace(getenv('ROOT_DIRECTORY'), '', $filename);
         }
-        $filename = FileHelper::normalizePath($filename);
         return rtrim($filename, '/');
     }
 }
