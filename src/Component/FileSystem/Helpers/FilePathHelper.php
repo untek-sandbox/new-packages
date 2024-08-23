@@ -13,7 +13,7 @@ class FilePathHelper
         return FileHelper::normalizePath($path);
     }*/
 
-    public static function path(string $path = ''): string
+    /*public static function path(string $path = ''): string
     {
         $root = self::rootPath();
         $path = trim($path, '/');
@@ -21,7 +21,7 @@ class FilePathHelper
             $root .= DIRECTORY_SEPARATOR . $path;
         }
         return $root;
-    }
+    }*/
 
     /*public static function prepareRootPath($path)
     {
@@ -40,22 +40,22 @@ class FilePathHelper
         return $name;
     }
 
-    public static function fileExt($name)
-    {
-        return Path::getExtension($name);
-
-//        return pathinfo($name, \PATHINFO_EXTENSION);
-
-        /*$name = trim($name);
-        $baseName = self::mb_basename($name);
-        $start = strrpos($baseName, '.');
-        if ($start) {
-            $ext = substr($baseName, $start + 1);
-            $ext = strtolower($ext);
-            return $ext;
-        }
-        return null;*/
-    }
+//    public static function fileExt($name)
+//    {
+//        return Path::getExtension($name);
+//
+////        return pathinfo($name, \PATHINFO_EXTENSION);
+//
+//        /*$name = trim($name);
+//        $baseName = self::mb_basename($name);
+//        $start = strrpos($baseName, '.');
+//        if ($start) {
+//            $ext = substr($baseName, $start + 1);
+//            $ext = strtolower($ext);
+//            return $ext;
+//        }
+//        return null;*/
+//    }
 
     public static function fileNameOnly($name)
     {
@@ -66,7 +66,7 @@ class FilePathHelper
 
     public static function fileRemoveExt($name)
     {
-        $ext = self::fileExt($name);
+        $ext = Path::getExtension($name);
         $extLen = strlen($ext);
         if ($extLen) {
             return substr($name, 0, 0 - $extLen - 1);

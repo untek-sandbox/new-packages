@@ -2,6 +2,7 @@
 
 namespace Untek\Component\FormatAdapter;
 
+use Symfony\Component\Filesystem\Path;
 use Untek\Component\FileSystem\Helpers\FilePathHelper;
 
 class StoreFile
@@ -12,7 +13,7 @@ class StoreFile
 
     public function __construct($file, $driver = null)
     {
-        $driver = $driver ?: FilePathHelper::fileExt($file);
+        $driver = $driver ?: Path::getExtension($file);
         $this->store = new Store($driver);
         $this->file = $file;
     }

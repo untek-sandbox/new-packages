@@ -46,11 +46,11 @@ class FileHelper
      * @param string $ds the directory separator to be used in the normalized result. Defaults to `DIRECTORY_SEPARATOR`.
      * @return string the normalized file/directory path
      */
-    public static function normalizePath($path, $ds = DIRECTORY_SEPARATOR)
+    /*public static function normalizePath($path, $ds = DIRECTORY_SEPARATOR)
     {
         return $path;
 
-        /*$path = rtrim(strtr($path, '/\\', $ds . $ds), $ds);
+        $path = rtrim(strtr($path, '/\\', $ds . $ds), $ds);
         if (strpos($ds . $path, "{$ds}.") === false && strpos($path, "{$ds}{$ds}") === false) {
             return $path;
         }
@@ -76,8 +76,8 @@ class FileHelper
             }
         }
         $path = implode($ds, $parts);
-        return $path === '' ? '.' : $path;*/
-    }
+        return $path === '' ? '.' : $path;
+    }*/
 
     /**
      * Copies a whole directory as another one.
@@ -198,7 +198,11 @@ class FileHelper
      */
     public static function removeDirectory($dir, $options = [])
     {
-        if (!is_dir($dir)) {
+        (new Filesystem())->remove($dir);
+        return;
+
+
+        /*if (!is_dir($dir)) {
             return;
         }
         if (!empty($options['traverseSymlinks']) || !is_link($dir)) {
@@ -222,7 +226,7 @@ class FileHelper
             static::unlink($dir);
         } else {
             rmdir($dir);
-        }
+        }*/
     }
 
     /**
@@ -233,7 +237,7 @@ class FileHelper
      *
      * @since 2.0.14
      */
-    public static function unlink($path)
+    /*public static function unlink($path)
     {
         $isWindows = DIRECTORY_SEPARATOR === '\\';
 
@@ -260,7 +264,7 @@ class FileHelper
 
             return false;
         }
-    }
+    }*/
 
     /**
      * Returns the files found under the specified directory and subdirectories.
@@ -338,7 +342,7 @@ class FileHelper
      * @throws InvalidArgumentException if the dir is invalid.
      * @since 2.0.14
      */
-    public static function findDirectories($dir, $options = [])
+    /*public static function findDirectories($dir, $options = [])
     {
         $dir = self::clearDir($dir);
         $options = self::setBasePath($dir, $options);
@@ -359,9 +363,9 @@ class FileHelper
         closedir($handle);
 
         return $list;
-    }
+    }*/
 
-    public static function list($dir) {
+    /*public static function list($dir) {
         $dir = self::clearDir($dir);
         $list = [];
         $handle = self::openDir($dir);
@@ -374,7 +378,7 @@ class FileHelper
         closedir($handle);
 
         return $list;
-    }
+    }*/
 
     /**
      * Checks if the given file path satisfies the filtering options.
@@ -431,7 +435,10 @@ class FileHelper
      */
     public static function createDirectory($path, $mode = 0775, $recursive = true)
     {
-        if (is_dir($path)) {
+        (new Filesystem())->mkdir($path, $mode);
+
+
+        /*if (is_dir($path)) {
             return true;
         }
         $parentDir = dirname($path);
@@ -452,7 +459,7 @@ class FileHelper
             return chmod($path, $mode);
         } catch (\Exception $e) {
             throw new \Exception("Failed to change permissions for directory \"$path\": " . $e->getMessage(), $e->getCode(), $e);
-        }
+        }*/
     }
 
     /**

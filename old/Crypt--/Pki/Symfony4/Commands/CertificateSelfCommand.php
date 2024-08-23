@@ -26,7 +26,7 @@ class CertificateSelfCommand extends BaseGeneratorCommand
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $issuerStore = new RsaStoreFile(FilePathHelper::path(getenv('RSA_CA_DIRECTORY')));
+        $issuerStore = new RsaStoreFile(getenv('RSA_CA_DIRECTORY'));
         //$subjectStore = new RsaStoreFile(FileHelper::path(getenv('RSA_HOST_DIRECTORY')));
 
         $subjectEntity = new CertificateSubjectEntity;

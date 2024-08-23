@@ -27,7 +27,7 @@ class CertificateCommand extends BaseGeneratorCommand
 
     private function selectProfile($message, InputInterface $input, OutputInterface $output)
     {
-        $rsaDir = FilePathHelper::path(getenv('RSA_DIRECTORY'));
+        $rsaDir = getenv('RSA_DIRECTORY');
         $profiles = FindFileHelper::scanDir($rsaDir);
         $question = new ChoiceQuestion(
             $message,
@@ -40,7 +40,7 @@ class CertificateCommand extends BaseGeneratorCommand
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $rsaDir = FilePathHelper::path(getenv('RSA_DIRECTORY'));
+        $rsaDir = getenv('RSA_DIRECTORY');
         /*$profiles = FileHelper::scanDir($rsaDir);
         $question = new ChoiceQuestion(
             'Select profile',

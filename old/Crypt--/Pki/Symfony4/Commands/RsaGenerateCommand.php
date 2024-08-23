@@ -24,7 +24,7 @@ class RsaGenerateCommand extends BaseGeneratorCommand
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $rsaDir = FilePathHelper::path(getenv('RSA_DIRECTORY'));
+        $rsaDir = getenv('RSA_DIRECTORY');
 
         do {
             $question = new Question('Enter project name: ');

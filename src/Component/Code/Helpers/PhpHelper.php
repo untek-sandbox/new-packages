@@ -2,6 +2,7 @@
 
 namespace Untek\Component\Code\Helpers;
 
+use Symfony\Component\Filesystem\Path;
 use Untek\Component\FileSystem\Helpers\FilePathHelper;
 
 class PhpHelper
@@ -54,7 +55,7 @@ class PhpHelper
         foreach ($libs as $lib) {
             $path = $directory . '/' . $lib;
             if (is_file($path)) {
-                if (is_file($path) && FilePathHelper::fileExt($lib) == 'php') {
+                if (is_file($path) && Path::getExtension($lib) == 'php') {
                     require_once $path;
                 }
             } elseif (is_dir($path)) {
