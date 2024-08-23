@@ -14,8 +14,9 @@ namespace <?= $namespace ?>;
 
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Untek\Component\Cqrs\Application\Abstract\CqrsHandlerInterface;
 
-class <?= $className ?>
+class <?= $className ?> implements CqrsHandlerInterface
 
 {
 

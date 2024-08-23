@@ -27,13 +27,12 @@ class GenerateCodeCommand extends Command
 {
 
     public function __construct(
-        string $name = null,
         private CommandBusInterface $bus,
         private ContainerInterface $container,
         private array $interacts = [],
     )
     {
-        parent::__construct($name);
+        parent::__construct();
     }
 
     public static function getDefaultName(): ?string

@@ -18,10 +18,7 @@ class ContainerConfigGenerator
     {
         $repositoryClassName = DatabasePathHelper::getRepositoryClass($command, $command->getRepositoryDriver());
         $repositoryInterfaceClassName = DatabasePathHelper::getRepositoryInterface($command);
-        $args = [
-            Manager::class,
-        ];
         $consoleConfigGenerator = new \Untek\Utility\CodeGenerator\Infrastructure\Generator\ContainerConfigGenerator($this->collection, $command->getNamespace());
-        $consoleConfigGenerator->generate($repositoryInterfaceClassName, $repositoryClassName, $args);
+        $consoleConfigGenerator->generate($repositoryInterfaceClassName, $repositoryClassName, [], [], 'alias');
     }
 }

@@ -25,9 +25,31 @@ class ContainerConfigGenerator
         }
     }
 
-    public function generate(string $abstractClassName, string $concreteClassName, array $args = null, array $tags = null, ): void
+    public function init(string $namespace): void
     {
-        $codeForAppend = $this->generateDefinition($abstractClassName, $concreteClassName, $args, $tags);
+        $codeForAppend = <<<EOF
+    \$services
+        ->load('$namespace\\\\', __DIR__ . '/../../..')
+        ->exclude([
+            __DIR__ . '/../../../{resources,Domain,Application/Commands,Application/Queries}',
+            __DIR__ . '/../../../**/*{Event.php,Helper.php,Message.php,Task.php,Relation.php,Normalizer.php}',
+            __DIR__ . '/../../../**/{Dto,Enums}',
+        ]);
+EOF;
+        $configFile = ComposerHelper::getPsr4Path($this->namespace) . $this->cofigFilePath;
+        $templateFile = __DIR__ . '/../../resources/templates/container-config.tpl.php';
+        $configGenerator = new PhpConfigGenerator($this->collection, $configFile, $templateFile);
+        if (!$configGenerator->hasCode($codeForAppend)) {
+            $code = $configGenerator->appendCode($codeForAppend);
+        }
+        if(!empty($code)) {
+            $this->collection->add(new FileResult($configFile, $code));
+        }
+    }
+
+    public function generate(string $abstractClassName, string $concreteClassName, array $args = null, array $tags = null, string $method = 'set'): void
+    {
+        $codeForAppend = $this->generateDefinition($abstractClassName, $concreteClassName, $args, $tags, $method);
         $configFile = ComposerHelper::getPsr4Path($this->namespace) . $this->cofigFilePath;
         $templateFile = __DIR__ . '/../../resources/templates/container-config.tpl.php';
         $configGenerator = new PhpConfigGenerator($this->collection, $configFile, $templateFile);
@@ -39,8 +61,8 @@ class ContainerConfigGenerator
         }
     }
 
-    private function generateDefinition(string $abstractClassName, string $concreteClassName, array $args = null, array $tags = null): string {
-        $codeForAppend = '    $services->set(\\' . $abstractClassName . '::class, \\' . $concreteClassName . '::class)';
+    private function generateDefinition(string $abstractClassName, string $concreteClassName, array $args = null, array $tags = null, string $method = 'set'): string {
+        $codeForAppend = '    $services->' . $method . '(\\' . $abstractClassName . '::class, \\' . $concreteClassName . '::class)';
         if ($args) {
             $argsCode = '';
             foreach ($args as $arg) {

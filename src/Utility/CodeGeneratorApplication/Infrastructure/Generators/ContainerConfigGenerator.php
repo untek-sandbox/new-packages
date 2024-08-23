@@ -16,10 +16,11 @@ class ContainerConfigGenerator
     public function generate(GenerateApplicationCommand $command): void
     {
         $handlerClassName = ApplicationPathHelper::getHandlerClass($command);
-        $args = $command->getParameter(CommandHandlerGenerator::class, 'constructArguments');
+//        $args = $command->getParameter(CommandHandlerGenerator::class, 'constructArguments');
         $consoleConfigGenerator = new \Untek\Utility\CodeGenerator\Infrastructure\Generator\ContainerConfigGenerator($this->collection, $command->getNamespace());
-        $consoleConfigGenerator->generate($handlerClassName, $handlerClassName, $args, [
+        $consoleConfigGenerator->init($command->getNamespace());
+        /*$consoleConfigGenerator->generate($handlerClassName, $handlerClassName, $args, [
             'cqrs.handler'
-        ]);
+        ]);*/
     }
 }

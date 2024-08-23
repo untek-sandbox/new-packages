@@ -23,6 +23,7 @@ use Untek\Database\Eloquent\Infrastructure\Abstract\AbstractEloquentCrudReposito
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Untek\Component\Relation\Interfaces\RelationConfigInterface;
+use Untek\Persistence\Normalizer\DbNormalizerInterface;
 
 class <?= $className ?> extends AbstractEloquentCrudRepository implements <?= $className ?>Interface
 {
@@ -37,7 +38,7 @@ class <?= $className ?> extends AbstractEloquentCrudRepository implements <?= $c
         return <?= ClassHelper::getClassOfClassName($modelClassName) ?>::class;
     }
 
-    protected function getNormalizer(): NormalizerInterface|DenormalizerInterface
+    protected function getNormalizer(): DbNormalizerInterface
     {
         return new <?= ClassHelper::getClassOfClassName($normalizerClassName) ?>();
     }

@@ -37,7 +37,7 @@ class GenerateCliCommandHandler implements CqrsHandlerInterface
         $generators = [
             new CliCommandGenerator($this->collection),
 //            new ConsoleCommandConfigGenerator($this->collection),
-            new ContainerConfigGenerator($this->collection),
+//            new ContainerConfigGenerator($this->collection),
 //            new ContainerConfigImportGenerator($this->collection, '/resources/config/services/console.php', __DIR__ . '/../../../../../../../../config/console/container.php'),
             new CliCommandShortcutGenerator($this->collection),
         ];
