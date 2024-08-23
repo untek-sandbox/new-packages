@@ -89,10 +89,10 @@ class FilePathHelper
         return (bool)preg_match("#$pattern#Ai", $path);
     }
 
-    private static function rootPath()
+    /*private static function rootPath()
     {
         return self::up(__DIR__, 7);
-    }
+    }*/
 
     /*public static function trimRootPath($path)
     {
