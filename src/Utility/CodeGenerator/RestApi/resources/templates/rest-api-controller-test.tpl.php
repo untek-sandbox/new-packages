@@ -17,6 +17,13 @@ use Untek\Framework\RestApiTest\Asserts\RestApiResponseAssert;
 class <?= $className ?> extends AbstractRestApiTestCase
 {
 
+    protected function fixtures(): array
+    {
+        return [
+            // TODO: Add fixtures to fill tables in database
+        ];
+    }
+
     public function testExample()
     {
         self::markTestIncomplete('Auto-test needs improvement');
