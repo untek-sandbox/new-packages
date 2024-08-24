@@ -5,7 +5,7 @@ namespace Untek\Component\LogReader\Presentation\Http\Site\Controllers;
 use Untek\Component\LogReader\Infrastructure\Persistence\JsonFile\LogRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Untek\Component\App\Services\ControllerAccessChecker;
+use Untek\Core\App\Services\ControllerAccessChecker;
 use Untek\Component\Web\Controller\Abstract\AbstractWebController;
 use Untek\Component\Web\TwBootstrap\Widgets\Breadcrumb\BreadcrumbWidget;
 use Untek\Component\Web\View\Libs\View;

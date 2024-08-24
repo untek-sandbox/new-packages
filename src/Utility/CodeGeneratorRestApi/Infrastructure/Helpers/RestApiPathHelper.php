@@ -21,6 +21,11 @@ class RestApiPathHelper
         return $command->getNamespace() . '\\Presentation\\Http\\RestApi\\Schema\\' . $pureCommandClassName . 'Schema';
     }
 
+    public static function getControllerRouteName(GenerateRestApiCommand $command): string
+    {
+        return $command->getHttpMethod() . '_' . $command->getUri();
+    }
+
     public static function getControllerClass(GenerateRestApiCommand $command): string
     {
         $commandFullClassName = ApplicationPathHelper::getCommandClass($command);

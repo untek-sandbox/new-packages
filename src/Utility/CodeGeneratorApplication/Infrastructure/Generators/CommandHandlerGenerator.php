@@ -8,6 +8,7 @@ use Untek\Utility\CodeGenerator\Infrastructure\Generator\CodeGenerator;
 use Untek\Utility\CodeGenerator\Infrastructure\Helpers\GeneratorFileHelper;
 use Untek\Utility\CodeGeneratorApplication\Application\Commands\GenerateApplicationCommand;
 use Untek\Utility\CodeGeneratorApplication\Infrastructure\Helpers\ApplicationPathHelper;
+use Untek\Utility\CodeGeneratorDatabase\Infrastructure\Helpers\DatabasePathHelper;
 
 class CommandHandlerGenerator
 {
@@ -25,10 +26,12 @@ class CommandHandlerGenerator
         $handlerClassName = ApplicationPathHelper::getHandlerClass($command);
         $commandClassName = ApplicationPathHelper::getCommandClass($command);
         $validatorClassName = ApplicationPathHelper::getCommandValidatorClass($command);
+        $repositoryInterfaceClassName = DatabasePathHelper::getRepositoryInterface($command);
 
         $params = [
             'commandClassName' => $commandClassName,
             'validatorClassName' => $validatorClassName,
+            'repositoryInterfaceClassName' => $repositoryInterfaceClassName,
             'modelName' => $command->getModelName(),
             'modelClass' => \Untek\Utility\CodeGeneratorDatabase\Infrastructure\Helpers\DatabasePathHelper::getModelClass($command),
         ];

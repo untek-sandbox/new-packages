@@ -30,11 +30,14 @@ class ControllerGenerator
         $commandClassName = (new Inflector())->toPascalCase($commandClassName);
         $controllerClassName = RestApiPathHelper::getControllerClass($command);
         $schemaClassName = RestApiPathHelper::getRestApiSchemaClass($command);
+        $routeName = RestApiPathHelper::getControllerRouteName($command);
         $params = [
             'commandClassName' => $commandClassName,
             'commandFullClassName' => $commandFullClassName,
             'schemaClassName' => $schemaClassName,
-            'routeName' => $routeName = $command->getHttpMethod() . '_' . $command->getUri(),
+            'routeName' => $routeName,
+            'uri' => $command->getUri(),
+            'method' => $command->getHttpMethod(),
         ];
         $template = $command->getParameter(self::class, 'template') ?: $this->template;
         $code = $this->codeGenerator->generatePhpClassCode($controllerClassName, $template, $params);

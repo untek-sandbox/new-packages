@@ -12,12 +12,11 @@
 
 namespace <?= $namespace ?>;
 
-use Doctrine\Persistence\ObjectRepository;
-use Untek\Persistence\Contract\Interfaces\RepositoryCountByInterface;
 use Untek\Model\DataProvider\DataProvider;
 use Untek\Model\DataProvider\Dto\CollectionData;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use <?= $repositoryInterfaceClassName ?>;
 
 class <?= $className ?>
 
@@ -25,7 +24,7 @@ class <?= $className ?>
 
     public function __construct(
         private TranslatorInterface $translator,
-        private ObjectRepository|RepositoryCountByInterface $repository,
+        private <?= \Untek\Core\Instance\Helpers\ClassHelper::getClassOfClassName($repositoryInterfaceClassName) ?> $repository,
     )
     {
     }

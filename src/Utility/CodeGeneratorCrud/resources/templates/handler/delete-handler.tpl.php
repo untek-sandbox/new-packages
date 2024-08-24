@@ -13,9 +13,9 @@
 namespace <?= $namespace ?>;
 
 use Untek\Persistence\Contract\Exceptions\NotFoundException;
-use Untek\Persistence\Contract\Interfaces\RepositoryDeleteByIdInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use <?= $repositoryInterfaceClassName ?>;
 
 class <?= $className ?>
 
@@ -23,7 +23,7 @@ class <?= $className ?>
 
     public function __construct(
         private TranslatorInterface $translator,
-        private RepositoryDeleteByIdInterface $repository,
+        private <?= \Untek\Core\Instance\Helpers\ClassHelper::getClassOfClassName($repositoryInterfaceClassName) ?> $repository,
     )
     {
     }

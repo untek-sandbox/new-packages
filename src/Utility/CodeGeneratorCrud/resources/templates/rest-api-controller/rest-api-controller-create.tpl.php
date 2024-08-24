@@ -16,7 +16,7 @@ use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Untek\Component\App\Services\ControllerAccessChecker;
+use Untek\Core\App\Services\ControllerAccessChecker;
 use Untek\Framework\RestApi\Presentation\Http\Symfony\Controllers\AbstractCreateRestApiController;
 use <?= $commandFullClassName ?>;
 use <?= $schemaClassName ?>;
@@ -28,7 +28,7 @@ class <?= $className ?> extends AbstractCreateRestApiController
 
     public function __construct(
         private CommandBusInterface $bus,
-        private UrlGeneratorInterface $urlGenerator,
+        protected UrlGeneratorInterface $urlGenerator,
         private ControllerAccessChecker $accessChecker,
         protected <?= \Untek\Core\Instance\Helpers\ClassHelper::getClassOfClassName($schemaClassName) ?> $schema,
     )

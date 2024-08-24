@@ -35,7 +35,7 @@ class RoutConfigGenerator
         $configGenerator = new PhpConfigGenerator($this->collection, $configFile, $template);
         $code = null;
         if (!$configGenerator->hasCode($controllerClassName)) {
-            $routeName = $command->getHttpMethod() . '_' . $command->getUri();
+            $routeName = RestApiPathHelper::getControllerRouteName($command);
             $controllerDefinition =
                 '    $routes
         ->add(\'' . $routeName . '\', \'/' . $command->getUri() . '\')
