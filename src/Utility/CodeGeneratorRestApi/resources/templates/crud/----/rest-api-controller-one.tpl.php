@@ -16,12 +16,12 @@ use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Untek\Framework\RestApi\Presentation\Http\Symfony\Helpers\QueryParameterHelper;
-use Untek\Framework\RestApi\Presentation\Http\Symfony\Controllers\AbstractGetListRestApiController;
+use Untek\Framework\RestApi\Presentation\Http\Symfony\Controllers\AbstractRestApiController;
 use <?= $commandFullClassName ?>;
 use <?= $schemaClassName ?>;
 
-#[Route('<?= $uri ?>', methods: ['<?= $method ?>'], name: '<?= $routeName ?>')]
-class <?= $className ?> extends AbstractGetListRestApiController
+#[Route('/<?= $uri ?>', methods: ['<?= $method ?>'], name: '<?= $routeName ?>')]
+class <?= $className ?> extends AbstractRestApiController
 {
 
     public function __construct(
@@ -31,11 +31,14 @@ class <?= $className ?> extends AbstractGetListRestApiController
     {
     }
 
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(int $id, Request $request): JsonResponse
     {
         $query = new <?= $commandClassName ?>();
+        $query->setId($id);
         QueryParameterHelper::fillQueryFromRequest($request, $query);
-        $collectionData = $this->bus->handle($query);
-        return $this->createResponse($collectionData);
+
+        $result = $this->bus->handle($query);
+        $data = $this->encodeObject($result);
+        return $this->serialize($data);
     }
 }

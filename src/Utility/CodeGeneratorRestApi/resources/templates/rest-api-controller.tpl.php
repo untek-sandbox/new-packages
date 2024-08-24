@@ -20,7 +20,7 @@ use Untek\Framework\RestApi\Presentation\Http\Symfony\Controllers\AbstractRestAp
 use <?= $commandFullClassName ?>;
 use <?= $schemaClassName ?>;
 
-#[Route('<?= $uri ?>', methods: ['<?= $method ?>'], name: '<?= $routeName ?>')]
+#[Route('/<?= $uri ?>', methods: ['<?= $method ?>'], name: '<?= $routeName ?>')]
 class <?= $className ?> extends AbstractRestApiController
 {
 

@@ -15,30 +15,32 @@ use Symfony\Component\Routing\Annotation\Route;
 use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Untek\Framework\RestApi\Presentation\Http\Symfony\Helpers\QueryParameterHelper;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Untek\Core\App\Services\ControllerAccessChecker;
 use Untek\Framework\RestApi\Presentation\Http\Symfony\Controllers\AbstractRestApiController;
 use <?= $commandFullClassName ?>;
 use <?= $schemaClassName ?>;
 
-#[Route('<?= $uri ?>', methods: ['<?= $method ?>'], name: '<?= $routeName ?>')]
+#[Route('/<?= $uri ?>', methods: ['<?= $method ?>'], name: '<?= $routeName ?>')]
 class <?= $className ?> extends AbstractRestApiController
 {
 
     public function __construct(
         private CommandBusInterface $bus,
-        protected <?= \Untek\Core\Instance\Helpers\ClassHelper::getClassOfClassName($schemaClassName) ?> $schema,
+        protected UrlGeneratorInterface $urlGenerator,
+        private ControllerAccessChecker $accessChecker,
     )
     {
     }
 
     public function __invoke(int $id, Request $request): JsonResponse
     {
-        $query = new <?= $commandClassName ?>();
-        $query->setId($id);
-        QueryParameterHelper::fillQueryFromRequest($request, $query);
-
-        $result = $this->bus->handle($query);
-        $data = $this->encodeObject($result);
-        return $this->serialize($data);
+        $this->accessChecker->denyAccessUnlessAuthenticated();
+        /** @var <?= $commandClassName ?> $command */
+        $command = $this->createForm($request, <?= $commandClassName ?>::class);
+        $command->setId($id);
+        $this->accessChecker->denyAccessUnlessGranted('ROLE_USER', $command);
+        $this->bus->handle($command);
+        return $this->emptyResponse();
     }
 }

@@ -12,6 +12,7 @@
 
 namespace <?= $namespace ?>;
 
+use Symfony\Component\Routing\Annotation\Route;
 use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,6 +22,7 @@ use Untek\Framework\RestApi\Presentation\Http\Symfony\Controllers\AbstractCreate
 use <?= $commandFullClassName ?>;
 use <?= $schemaClassName ?>;
 
+#[Route('/<?= $uri ?>', methods: ['<?= $method ?>'], name: '<?= $routeName ?>')]
 class <?= $className ?> extends AbstractCreateRestApiController
 {
 

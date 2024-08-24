@@ -20,8 +20,6 @@ use <?= $modelClassName ?>;
 use <?= $normalizerClassName ?>;
 use <?= $relationClassName ?>;
 use Untek\Database\Eloquent\Infrastructure\Abstract\AbstractEloquentCrudRepository;
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Untek\Component\Relation\Interfaces\RelationConfigInterface;
 use Untek\Persistence\Normalizer\DbNormalizerInterface;
 
