@@ -8,21 +8,21 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\String\Slugger\AsciiSlugger;
 use Untek\Component\Text\Libs\TemplateRender;
-use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\Framework\Console\Symfony4\Question\ChoiceQuestion;
 use Untek\Framework\Console\Symfony4\Style\SymfonyStyle;
 use Untek\Framework\Console\Symfony4\Traits\IOTrait;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\Utility\Init\Presentation\Libs\Init;
 
 class InitCommand extends Command
 {
     use IOTrait;
 
-    protected static $defaultName = 'init';
+    private \Symfony\Component\Console\Style\SymfonyStyle $io;
 
-    public function __construct()
+    public static function getDefaultName(): ?string
     {
-        parent::__construct(self::$defaultName);
+        return 'init';
     }
 
     protected function configure()
@@ -50,20 +50,24 @@ class InitCommand extends Command
         );*/
     }
 
+    protected function initialize(InputInterface $input, OutputInterface $output): void
+    {
+        $this->io = new SymfonyStyle($input, $output);
+    }
+
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $io = new SymfonyStyle($input, $output);
         $output->writeln("Application Initialization Tool\n");
 
         $this->setInputOutput($input, $output);
 
         $overwrite = $input->getOption('overwrite');
         $profile = $input->getOption('profile');
-        $configFile = $input->getOption('config');
+        $config = $input->getOption('config');
 
         $configFile = (new TemplateRender())
             ->addReplacement('ROOT_DIRECTORY', getenv('ROOT_DIRECTORY'))
-            ->renderTemplate($configFile);
+            ->renderTemplate($config);
 
         $profiles = $this->loadProfiles($configFile);
 
@@ -76,14 +80,15 @@ class InitCommand extends Command
 
         $initLib = new Init($this->getStyle(), $profileConfig);
 
-        $io->writeln("\n  Start initialization ...\n\n");
+        $this->io->writeln("\n  Start initialization ...\n\n");
         $initLib->run();
-        $io->success("Initialization completed.");
+        $this->io->newLine();
+        $this->io->success("Initialization completed.");
 
         return Command::SUCCESS;
     }
 
-    protected function findProfile(string $name, array $profiles): array
+    private function findProfile(string $name, array $profiles): array
     {
         $lowerName = mb_strtolower($name);
         foreach ($profiles as $profile) {
@@ -94,7 +99,7 @@ class InitCommand extends Command
         throw new NotFoundException('Profile "' . $name . '" not found.');
     }
 
-    protected function loadProfiles(string $configFile): array
+    private function loadProfiles(string $configFile): array
     {
         $profiles = require $configFile;
         $newProfiles = [];

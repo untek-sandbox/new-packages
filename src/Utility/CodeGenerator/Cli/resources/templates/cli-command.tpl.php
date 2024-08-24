@@ -24,10 +24,7 @@ use <?= $commandFullClassName ?>;
 class <?= $className ?> extends Command
 {
 
-    public static function getDefaultName(): string
-    {
-        return '<?= $cliCommandName ?>';
-    }
+    private SymfonyStyle $io;
 
     public function __construct(
         private CommandBusInterface $bus
@@ -35,17 +32,30 @@ class <?= $className ?> extends Command
         parent::__construct();
     }
 
+    public static function getDefaultName(): string
+    {
+        return '<?= $cliCommandName ?>';
+    }
+
+    protected function initialize(InputInterface $input, OutputInterface $output): void
+    {
+        $this->io = new SymfonyStyle($input, $output);
+    }
+
+    protected function interact(InputInterface $input, OutputInterface $output): void
+    {
+
+    }
+
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $io = new SymfonyStyle($input, $output);
-
         $command = new <?= $commandClassName ?>();
 <?php foreach ($properties as $attribute):
     $propertyName = $attribute->getName();
     $propertyType = $attribute->getType()->generate();
     ?>
 
-        $<?= $propertyName ?> = $io->ask('Enter <?= $propertyName ?>', null, function ($value) {
+        $<?= $propertyName ?> = $this->io->ask('Enter <?= $propertyName ?>', null, function ($value) {
             NotBlankValidator::validate($value);
             return $value;
         });
@@ -54,7 +64,7 @@ class <?= $className ?> extends Command
 
         $result = $this->bus->handle($command);
 
-        $io->success('Success result!');
+        $this->io->success('Success result!');
 
         return Command::SUCCESS;
     }
