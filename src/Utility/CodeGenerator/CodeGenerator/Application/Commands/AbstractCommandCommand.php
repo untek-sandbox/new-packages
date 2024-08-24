@@ -4,7 +4,7 @@ namespace Untek\Utility\CodeGenerator\CodeGenerator\Application\Commands;
 
 use Untek\Component\Enum\Helpers\EnumHelper;
 use Yiisoft\Strings\Inflector;
-use Untek\Utility\CodeGenerator\CodeGeneratorApplication\Application\Enums\TypeEnum;
+use Untek\Utility\CodeGenerator\Application\Application\Enums\TypeEnum;
 
 abstract class AbstractCommandCommand //extends AbstractCommand
 {

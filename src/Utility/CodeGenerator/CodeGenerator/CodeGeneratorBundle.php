@@ -15,9 +15,9 @@ class CodeGeneratorBundle extends AbstractBundle
         $fileLocator = new FileLocator(__DIR__);
         $loader = new PhpFileLoader($container, $fileLocator);
         $loader->load(__DIR__ . '/resources/config/services/main.php');
-        $loader->load(__DIR__ . '/../CodeGeneratorApplication/resources/config/services/main.php');
-        $loader->load(__DIR__ . '/../CodeGeneratorCli/resources/config/services/main.php');
-        $loader->load(__DIR__ . '/../CodeGeneratorDatabase/resources/config/services/main.php');
-        $loader->load(__DIR__ . '/../CodeGeneratorRestApi/resources/config/services/main.php');
+        $loader->load(__DIR__ . '/../Application/resources/config/services/main.php');
+        $loader->load(__DIR__ . '/../Cli/resources/config/services/main.php');
+        $loader->load(__DIR__ . '/../Database/resources/config/services/main.php');
+        $loader->load(__DIR__ . '/../RestApi/resources/config/services/main.php');
     }
 }
