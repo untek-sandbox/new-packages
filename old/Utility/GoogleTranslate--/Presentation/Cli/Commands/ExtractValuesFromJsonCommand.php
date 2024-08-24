@@ -11,7 +11,7 @@ use Untek\Component\FormatAdapter\StoreFile;
 use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Framework\Console\Symfony4\Style\SymfonyStyle;
 use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
-use Untek\Utility\CodeGenerator\Application\Interfaces\InteractInterface;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\InteractInterface;
 
 class ExtractValuesFromJsonCommand extends Command
 {
