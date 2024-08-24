@@ -26,7 +26,7 @@ class CliCommandShortcutGenerator
         ];
         $template = $command->getParameter(self::class, 'template') ?: $this->template;
         $code = $this->codeGenerator->generateCode($template, $params);
-        $this->collection->add(new FileResult($fileName, $code));
+        $this->collection->addFile(new FileResult($fileName, $code));
     }
 
     private function getShortcutFileName(GenerateCliCommand $command): string

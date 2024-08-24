@@ -30,6 +30,6 @@ class CommandGenerator
         $template = $command->getParameter(self::class, 'template') ?: $this->template;
         $code = $this->codeGenerator->generatePhpClassCode($commandClassName, $template, $params);
         $fileName = GeneratorFileHelper::getFileNameByClass($commandClassName);
-        $this->collection->add(new FileResult($fileName, $code));
+        $this->collection->addFile(new FileResult($fileName, $code));
     }
 }

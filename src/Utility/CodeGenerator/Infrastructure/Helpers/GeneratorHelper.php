@@ -27,7 +27,6 @@ class GeneratorHelper
                 if($result->getName() != '') {
                     $dir = dirname($result->getName());
                     if(!is_dir($dir)) {
-                        dump($result);
                         mkdir($dir, recursive: true);
                     }
                     $fs->dumpFile($result->getName(), $result->getContent());

@@ -52,6 +52,6 @@ class GenerateRestApiCommandHandler implements CqrsHandlerInterface
 
         $uri = '/rest-api/v' . $command->getVersion() . '/' . $command->getUri();
         $endpoint = $command->getHttpMethod() . ' ' . $uri;
-        $this->collection->add(new InfoResult('API endpoint', $endpoint));
+        $this->collection->addInfo(new InfoResult('API endpoint', $endpoint));
     }
 }

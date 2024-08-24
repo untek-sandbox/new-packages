@@ -46,6 +46,6 @@ class GenerateCliCommandHandler implements CqrsHandlerInterface
 //        GeneratorHelper::dump($this->collection);
 
         $cliCommand = $command->getCliCommand();
-        $this->collection->add(new InfoResult('CLI command', 'php bin/console ' . $cliCommand));
+        $this->collection->addInfo(new InfoResult('CLI command', 'php bin/console ' . $cliCommand));
     }
 }

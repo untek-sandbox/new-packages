@@ -29,6 +29,6 @@ class RelationGenerator
         $template = $command->getParameter(self::class, 'template') ?: $this->template;
         $code = $this->codeGenerator->generatePhpClassCode($className, $template, $params);
         $fileName = GeneratorFileHelper::getFileNameByClass($className);
-        $this->collection->add(new FileResult($fileName, $code));
+        $this->collection->addFile(new FileResult($fileName, $code));
     }
 }

@@ -32,6 +32,6 @@ class CommandValidatorGenerator
         $template = $command->getParameter(self::class, 'template') ?: $this->template;
         $code = $this->codeGenerator->generatePhpClassCode($validatorClassName, $template, $params);
         $fileName = GeneratorFileHelper::getFileNameByClass($validatorClassName);
-        $this->collection->add(new FileResult($fileName, $code));
+        $this->collection->addFile(new FileResult($fileName, $code));
     }
 }

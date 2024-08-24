@@ -19,6 +19,7 @@ class GeneratorFileHelper
     {
         $fs = new Filesystem();
         if ($fs->isAbsolutePath($filename)) {
+            $filename = realpath($filename);
             $filename = str_replace(getenv('ROOT_DIRECTORY'), '', $filename);
         }
         return rtrim($filename, '/');

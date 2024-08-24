@@ -42,6 +42,6 @@ class ControllerGenerator
         $template = $command->getParameter(self::class, 'template') ?: $this->template;
         $code = $this->codeGenerator->generatePhpClassCode($controllerClassName, $template, $params);
         $fileName = GeneratorFileHelper::getFileNameByClass($controllerClassName);
-        $this->collection->add(new FileResult($fileName, $code));
+        $this->collection->addFile(new FileResult($fileName, $code));
     }
 }

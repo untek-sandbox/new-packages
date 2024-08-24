@@ -32,7 +32,7 @@ class MigrationGenerator
         ];
         $template = $command->getParameter(self::class, 'template') ?: $this->template;
         $code = $this->codeGenerator->generatePhpCode($template, $params);
-        $this->collection->add(new FileResult($fileName, $code));
-        (new MigrationConfigGenerator($this->collection, $command->getNamespace(), getenv('MIGRATION_CONFIG_FILE')))->generate($command);
+        $this->collection->addFile(new FileResult($fileName, $code));
+//        (new MigrationConfigGenerator($this->collection, $command->getNamespace(), getenv('MIGRATION_CONFIG_FILE')))->generate($command);
     }
 }

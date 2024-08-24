@@ -25,7 +25,7 @@ class RoutConfigGenerator
         $fileName = ComposerHelper::getPsr4Path($command->getNamespace()) . '/resources/config/rest-api/v' . $command->getVersion() . '-routes.php';
         $code = $this->generateConfig($fileName, $controllerClassName, $command);
         if ($code) {
-            $this->collection->add(new FileResult($fileName, $code));
+            $this->collection->addFile(new FileResult($fileName, $code));
         }
     }
 

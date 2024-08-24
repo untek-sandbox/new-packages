@@ -7,6 +7,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Untek\Component\FileSystem\Helpers\FilePathHelper;
 use Untek\Component\FormatAdapter\StoreFile;
 use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Core\Container\Helpers\ContainerHelper;
@@ -19,6 +20,7 @@ use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Untek\Utility\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\Application\Dto\GenerateResultCollection;
 use Untek\Utility\CodeGenerator\Application\Dto\InfoResult;
+use Untek\Utility\CodeGenerator\Application\Dto\ResultList;
 use Untek\Utility\CodeGenerator\Application\Interfaces\InteractInterface;
 use Untek\Utility\CodeGenerator\Infrastructure\Helpers\GeneratorFileHelper;
 use Untek\Utility\CodeGenerator\Infrastructure\Helpers\GeneratorHelper;
@@ -138,7 +140,7 @@ class GenerateCodeCommand extends Command
     {
         $table = [];
         foreach ($collection->getAll() as $result) {
-            if ($result instanceof InfoResult) {
+            if ($result instanceof InfoResult || $result instanceof ResultList) {
                 $table[] = [$result->getName(), $result->getContent()];
             }
         }

@@ -32,12 +32,38 @@ class GenerateResultCollection
         return $this;
     }
 
-    public function add(ResultInterface $result): self
+    public function addInfo(InfoResult $result): self
+    {
+        $name = $result->getName();
+        if ($this->has($name)) {
+            $existsResult = $this->get($name);
+            if($existsResult instanceof ResultList) {
+                $existsResult->addItem($result);
+//            } elseif($existsResult instanceof InfoResult) {
+            } else {
+//                dd($existsResult);
+                $this->items[$name] = new ResultList($name, [$existsResult, $result]);
+            }
+        } else {
+            $this->items[$name] = $result;
+        }
+
+        return $this;
+    }
+
+    public function addFile(FileResult $result): self
     {
         $name = $result->getName();
         if ($this->has($name)) {
             $this->get($name)->setContent($result->getContent());
         }
+        $this->items[$name] = $result;
+        return $this;
+    }
+
+    private function add(ResultInterface $result): self
+    {
+        $name = $result->getName();
         $this->items[$name] = $result;
         return $this;
     }

@@ -38,6 +38,6 @@ class CliCommandGenerator
         $template = $command->getParameter(self::class, 'template') ?: $this->template;
         $fileName = GeneratorFileHelper::getFileNameByClass($cliCommandClassName);
         $code = $this->codeGenerator->generatePhpClassCode($cliCommandClassName, $template, $params);
-        $this->collection->add(new FileResult($fileName, $code));
+        $this->collection->addFile(new FileResult($fileName, $code));
     }
 }

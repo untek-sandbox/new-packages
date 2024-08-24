@@ -38,7 +38,7 @@ class RoutConfigImportGenerator
         $configGenerator = new PhpConfigGenerator($this->collection, $configFile, $template);
         if (!$configGenerator->hasCode($modulePath)) {
             $code = $configGenerator->appendCode($codeForAppend);
-            $this->collection->add(new FileResult($configFile, $code));
+            $this->collection->addFile(new FileResult($configFile, $code));
         }
     }
 }

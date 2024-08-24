@@ -15,6 +15,12 @@ class InfoResult implements ResultInterface
         string $content,
     )
     {
+        if(empty($name)) {
+            throw new \RuntimeException('Empty name in ' . self::class);
+        }
+        if(empty($content)) {
+            throw new \RuntimeException('Empty content in ' . self::class);
+        }
         $this->name = $name;
         $this->content = $content;
     }

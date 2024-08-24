@@ -43,7 +43,7 @@ EOF;
             $code = $configGenerator->appendCode($codeForAppend);
         }
         if(!empty($code)) {
-            $this->collection->add(new FileResult($configFile, $code));
+            $this->collection->addFile(new FileResult($configFile, $code));
         }
     }
 
@@ -57,7 +57,7 @@ EOF;
             $code = $configGenerator->appendCode($codeForAppend);
         }
         if(!empty($code)) {
-            $this->collection->add(new FileResult($configFile, $code));
+            $this->collection->addFile(new FileResult($configFile, $code));
         }
     }
 

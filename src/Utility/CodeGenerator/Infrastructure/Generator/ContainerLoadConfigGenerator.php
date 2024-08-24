@@ -21,7 +21,7 @@ class ContainerLoadConfigGenerator
         $resultCollection = new GenerateResultCollection();
         if (!$configGenerator->hasCode($modulePath)) {
             $code = $configGenerator->appendCode($codeForAppend . PHP_EOL);
-            $this->collection->add(new FileResult($configFile, $code));
+            $this->collection->addFile(new FileResult($configFile, $code));
         }
         return $resultCollection;
     }

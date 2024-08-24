@@ -31,7 +31,7 @@ class ContainerConfigBusImportGenerator
         $configGenerator = new PhpConfigGenerator($this->collection, $fileName, $template);
         if (!$configGenerator->hasCode($modulePath)) {
             $code = $configGenerator->appendCode($codeForAppend);
-            $this->collection->add(new FileResult($fileName, $code));
+            $this->collection->addFile(new FileResult($fileName, $code));
         }
     }
 }

@@ -47,6 +47,6 @@ class RestApiSchemeGenerator
 //        dd($template);
         $code = $this->codeGenerator->generatePhpClassCode($schemaClassName, $template, $params);
         $fileName = GeneratorFileHelper::getFileNameByClass($schemaClassName);
-        $this->collection->add(new FileResult($fileName, $code));
+        $this->collection->addFile(new FileResult($fileName, $code));
     }
 }

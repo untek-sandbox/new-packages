@@ -29,7 +29,7 @@ class ContainerConfigBusGenerator
             $controllerDefinition =
                 '    $configurator->define(\\' . $commandClassName . '::class, \\' . $handlerClassName . '::class);';
             $code = $configGenerator->appendCode($controllerDefinition);
-            $this->collection->add(new FileResult($fileName, $code));
+            $this->collection->addFile(new FileResult($fileName, $code));
         }
     }
 }
