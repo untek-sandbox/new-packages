@@ -6,12 +6,13 @@ use Symfony\Component\Filesystem\Filesystem;
 use Untek\Component\Package\Helpers\PackageHelper;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\GeneratorInterface;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Generator\CodeGenerator;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Generator\PhpConfigGenerator;
 use Untek\Utility\CodeGenerator\Database\Application\Commands\GenerateDatabaseCommand;
 use Untek\Utility\CodeGenerator\Database\Infrastructure\Helpers\DatabasePathHelper;
 
-class FixtureGenerator
+class FixtureGenerator implements GeneratorInterface
 {
 
     private CodeGenerator $codeGenerator;

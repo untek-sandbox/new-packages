@@ -2,12 +2,12 @@
 
 namespace Untek\Utility\CodeGenerator\Database\Application\Commands;
 
-use Yiisoft\Strings\Inflector;
-use Untek\Utility\CodeGenerator\CodeGenerator\Application\Commands\AbstractCommand;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\CommandInterface;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Traits\CommandNamespaceTrait;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Traits\CommandParameterTrait;
+use Yiisoft\Strings\Inflector;
 
-class GenerateDatabaseCommand //extends AbstractCommand
+class GenerateDatabaseCommand implements CommandInterface
 {
 
     use CommandParameterTrait;
@@ -26,16 +26,16 @@ class GenerateDatabaseCommand //extends AbstractCommand
         string $modelName = null,
     )
     {
-        if($namespace) {
+        if ($namespace) {
             $this->namespace = $namespace;
         }
-        if($tableName) {
+        if ($tableName) {
             $this->tableName = $tableName;
         }
-        if($properties) {
+        if ($properties) {
             $this->properties = $properties;
         }
-        if($modelName) {
+        if ($modelName) {
             $this->modelName = $modelName;
         }
     }
@@ -72,7 +72,7 @@ class GenerateDatabaseCommand //extends AbstractCommand
 
     public function getModelName(): ?string
     {
-        if($this->modelName) {
+        if ($this->modelName) {
             return $this->modelName;
         }
         return (new Inflector())->toPascalCase($this->getTableName());

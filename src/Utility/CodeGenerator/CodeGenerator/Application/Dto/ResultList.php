@@ -2,7 +2,6 @@
 
 namespace Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto;
 
-use Untek\Develop\DebugBacktrace\DebugBacktrace;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\ResultInterface;
 
 class ResultList implements ResultInterface
@@ -17,7 +16,7 @@ class ResultList implements ResultInterface
         array $list = [],
     )
     {
-        if(empty($name)) {
+        if (empty($name)) {
             throw new \RuntimeException('Empty name in ' . self::class);
         }
         $this->name = $name;

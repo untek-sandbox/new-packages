@@ -47,13 +47,4 @@ class FileResult implements ResultInterface
     {
         return $this->isNew;
     }
-
-    /*private function normalizeFileName(string $fileName): string
-    {
-        $fileName1 = realpath($fileName);
-        if (!empty($fileName1)) {
-            $fileName = $fileName1;
-        }
-        return $fileName;
-    }*/
 }

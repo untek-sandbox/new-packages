@@ -4,12 +4,13 @@ namespace Untek\Utility\CodeGenerator\RestApi\Infrastructure\Generators;
 
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\GeneratorInterface;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Generator\CodeGenerator;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Helpers\GeneratorFileHelper;
 use Untek\Utility\CodeGenerator\RestApi\Application\Commands\GenerateRestApiCommand;
 use Untek\Utility\CodeGenerator\RestApi\Infrastructure\Helpers\RestApiPathHelper;
 
-class ControllerTestGenerator
+class ControllerTestGenerator implements GeneratorInterface
 {
 
     private CodeGenerator $codeGenerator;

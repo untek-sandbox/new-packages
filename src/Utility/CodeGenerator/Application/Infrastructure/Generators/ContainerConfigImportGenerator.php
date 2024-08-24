@@ -4,13 +4,14 @@ namespace Untek\Utility\CodeGenerator\Application\Infrastructure\Generators;
 
 use Untek\Component\Code\Helpers\ComposerHelper;
 use Untek\Component\FileSystem\Helpers\FilePathHelper;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\GeneratorInterface;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Generator\ContainerLoadConfigGenerator;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Helpers\GeneratorFileHelper;
 use Untek\Utility\CodeGenerator\Application\Application\Commands\GenerateApplicationCommand;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
 use Untek\Utility\CodeGenerator\Application\Infrastructure\Helpers\ApplicationPathHelper;
 
-class ContainerConfigImportGenerator
+class ContainerConfigImportGenerator implements GeneratorInterface
 {
 
     public function __construct(protected GenerateResultCollection $collection, private ?string $moduleConfigFilePath = null, private ?string $appConfigFilePath = null)

@@ -4,8 +4,9 @@ namespace Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Generator;
 
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\GeneratorInterface;
 
-class ContainerLoadConfigGenerator
+class ContainerLoadConfigGenerator implements GeneratorInterface
 {
 
     public function __construct(protected GenerateResultCollection $collection, private string $namespace)

@@ -7,9 +7,10 @@ use Untek\Component\Code\Helpers\ComposerHelper;
 use Untek\Core\Instance\Helpers\ClassHelper;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\GeneratorInterface;
 use function Symfony\Component\String\u;
 
-class ContainerConfigGenerator
+class ContainerConfigGenerator implements GeneratorInterface
 {
 
     private string $template = __DIR__ . '/../../resources/templates/cli-command.tpl.php';

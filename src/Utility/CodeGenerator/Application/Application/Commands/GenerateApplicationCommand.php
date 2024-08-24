@@ -2,13 +2,12 @@
 
 namespace Untek\Utility\CodeGenerator\Application\Application\Commands;
 
-use Yiisoft\Strings\Inflector;
-use Untek\Utility\CodeGenerator\CodeGenerator\Application\Commands\AbstractCommand;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Commands\AbstractCommandCommand;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\CommandInterface;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Traits\CommandNamespaceTrait;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Traits\CommandParameterTrait;
 
-class GenerateApplicationCommand extends AbstractCommandCommand
+class GenerateApplicationCommand extends AbstractCommandCommand implements CommandInterface
 {
 
     use CommandParameterTrait;

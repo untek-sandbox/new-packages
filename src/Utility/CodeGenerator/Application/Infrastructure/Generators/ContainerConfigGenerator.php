@@ -5,8 +5,9 @@ namespace Untek\Utility\CodeGenerator\Application\Infrastructure\Generators;
 use Untek\Utility\CodeGenerator\Application\Application\Commands\GenerateApplicationCommand;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
 use Untek\Utility\CodeGenerator\Application\Infrastructure\Helpers\ApplicationPathHelper;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\GeneratorInterface;
 
-class ContainerConfigGenerator
+class ContainerConfigGenerator implements GeneratorInterface
 {
 
     public function __construct(protected GenerateResultCollection $collection)

@@ -6,7 +6,7 @@ use Untek\Component\Enum\Helpers\EnumHelper;
 use Yiisoft\Strings\Inflector;
 use Untek\Utility\CodeGenerator\Application\Application\Enums\TypeEnum;
 
-abstract class AbstractCommandCommand //extends AbstractCommand
+abstract class AbstractCommandCommand
 {
 
     protected string $commandName;

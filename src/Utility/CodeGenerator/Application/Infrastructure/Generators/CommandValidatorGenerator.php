@@ -4,13 +4,14 @@ namespace Untek\Utility\CodeGenerator\Application\Infrastructure\Generators;
 
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\GeneratorInterface;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Generator\CodeGenerator;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Helpers\GeneratorFileHelper;
 use Untek\Utility\CodeGenerator\Application\Application\Commands\GenerateApplicationCommand;
 use Untek\Utility\CodeGenerator\Application\Infrastructure\Helpers\ApplicationHelper;
 use Untek\Utility\CodeGenerator\Application\Infrastructure\Helpers\ApplicationPathHelper;
 
-class CommandValidatorGenerator
+class CommandValidatorGenerator implements GeneratorInterface
 {
 
     private CodeGenerator $codeGenerator;

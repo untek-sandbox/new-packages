@@ -5,12 +5,13 @@ namespace Untek\Utility\CodeGenerator\RestApi\Infrastructure\Generators;
 use Untek\Component\Code\Helpers\ComposerHelper;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\GeneratorInterface;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Generator\PhpConfigGenerator;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Helpers\GeneratorFileHelper;
 use Untek\Utility\CodeGenerator\RestApi\Application\Commands\GenerateRestApiCommand;
 use Untek\Utility\CodeGenerator\RestApi\Infrastructure\Generator\RoutesLoadConfigGenerator;
 
-class RoutConfigImportGenerator
+class RoutConfigImportGenerator implements GeneratorInterface
 {
 
     private string $template = __DIR__ . '/../../resources/templates/routes-load-config.tpl.php';

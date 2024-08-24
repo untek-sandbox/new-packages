@@ -5,11 +5,12 @@ namespace Untek\Utility\CodeGenerator\Database\Infrastructure\Generators;
 use Untek\Component\Package\Helpers\PackageHelper;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\GeneratorInterface;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Generator\CodeGenerator;
 use Untek\Utility\CodeGenerator\Application\Infrastructure\Helpers\ApplicationHelper;
 use Untek\Utility\CodeGenerator\Database\Application\Commands\GenerateDatabaseCommand;
 
-class MigrationGenerator
+class MigrationGenerator implements GeneratorInterface
 {
 
     private CodeGenerator $codeGenerator;

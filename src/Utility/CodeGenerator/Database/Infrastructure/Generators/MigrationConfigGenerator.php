@@ -6,10 +6,11 @@ use Symfony\Component\Filesystem\Filesystem;
 use Untek\Component\Package\Helpers\PackageHelper;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\GeneratorInterface;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Generator\PhpConfigGenerator;
 use Untek\Utility\CodeGenerator\Database\Application\Commands\GenerateDatabaseCommand;
 
-class MigrationConfigGenerator
+class MigrationConfigGenerator implements GeneratorInterface
 {
 
     private string $template = __DIR__ . '/../../resources/templates/migration-config.tpl.php';

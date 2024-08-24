@@ -6,10 +6,11 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Untek\Core\App\Services\ControllerAccessChecker;
 use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\GeneratorInterface;
 use Untek\Utility\CodeGenerator\RestApi\Application\Commands\GenerateRestApiCommand;
 use Untek\Utility\CodeGenerator\RestApi\Infrastructure\Helpers\RestApiPathHelper;
 
-class ContainerConfigGenerator
+class ContainerConfigGenerator implements GeneratorInterface
 {
 
     public function __construct(protected GenerateResultCollection $collection)

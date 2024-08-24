@@ -2,11 +2,11 @@
 
 namespace Untek\Utility\CodeGenerator\Cli\Application\Commands;
 
-use Untek\Utility\CodeGenerator\CodeGenerator\Application\Commands\AbstractCommand;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\CommandInterface;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Traits\CommandNamespaceTrait;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Traits\CommandParameterTrait;
 
-class GenerateCliCommand
+class GenerateCliCommand implements CommandInterface
 {
 
     use CommandParameterTrait;

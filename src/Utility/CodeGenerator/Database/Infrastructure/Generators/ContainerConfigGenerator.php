@@ -3,11 +3,12 @@
 namespace Untek\Utility\CodeGenerator\Database\Infrastructure\Generators;
 
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\GeneratorInterface;
 use Untek\Utility\CodeGenerator\Database\Application\Commands\GenerateDatabaseCommand;
 use Untek\Utility\CodeGenerator\Database\Infrastructure\Helpers\DatabasePathHelper;
 use Illuminate\Database\Capsule\Manager;
 
-class ContainerConfigGenerator
+class ContainerConfigGenerator implements GeneratorInterface
 {
 
     public function __construct(protected GenerateResultCollection $collection)

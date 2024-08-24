@@ -37,11 +37,9 @@ class GenerateResultCollection
         $name = $result->getName();
         if ($this->has($name)) {
             $existsResult = $this->get($name);
-            if($existsResult instanceof ResultList) {
+            if ($existsResult instanceof ResultList) {
                 $existsResult->addItem($result);
-//            } elseif($existsResult instanceof InfoResult) {
             } else {
-//                dd($existsResult);
                 $this->items[$name] = new ResultList($name, [$existsResult, $result]);
             }
         } else {

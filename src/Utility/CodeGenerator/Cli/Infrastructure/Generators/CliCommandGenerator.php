@@ -3,6 +3,7 @@
 namespace Untek\Utility\CodeGenerator\Cli\Infrastructure\Generators;
 
 use Untek\Core\Instance\Helpers\ClassHelper;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\GeneratorInterface;
 use Yiisoft\Strings\Inflector;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
@@ -12,7 +13,7 @@ use Untek\Utility\CodeGenerator\Application\Infrastructure\Helpers\ApplicationHe
 use Untek\Utility\CodeGenerator\Cli\Application\Commands\GenerateCliCommand;
 use Untek\Utility\CodeGenerator\Cli\Infrastructure\Helpers\CliPathHelper;
 
-class CliCommandGenerator
+class CliCommandGenerator implements GeneratorInterface
 {
 
     private CodeGenerator $codeGenerator;

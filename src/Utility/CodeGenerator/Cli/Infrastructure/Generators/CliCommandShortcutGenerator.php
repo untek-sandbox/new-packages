@@ -4,10 +4,11 @@ namespace Untek\Utility\CodeGenerator\Cli\Infrastructure\Generators;
 
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\GeneratorInterface;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Generator\CodeGenerator;
 use Untek\Utility\CodeGenerator\Cli\Application\Commands\GenerateCliCommand;
 
-class CliCommandShortcutGenerator
+class CliCommandShortcutGenerator implements GeneratorInterface
 {
 
     private CodeGenerator $codeGenerator;

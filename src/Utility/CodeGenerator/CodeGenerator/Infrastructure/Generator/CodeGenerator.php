@@ -4,8 +4,9 @@ namespace Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Generator;
 
 use Untek\Component\Render\Infrastructure\Services\Render;
 use Untek\Core\Instance\Helpers\ClassHelper;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\GeneratorInterface;
 
-class CodeGenerator
+class CodeGenerator implements GeneratorInterface
 {
 
     public function generatePhpCode(string $template, array $parameters = []): string

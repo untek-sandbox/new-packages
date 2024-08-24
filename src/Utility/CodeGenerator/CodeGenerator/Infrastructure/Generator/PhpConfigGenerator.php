@@ -4,8 +4,9 @@ namespace Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Generator;
 
 use Symfony\Component\Filesystem\Filesystem;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\GeneratorInterface;
 
-class PhpConfigGenerator
+class PhpConfigGenerator implements GeneratorInterface
 {
 
     private CodeGenerator $codeGenerator;

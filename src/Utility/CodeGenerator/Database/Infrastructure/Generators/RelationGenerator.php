@@ -4,12 +4,13 @@ namespace Untek\Utility\CodeGenerator\Database\Infrastructure\Generators;
 
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\GeneratorInterface;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Generator\CodeGenerator;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Helpers\GeneratorFileHelper;
 use Untek\Utility\CodeGenerator\Database\Application\Commands\GenerateDatabaseCommand;
 use Untek\Utility\CodeGenerator\Database\Infrastructure\Helpers\DatabasePathHelper;
 
-class RelationGenerator
+class RelationGenerator implements GeneratorInterface
 {
 
     private CodeGenerator $codeGenerator;

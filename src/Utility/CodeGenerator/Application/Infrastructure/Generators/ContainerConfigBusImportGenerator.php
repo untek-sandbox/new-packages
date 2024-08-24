@@ -5,12 +5,13 @@ namespace Untek\Utility\CodeGenerator\Application\Infrastructure\Generators;
 use Untek\Component\Code\Helpers\ComposerHelper;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\FileResult;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
+use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\GeneratorInterface;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Generator\PhpConfigGenerator;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Helpers\GeneratorFileHelper;
 use Untek\Utility\CodeGenerator\Application\Application\Commands\GenerateApplicationCommand;
 use Untek\Utility\CodeGenerator\Application\Infrastructure\Helpers\ApplicationPathHelper;
 
-class ContainerConfigBusImportGenerator
+class ContainerConfigBusImportGenerator implements GeneratorInterface
 {
 
     private string $template = __DIR__ . '/../../resources/templates/command-bus-load-config.tpl.php';
