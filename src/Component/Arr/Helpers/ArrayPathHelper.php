@@ -53,6 +53,8 @@ class ArrayPathHelper
             return $array;
         }
 
+//        return Arr::get($array, $key, $default);
+
         if ($key instanceof \Closure) {
             return $key($array, $default);
         }
@@ -140,7 +142,9 @@ class ArrayPathHelper
      */
     public static function setValue(&$array, $path, $value)
     {
-        if ($path === null) {
+        Arr::set($array, $path, $value);
+
+        /*if ($path === null) {
             $array = $value;
             return;
         }
@@ -158,62 +162,7 @@ class ArrayPathHelper
             $array = &$array[$key];
         }
 
-        $array[array_shift($keys)] = $value;
-    }
-
-    /**
-     * Set an array item to a given value using "dot" notation.
-     *
-     * If no key is given to the method, the entire array will be replaced.
-     *
-     * @param array $array
-     * @param string $key
-     * @param mixed $value
-     *
-     * @return array
-     */
-    public static function set(&$array, $key, $value)
-    {
-        if (is_null($key)) {
-            return $array = $value;
-        }
-
-        $keys = explode('.', $key);
-
-        while (count($keys) > 1) {
-            $key = array_shift($keys);
-
-            // If the key doesn't exist at this depth, we will just create an empty array
-            // to hold the next value, allowing us to create the arrays to hold final
-            // values at the correct depth. Then we'll keep digging into the array.
-            if (!isset($array[$key]) || !is_array($array[$key])) {
-                $array[$key] = [];
-            }
-
-            $array = &$array[$key];
-        }
-
-        $array[array_shift($keys)] = $value;
-
-        return $array;
-    }
-
-    /**
-     * Add an element to an array using "dot" notation if it doesn't exist.
-     *
-     * @param array $array
-     * @param string $key
-     * @param mixed $value
-     *
-     * @return array
-     */
-    public static function add($array, $key, $value)
-    {
-        if (is_null(ArrayPathHelper::getValue($array, $key))) {
-            static::set($array, $key, $value);
-        }
-
-        return $array;
+        $array[array_shift($keys)] = $value;*/
     }
 
     /**
@@ -226,7 +175,9 @@ class ArrayPathHelper
      */
     public static function has($array, $key)
     {
-        if (!$array) {
+        return Arr::has($array, $key);
+
+        /*if (!$array) {
             return false;
         }
 
@@ -246,10 +197,10 @@ class ArrayPathHelper
             }
         }
 
-        return true;
+        return true;*/
     }
 
-    public static function removeItem(&$array, $path)
+    /*public static function removeItem(&$array, $path)
     {
         if ($path === null) {
             //$array = $value;
@@ -276,6 +227,6 @@ class ArrayPathHelper
         }
         $lastKey = array_shift($keys);
         return $callback($array, $lastKey);
-    }
+    }*/
 
 }

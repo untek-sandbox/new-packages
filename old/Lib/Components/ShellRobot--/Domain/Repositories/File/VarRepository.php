@@ -2,6 +2,7 @@
 
 namespace Untek\Lib\Components\ShellRobot\Domain\Repositories\File;
 
+use Illuminate\Support\Arr;
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Text\Helpers\TemplateHelper;
@@ -32,14 +33,14 @@ class VarRepository implements VarRepositoryInterface
 
     public function set(string $key, $value): void
     {
-        ArrayPathHelper::set($this->vars, $key, $value);
+        Arr::set($this->vars, $key, $value);
         $this->initVars();
     }
 
     public function setList(array $list): void
     {
         foreach ($list as $key => $value) {
-            ArrayPathHelper::set($this->vars, $key, $value);
+            Arr::set($this->vars, $key, $value);
         }
         $this->initVars();
     }

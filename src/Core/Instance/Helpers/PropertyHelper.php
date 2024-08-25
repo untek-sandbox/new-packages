@@ -114,7 +114,7 @@ class PropertyHelper
     public static function setValue(object $entity, string $name, mixed $value): void
     {
         if(is_array($entity)) {
-            ArrayPathHelper::set($entity, $name, $value);
+            Arr::set($entity, $name, $value);
             return;
         }
 

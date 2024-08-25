@@ -2,6 +2,7 @@
 
 namespace Untek\Component\Env\Libs;
 
+use Illuminate\Support\Arr;
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Pattern\Singleton\SingletonTrait;
@@ -33,7 +34,7 @@ class DotEnvMap
     {
         foreach ($_ENV as $name => $value) {
             $pureName = $this->prepareName($name);
-            ArrayPathHelper::set($this->map, $pureName, $value);
+            Arr::set($this->map, $pureName, $value);
         }
     }
 
