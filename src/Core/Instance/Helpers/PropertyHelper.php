@@ -2,7 +2,7 @@
 
 namespace Untek\Core\Instance\Helpers;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Lib\Components\DynamicEntity\Interfaces\DynamicEntityAttributesInterface;
 use Throwable;
 use Yiisoft\Strings\Inflector;
@@ -68,7 +68,7 @@ class PropertyHelper
     {
         $reflClass = new \ReflectionClass($entity);
         $attributesRef = $reflClass->getProperties();
-        $attributes = ArrayHelper::getColumn($attributesRef, 'name');
+        $attributes = ExtArrayHelper::getColumn($attributesRef, 'name');
         foreach ($attributes as $index => $attributeName) {
             if ($attributeName[0] == '_') {
                 unset($attributes[$index]);
@@ -88,7 +88,7 @@ class PropertyHelper
     public static function getValue(object $entity, string $attribute, mixed $defaultValue = null): mixed
     {
         if(is_array($entity)) {
-            return ArrayHelper::getValue($entity, $attribute);
+            return ExtArrayHelper::getValue($entity, $attribute);
         }
 
         $propertyAccessor = PropertyAccess::createPropertyAccessor();
@@ -111,7 +111,7 @@ class PropertyHelper
     public static function setValue(object $entity, string $name, mixed $value): void
     {
         if(is_array($entity)) {
-            ArrayHelper::set($entity, $name, $value);
+            ExtArrayHelper::set($entity, $name, $value);
             return;
         }
 
@@ -133,8 +133,8 @@ class PropertyHelper
         }
 
         if(is_array($entity)) {
-            $data = ArrayHelper::only($data);
-            $entity = ArrayHelper::merge($entity, $data);
+            $data = ExtArrayHelper::only($data);
+            $entity = ExtArrayHelper::merge($entity, $data);
             return;
         }
 

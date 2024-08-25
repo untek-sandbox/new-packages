@@ -2,7 +2,7 @@
 
 namespace Untek\Database\Migration\Infrastructure\Persistence\FileSystem\Repository;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Code\Exceptions\DeprecatedException;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
 use Untek\Component\FileSystem\Helpers\FilePathHelper;
@@ -31,7 +31,7 @@ class SourceRepository
                 throw new \Exception("Migration directory \"$dir\" not found!");
             }
             $newClasses = self::scanDir($migrationDir);
-            $classes = ArrayHelper::merge($classes, $newClasses);
+            $classes = ExtArrayHelper::merge($classes, $newClasses);
         }
         return $classes;
     }

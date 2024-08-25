@@ -2,7 +2,7 @@
 
 namespace Untek\Database\Base\Domain\Libs;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Database\Base\Domain\Repositories\Eloquent\SchemaRepository;
 
 class Dependency
@@ -54,7 +54,7 @@ class Dependency
             return;
         }
         $this->processedTables[] = $tableName;
-        $deps = ArrayHelper::getValue($this->tableMap, [$tableName, 'deps']);
+        $deps = ExtArrayHelper::getValue($this->tableMap, [$tableName, 'deps']);
         if ($deps) {
             foreach ($deps as $dep) {
                 $this->processTable($dep);

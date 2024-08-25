@@ -4,7 +4,7 @@ namespace Untek\Crypt\Pki\X509\Domain\Services;
 
 use phpseclib\File\X509;
 use phpseclib\Crypt\RSA;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Crypt\Pki\X509\Domain\Entities\CertificateEntity;
 use Untek\Crypt\Pki\X509\Domain\Entities\InfoEntity;
 use Untek\Crypt\Pki\X509\Domain\Entities\PersonEntity;

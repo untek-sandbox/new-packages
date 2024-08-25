@@ -4,7 +4,7 @@ namespace Untek\Component\Web\HtmlRender\Infrastructure\Services;
 
 use Untek\Component\Web\Html\Helpers\Html;
 use Untek\Component\Web\HtmlRender\Application\Services\JsResourceInterface;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 
 class JsResource extends BaseResource implements JsResourceInterface
 {
@@ -34,7 +34,7 @@ class JsResource extends BaseResource implements JsResourceInterface
     {
         if (is_object($value)) {
 //            throw new \InvalidArgumentException("Object not supported!");
-            $value = ArrayHelper::toArray($value);
+            $value = ExtArrayHelper::toArray($value);
         }
         $json = json_encode($value);
         $code = "$name = " . $json . ";";

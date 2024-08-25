@@ -3,7 +3,7 @@
 namespace Untek\Core\Instance\Libs;
 
 use Psr\Container\ContainerInterface;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Core\Instance\Exceptions\MethodNotFoundException;
 use Untek\Core\Instance\Helpers\ClassHelper;

@@ -4,7 +4,7 @@ namespace Untek\Crypt\Pki\X509\Domain\Helpers;
 
 use phpseclib\File\X509;
 use SimpleXMLElement;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Crypt\Pki\X509\Domain\Entities\CertificateEntity;
 use Untek\Crypt\Pki\X509\Domain\Entities\PersonEntity;
 use DateTime;
@@ -101,7 +101,7 @@ class X509Helper
             $value = $item[0]['value'];
             $type = $item[0]['type'];
             $key = preg_replace('/^[\s\S]*-at-/', '', $type);
-            $person[$key] = ArrayHelper::first($value);
+            $person[$key] = ExtArrayHelper::first($value);
         }*/
         $person = self::getAssoc($cert['tbsCertificate']['subject']['rdnSequence']);
         $person['name'] = trim(str_replace($person['surname'], '', $person['commonName']));
@@ -133,7 +133,7 @@ class X509Helper
                 'value' => $value,
             ];
             $arr[] = $item;
-            //$arr[$key] = ArrayHelper::first($value);
+            //$arr[$key] = ExtArrayHelper::first($value);
         }
         return $arr;
     }
@@ -145,7 +145,7 @@ class X509Helper
             $value = $item[0]['value'];
             $type = $item[0]['type'];
             $key = preg_replace('/^[\s\S]*-at-/', '', $type);
-            $arr[$key] = ArrayHelper::first($value);
+            $arr[$key] = ExtArrayHelper::first($value);
         }
         return $arr;
     }

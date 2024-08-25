@@ -8,7 +8,7 @@ use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\Actions\RestoreAct
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\Actions\UpdateAction;
 use Untek\Lib\Components\Status\Enums\StatusEnum;
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\Actions\ViewAction;
 
 class ActionFormatter extends BaseFormatter implements FormatterInterface
@@ -38,7 +38,7 @@ class ActionFormatter extends BaseFormatter implements FormatterInterface
 
     private function actionDefinitions(): array
     {
-        $actionDefinitions = ArrayHelper::merge($this->defaultActionDefinitions(), $this->actionDefinitions);
+        $actionDefinitions = ExtArrayHelper::merge($this->defaultActionDefinitions(), $this->actionDefinitions);
         if ($this->restorable) {
             $entity = $this->attributeEntity->getEntity();
             if ($entity->getStatusId() === StatusEnum::DELETED) {

@@ -5,7 +5,7 @@ namespace Untek\Component\Arr\Libs\ArrayValues;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
 
 /**
- * Object that represents the replacement of array value while performing [[ArrayHelper::merge()]].
+ * Object that represents the replacement of array value while performing [[ExtArrayHelper::merge()]].
  *
  * Usage example:
  *
@@ -30,7 +30,7 @@ use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
  *     ]),
  * ];
  *
- * $result = \Untek\Component\Arr\Helpers\ArrayHelper::merge($array1, $array2);
+ * $result = \Untek\Component\Arr\Helpers\ExtArrayHelper::merge($array1, $array2);
  * ```
  *
  * The result will be

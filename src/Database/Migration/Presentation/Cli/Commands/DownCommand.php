@@ -4,7 +4,7 @@ namespace Untek\Database\Migration\Presentation\Cli\Commands;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Database\Base\Console\Traits\OverwriteDatabaseTrait;
 use Untek\Framework\Console\Symfony4\Style\SymfonyStyle;
 
@@ -46,7 +46,7 @@ class DownCommand extends BaseCommand
 
         $withConfirm = $input->getOption('withConfirm');
         if ($withConfirm) {
-            $versionArray = ArrayHelper::getColumn($historyCollection, 'version');
+            $versionArray = ExtArrayHelper::getColumn($historyCollection, 'version');
             $versionArray = array_values($versionArray);
             $io->listing($versionArray);
         }

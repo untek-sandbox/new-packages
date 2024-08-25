@@ -7,7 +7,7 @@ use Psr\Container\ContainerInterface;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionParameter;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Container\Traits\ContainerAwareTrait;
 
 class MethodParametersResolver
@@ -22,7 +22,7 @@ class MethodParametersResolver
 
     public function resolveClosure($closure, /*string $className, string $methodName,*/ array $constructionArgs = []): array
     {
-        if (!ArrayHelper::isIndexed($constructionArgs) || empty($constructionArgs)) {
+        if (!ExtArrayHelper::isIndexed($constructionArgs) || empty($constructionArgs)) {
             try {
 //                $constructorParameters = $this->extractMethodParameters($className, $methodName);
 
@@ -49,7 +49,7 @@ class MethodParametersResolver
     {
 //        return $this->resolveClosure([$className, $methodName], $constructionArgs);
 
-        if (!ArrayHelper::isIndexed($constructionArgs) || empty($constructionArgs)) {
+        if (!ExtArrayHelper::isIndexed($constructionArgs) || empty($constructionArgs)) {
             try {
                 $constructorParameters = $this->extractMethodParameters($className, $methodName);
                 $constructionArgs = $this->extractParams($constructorParameters, $constructionArgs);

@@ -3,7 +3,7 @@
 namespace Untek\Component\Web\RestApiApp\Test\Asserts;
 
 use Symfony\Component\HttpFoundation\Response;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Framework\Rpc\Domain\Enums\RpcErrorCodeEnum;
 use Untek\Component\Http\Enums\HttpStatusCodeEnum;
 use Untek\Tool\Test\Asserts\BaseAssert;
@@ -22,7 +22,7 @@ class RestApiAssert extends BaseAssert
     public function assertPath($expected, string $path)
     {
         $responseBody = json_decode($this->response->getContent(), JSON_OBJECT_AS_ARRAY);
-        $actual = ArrayHelper::getValue($responseBody, $path);
+        $actual = ExtArrayHelper::getValue($responseBody, $path);
 //        dd($responseBody);
         $this->assertEquals($expected, $actual);
         return $this;
@@ -118,7 +118,7 @@ class RestApiAssert extends BaseAssert
 
     public function assertCollectionSizeByPath(int $expected, string $path)
     {
-        $data = ArrayHelper::getValue($this->response->getResult(), $path);
+        $data = ExtArrayHelper::getValue($this->response->getResult(), $path);
         $this->assertCount($expected, $data);
         /*$totalCount = $this->response->getMetaItem('totalCount', null);
         if($totalCount !== null) {
@@ -146,7 +146,7 @@ class RestApiAssert extends BaseAssert
         $this->assertIsResult();
         $this->assertCollectionSize(count($ids));
 
-        $actualIds = ArrayHelper::getColumn($this->response->getResult(), 'id');
+        $actualIds = ExtArrayHelper::getColumn($this->response->getResult(), 'id');
         sort($ids);
         sort($actualIds);
         $this->assertEquals($ids, $actualIds);

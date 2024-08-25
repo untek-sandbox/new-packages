@@ -3,7 +3,7 @@
 namespace Untek\Database\Base\Domain\Repositories\Postgres;
 
 use App\Example\Controllers\ExampleEntity;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;
 use Untek\Database\Base\Domain\Entities\ColumnEntity;
@@ -22,7 +22,7 @@ class DbRepository extends \Untek\Database\Base\Domain\Repositories\Base\DbRepos
         $tableCollection = new Collection();
         foreach ($schemas as $schemaName) {
             $tables = $connection->select("SELECT * FROM information_schema.tables WHERE table_schema = '{$schemaName}'");
-            $tableNames = ArrayHelper::getColumn($tables, 'table_name');
+            $tableNames = ExtArrayHelper::getColumn($tables, 'table_name');
             foreach ($tableNames as $tableName) {
                 // $tableName = StructHelper::getTableNameFromEntity($tableEntity);
                 $tableEntity = new TableEntity();
@@ -71,7 +71,7 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
             ->getCapsule()
             ->getConnection();
         $schemaCollection = $connection->select("select schema_name from information_schema.schemata;");
-        $schemaNames = ArrayHelper::getColumn($schemaCollection, 'schema_name');
+        $schemaNames = ExtArrayHelper::getColumn($schemaCollection, 'schema_name');
         $excludes = [
             "pg_toast",
             "pg_temp_1",

@@ -2,7 +2,7 @@
 
 namespace Untek\Lib\Components\ShellRobot\Domain\Repositories\File;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Lib\Components\ShellRobot\Domain\Interfaces\Repositories\ConfigRepositoryInterface;
 
 class ConfigRepository implements ConfigRepositoryInterface
@@ -17,7 +17,7 @@ class ConfigRepository implements ConfigRepositoryInterface
 
     public function get(string $key, $default = null)
     {
-        $value = ArrayHelper::getValue($this->config, $key, $default);
+        $value = ExtArrayHelper::getValue($this->config, $key, $default);
         return $value;
     }
 }

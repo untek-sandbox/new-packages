@@ -7,7 +7,7 @@ use Untek\Framework\Telegram\Domain\Base\BaseAction;
 use Untek\Framework\Telegram\Domain\Entities\MessageEntity;
 use Untek\Framework\Telegram\Domain\Entities\RequestEntity;
 use Untek\Framework\Telegram\Domain\Handlers\BaseInputMessageEventHandler;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 
 class HelpAction extends BaseAction
 {
@@ -27,7 +27,7 @@ class HelpAction extends BaseAction
         $lines = [];
         foreach ($definitions as $definition) {
             if(!empty($definition['help'])) {
-                $help = ArrayHelper::toArray($definition['help']);
+                $help = ExtArrayHelper::toArray($definition['help']);
                 $lines[] = implode(PHP_EOL, $help);
             }
         }

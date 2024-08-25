@@ -3,7 +3,7 @@
 namespace Untek\Component\Web\TwBootstrap\Widgets\Menu;
 
 use Closure;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Web\Html\Helpers\Html;
 use Untek\Component\Web\Widget\Base\BaseWidget;
 
@@ -173,8 +173,8 @@ class MenuWidget extends BaseWidget
         $n = count($items);
         $lines = [];
         foreach ($items as $i => $item) {
-            $options = array_merge($this->itemOptions, ArrayHelper::getValue($item, 'options', []));
-            $tag = ArrayHelper::remove($options, 'tag', 'li');
+            $options = array_merge($this->itemOptions, ExtArrayHelper::getValue($item, 'options', []));
+            $tag = ExtArrayHelper::remove($options, 'tag', 'li');
             $class = [];
             if ($item['active']) {
                 $class[] = $this->activeCssClass;
@@ -189,7 +189,7 @@ class MenuWidget extends BaseWidget
 
             $menu = $this->renderItem($item);
             if ( ! empty($item['items'])) {
-                $submenuTemplate = ArrayHelper::getValue($item, 'submenuTemplate', $this->submenuTemplate);
+                $submenuTemplate = ExtArrayHelper::getValue($item, 'submenuTemplate', $this->submenuTemplate);
                 Html::addCssClass($options, 'has-treeview');
                 $menu .= $this->renderTemplate($submenuTemplate, [
                     'items' => $this->renderItems($item['items']),
@@ -210,7 +210,7 @@ class MenuWidget extends BaseWidget
     protected function renderItem($item)
     {
         if (isset($item['url'])) {
-            $template = ArrayHelper::getValue($item, 'template', $this->linkTemplate);
+            $template = ExtArrayHelper::getValue($item, 'template', $this->linkTemplate);
 
             $params = [
                 'class' => '',
@@ -245,7 +245,7 @@ class MenuWidget extends BaseWidget
             return $this->renderTemplate($template, $params);
         }
 
-        $template = ArrayHelper::getValue($item, 'template', $this->labelTemplate);
+        $template = ExtArrayHelper::getValue($item, 'template', $this->labelTemplate);
 
         return $this->renderTemplate($template, [
             'label' => $item['label'],

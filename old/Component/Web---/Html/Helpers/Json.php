@@ -7,7 +7,7 @@
 
 namespace Untek\Component\Web\Html\Helpers;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Contract\Common\Exceptions\InvalidArgumentException;
 use Untek\Core\Base\Legacy\Yii\Base\Model;
 
@@ -193,7 +193,7 @@ class Json
      */
     public static function errorSummary($models, $options = [])
     {
-        $showAllErrors = ArrayHelper::remove($options, 'showAllErrors', false);
+        $showAllErrors = ExtArrayHelper::remove($options, 'showAllErrors', false);
         $lines = self::collectErrors($models, $showAllErrors);
 
         return json_encode($lines);

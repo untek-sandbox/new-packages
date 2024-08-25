@@ -3,7 +3,7 @@
 namespace Untek\Develop\Package\Domain\Services;
 
 //use Illuminate\Support\Arr;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 //use Untek\Model\Service\Base\BaseService;
 use Untek\Develop\Package\Domain\Entities\CommitEntity;
@@ -72,7 +72,7 @@ class GitService extends BaseService implements GitServiceInterface
 
         $commitTagMap = [];
         foreach ($commitShaMap as $commitSha => $commitOrder) {
-            $tagOrder = ArrayHelper::getValue($tagShaMap, $commitSha);
+            $tagOrder = ExtArrayHelper::getValue($tagShaMap, $commitSha);
             $commitTagMap[$commitOrder] = $tagOrder;
         }
 
@@ -85,7 +85,7 @@ class GitService extends BaseService implements GitServiceInterface
     {
         $branches = $this->branches($packageEntity);
         $branches = array_intersect($branches, ['master', 'main']);
-        return ArrayHelper::first($branches);
+        return ExtArrayHelper::first($branches);
     }
 
     public function checkout(PackageEntity $packageEntity, string $branch)

@@ -7,7 +7,7 @@ use Untek\Component\Web\HtmlRender\Application\Services\CssResourceInterface;
 use Untek\Component\Web\HtmlRender\Application\Services\HtmlRenderInterface;
 use Untek\Component\Web\HtmlRender\Application\Services\JsResourceInterface;
 use Untek\Component\Web\HtmlRender\Infrastructure\Helpers\RenderHelper;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 
 class HtmlRender implements HtmlRenderInterface
 {
@@ -45,7 +45,7 @@ class HtmlRender implements HtmlRenderInterface
         ob_start();
         ob_implicit_flush(false);
         try {
-            $params = ArrayHelper::merge($this->params, $params);
+            $params = ExtArrayHelper::merge($this->params, $params);
             $this->includeRender($viewFile, $params);
             // after render wirte in $out
         } catch (\Exception $e) {

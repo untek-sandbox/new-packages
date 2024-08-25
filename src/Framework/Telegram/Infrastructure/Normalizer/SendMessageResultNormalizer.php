@@ -3,7 +3,7 @@
 namespace Untek\Framework\Telegram\Infrastructure\Normalizer;
 
 use ArrayObject;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Contract\Common\Exceptions\NotImplementedMethodException;
 use Untek\Core\Instance\Helpers\MappingHelper;
 use Untek\Persistence\Normalizer\DatabaseItemNormalizer;
@@ -19,7 +19,7 @@ class SendMessageResultNormalizer extends DatabaseItemNormalizer
 
     public function denormalize(array $item, string $type): object
     {
-        $item = ArrayHelper::extractByKeys($item, [
+        $item = ExtArrayHelper::extractByKeys($item, [
             'message_id',
             'text',
             'date',
@@ -30,14 +30,14 @@ class SendMessageResultNormalizer extends DatabaseItemNormalizer
 //            'forward_date',
         ]);
 
-        $item['from'] = ArrayHelper::extractByKeys($item['from'], [
+        $item['from'] = ExtArrayHelper::extractByKeys($item['from'], [
             "id",
             "is_bot",
             "first_name",
             "username",
         ]);
 
-        $item['chat'] = ArrayHelper::extractByKeys($item['chat'], [
+        $item['chat'] = ExtArrayHelper::extractByKeys($item['chat'], [
             "id",
             "title",
             "type",

@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Web\Html\Helpers;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Web\Html\Helpers\Html;
 use Untek\Component\Web\Html\Helpers\Url;
 

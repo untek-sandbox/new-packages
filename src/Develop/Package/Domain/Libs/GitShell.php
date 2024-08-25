@@ -4,7 +4,7 @@ namespace Untek\Develop\Package\Domain\Libs;
 
 //use Illuminate\Support\Arr;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\FileSystem\Helpers\FileHelper;
 use Untek\Component\FileSystem\Helpers\FilePathHelper;
 use Untek\Component\Text\Helpers\TextHelper;
@@ -81,7 +81,7 @@ class GitShell extends BaseShell
         if (empty($tag)) {
             $tag = $this->getTags();
         }
-        $tag = ArrayHelper::toArray($tag);
+        $tag = ExtArrayHelper::toArray($tag);
         $tag = implode(' ', $tag);
         $result = $this->extractFromCommand('git show-ref --tags -d ' . $tag, 'trim');
         if (empty($result)) {
@@ -419,7 +419,7 @@ class GitShell extends BaseShell
     }
 
     public function searchText2(array $lines, $needles) {
-        $needles = ArrayHelper::toArray($needles);
+        $needles = ExtArrayHelper::toArray($needles);
         foreach ($lines as $line) {
             foreach ($needles as $needle) {
                 $isHas = strpos(mb_strtolower($line), mb_strtolower($needle)) !== false;
@@ -432,7 +432,7 @@ class GitShell extends BaseShell
     }
 
     public function matchText(array $lines, $needles) {
-        $needles = ArrayHelper::toArray($needles);
+        $needles = ExtArrayHelper::toArray($needles);
         $mathesResult = [];
         foreach ($lines as $line) {
             $line = TextHelper::removeDoubleSpace($line);
@@ -451,7 +451,7 @@ class GitShell extends BaseShell
     }
 
     public function matchTextAll(array $lines, $needles) {
-        $needles = ArrayHelper::toArray($needles);
+        $needles = ExtArrayHelper::toArray($needles);
         $mathesResult = [];
         //$lines = [implode("\n", $lines)];
         foreach ($lines as $line) {
@@ -574,7 +574,7 @@ class GitShell extends BaseShell
     public function showRemote()
     {
         $array = $this->extractFromCommand('git config --get remote.origin.url', 'trim');
-        return ArrayHelper::first($array);
+        return ExtArrayHelper::first($array);
     }
 
     /**

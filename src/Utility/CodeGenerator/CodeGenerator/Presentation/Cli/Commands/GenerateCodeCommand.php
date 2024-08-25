@@ -9,7 +9,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Untek\Component\FileSystem\Helpers\FilePathHelper;
 use Untek\Component\FormatAdapter\StoreFile;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Container\Helpers\ContainerHelper;
 use Untek\Component\FileSystem\Helpers\FileHelper;
 use Untek\Component\Text\Helpers\TemplateHelper;
@@ -59,7 +59,7 @@ class GenerateCodeCommand extends Command
             /** @var InteractInterface $interact */
             $interactCommands = $interact->input($io);
             if ($interactCommands) {
-                $commands = ArrayHelper::merge($commands, $interactCommands);
+                $commands = ExtArrayHelper::merge($commands, $interactCommands);
             }
         }
         return $commands;

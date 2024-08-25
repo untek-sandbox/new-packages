@@ -128,7 +128,7 @@ abstract class BaseWebController //implements ControllerLayoutInterface
         }
 
 //            $entityAttributes = EntityHelper::toArray($entity);
-//            $entityAttributes = ArrayHelper::extractByKeys($entityAttributes, EntityHelper::getAttributeNames($form));
+//            $entityAttributes = ExtArrayHelper::extractByKeys($entityAttributes, EntityHelper::getAttributeNames($form));
         return $form;
     }
 
@@ -136,7 +136,7 @@ abstract class BaseWebController //implements ControllerLayoutInterface
     {
         $content = TemplateHelper::loadTemplate($this->viewsDir . '/' . $file . '.' . $this->fileExt, $params);
         /*if (isset($this->layout)) {
-//            $params = ArrayHelper::merge($this->getLayoutParams(), $params);
+//            $params = ExtArrayHelper::merge($this->getLayoutParams(), $params);
             $params['content'] = $content;
             $content = TemplateHelper::loadTemplate($this->layout, $params);
         }*/
@@ -158,7 +158,7 @@ abstract class BaseWebController //implements ControllerLayoutInterface
         $view->setRenderDirectory($this->viewsDir);
         $pageContent = $view->renderFile($file, $params);
         /*if (isset($this->layout)) {
-//            $params = ArrayHelper::merge($this->getLayoutParams(), $params);
+//            $params = ExtArrayHelper::merge($this->getLayoutParams(), $params);
             $params['content'] = $pageContent;
             $content = $view->renderFile($this->layout, $params);
         }*/

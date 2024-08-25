@@ -7,7 +7,7 @@ use LimitIterator;
 use SplFileObject;
 use Untek\Component\LogReader\Domain\Model\LogItem;
 use Untek\Component\LogReader\Infrastructure\Persistence\Normalizer\LogItemNormalizer;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Persistence\Normalizer\DbNormalizerInterface;
 use Untek\Persistence\Normalizer\Traits\NormalizerTrait;
 use Untek\Persistence\Contract\Interfaces\RepositoryCountByInterface;
@@ -112,7 +112,7 @@ class LogRepository implements ObjectRepository, RepositoryCountByInterface
     {
         $collection = $this->findBy(['id' => $id], [], 1, 0);
         if ($collection) {
-            return ArrayHelper::first($collection);
+            return ExtArrayHelper::first($collection);
         }
     }
 

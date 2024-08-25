@@ -2,7 +2,7 @@
 
 namespace Untek\Component\FormatAdapter;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Code\Helpers\DeprecateHelper;
 
 DeprecateHelper::hardThrow();
@@ -21,7 +21,7 @@ class ActiveStore
             $all = static::all();
             $filtered = static::runConditionList($all, $where, 1);
             if ( ! empty($filtered)) {
-                $data = ArrayHelper::first($filtered);
+                $data = ExtArrayHelper::first($filtered);
             }
         } else {
             $data = static::storeInstance()->load(static::fileName(), $where);

@@ -3,7 +3,7 @@
 namespace Untek\Component\Http\Helpers;
 
 use GuzzleHttp\Psr7\Query;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Web\Html\Helpers\Url;
 use function GuzzleHttp\Psr7\parse_query;
 
@@ -76,7 +76,7 @@ class UrlHelper
             $r['query'] = Query::parse($r['query']);
         }
         if ($key) {
-            return ArrayHelper::getValue($r, $key);
+            return ExtArrayHelper::getValue($r, $key);
         } else {
             return $r;
         }

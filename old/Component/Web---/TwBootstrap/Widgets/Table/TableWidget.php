@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Web\TwBootstrap\Widgets\Table;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Web\Widget\Base\BaseWidget2;
 use Untek\Component\Web\TwBootstrap\Widgets\Table\Helpers\TableWidgetHelper;
 
@@ -21,8 +21,8 @@ class TableWidget extends BaseWidget2
         $headers = TableWidgetHelper::prepareHeaders($this->header ?: []);
 
         if($this->header) {
-            $keys = ArrayHelper::isIndexed($this->header) ? array_values($this->header) : array_keys($this->header);
-            $this->body = ArrayHelper::extractItemsWithAttributes($this->body, $keys);
+            $keys = ExtArrayHelper::isIndexed($this->header) ? array_values($this->header) : array_keys($this->header);
+            $this->body = ExtArrayHelper::extractItemsWithAttributes($this->body, $keys);
         }
 
         $body = TableWidgetHelper::prepareBody($this->body ?: []);

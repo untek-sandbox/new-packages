@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Component\Web\Html\Helpers\Html;
 
@@ -23,7 +23,7 @@ class LinkFormatter extends BaseFormatter implements FormatterInterface
             $title = $value;
         }
         $link = PropertyHelper::getValue($entity, $this->linkAttribute);
-        $uri = ArrayHelper::toArray($this->uri);
+        $uri = ExtArrayHelper::toArray($this->uri);
         $uri[$this->linkParam] = $link;
         return Html::a($title, $uri);
     }

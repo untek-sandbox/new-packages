@@ -4,7 +4,7 @@ namespace Untek\Component\Relation\Libs\Types;
 
 use Doctrine\Persistence\ObjectRepository;
 use Untek\Component\Relation\Interfaces\RelationInterface;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Code\Factories\PropertyAccess;
 use Untek\Core\Collection\Helpers\CollectionHelper;
 
@@ -70,7 +70,7 @@ class OneToOneRelation extends BaseRelation implements RelationInterface
         // count($ids)
         $limit = null;
         if (count($criteria) === 1) {
-            $firstCriteria = ArrayHelper::first($criteria);
+            $firstCriteria = ExtArrayHelper::first($criteria);
             $limit = count($firstCriteria);
         }
         $collection = $foreignRepositoryInstance->findBy($criteria, null, $limit, null, $this->relations);

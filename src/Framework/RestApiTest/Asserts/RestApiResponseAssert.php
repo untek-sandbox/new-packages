@@ -5,7 +5,7 @@ namespace Untek\Framework\RestApiTest\Asserts;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\HttpFoundation\Response;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Framework\Rpc\Domain\Enums\RpcErrorCodeEnum;
 use Untek\Component\Http\Enums\HttpStatusCodeEnum;
 
@@ -26,7 +26,7 @@ class RestApiResponseAssert extends Assert
     public function getValueFromPath(string $path = null) {
         $responseBody = $this->getPayload();
         if($path) {
-            $actual = ArrayHelper::getValue($responseBody, $path);
+            $actual = ExtArrayHelper::getValue($responseBody, $path);
         } else {
             $actual = $responseBody;
         }
@@ -78,7 +78,7 @@ class RestApiResponseAssert extends Assert
     public function assertHasPath(string $path): static
     {
         $responseBody = $this->getPayload();
-        $has = ArrayHelper::has($responseBody, $path);
+        $has = ExtArrayHelper::has($responseBody, $path);
         if(!$has) {
             throw new ExpectationFailedException("Path \"{$path}\" not found.");
         }
@@ -176,7 +176,7 @@ class RestApiResponseAssert extends Assert
 
     public function assertCollectionSizeByPath(int $expected, string $path): static
     {
-        $data = ArrayHelper::getValue($this->response->getResult(), $path);
+        $data = ExtArrayHelper::getValue($this->response->getResult(), $path);
         $this->assertCount($expected, $data);
         /*$totalCount = $this->response->getMetaItem('totalCount', null);
         if($totalCount !== null) {
@@ -218,7 +218,7 @@ class RestApiResponseAssert extends Assert
         $this->assertIsResult();
         $this->assertCollectionSize(count($ids));
 
-        $actualIds = ArrayHelper::getColumn($this->response->getResult(), 'id');
+        $actualIds = ExtArrayHelper::getColumn($this->response->getResult(), 'id');
         sort($ids);
         sort($actualIds);
         $this->assertEquals($ids, $actualIds);

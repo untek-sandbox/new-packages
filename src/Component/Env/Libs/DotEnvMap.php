@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Env\Libs;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Pattern\Singleton\SingletonTrait;
 
 class DotEnvMap
@@ -24,14 +24,14 @@ class DotEnvMap
 
     private function getValue(string $path = null, $default = null)
     {
-        return ArrayHelper::getValue($this->map, $path, $default);
+        return ExtArrayHelper::getValue($this->map, $path, $default);
     }
 
     private function forgeMap(): void
     {
         foreach ($_ENV as $name => $value) {
             $pureName = $this->prepareName($name);
-            ArrayHelper::set($this->map, $pureName, $value);
+            ExtArrayHelper::set($this->map, $pureName, $value);
         }
     }
 

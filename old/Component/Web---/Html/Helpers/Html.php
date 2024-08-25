@@ -9,7 +9,7 @@ namespace Untek\Component\Web\Html\Helpers;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mime\MimeTypes;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Core\Base\Legacy\Yii\Base\Model;
 use Untek\Core\Contract\Common\Exceptions\InvalidArgumentException;
@@ -168,7 +168,7 @@ class Html
                 }
                 return $v;
             };
-            $val = ArrayHelper::recursiveIterator($val, $closure);
+            $val = ExtArrayHelper::recursiveIterator($val, $closure);
         } else {
             $val = htmlentities($val);
         }
@@ -459,7 +459,7 @@ class Html
                 $hiddenInputs[] = static::hiddenInput($request->getMethod(), $method);
                 $method = 'post';
             }
-            $csrf = ArrayHelper::remove($options, 'csrf', true);
+            $csrf = ExtArrayHelper::remove($options, 'csrf', true);
 
             /*if ($csrf && $request->enableCsrfValidation && strcasecmp($method, 'post') === 0) {
                 $hiddenInputs[] = static::hiddenInput($request->csrfParam, $request->getCsrfToken());
@@ -814,7 +814,7 @@ class Html
     public static function textarea($name, $value = '', $options = [])
     {
         $options['name'] = $name;
-        $doubleEncode = ArrayHelper::remove($options, 'doubleEncode', true);
+        $doubleEncode = ExtArrayHelper::remove($options, 'doubleEncode', true);
         return static::tag('textarea', static::encode($value, $doubleEncode), $options);
     }
 
@@ -909,7 +909,7 @@ class Html
      * are the corresponding option labels. The array can also be nested (i.e. some array values are arrays too).
      * For each sub-array, an option group will be generated whose label is the key associated with the sub-array.
      * If you have a list of data models, you may convert them into the format described above using
-     * [[\yii\helpers\ArrayHelper::map()]].
+     * [[\yii\helpers\ExtArrayHelper::map()]].
      *
      * Note, the values and labels will be automatically HTML-encoded by this method, and the blank spaces in
      * the labels will also be HTML-encoded.
@@ -964,7 +964,7 @@ class Html
      * are the corresponding option labels. The array can also be nested (i.e. some array values are arrays too).
      * For each sub-array, an option group will be generated whose label is the key associated with the sub-array.
      * If you have a list of data models, you may convert them into the format described above using
-     * [[\yii\helpers\ArrayHelper::map()]].
+     * [[\yii\helpers\ExtArrayHelper::map()]].
      *
      * Note, the values and labels will be automatically HTML-encoded by this method, and the blank spaces in
      * the labels will also be HTML-encoded.
@@ -1072,22 +1072,22 @@ class Html
         if (substr($name, -2) !== '[]') {
             $name .= '[]';
         }
-        if (ArrayHelper::isTraversable($selection)) {
+        if (ExtArrayHelper::isTraversable($selection)) {
             $selection = array_map('strval', (array)$selection);
         }
 
-        $formatter = ArrayHelper::remove($options, 'item');
-        $itemOptions = ArrayHelper::remove($options, 'itemOptions', []);
-        $encode = ArrayHelper::remove($options, 'encode', true);
-        $separator = ArrayHelper::remove($options, 'separator', "\n");
-        $tag = ArrayHelper::remove($options, 'tag', 'div');
+        $formatter = ExtArrayHelper::remove($options, 'item');
+        $itemOptions = ExtArrayHelper::remove($options, 'itemOptions', []);
+        $encode = ExtArrayHelper::remove($options, 'encode', true);
+        $separator = ExtArrayHelper::remove($options, 'separator', "\n");
+        $tag = ExtArrayHelper::remove($options, 'tag', 'div');
 
         $lines = [];
         $index = 0;
         foreach ($items as $value => $label) {
             $checked = $selection !== null &&
-                (!ArrayHelper::isTraversable($selection) && !strcmp($value, $selection)
-                    || ArrayHelper::isTraversable($selection) && ArrayHelper::isIn((string)$value, $selection));
+                (!ExtArrayHelper::isTraversable($selection) && !strcmp($value, $selection)
+                    || ExtArrayHelper::isTraversable($selection) && ExtArrayHelper::isIn((string)$value, $selection));
             if ($formatter !== null) {
                 $lines[] = call_user_func($formatter, $index, $label, $name, $checked, $value);
             } else {
@@ -1159,15 +1159,15 @@ class Html
      */
     public static function radioList($name, $selection = null, $items = [], $options = [])
     {
-        if (ArrayHelper::isTraversable($selection)) {
+        if (ExtArrayHelper::isTraversable($selection)) {
             $selection = array_map('strval', (array)$selection);
         }
 
-        $formatter = ArrayHelper::remove($options, 'item');
-        $itemOptions = ArrayHelper::remove($options, 'itemOptions', []);
-        $encode = ArrayHelper::remove($options, 'encode', true);
-        $separator = ArrayHelper::remove($options, 'separator', "\n");
-        $tag = ArrayHelper::remove($options, 'tag', 'div');
+        $formatter = ExtArrayHelper::remove($options, 'item');
+        $itemOptions = ExtArrayHelper::remove($options, 'itemOptions', []);
+        $encode = ExtArrayHelper::remove($options, 'encode', true);
+        $separator = ExtArrayHelper::remove($options, 'separator', "\n");
+        $tag = ExtArrayHelper::remove($options, 'tag', 'div');
 
         $hidden = '';
         if (isset($options['unselect'])) {
@@ -1185,8 +1185,8 @@ class Html
         $index = 0;
         foreach ($items as $value => $label) {
             $checked = $selection !== null &&
-                (!ArrayHelper::isTraversable($selection) && !strcmp($value, $selection)
-                    || ArrayHelper::isTraversable($selection) && ArrayHelper::isIn((string)$value, $selection));
+                (!ExtArrayHelper::isTraversable($selection) && !strcmp($value, $selection)
+                    || ExtArrayHelper::isTraversable($selection) && ExtArrayHelper::isIn((string)$value, $selection));
             if ($formatter !== null) {
                 $lines[] = call_user_func($formatter, $index, $label, $name, $checked, $value);
             } else {
@@ -1233,11 +1233,11 @@ class Html
      */
     public static function ul($items, $options = [])
     {
-        $tag = ArrayHelper::remove($options, 'tag', 'ul');
-        $encode = ArrayHelper::remove($options, 'encode', true);
-        $formatter = ArrayHelper::remove($options, 'item');
-        $separator = ArrayHelper::remove($options, 'separator', "\n");
-        $itemOptions = ArrayHelper::remove($options, 'itemOptions', []);
+        $tag = ExtArrayHelper::remove($options, 'tag', 'ul');
+        $encode = ExtArrayHelper::remove($options, 'encode', true);
+        $formatter = ExtArrayHelper::remove($options, 'item');
+        $separator = ExtArrayHelper::remove($options, 'separator', "\n");
+        $itemOptions = ExtArrayHelper::remove($options, 'itemOptions', []);
 
         if (empty($items)) {
             return static::tag($tag, '', $options);
@@ -1309,9 +1309,9 @@ class Html
      */
     public static function activeLabel($model, $attribute, $options = [])
     {
-        $for = ArrayHelper::remove($options, 'for', static::getInputId($model, $attribute));
+        $for = ExtArrayHelper::remove($options, 'for', static::getInputId($model, $attribute));
         $attribute = static::getAttributeName($attribute);
-        $label = ArrayHelper::remove($options, 'label', static::encode($model->getAttributeLabel($attribute)));
+        $label = ExtArrayHelper::remove($options, 'label', static::encode($model->getAttributeLabel($attribute)));
         return static::label($label, $for, $options);
     }
 
@@ -1343,7 +1343,7 @@ class Html
         if (empty($hint)) {
             return '';
         }
-        $tag = ArrayHelper::remove($options, 'tag', 'div');
+        $tag = ExtArrayHelper::remove($options, 'tag', 'div');
         unset($options['hint']);
         return static::tag($tag, $hint, $options);
     }
@@ -1368,9 +1368,9 @@ class Html
     public static function errorSummary($models, $options = [])
     {
         $header = isset($options['header']) ? $options['header'] : '<p>' . \Yii::t('yii', 'Please fix the following errors:') . '</p>';
-        $footer = ArrayHelper::remove($options, 'footer', '');
-        $encode = ArrayHelper::remove($options, 'encode', true);
-        $showAllErrors = ArrayHelper::remove($options, 'showAllErrors', false);
+        $footer = ExtArrayHelper::remove($options, 'footer', '');
+        $encode = ExtArrayHelper::remove($options, 'encode', true);
+        $showAllErrors = ExtArrayHelper::remove($options, 'showAllErrors', false);
         unset($options['header']);
         $lines = self::collectErrors($models, $encode, $showAllErrors);
         if (empty($lines)) {
@@ -1442,14 +1442,14 @@ class Html
     public static function error($model, $attribute, $options = [])
     {
         $attribute = static::getAttributeName($attribute);
-        $errorSource = ArrayHelper::remove($options, 'errorSource');
+        $errorSource = ExtArrayHelper::remove($options, 'errorSource');
         if ($errorSource !== null) {
             $error = call_user_func($errorSource, $model, $attribute);
         } else {
             $error = $model->getFirstError($attribute);
         }
-        $tag = ArrayHelper::remove($options, 'tag', 'div');
-        $encode = ArrayHelper::remove($options, 'encode', true);
+        $tag = ExtArrayHelper::remove($options, 'tag', 'div');
+        $encode = ExtArrayHelper::remove($options, 'encode', true);
         return Html::tag($tag, $encode ? Html::encode($error) : $error, $options);
     }
 
@@ -1612,7 +1612,7 @@ class Html
         if (!empty($options['disabled'])) {
             $hiddenOptions['disabled'] = $options['disabled'];
         }
-        $hiddenOptions = ArrayHelper::merge($hiddenOptions, ArrayHelper::remove($options, 'hiddenOptions', []));
+        $hiddenOptions = ExtArrayHelper::merge($hiddenOptions, ExtArrayHelper::remove($options, 'hiddenOptions', []));
         // Add a hidden field so that if a model only has a file field, we can
         // still use isset($_POST[$modelClass]) to detect if the input is submitted.
         // The hidden input will be assigned its own set of html options via `$hiddenOptions`.
@@ -1741,7 +1741,7 @@ class Html
      * are the corresponding option labels. The array can also be nested (i.e. some array values are arrays too).
      * For each sub-array, an option group will be generated whose label is the key associated with the sub-array.
      * If you have a list of data models, you may convert them into the format described above using
-     * [[\yii\helpers\ArrayHelper::map()]].
+     * [[\yii\helpers\ExtArrayHelper::map()]].
      *
      * Note, the values and labels will be automatically HTML-encoded by this method, and the blank spaces in
      * the labels will also be HTML-encoded.
@@ -1796,7 +1796,7 @@ class Html
      * are the corresponding option labels. The array can also be nested (i.e. some array values are arrays too).
      * For each sub-array, an option group will be generated whose label is the key associated with the sub-array.
      * If you have a list of data models, you may convert them into the format described above using
-     * [[\yii\helpers\ArrayHelper::map()]].
+     * [[\yii\helpers\ExtArrayHelper::map()]].
      *
      * Note, the values and labels will be automatically HTML-encoded by this method, and the blank spaces in
      * the labels will also be HTML-encoded.
@@ -1960,7 +1960,7 @@ class Html
      * are the corresponding option labels. The array can also be nested (i.e. some array values are arrays too).
      * For each sub-array, an option group will be generated whose label is the key associated with the sub-array.
      * If you have a list of data models, you may convert them into the format described above using
-     * [[\yii\helpers\ArrayHelper::map()]].
+     * [[\yii\helpers\ExtArrayHelper::map()]].
      *
      * Note, the values and labels will be automatically HTML-encoded by this method, and the blank spaces in
      * the labels will also be HTML-encoded.
@@ -1972,13 +1972,13 @@ class Html
      */
     public static function renderSelectOptions($selection, $items, &$tagOptions = [])
     {
-        if (ArrayHelper::isTraversable($selection)) {
+        if (ExtArrayHelper::isTraversable($selection)) {
             $selection = array_map('strval', (array)$selection);
         }
 
         $lines = [];
-        $encodeSpaces = ArrayHelper::remove($tagOptions, 'encodeSpaces', false);
-        $encode = ArrayHelper::remove($tagOptions, 'encode', true);
+        $encodeSpaces = ExtArrayHelper::remove($tagOptions, 'encodeSpaces', false);
+        $encode = ExtArrayHelper::remove($tagOptions, 'encode', true);
         if (isset($tagOptions['prompt'])) {
             $promptOptions = ['value' => ''];
             if (is_string($tagOptions['prompt'])) {
@@ -1997,8 +1997,8 @@ class Html
         $options = isset($tagOptions['options']) ? $tagOptions['options'] : [];
         $groups = isset($tagOptions['groups']) ? $tagOptions['groups'] : [];
         unset($tagOptions['prompt'], $tagOptions['options'], $tagOptions['groups']);
-        $options['encodeSpaces'] = ArrayHelper::getValue($options, 'encodeSpaces', $encodeSpaces);
-        $options['encode'] = ArrayHelper::getValue($options, 'encode', $encode);
+        $options['encodeSpaces'] = ExtArrayHelper::getValue($options, 'encodeSpaces', $encodeSpaces);
+        $options['encode'] = ExtArrayHelper::getValue($options, 'encode', $encode);
 
         foreach ($items as $key => $value) {
             if (is_array($value)) {
@@ -2014,8 +2014,8 @@ class Html
                 $attrs['value'] = (string)$key;
                 if (!array_key_exists('selected', $attrs)) {
                     $attrs['selected'] = $selection !== null &&
-                        (!ArrayHelper::isTraversable($selection) && !strcmp($key, $selection)
-                            || ArrayHelper::isTraversable($selection) && ArrayHelper::isIn((string)$key, $selection));
+                        (!ExtArrayHelper::isTraversable($selection) && !strcmp($key, $selection)
+                            || ExtArrayHelper::isTraversable($selection) && ExtArrayHelper::isIn((string)$key, $selection));
                 }
                 $text = $encode ? static::encode($value) : $value;
                 if ($encodeSpaces) {

@@ -4,7 +4,7 @@ namespace Untek\Framework\RestApi\Presentation\Http\Symfony\Helpers;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mime\MimeTypes;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 
 class RestApiHelper
 {
@@ -17,7 +17,7 @@ class RestApiHelper
         $mimeType = $request->headers->get('Content-Type');
         if ($mimeType) {
             $extensions = (new MimeTypes)->getExtensions($mimeType);
-            $format = ArrayHelper::first($extensions);
+            $format = ExtArrayHelper::first($extensions);
         }
         if ($format == null) {
             $format = self::FORM_URLENCODED;

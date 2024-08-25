@@ -10,7 +10,7 @@ use DOMNode;
 /**
  * Хэлпер для работы с массивами.
  */
-class ArrayHelper extends BaseArrayHelper
+class ExtArrayHelper extends BaseArrayHelper
 {
 
     /**

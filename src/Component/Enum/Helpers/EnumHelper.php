@@ -3,7 +3,7 @@
 namespace Untek\Component\Enum\Helpers;
 
 use InvalidArgumentException;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Component\Code\Helpers\ReflectionHelper;
 use Untek\Core\Instance\Exceptions\NotInstanceOfException;
@@ -109,7 +109,7 @@ class EnumHelper
     public static function getOptions(string $className): array
     {
         $items = self::getItems($className);
-        return ArrayHelper::map($items, 'id', 'title');
+        return ExtArrayHelper::map($items, 'id', 'title');
     }
 
     /**

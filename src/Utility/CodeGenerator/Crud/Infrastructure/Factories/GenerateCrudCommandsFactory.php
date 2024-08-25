@@ -2,7 +2,7 @@
 
 namespace Untek\Utility\CodeGenerator\Crud\Infrastructure\Factories;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Utility\CodeGenerator\Application\Application\Enums\TypeEnum;
 use Untek\Utility\CodeGenerator\Application\Infrastructure\Factories\GenerateApplicationCommandFactory;
 use Untek\Utility\CodeGenerator\Application\Infrastructure\Generators\CommandGenerator;
@@ -184,6 +184,6 @@ class GenerateCrudCommandsFactory
                 ],
             ],
         ];
-        return ArrayHelper::merge($crudTemplate, $crud);
+        return ExtArrayHelper::merge($crudTemplate, $crud);
     }
 }

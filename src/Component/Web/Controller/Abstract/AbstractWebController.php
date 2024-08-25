@@ -130,7 +130,7 @@ abstract class AbstractWebController
         }
 
 //            $entityAttributes = EntityHelper::toArray($entity);
-//            $entityAttributes = ArrayHelper::extractByKeys($entityAttributes, EntityHelper::getAttributeNames($form));
+//            $entityAttributes = ExtArrayHelper::extractByKeys($entityAttributes, EntityHelper::getAttributeNames($form));
         return $form;
     }
 
@@ -138,7 +138,7 @@ abstract class AbstractWebController
 //    {
 //        $content = TemplateHelper::loadTemplate($this->viewsDir . '/' . $file . '.' . $this->fileExt, $params);
 //        /*if (isset($this->layout)) {
-////            $params = ArrayHelper::merge($this->getLayoutParams(), $params);
+////            $params = ExtArrayHelper::merge($this->getLayoutParams(), $params);
 //            $params['content'] = $content;
 //            $content = TemplateHelper::loadTemplate($this->layout, $params);
 //        }*/
@@ -164,7 +164,7 @@ abstract class AbstractWebController
 //        $this->view->setRenderDirectory($this->viewsDir);
         $pageContent = $this->view->renderFile($file, $params);
         /*if (isset($this->layout)) {
-//            $params = ArrayHelper::merge($this->getLayoutParams(), $params);
+//            $params = ExtArrayHelper::merge($this->getLayoutParams(), $params);
             $params['content'] = $pageContent;
             $content = $view->renderFile($this->layout, $params);
         }*/

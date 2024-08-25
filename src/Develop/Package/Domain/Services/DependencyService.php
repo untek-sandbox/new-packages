@@ -2,7 +2,7 @@
 
 namespace Untek\Develop\Package\Domain\Services;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Code\Helpers\ComposerHelper;
 use Untek\Component\FileSystem\Helpers\FileHelper;
 use Untek\Develop\Package\Domain\Entities\PackageEntity;
@@ -104,12 +104,12 @@ class DependencyService
 
                 $classesFromString = $classNameStringParser->parse($code);
                 if ($classesFromString) {
-                    $classes = ArrayHelper::merge($classes, $classesFromString);
+                    $classes = ExtArrayHelper::merge($classes, $classesFromString);
                 }
 
                 $classesFromClassNames = $classNameParser->parse($code);
                 if ($classesFromClassNames) {
-                    $classes = ArrayHelper::merge($classes, $classesFromClassNames);
+                    $classes = ExtArrayHelper::merge($classes, $classesFromClassNames);
                 }
             }
 

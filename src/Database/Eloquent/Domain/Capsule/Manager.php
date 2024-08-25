@@ -6,7 +6,7 @@ use Illuminate\Database\Capsule\Manager as CapsuleManager;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Schema\Builder as SchemaBuilder;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Database\Base\Domain\Libs\TableAlias;
 
@@ -86,13 +86,13 @@ class Manager extends CapsuleManager
 //    public function isInOneDatabase(string $tableName1, string $tableName2): bool
 //    {
 //        DeprecateHelper::hardThrow();
-//        return ArrayHelper::getValue($this->connectionMap, $tableName1, 'default') == ArrayHelper::getValue($this->connectionMap, $tableName2, 'default');
+//        return ExtArrayHelper::getValue($this->connectionMap, $tableName1, 'default') == ExtArrayHelper::getValue($this->connectionMap, $tableName2, 'default');
 //    }
 //
 //    public function getConnectionNameByTableName(string $tableName)
 //    {
 //        DeprecateHelper::hardThrow();
-//        return ArrayHelper::getValue($this->connectionMap, $tableName, 'default');
+//        return ExtArrayHelper::getValue($this->connectionMap, $tableName, 'default');
 //    }
 //
 //    public function getConnectionMap(): array

@@ -2,7 +2,7 @@
 
 namespace Untek\Component\FileSystem\Helpers;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Collection\Libs\Collection;
 use Untek\Component\FileSystem\Entities\DirectoryEntity;
 use Untek\Component\FileSystem\Entities\FileEntity;
@@ -39,8 +39,8 @@ class FindFileHelper
         if(empty($pathList)) {
             return [];
         }
-        ArrayHelper::removeByValue('.', $pathList);
-        ArrayHelper::removeByValue('..', $pathList);
+        ExtArrayHelper::removeByValue('.', $pathList);
+        ExtArrayHelper::removeByValue('..', $pathList);
         if (empty($pathList)) {
             return [];
         }

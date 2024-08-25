@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Web\Form\Libs\Renders;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Web\Html\Helpers\Html;
 
 abstract class BaseInputRender extends BaseRender
@@ -64,14 +64,14 @@ abstract class BaseInputRender extends BaseRender
     protected function options(): array {
         $inputVars = $this->getViewOptions();
         $options = $this->defaultOptions();
-        $options = ArrayHelper::merge($options, $this->filterOptions($inputVars));
-        $options = ArrayHelper::merge($options, $this->getOptions());
+        $options = ExtArrayHelper::merge($options, $this->filterOptions($inputVars));
+        $options = ExtArrayHelper::merge($options, $this->getOptions());
         return $options;
     }
 
     protected function filterOptions(array $options): array
     {
-        $options1 = ArrayHelper::extractByKeys($options, $this->allowOptions());
+        $options1 = ExtArrayHelper::extractByKeys($options, $this->allowOptions());
         $options1['name'] = $options['full_name'];
         return $options1;
     }

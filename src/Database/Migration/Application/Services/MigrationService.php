@@ -2,7 +2,7 @@
 
 namespace Untek\Database\Migration\Application\Services;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Database\Migration\Domain\Model\Migration;
 use Untek\Database\Migration\Infrastructure\Persistence\Eloquent\Repository\HistoryRepository;
 use Untek\Database\Migration\Infrastructure\Persistence\FileSystem\Repository\SourceRepository;
@@ -40,7 +40,7 @@ class MigrationService
         $sourceCollection = $this->sourceRepository->getAll();
         $historyCollection = $this->historyRepository->findAll();
         $filteredCollection = $this->historyRepository->filterVersion($sourceCollection, $historyCollection);
-        ArrayHelper::multisort($filteredCollection, 'version');
+        ExtArrayHelper::multisort($filteredCollection, 'version');
         return $filteredCollection;
     }
 
@@ -61,11 +61,11 @@ class MigrationService
 
         $historyCollection = $this->historyRepository->findAll();
         $sourceCollection = $this->sourceRepository->getAll();
-        $sourceCollectionIndexed = ArrayHelper::index($sourceCollection, 'version');
+        $sourceCollectionIndexed = ExtArrayHelper::index($sourceCollection, 'version');
         foreach ($historyCollection as $migrationEntity) {
             $migrationEntity->className = $sourceCollectionIndexed[$migrationEntity->version]->className;
         }
-        ArrayHelper::multisort($historyCollection, 'version', SORT_DESC);
+        ExtArrayHelper::multisort($historyCollection, 'version', SORT_DESC);
         return $historyCollection;
     }
 }

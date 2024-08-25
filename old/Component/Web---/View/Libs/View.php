@@ -4,7 +4,7 @@ namespace Untek\Component\Web\View\Libs;
 
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Lib\I18Next\Facades\I18Next;
 use Untek\Component\Web\View\Helpers\RenderHelper;
 use Untek\Component\Web\View\Resources\Css;

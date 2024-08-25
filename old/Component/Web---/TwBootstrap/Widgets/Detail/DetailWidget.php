@@ -20,7 +20,7 @@ use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\StringFormatter;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\TimeFormatter;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\UnknownTypeFormatter;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Libs\FormatEncoder;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Model\Entity\Helpers\EntityHelper;
 use Untek\Component\Web\Widget\Base\BaseWidget2;
 
@@ -74,6 +74,6 @@ class DetailWidget extends BaseWidget2
 
             DateTime::class => TimeFormatter::class,
         ];
-        return ArrayHelper::merge($formatterClasses, $this->formatterClasses);
+        return ExtArrayHelper::merge($formatterClasses, $this->formatterClasses);
     }
 }

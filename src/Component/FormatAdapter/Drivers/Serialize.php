@@ -8,7 +8,7 @@ class Serialize implements DriverInterface
     public function decode($content)
     {
         $data = unserialize($content);
-        //$data = ArrayHelper::toArray($data);
+        //$data = ExtArrayHelper::toArray($data);
         return $data;
     }
 

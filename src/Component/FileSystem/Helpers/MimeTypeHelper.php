@@ -4,7 +4,7 @@ namespace Untek\Component\FileSystem\Helpers;
 
 use PATHINFO_EXTENSION;
 use Symfony\Component\Mime\MimeTypes;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Code\Helpers\DeprecateHelper;
 
 DeprecateHelper::hardThrow();
@@ -25,7 +25,7 @@ class MimeTypeHelper
     {
         $mimeTypes = new MimeTypes();
         $types = $mimeTypes->getMimeTypes($ext);
-        return ArrayHelper::first($types);
+        return ExtArrayHelper::first($types);
     }*/
 
     /*public static function getMimeTypesByExt(string $ext): ?array
@@ -36,7 +36,7 @@ class MimeTypeHelper
     public static function getExtensionByMime(string $mimeType): ?string
     {
         $extensions = self::getExtensionsByMime($mimeType);
-        return ArrayHelper::first($extensions);
+        return ExtArrayHelper::first($extensions);
     }
 
     public static function getExtensionsByMime(string $mimeType): ?array

@@ -13,9 +13,9 @@ use Untek\Component\Arr\Libs\ArrayValues\UnsetArrayValue;
 use function foo\func;
 
 /**
- * BaseArrayHelper provides concrete implementation for [[ArrayHelper]].
+ * BaseExtArrayHelper provides concrete implementation for [[ExtArrayHelper]].
  *
- * Do not use BaseArrayHelper. Use [[ArrayHelper]] instead.
+ * Do not use BaseExtArrayHelper. Use [[ExtArrayHelper]] instead.
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
@@ -43,7 +43,7 @@ abstract class BaseArrayHelper
      * ]
      * ```
      *
-     * The result of `ArrayHelper::toArray($post, $properties)` could be like the following:
+     * The result of `ExtArrayHelper::toArray($post, $properties)` could be like the following:
      *
      * ```php
      * [
@@ -159,17 +159,17 @@ abstract class BaseArrayHelper
      *
      * ```php
      * // working with array
-     * $username = \Untek\Component\Arr\Helpers\ArrayHelper::getValue($_POST, 'username');
+     * $username = \Untek\Component\Arr\Helpers\ExtArrayHelper::getValue($_POST, 'username');
      * // working with object
-     * $username = \Untek\Component\Arr\Helpers\ArrayHelper::getValue($user, 'username');
+     * $username = \Untek\Component\Arr\Helpers\ExtArrayHelper::getValue($user, 'username');
      * // working with anonymous function
-     * $fullName = \Untek\Component\Arr\Helpers\ArrayHelper::getValue($user, function ($user, $defaultValue) {
+     * $fullName = \Untek\Component\Arr\Helpers\ExtArrayHelper::getValue($user, function ($user, $defaultValue) {
      *     return $user->firstName . ' ' . $user->lastName;
      * });
      * // using dot format to retrieve the property of embedded object
-     * $street = \Untek\Component\Arr\Helpers\ArrayHelper::getValue($users, 'address.street');
+     * $street = \Untek\Component\Arr\Helpers\ExtArrayHelper::getValue($users, 'address.street');
      * // using an array of keys to retrieve the value
-     * $value = \Untek\Component\Arr\Helpers\ArrayHelper::getValue($versions, ['1.0', 'date']);
+     * $value = \Untek\Component\Arr\Helpers\ExtArrayHelper::getValue($versions, ['1.0', 'date']);
      * ```
      *
      * @param array|object $array array or object to extract value from
@@ -231,7 +231,7 @@ abstract class BaseArrayHelper
      *  ];
      * ```
      *
-     * The result of `ArrayHelper::setValue($array, 'key.in.0', ['arr' => 'val']);` will be the following:
+     * The result of `ExtArrayHelper::setValue($array, 'key.in.0', ['arr' => 'val']);` will be the following:
      *
      * ```php
      *  [
@@ -246,8 +246,8 @@ abstract class BaseArrayHelper
      * ```
      *
      * The result of
-     * `ArrayHelper::setValue($array, 'key.in', ['arr' => 'val']);` or
-     * `ArrayHelper::setValue($array, ['key', 'in'], ['arr' => 'val']);`
+     * `ExtArrayHelper::setValue($array, 'key.in', ['arr' => 'val']);` or
+     * `ExtArrayHelper::setValue($array, ['key', 'in'], ['arr' => 'val']);`
      * will be the following:
      *
      * ```php
@@ -329,7 +329,7 @@ abstract class BaseArrayHelper
      * ```php
      * // $array = ['type' => 'A', 'options' => [1, 2]];
      * // working with array
-     * $type = \Untek\Component\Arr\Helpers\ArrayHelper::remove($array, 'type');
+     * $type = \Untek\Component\Arr\Helpers\ExtArrayHelper::remove($array, 'type');
      * // $array content
      * // $array = ['options' => [1, 2]];
      * ```
@@ -358,7 +358,7 @@ abstract class BaseArrayHelper
      *
      * ```php
      * $array = ['Bob' => 'Dylan', 'Michael' => 'Jackson', 'Mick' => 'Jagger', 'Janet' => 'Jackson'];
-     * $removed = \Untek\Component\Arr\Helpers\ArrayHelper::removeValue($array, 'Jackson');
+     * $removed = \Untek\Component\Arr\Helpers\ExtArrayHelper::removeValue($array, 'Jackson');
      * // result:
      * // $array = ['Bob' => 'Dylan', 'Mick' => 'Jagger'];
      * // $removed = ['Michael' => 'Jackson', 'Janet' => 'Jackson'];
@@ -405,7 +405,7 @@ abstract class BaseArrayHelper
      *     ['id' => '345', 'data' => 'def', 'device' => 'tablet'],
      *     ['id' => '345', 'data' => 'hgi', 'device' => 'smartphone'],
      * ];
-     * $result = ArrayHelper::index($array, 'id');
+     * $result = ExtArrayHelper::index($array, 'id');
      * ```
      *
      * The result will be an associative array, where the key is the value of `id` attribute
@@ -421,7 +421,7 @@ abstract class BaseArrayHelper
      * An anonymous function can be used in the grouping array as well.
      *
      * ```php
-     * $result = ArrayHelper::index($array, function ($element) {
+     * $result = ExtArrayHelper::index($array, function ($element) {
      *     return $element['id'];
      * });
      * ```
@@ -429,7 +429,7 @@ abstract class BaseArrayHelper
      * Passing `id` as a third argument will group `$array` by `id`:
      *
      * ```php
-     * $result = ArrayHelper::index($array, null, 'id');
+     * $result = ExtArrayHelper::index($array, null, 'id');
      * ```
      *
      * The result will be a multidimensional array grouped by `id` on the first level, by `device` on the second level
@@ -450,7 +450,7 @@ abstract class BaseArrayHelper
      * The anonymous function can be used in the array of grouping keys as well:
      *
      * ```php
-     * $result = ArrayHelper::index($array, 'data', [function ($element) {
+     * $result = ExtArrayHelper::index($array, 'data', [function ($element) {
      *     return $element['id'];
      * }, 'device']);
      * ```
@@ -530,11 +530,11 @@ abstract class BaseArrayHelper
      *     ['id' => '123', 'data' => 'abc'],
      *     ['id' => '345', 'data' => 'def'],
      * ];
-     * $result = ArrayHelper::getColumn($array, 'id');
+     * $result = ExtArrayHelper::getColumn($array, 'id');
      * // the result is: ['123', '345']
      *
      * // using anonymous function
-     * $result = ArrayHelper::getColumn($array, function ($element) {
+     * $result = ExtArrayHelper::getColumn($array, function ($element) {
      *     return $element['id'];
      * });
      * ```
@@ -575,7 +575,7 @@ abstract class BaseArrayHelper
      *     ['id' => '345', 'name' => 'ccc', 'class' => 'y'],
      * ];
      *
-     * $result = ArrayHelper::map($array, 'id', 'name');
+     * $result = ExtArrayHelper::map($array, 'id', 'name');
      * // the result is:
      * // [
      * //     '123' => 'aaa',
@@ -583,7 +583,7 @@ abstract class BaseArrayHelper
      * //     '345' => 'ccc',
      * // ]
      *
-     * $result = ArrayHelper::map($array, 'id', 'name', 'class');
+     * $result = ExtArrayHelper::map($array, 'id', 'name', 'class');
      * // the result is:
      * // [
      * //     'x' => [
@@ -921,20 +921,20 @@ abstract class BaseArrayHelper
      *     'E' => 1,
      * ];
      *
-     * $result = \Untek\Component\Arr\Helpers\ArrayHelper::filter($array, ['A']);
+     * $result = \Untek\Component\Arr\Helpers\ExtArrayHelper::filter($array, ['A']);
      * // $result will be:
      * // [
      * //     'A' => [1, 2],
      * // ]
      *
-     * $result = \Untek\Component\Arr\Helpers\ArrayHelper::filter($array, ['A', 'B.C']);
+     * $result = \Untek\Component\Arr\Helpers\ExtArrayHelper::filter($array, ['A', 'B.C']);
      * // $result will be:
      * // [
      * //     'A' => [1, 2],
      * //     'B' => ['C' => 1],
      * // ]
      *
-     * $result = \Untek\Component\Arr\Helpers\ArrayHelper::filter($array, ['B', '!B.C']);
+     * $result = \Untek\Component\Arr\Helpers\ExtArrayHelper::filter($array, ['B', '!B.C']);
      * // $result will be:
      * // [
      * //     'B' => ['D' => 2],

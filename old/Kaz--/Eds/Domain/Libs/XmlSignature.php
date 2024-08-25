@@ -10,7 +10,7 @@ use RobRichards\XMLSecLibs\XMLSecEnc;
 use RobRichards\XMLSecLibs\XMLSecurityDSig;
 use RobRichards\XMLSecLibs\XMLSecurityKey;
 use Untek\Component\Encoder\Encoders\XmlEncoder;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Crypt\Base\Domain\Exceptions\FailSignatureException;
 use Untek\Crypt\Base\Domain\Exceptions\InvalidDigestException;
 use Untek\Crypt\Pki\X509\Domain\Helpers\X509Helper;
@@ -198,7 +198,7 @@ class XmlSignature
         $xmlEncoder = new XmlEncoder();
         $arr = $xmlEncoder->decode($xml);
 
-        $firstNode = ArrayHelper::first($arr);
+        $firstNode = ExtArrayHelper::first($arr);
 
 //        $certContent = $arr['response']['ds:Signature']['ds:KeyInfo']['ds:X509Data']['ds:X509Certificate'];
         $certContent = $firstNode['ds:Signature']['ds:KeyInfo']['ds:X509Data']['ds:X509Certificate'];

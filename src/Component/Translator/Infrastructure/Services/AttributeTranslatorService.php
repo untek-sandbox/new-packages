@@ -3,7 +3,7 @@
 namespace Untek\Component\Translator\Infrastructure\Services;
 
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 
 class AttributeTranslatorService
 {
@@ -26,7 +26,7 @@ class AttributeTranslatorService
                 return $value[$code];
             }
         }
-        return ArrayHelper::first($value);
+        return ExtArrayHelper::first($value);
     }
 
     private function getLanguageCode(): string

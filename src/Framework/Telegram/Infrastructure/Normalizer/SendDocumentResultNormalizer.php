@@ -3,7 +3,7 @@
 namespace Untek\Framework\Telegram\Infrastructure\Normalizer;
 
 use ArrayObject;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Contract\Common\Exceptions\NotImplementedMethodException;
 use Untek\Core\Instance\Helpers\MappingHelper;
 use Untek\Persistence\Normalizer\DatabaseItemNormalizer;
@@ -22,7 +22,7 @@ class SendDocumentResultNormalizer extends DatabaseItemNormalizer
 //        unset($item['caption_entities']);
 //        unset($item['all_members_are_administrators']);
 
-        $item = ArrayHelper::extractByKeys($item, [
+        $item = ExtArrayHelper::extractByKeys($item, [
             'message_id',
             'caption',
             'date',

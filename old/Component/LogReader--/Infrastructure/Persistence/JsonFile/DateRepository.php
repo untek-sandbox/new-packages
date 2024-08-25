@@ -3,7 +3,7 @@
 namespace Untek\Component\LogReader\Infrastructure\Persistence\JsonFile;
 
 use Symfony\Component\Filesystem\Path;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\FileSystem\Helpers\FilePathHelper;
 use Untek\Component\FileSystem\Helpers\FindFileHelper;
 
@@ -17,7 +17,7 @@ class DateRepository
     public function findLast()
     {
         $all = $this->findAll();
-        return ArrayHelper::first($all);
+        return ExtArrayHelper::first($all);
     }
 
     public function findAll()

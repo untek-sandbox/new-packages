@@ -3,7 +3,7 @@
 
 namespace Untek\Framework\Telegram\Domain\Repositories\File;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Lib\Components\Store\StoreFile;
 
 class ConfigRepository
@@ -30,6 +30,6 @@ class ConfigRepository
     /*private function getBotConfig(string $name, $default = null) {
         $mainConfig = include __DIR__ . '/../../../../../../../config/main.php';
         $botConfig = $mainConfig['telegram']['bot'];
-        return ArrayHelper::getValue($botConfig, $name, $default);
+        return ExtArrayHelper::getValue($botConfig, $name, $default);
     }*/
 }

@@ -3,7 +3,7 @@
 namespace Untek\Component\FormatAdapter\Drivers;
 
 use Symfony\Component\VarExporter\VarExporter;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Component\FormatAdapter\Helpers\FileGeneratorHelper;
 
@@ -45,7 +45,7 @@ class Php implements DriverInterface
         }
         $data = include($fileName);
         if ($key !== null) {
-            return ArrayHelper::getValue($data, $key);
+            return ExtArrayHelper::getValue($data, $key);
         }
         return $data;
     }

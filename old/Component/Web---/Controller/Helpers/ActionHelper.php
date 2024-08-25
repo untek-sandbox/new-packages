@@ -3,7 +3,7 @@
 namespace Untek\Component\Web\Controller\Helpers;
 
 use Untek\Lib\Components\Status\Enums\StatusEnum;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Web\Html\Helpers\Html;
 use Untek\Component\Web\Html\Helpers\Url;
 use Untek\Component\I18Next\Facades\I18Next;
@@ -57,19 +57,19 @@ class ActionHelper
 
     public static function generateUpdateAction(EntityIdInterface $entity, string $baseUrl, string $type, array $extraOptions = []) {
         $options = self::getUpdateActionOptions($entity, $baseUrl);
-        $options = ArrayHelper::merge($options, $extraOptions);
+        $options = ExtArrayHelper::merge($options, $extraOptions);
         return self::generate($options, $type);
     }
 
     public static function generateRestoreAction(EntityIdInterface $entity, string $baseUrl, string $type, array $extraOptions = []) {
         $options = self::getRestoreActionOptions($entity, $baseUrl);
-        $options = ArrayHelper::merge($options, $extraOptions);
+        $options = ExtArrayHelper::merge($options, $extraOptions);
         return self::generate($options, $type);
     }
 
     public static function generateDeleteAction(EntityIdInterface $entity, string $baseUrl, string $type, array $extraOptions = []) {
         $options = self::getDeleteActionOptions($entity, $baseUrl);
-        $options = ArrayHelper::merge($options, $extraOptions);
+        $options = ExtArrayHelper::merge($options, $extraOptions);
         return self::generate($options, $type);
     }
 

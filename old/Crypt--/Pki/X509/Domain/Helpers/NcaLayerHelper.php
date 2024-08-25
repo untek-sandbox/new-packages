@@ -2,7 +2,7 @@
 
 namespace Untek\Crypt\Pki\X509\Domain\Helpers;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Crypt\Pki\X509\Domain\Entities\PersonEntity;
 use Untek\Crypt\Pki\X509\Domain\Entities\SignatureEntity;
 

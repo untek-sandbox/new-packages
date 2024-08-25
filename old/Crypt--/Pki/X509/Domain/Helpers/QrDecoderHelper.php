@@ -2,7 +2,7 @@
 
 namespace Untek\Crypt\Pki\X509\Domain\Helpers;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;
@@ -48,7 +48,7 @@ class QrDecoderHelper
             $collection->add($item);
             $arr[] = $item;
         }
-        ArrayHelper::multisort($arr, 'elementNumber');
+        ExtArrayHelper::multisort($arr, 'elementNumber');
         return new Collection($arr);
     }
 

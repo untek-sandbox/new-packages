@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Web\TwBootstrap\Widgets\Table\Helpers;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Model\Entity\Helpers\EntityHelper;
 
 class TableWidgetHelper
@@ -10,7 +10,7 @@ class TableWidgetHelper
 
     public static function prepareHeaders(array $headers = []): array
     {
-        if ($headers && !ArrayHelper::isIndexed($headers)) {
+        if ($headers && !ExtArrayHelper::isIndexed($headers)) {
             $newValue = [];
             /*foreach ($value as $row) {
                 $newRow = [];

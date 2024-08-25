@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Collection\Helpers\CollectionHelper;
 use Untek\Core\Collection\Libs\Collection;
 use Untek\Component\Http\Enums\HttpMethodEnum;
@@ -26,14 +26,14 @@ class GithubOrgsCommand extends BaseCommand
         $url = 'https://api.github.com/user/orgs?access_token=' . getenv('GITHUB_TOKEN');
         $output->writeln('getting groups');
         $collection = $this->sendRequest(HttpMethodEnum::GET, $url);
-        $orgs = ArrayHelper::getColumn($collection, 'login');
+        $orgs = ExtArrayHelper::getColumn($collection, 'login');
         $repoCollection = new Collection();
         foreach ($orgs as $orgName) {
             if (strpos($orgName, 'zn') === 0) {
                 $url = "https://api.github.com/orgs/{$orgName}/repos";
                 $output->writeln('getting packages from: ' . $orgName);
                 $repos = $this->sendRequest(HttpMethodEnum::GET, $url);
-                $reposList = ArrayHelper::getColumn($repos, 'name');
+                $reposList = ExtArrayHelper::getColumn($repos, 'name');
                 $groupEntity = new GroupEntity();
                 $groupEntity->name = $orgName;
                 $groupEntity->providerName = 'github';
@@ -50,7 +50,7 @@ class GithubOrgsCommand extends BaseCommand
         }
         $fileName = 'zn/untek-tool/dev/src/Package/Domain/Data/package_origin.php';
         $array = CollectionHelper::toArray($repoCollection);
-        $array = ArrayHelper::extractItemsWithAttributes($array, ['id', 'name', 'group']);
+        $array = ExtArrayHelper::extractItemsWithAttributes($array, ['id', 'name', 'group']);
 
         StoreHelper::save($fileName, $array);
 

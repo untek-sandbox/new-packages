@@ -7,7 +7,7 @@ use Illuminate\Database\ConnectionInterface;
 use Illuminate\Database\Schema\Builder;
 use Illuminate\Database\Schema\MySqlBuilder;
 use Illuminate\Database\Schema\PostgresBuilder;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;
 use Untek\Database\Base\Domain\Entities\ColumnEntity;
@@ -72,7 +72,7 @@ class DbRepository
         foreach ($schemaCollection as $schemaEntity) {
             $tables = $connection->select("SELECT * FROM information_schema.tables WHERE table_schema = '{$schemaEntity->getName()}'");
             // select * from pg_tables where schemaname='public';
-            $tableNames = ArrayHelper::getColumn($tables, 'table_name');
+            $tableNames = ExtArrayHelper::getColumn($tables, 'table_name');
             foreach ($tableNames as $tableName) {
                 $tableEntity = new \Untek\Database\Base\Domain\Entities\TableEntity;
                 $tableEntity->setName($tableName);

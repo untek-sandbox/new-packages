@@ -3,7 +3,7 @@
 namespace Untek\Component\FormatAdapter;
 
 use Symfony\Component\Filesystem\Filesystem;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\FormatAdapter\Drivers\DriverInterface;
 
 class Store
@@ -40,7 +40,7 @@ class Store
             $data = [];
         }
         if (func_num_args() > 1) {
-            return ArrayHelper::getValue($data, $key);
+            return ExtArrayHelper::getValue($data, $key);
         }
         return $data;
     }
@@ -53,7 +53,7 @@ class Store
     /*public function update($fileAlias, $key, $value)
     {
         $data = $this->load($fileAlias);
-        ArrayHelper::set($data, $key, $value);
+        ExtArrayHelper::set($data, $key, $value);
         $this->save($fileAlias, $data);
     }*/
 

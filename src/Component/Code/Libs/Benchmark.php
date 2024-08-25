@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Code\Libs;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Contract\Common\Exceptions\InternalServerErrorException;
 use Untek\Component\Text\Libs\RandomString;
 
@@ -94,7 +94,7 @@ class Benchmark
     public static function one(string $name, int $percision = 5): ?float
     {
         $all = self::allFlat($percision);
-        return ArrayHelper::getValue($all, $name);
+        return ExtArrayHelper::getValue($all, $name);
     }
 
     /**
@@ -117,7 +117,7 @@ class Benchmark
      */
     public static function allFlat(int $percision = 5): array
     {
-        $durations = ArrayHelper::map(self::$data, 'name', 'duration');
+        $durations = ExtArrayHelper::map(self::$data, 'name', 'duration');
         $durations = array_map(function ($value) use ($percision) {
             return round($value, $percision);
         }, $durations);

@@ -1,7 +1,7 @@
 <?php
 
 use Psr\Container\ContainerInterface;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\ConfigManager\Interfaces\ConfigManagerInterface;
 use Untek\Component\Env\Helpers\EnvHelper;
 use Untek\Framework\Telegram\Domain\Interfaces\Repositories\ResponseRepositoryInterface;
@@ -20,7 +20,7 @@ return [
             $routes = [];
             foreach ($telegramRoutes as $containerConfig) {
                 $requiredConfig = require($containerConfig);
-                $routes = ArrayHelper::merge($routes, $requiredConfig);
+                $routes = ExtArrayHelper::merge($routes, $requiredConfig);
             }
             $routeService->setDefinitions($routes);
             return $routeService;

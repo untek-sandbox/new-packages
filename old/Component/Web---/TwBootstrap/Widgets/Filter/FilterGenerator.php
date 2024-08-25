@@ -6,7 +6,7 @@ use Untek\Component\Web\TwBootstrap\Widgets\Filter\Widgets\Number\NumberFilterWi
 use Untek\Component\Web\TwBootstrap\Widgets\Filter\Widgets\Select\SelectFilterWidget;
 use Untek\Component\Web\TwBootstrap\Widgets\Filter\Widgets\Text\TextFilterWidget;
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 
 class FilterGenerator
 {
@@ -15,8 +15,8 @@ class FilterGenerator
     {
         $definition = ClassHelper::normalizeComponentConfig($definition);
         $widgetInstance = ClassHelper::createObject($definition['class']);
-        $widgetDefaultAttributes = ArrayHelper::toArray($widgetInstance);
-        $definition = ArrayHelper::merge($definition, $widgetDefaultAttributes);
+        $widgetDefaultAttributes = ExtArrayHelper::toArray($widgetInstance);
+        $definition = ExtArrayHelper::merge($definition, $widgetDefaultAttributes);
         unset($definition['class']);
         //$definition['options']['onkeydown'] = 'filterForm.submitOnKeyDown(this, event)';
         $definition['name'] = $name;
@@ -31,12 +31,12 @@ class FilterGenerator
         unset($filterDefinition['type']);
         //$options['onkeydown'] = 'filterForm.submitOnKeyDown(this, event)';
         $definition = ClassHelper::normalizeComponentConfig($widgetClass);
-        $definition = ArrayHelper::merge($definition, [
+        $definition = ExtArrayHelper::merge($definition, [
             'options' => $options,
             'name' => $name,
             'value' => $value,
         ]);
-        $definition = ArrayHelper::merge($definition, $filterDefinition);
+        $definition = ExtArrayHelper::merge($definition, $filterDefinition);
         if($definition['options']) {
             unset($definition['options']);
         }
@@ -47,7 +47,7 @@ class FilterGenerator
     private static function getWidgetClassByType(string $type)
     {
         $widgetAssoc = self::widgetAssoc();
-        return ArrayHelper::getValue($widgetAssoc, $type);
+        return ExtArrayHelper::getValue($widgetAssoc, $type);
     }
 
     private static function widgetAssoc()

@@ -4,7 +4,7 @@ namespace Untek\Database\Migration\Presentation\Cli\Commands;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Framework\Console\Symfony4\Style\SymfonyStyle;
 
 class UpCommand extends BaseCommand
@@ -39,7 +39,7 @@ class UpCommand extends BaseCommand
 
         $withConfirm = $input->getOption('withConfirm');
         if ($withConfirm) {
-            $versionArray = ArrayHelper::getColumn($filteredCollection, 'version');
+            $versionArray = ExtArrayHelper::getColumn($filteredCollection, 'version');
             $versionArray = array_values($versionArray);
             $io->listing($versionArray);
         }

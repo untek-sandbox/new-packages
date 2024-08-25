@@ -3,7 +3,7 @@
 namespace Untek\Database\Seed\Application\Handlers;
 
 use Untek\Component\FormatAdapter\StoreFile;
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Illuminate\Database\Capsule\Manager;
 use Untek\Component\Cqrs\Application\Abstract\CqrsHandlerInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
@@ -35,7 +35,7 @@ class ExportSeedCommandHandler implements CqrsHandlerInterface
             $connection = $this->manager->getConnection();
             $qb = $connection->table($table);
             $data = $qb->select('*')->get()->toArray();
-            $data = ArrayHelper::toArray($data);
+            $data = ExtArrayHelper::toArray($data);
 
             $filePath = $this->seedDirectory . '/' . $table . '.php';
             (new StoreFile($filePath))->save($data);

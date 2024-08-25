@@ -2,7 +2,7 @@
 
 namespace Untek\Database\Eloquent\Domain\Factories;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Container\Helpers\ContainerHelper;
 use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Database\Base\Domain\Enums\DbDriverEnum;
@@ -30,9 +30,9 @@ class ManagerFactory
         }
 
 //        $config = LoadHelper::loadConfig(getenv('DATABASE_CONFIG_FILE'));
-//        $connectionMap = ArrayHelper::getValue($config, 'connection.connectionMap', []);
+//        $connectionMap = ExtArrayHelper::getValue($config, 'connection.connectionMap', []);
 
-        $map = ArrayHelper::getValue($config, 'connection.map', []);
+        $map = ExtArrayHelper::getValue($config, 'connection.map', []);
 //        $tableAlias = self::createTableAlias($connections, $map);
         $capsule = new Manager();
 //        $capsule->setConnectionMap($connectionMap);
@@ -65,7 +65,7 @@ class ManagerFactory
             if (!isset($connectionConfig['map'])) {
                 $connectionConfig['map'] = $configMap;
             }
-            $map = ArrayHelper::getValue($connectionConfig, 'map', []);
+            $map = ExtArrayHelper::getValue($connectionConfig, 'map', []);
             if (isset($connectionConfig['driver']) && $connectionConfig['driver'] !== DbDriverEnum::PGSQL) {
                 foreach ($map as $from => &$to) {
                     $to = str_replace('.', '_', $to);

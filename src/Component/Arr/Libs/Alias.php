@@ -2,7 +2,10 @@
 
 namespace Untek\Component\Arr\Libs;
 
-use Untek\Component\Arr\Helpers\ArrayHelper;
+use Untek\Component\Arr\Helpers\ExtArrayHelper;
+use Untek\Component\Code\Helpers\DeprecateHelper;
+
+DeprecateHelper::hardThrow();
 
 class Alias
 {
@@ -44,7 +47,7 @@ class Alias
             return $name;
         }
         if (is_array($name)) {
-            $isIndexed = ArrayHelper::isIndexed($name);
+            $isIndexed = ExtArrayHelper::isIndexed($name);
             $result = [];
             if ($isIndexed) {
                 foreach ($name as $item) {
