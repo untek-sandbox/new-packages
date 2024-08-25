@@ -16,24 +16,26 @@ class WebSocketAssert extends Assert
 
     }
 
-    public function assertHasMessage(int $userId, array $payload, ?int $fromUserId = null): self {
+    public function assertHasMessage(int $userId, array $payload, ?int $fromUserId = null): self
+    {
         $has = $this->hasMessage($userId, $payload, $fromUserId);
-        if(!$has) {
+        if (!$has) {
             throw new ExpectationFailedException('Web socket message not found.');
         }
         return $this;
     }
 
-    protected function hasMessage(int $userId, array $payload, ?int $fromUserId = null): bool {
+    protected function hasMessage(int $userId, array $payload, ?int $fromUserId = null): bool
+    {
         $all = $this->findByUser($userId);
         $has = true;
         foreach ($all as $item) {
-            $item = (array) $item;
+            $item = (array)$item;
             $itemPayload = json_decode($item['payload'], true);
-            if($itemPayload != $payload) {
+            if ($itemPayload != $payload) {
                 $has = false;
             }
-            if($fromUserId && $fromUserId != $item['from_user_id']) {
+            if ($fromUserId && $fromUserId != $item['from_user_id']) {
                 $has = false;
             }
         }
