@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Develop\Test;
+namespace Untek\Database\Seed\Infrastructure\Test;
 
 use Doctrine\DBAL\Connection;
 use Untek\Component\Cqrs\Application\Services\CommandBusInterface;

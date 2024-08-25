@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Develop\Test;
+namespace Untek\Database\Eloquent\Infrastructure\Test;
 
 use Illuminate\Database\Capsule\Manager;
 use Illuminate\Support\Collection;
