@@ -7,6 +7,11 @@ use Illuminate\Database\Capsule\Manager;
 trait WebSocketAssertTrait
 {
 
+    protected function initializeWebSocket(): void
+    {
+        $this->getDatabaseAssert()->truncateTable('websocket_message');
+    }
+
     protected function getWebSocketAssert(): WebSocketAssert
     {
         /** @var Manager $capsule */
