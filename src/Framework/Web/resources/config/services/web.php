@@ -14,13 +14,13 @@ return static function (ContainerConfigurator $configurator): void {
     $services = $configurator->services()->defaults()->public();
     $parameters = $configurator->parameters();
 
-    $services->set(FormManager::class, FormManager::class)
+    /*$services->set(FormManager::class, FormManager::class)
         ->args(
             [
                 service(FormFactoryInterface::class),
                 service(CsrfTokenManagerInterface::class),
             ]
-        );
+        );*/
 
     $services->set(View::class, View::class)
         ->args(

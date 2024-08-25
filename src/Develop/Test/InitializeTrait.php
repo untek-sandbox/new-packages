@@ -2,6 +2,7 @@
 
 namespace Untek\Develop\Test;
 
+// todo: написать доку
 trait InitializeTrait
 {
 
