@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Framework\RestApiTest\Traits;
+namespace Untek\FrameworkPlugin\RestApiLanguage\Infrastructure\Test;
 
 use Forecast\Map\Shared\Infrastructure\Enums\LanguageEnum;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;

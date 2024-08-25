@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Framework\RestApiTest\Traits;
+namespace Untek\FrameworkPlugin\RestApiAuthentication\Infrastructure\Test;
 
 use Symfony\Component\HttpFoundation\Response;
 use Tests\Shared\UserToken;
@@ -43,6 +43,4 @@ trait RestApiAuthTrait
     {
         $this->authByToken = null;
     }
-
-
 }
