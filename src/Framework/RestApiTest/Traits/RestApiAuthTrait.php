@@ -11,18 +11,6 @@ trait RestApiAuthTrait
 
     private ?string $authByToken = null;
 
-    protected function sendRequest(?string $uri = null, string $method = 'GET', array $data = [], array $headers = []): Response
-    {
-        list($uri, $method, $data, $headers) = $this->prepareApiRequest($uri, $method, $data, $headers);
-        $server = RestApiTestHelper::headersToServerParameters($headers);
-        if ($method == 'GET' && !empty($data)) {
-            $requestQuery = http_build_query($data, "", '&');
-            $uri .= '?' . $requestQuery;
-        }
-        $this->getApiClient()->jsonRequest($method, '/rest-api' . $uri, $data, $server);
-        return $this->getApiClient()->getResponse();
-    }
-
     protected function printResponseData(Response $response, ?string $path = null, ?string $format = 'php')
     {
         RestApiTestHelper::printResponseData($response, $path, $format);

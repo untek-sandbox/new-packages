@@ -4,13 +4,14 @@ namespace Untek\Framework\RestApiTest\Traits;
 
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Component\HttpFoundation\Response;
-use Untek\Component\Arr\Helpers\ArrayHelper;
 use Untek\Framework\RestApiTest\Helpers\RestApiTestHelper;
 
 trait RestApiTrait
 {
 
     private KernelBrowser $client;
+
+    protected string $uriPrefix = '/rest-api';
 
     protected function initializeApiClient(): void
     {
@@ -27,6 +28,18 @@ trait RestApiTrait
     protected function extractData(Response $response)
     {
         return RestApiTestHelper::extractData($response);
+    }
+
+    protected function sendRequest(?string $uri = null, string $method = 'GET', array $data = [], array $headers = []): Response
+    {
+        list($uri, $method, $data, $headers) = $this->prepareApiRequest($uri, $method, $data, $headers);
+        $server = RestApiTestHelper::headersToServerParameters($headers);
+        if ($method == 'GET' && !empty($data)) {
+            $requestQuery = http_build_query($data, "", '&');
+            $uri .= '?' . $requestQuery;
+        }
+        $this->getApiClient()->jsonRequest($method, $this->uriPrefix . $uri, $data, $server);
+        return $this->getApiClient()->getResponse();
     }
 
     protected function prepareApiRequest(?string $uri = null, string $method = 'GET', array $data = [], array $headers = []): array
