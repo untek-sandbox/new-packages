@@ -2,6 +2,7 @@
 
 namespace Untek\Component\FormatAdapter;
 
+use Illuminate\Support\Arr;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Code\Helpers\DeprecateHelper;
 
@@ -21,7 +22,7 @@ class ActiveStore
             $all = static::all();
             $filtered = static::runConditionList($all, $where, 1);
             if ( ! empty($filtered)) {
-                $data = ExtArrayHelper::first($filtered);
+                $data = Arr::first($filtered);
             }
         } else {
             $data = static::storeInstance()->load(static::fileName(), $where);

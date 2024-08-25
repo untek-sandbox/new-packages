@@ -4,6 +4,7 @@ namespace Untek\Develop\Package\Domain\Libs;
 
 //use Illuminate\Support\Arr;
 
+use Illuminate\Support\Arr;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\FileSystem\Helpers\FileHelper;
 use Untek\Component\FileSystem\Helpers\FilePathHelper;
@@ -575,7 +576,7 @@ class GitShell extends BaseShell
     public function showRemote()
     {
         $array = $this->extractFromCommand('git config --get remote.origin.url', 'trim');
-        return ExtArrayHelper::first($array);
+        return Arr::first($array);
     }
 
     /**

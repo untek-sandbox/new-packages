@@ -32,14 +32,14 @@ class VarRepository implements VarRepositoryInterface
 
     public function set(string $key, $value): void
     {
-        ExtArrayHelper::set($this->vars, $key, $value);
+        ArrayPathHelper::set($this->vars, $key, $value);
         $this->initVars();
     }
 
     public function setList(array $list): void
     {
         foreach ($list as $key => $value) {
-            ExtArrayHelper::set($this->vars, $key, $value);
+            ArrayPathHelper::set($this->vars, $key, $value);
         }
         $this->initVars();
     }

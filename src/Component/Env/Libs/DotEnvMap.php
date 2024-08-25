@@ -33,7 +33,7 @@ class DotEnvMap
     {
         foreach ($_ENV as $name => $value) {
             $pureName = $this->prepareName($name);
-            ExtArrayHelper::set($this->map, $pureName, $value);
+            ArrayPathHelper::set($this->map, $pureName, $value);
         }
     }
 

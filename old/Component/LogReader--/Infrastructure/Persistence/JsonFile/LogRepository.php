@@ -3,6 +3,7 @@
 namespace Untek\Component\LogReader\Infrastructure\Persistence\JsonFile;
 
 use Doctrine\Persistence\ObjectRepository;
+use Illuminate\Support\Arr;
 use LimitIterator;
 use SplFileObject;
 use Untek\Component\LogReader\Domain\Model\LogItem;
@@ -112,7 +113,7 @@ class LogRepository implements ObjectRepository, RepositoryCountByInterface
     {
         $collection = $this->findBy(['id' => $id], [], 1, 0);
         if ($collection) {
-            return ExtArrayHelper::first($collection);
+            return Arr::first($collection);
         }
     }
 

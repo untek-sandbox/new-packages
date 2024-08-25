@@ -2,6 +2,7 @@
 
 namespace Untek\Core\Instance\Helpers;
 
+use Illuminate\Support\Arr;
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Lib\Components\DynamicEntity\Interfaces\DynamicEntityAttributesInterface;
@@ -113,7 +114,7 @@ class PropertyHelper
     public static function setValue(object $entity, string $name, mixed $value): void
     {
         if(is_array($entity)) {
-            ExtArrayHelper::set($entity, $name, $value);
+            ArrayPathHelper::set($entity, $name, $value);
             return;
         }
 
@@ -135,7 +136,7 @@ class PropertyHelper
         }
 
         if(is_array($entity)) {
-            $data = ExtArrayHelper::only($data);
+            $data = Arr::only($data);
             $entity = ArrayHelper::merge($entity, $data);
             return;
         }

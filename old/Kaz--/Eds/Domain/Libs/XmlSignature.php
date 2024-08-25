@@ -4,6 +4,7 @@ namespace Untek\Kaz\Eds\Domain\Libs;
 
 use DOMDocument;
 use Exception;
+use Illuminate\Support\Arr;
 use phpseclib\Crypt\RSA;
 use phpseclib\File\X509;
 use RobRichards\XMLSecLibs\XMLSecEnc;
@@ -198,7 +199,7 @@ class XmlSignature
         $xmlEncoder = new XmlEncoder();
         $arr = $xmlEncoder->decode($xml);
 
-        $firstNode = ExtArrayHelper::first($arr);
+        $firstNode = Arr::first($arr);
 
 //        $certContent = $arr['response']['ds:Signature']['ds:KeyInfo']['ds:X509Data']['ds:X509Certificate'];
         $certContent = $firstNode['ds:Signature']['ds:KeyInfo']['ds:X509Data']['ds:X509Certificate'];

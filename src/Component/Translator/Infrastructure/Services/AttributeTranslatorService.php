@@ -2,6 +2,7 @@
 
 namespace Untek\Component\Translator\Infrastructure\Services;
 
+use Illuminate\Support\Arr;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 
@@ -26,7 +27,7 @@ class AttributeTranslatorService
                 return $value[$code];
             }
         }
-        return ExtArrayHelper::first($value);
+        return Arr::first($value);
     }
 
     private function getLanguageCode(): string

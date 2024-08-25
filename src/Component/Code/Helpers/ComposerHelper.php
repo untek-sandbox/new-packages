@@ -4,6 +4,7 @@ namespace Untek\Component\Code\Helpers;
 
 use Composer\Autoload\ClassLoader;
 use http\Exception\RuntimeException;
+use Illuminate\Support\Arr;
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Code\Exceptions\NotFoundDependencyException;
@@ -103,7 +104,7 @@ class ComposerHelper
     {
         $path = str_replace('/', '\\', $path);
         $paths = self::find($path);
-        $resPath = ExtArrayHelper::last($paths);
+        $resPath = Arr::last($paths);
 
         if(empty($resPath)) {
             throw new \Exception('Bad namespace');

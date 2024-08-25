@@ -2,6 +2,7 @@
 
 namespace Untek\Crypt\Pki\X509\Domain\Helpers;
 
+use Illuminate\Support\Arr;
 use phpseclib\File\X509;
 use SimpleXMLElement;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
@@ -145,7 +146,7 @@ class X509Helper
             $value = $item[0]['value'];
             $type = $item[0]['type'];
             $key = preg_replace('/^[\s\S]*-at-/', '', $type);
-            $arr[$key] = ExtArrayHelper::first($value);
+            $arr[$key] = Arr::first($value);
         }
         return $arr;
     }
