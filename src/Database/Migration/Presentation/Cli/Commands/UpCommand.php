@@ -6,6 +6,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Framework\Console\Symfony4\Style\SymfonyStyle;
+use Yiisoft\Arrays\ArrayHelper;
 
 class UpCommand extends BaseCommand
 {
@@ -39,7 +40,7 @@ class UpCommand extends BaseCommand
 
         $withConfirm = $input->getOption('withConfirm');
         if ($withConfirm) {
-            $versionArray = ExtArrayHelper::getColumn($filteredCollection, 'version');
+            $versionArray = ArrayHelper::getColumn($filteredCollection, 'version');
             $versionArray = array_values($versionArray);
             $io->listing($versionArray);
         }

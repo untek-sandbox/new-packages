@@ -24,6 +24,7 @@ use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\ResultList;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\InteractInterface;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Helpers\GeneratorFileHelper;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Helpers\GeneratorHelper;
+use Yiisoft\Arrays\ArrayHelper;
 
 class GenerateCodeCommand extends Command
 {
@@ -59,7 +60,7 @@ class GenerateCodeCommand extends Command
             /** @var InteractInterface $interact */
             $interactCommands = $interact->input($io);
             if ($interactCommands) {
-                $commands = ExtArrayHelper::merge($commands, $interactCommands);
+                $commands = ArrayHelper::merge($commands, $interactCommands);
             }
         }
         return $commands;

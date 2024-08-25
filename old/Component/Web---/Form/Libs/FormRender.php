@@ -19,6 +19,7 @@ use Untek\Component\Web\Form\Libs\Renders\SelectRender;
 use Untek\Component\Web\Form\Libs\Renders\TextareaRender;
 use Untek\Component\Web\Form\Libs\Renders\TextRender;
 use Untek\Component\Web\Html\Helpers\Html;
+use Yiisoft\Arrays\ArrayHelper;
 
 class FormRender
 {
@@ -67,7 +68,7 @@ class FormRender
 
     public function beginFrom()
     {
-        $formOptions = ExtArrayHelper::merge($this->formOptions, [
+        $formOptions = ArrayHelper::merge($this->formOptions, [
             'name' => $this->formView->vars['name'],
             'method' => $this->formView->vars['method'],
             

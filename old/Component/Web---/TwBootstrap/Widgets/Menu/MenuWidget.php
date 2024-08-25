@@ -6,6 +6,7 @@ use Closure;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Web\Html\Helpers\Html;
 use Untek\Component\Web\Widget\Base\BaseWidget;
+use Yiisoft\Arrays\ArrayHelper;
 
 class MenuWidget extends BaseWidget
 {
@@ -174,7 +175,7 @@ class MenuWidget extends BaseWidget
         $lines = [];
         foreach ($items as $i => $item) {
             $options = array_merge($this->itemOptions, ExtArrayHelper::getValue($item, 'options', []));
-            $tag = ExtArrayHelper::remove($options, 'tag', 'li');
+            $tag = ArrayHelper::remove($options, 'tag', 'li');
             $class = [];
             if ($item['active']) {
                 $class[] = $this->activeCssClass;

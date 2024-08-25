@@ -6,6 +6,7 @@ use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\FormatAdapter\StoreFile;
 use Untek\Develop\Package\Domain\Entities\ConfigEntity;
 use Untek\Develop\Package\Domain\Helpers\ComposerConfigHelper;
+use Yiisoft\Arrays\ArrayHelper;
 
 class Depend
 {

@@ -4,6 +4,7 @@ namespace Untek\Component\FormatAdapter\Helpers;
 
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\FileSystem\Helpers\FileStorageHelper;
+use Yiisoft\Arrays\ArrayHelper;
 
 class FileGeneratorHelper
 {

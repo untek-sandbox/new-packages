@@ -3,6 +3,7 @@
 namespace Untek\Component\FormatAdapter\Drivers;
 
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
+use Yiisoft\Arrays\ArrayHelper;
 
 class Json implements DriverInterface
 {
@@ -10,7 +11,7 @@ class Json implements DriverInterface
     public function decode($content)
     {
         $data = json_decode($content);
-        $data = ExtArrayHelper::toArray($data);
+        $data = ArrayHelper::toArray($data);
         return $data;
     }
 

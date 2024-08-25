@@ -13,6 +13,7 @@ use Untek\Utility\CodeGenerator\RestApi\Infrastructure\Factories\GenerateRestApi
 use Untek\Utility\CodeGenerator\RestApi\Infrastructure\Generators\ControllerGenerator;
 use Untek\Utility\CodeGenerator\RestApi\Infrastructure\Generators\RestApiSchemeGenerator;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Yiisoft\Arrays\ArrayHelper;
 
 class GenerateCrudCommandsFactory
 {
@@ -184,6 +185,6 @@ class GenerateCrudCommandsFactory
                 ],
             ],
         ];
-        return ExtArrayHelper::merge($crudTemplate, $crud);
+        return ArrayHelper::merge($crudTemplate, $crud);
     }
 }

@@ -7,6 +7,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Database\Base\Console\Traits\OverwriteDatabaseTrait;
 use Untek\Framework\Console\Symfony4\Style\SymfonyStyle;
+use Yiisoft\Arrays\ArrayHelper;
 
 class DownCommand extends BaseCommand
 {
@@ -46,7 +47,7 @@ class DownCommand extends BaseCommand
 
         $withConfirm = $input->getOption('withConfirm');
         if ($withConfirm) {
-            $versionArray = ExtArrayHelper::getColumn($historyCollection, 'version');
+            $versionArray = ArrayHelper::getColumn($historyCollection, 'version');
             $versionArray = array_values($versionArray);
             $io->listing($versionArray);
         }

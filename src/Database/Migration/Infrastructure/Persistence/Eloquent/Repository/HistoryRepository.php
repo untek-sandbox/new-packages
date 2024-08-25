@@ -12,6 +12,7 @@ use Untek\Database\Eloquent\Domain\Base\BaseEloquentRepository;
 use Illuminate\Database\Capsule\Manager;
 use Untek\Database\Migration\Domain\Model\Migration;
 use Untek\Database\Migration\Infrastructure\Migration\Interfaces\MigrationInterface;
+use Yiisoft\Arrays\ArrayHelper;
 
 class HistoryRepository extends BaseEloquentRepository
 {
@@ -48,8 +49,8 @@ class HistoryRepository extends BaseEloquentRepository
          * @var Migration[] $sourceCollection
          */
 
-        $sourceVersionArray = ExtArrayHelper::getColumn($sourceCollection, 'version');
-        $historyVersionArray = ExtArrayHelper::getColumn($historyCollection, 'version');
+        $sourceVersionArray = ArrayHelper::getColumn($sourceCollection, 'version');
+        $historyVersionArray = ArrayHelper::getColumn($historyCollection, 'version');
 
         $diff = array_diff($sourceVersionArray, $historyVersionArray);
 

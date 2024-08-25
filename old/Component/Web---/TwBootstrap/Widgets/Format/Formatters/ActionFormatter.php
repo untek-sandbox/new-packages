@@ -10,6 +10,7 @@ use Untek\Lib\Components\Status\Enums\StatusEnum;
 use Untek\Core\Instance\Helpers\ClassHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\Actions\ViewAction;
+use Yiisoft\Arrays\ArrayHelper;
 
 class ActionFormatter extends BaseFormatter implements FormatterInterface
 {
@@ -38,7 +39,7 @@ class ActionFormatter extends BaseFormatter implements FormatterInterface
 
     private function actionDefinitions(): array
     {
-        $actionDefinitions = ExtArrayHelper::merge($this->defaultActionDefinitions(), $this->actionDefinitions);
+        $actionDefinitions = ArrayHelper::merge($this->defaultActionDefinitions(), $this->actionDefinitions);
         if ($this->restorable) {
             $entity = $this->attributeEntity->getEntity();
             if ($entity->getStatusId() === StatusEnum::DELETED) {

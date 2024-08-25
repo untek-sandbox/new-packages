@@ -10,6 +10,7 @@ namespace Untek\Component\Arr\Helpers;
 use InvalidArgumentException;
 use Untek\Component\Arr\Libs\ArrayValues\ReplaceArrayValue;
 use Untek\Component\Arr\Libs\ArrayValues\UnsetArrayValue;
+use Yiisoft\Arrays\ArrayHelper;
 use function foo\func;
 
 /**
@@ -57,7 +58,7 @@ abstract class BaseArrayHelper
      * @param bool $recursive whether to recursively converts properties which are objects into arrays.
      * @return array the array representation of the object
      */
-    public static function toArray($object, $properties = [], $recursive = true)
+    protected static function toArray($object, $properties = [], $recursive = true)
     {
         if (is_array($object)) {
             if ($recursive) {
@@ -115,7 +116,7 @@ abstract class BaseArrayHelper
      * arrays via third argument, fourth argument etc.
      * @return array the merged array (the original arrays are not changed.)
      */
-    public static function merge($a, $b)
+    protected static function merge($a, $b)
     {
         $args = func_get_args();
         $res = array_shift($args);
@@ -159,17 +160,17 @@ abstract class BaseArrayHelper
      *
      * ```php
      * // working with array
-     * $username = \Untek\Component\Arr\Helpers\ExtArrayHelper::getValue($_POST, 'username');
+     * $username = \Untek\Component\Arr\Helpers\ExtExtArrayHelper::getValue($_POST, 'username');
      * // working with object
-     * $username = \Untek\Component\Arr\Helpers\ExtArrayHelper::getValue($user, 'username');
+     * $username = \Untek\Component\Arr\Helpers\ExtExtArrayHelper::getValue($user, 'username');
      * // working with anonymous function
-     * $fullName = \Untek\Component\Arr\Helpers\ExtArrayHelper::getValue($user, function ($user, $defaultValue) {
+     * $fullName = \Untek\Component\Arr\Helpers\ExtExtArrayHelper::getValue($user, function ($user, $defaultValue) {
      *     return $user->firstName . ' ' . $user->lastName;
      * });
      * // using dot format to retrieve the property of embedded object
-     * $street = \Untek\Component\Arr\Helpers\ExtArrayHelper::getValue($users, 'address.street');
+     * $street = \Untek\Component\Arr\Helpers\ExtExtArrayHelper::getValue($users, 'address.street');
      * // using an array of keys to retrieve the value
-     * $value = \Untek\Component\Arr\Helpers\ExtArrayHelper::getValue($versions, ['1.0', 'date']);
+     * $value = \Untek\Component\Arr\Helpers\ExtExtArrayHelper::getValue($versions, ['1.0', 'date']);
      * ```
      *
      * @param array|object $array array or object to extract value from
@@ -304,7 +305,7 @@ abstract class BaseArrayHelper
         });
     }
 
-    public static function getItemLink(array &$array, array $keys, callable $callback)
+    protected static function getItemLink(array &$array, array $keys, callable $callback)
     {
         while (count($keys) > 1) {
             $key = array_shift($keys);
@@ -339,17 +340,17 @@ abstract class BaseArrayHelper
      * @param mixed $default the default value to be returned if the specified key does not exist
      * @return mixed|null the value of the element if found, default value otherwise
      */
-    public static function remove(&$array, $key, $default = null)
-    {
-        if (is_array($array) && (isset($array[$key]) || array_key_exists($key, $array))) {
-            $value = $array[$key];
-            unset($array[$key]);
-
-            return $value;
-        }
-
-        return $default;
-    }
+//    private static function remove(&$array, $key, $default = null)
+//    {
+//        if (is_array($array) && (isset($array[$key]) || array_key_exists($key, $array))) {
+//            $value = $array[$key];
+//            unset($array[$key]);
+//
+//            return $value;
+//        }
+//
+//        return $default;
+//    }
 
     /**
      * Removes items with matching values from the array and returns the removed items.
@@ -369,7 +370,7 @@ abstract class BaseArrayHelper
      * @return array the items that were removed from the array
      * @since 2.0.11
      */
-    public static function removeValue(&$array, $value)
+    /*private static function removeValue(&$array, $value)
     {
         $result = [];
         if (is_array($array)) {
@@ -382,7 +383,7 @@ abstract class BaseArrayHelper
         }
 
         return $result;
-    }
+    }*/
 
     /**
      * Indexes and/or groups the array according to a specified key.
@@ -484,7 +485,7 @@ abstract class BaseArrayHelper
      * to the result array without any key. This parameter is available since version 2.0.8.
      * @return array the indexed and/or grouped array
      */
-    public static function index($array, $key, $groups = [])
+    /*public static function index($array, $key, $groups = [])
     {
         $result = [];
         $groups = (array)$groups;
@@ -517,7 +518,7 @@ abstract class BaseArrayHelper
         }
 
         return $result;
-    }
+    }*/
 
     /**
      * Returns the values of a specified column in an array.
@@ -545,7 +546,7 @@ abstract class BaseArrayHelper
      * will be re-indexed with integers.
      * @return array the list of column values
      */
-    public static function getColumn($array, $name, $keepKeys = true)
+    /*public static function getColumn($array, $name, $keepKeys = true)
     {
         $result = [];
         if ($keepKeys) {
@@ -559,7 +560,7 @@ abstract class BaseArrayHelper
         }
 
         return $result;
-    }
+    }*/
 
     /**
      * Builds a map (key-value pairs) from a multidimensional array or an array of objects.
@@ -602,7 +603,7 @@ abstract class BaseArrayHelper
      * @param string|\Closure $group
      * @return array
      */
-    public static function map($array, $from, $to, $group = null)
+    /*public static function map($array, $from, $to, $group = null)
     {
         $result = [];
         foreach ($array as $element) {
@@ -616,7 +617,7 @@ abstract class BaseArrayHelper
         }
 
         return $result;
-    }
+    }*/
 
     /**
      * Checks if the given array contains the specified key.
@@ -627,7 +628,7 @@ abstract class BaseArrayHelper
      * @param bool $caseSensitive whether the key comparison should be case-sensitive
      * @return bool whether the array contains the specified key
      */
-    public static function keyExists($key, $array, $caseSensitive = true)
+    /*public static function keyExists($key, $array, $caseSensitive = true)
     {
         if ($caseSensitive) {
             // Function `isset` checks key faster but skips `null`, `array_key_exists` handles this case
@@ -642,7 +643,7 @@ abstract class BaseArrayHelper
         }
 
         return false;
-    }
+    }*/
 
     /**
      * Sorts an array of objects or arrays (with the same structure) by one or several keys.
@@ -660,7 +661,7 @@ abstract class BaseArrayHelper
      * @throws InvalidArgumentException if the $direction or $sortFlag parameters do not have
      * correct number of elements as that of $key.
      */
-    public static function multisort(&$array, $key, $direction = SORT_ASC, $sortFlag = SORT_REGULAR)
+    /*public static function multisort(&$array, $key, $direction = SORT_ASC, $sortFlag = SORT_REGULAR)
     {
         $keys = is_array($key) ? $key : [$key];
         if (empty($keys) || empty($array)) {
@@ -680,7 +681,7 @@ abstract class BaseArrayHelper
         $args = [];
         foreach ($keys as $i => $k) {
             $flag = $sortFlag[$i];
-            $args[] = static::getColumn($array, $k);
+            $args[] = ArrayHelper::getColumn($array, $k);
             $args[] = $direction[$i];
             $args[] = $flag;
         }
@@ -693,7 +694,7 @@ abstract class BaseArrayHelper
 
         $args[] = &$array;
         call_user_func_array('array_multisort', $args);
-    }
+    }*/
 
     /**
      * Encodes special characters in an array of strings into HTML entities.
@@ -708,7 +709,7 @@ abstract class BaseArrayHelper
      * @return array the encoded data
      * @see https://secure.php.net/manual/en/function.htmlspecialchars.php
      */
-    public static function htmlEncode($data, $valuesOnly = true, $charset = null)
+    /*public static function htmlEncode($data, $valuesOnly = true, $charset = null)
     {
         if ($charset === null) {
             $charset = Yii::$app ? Yii::$app->charset : 'UTF-8';
@@ -721,14 +722,14 @@ abstract class BaseArrayHelper
             if (is_string($value)) {
                 $d[$key] = htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, $charset);
             } elseif (is_array($value)) {
-                $d[$key] = static::htmlEncode($value, $valuesOnly, $charset);
+                $d[$key] = ArrayHelper::htmlEncode($value, $valuesOnly, $charset);
             } else {
                 $d[$key] = $value;
             }
         }
 
         return $d;
-    }
+    }*/
 
     /**
      * Decodes HTML entities into the corresponding characters in an array of strings.
@@ -741,7 +742,7 @@ abstract class BaseArrayHelper
      * @return array the decoded data
      * @see https://secure.php.net/manual/en/function.htmlspecialchars-decode.php
      */
-    public static function htmlDecode($data, $valuesOnly = true)
+    /*public static function htmlDecode($data, $valuesOnly = true)
     {
         $d = [];
         foreach ($data as $key => $value) {
@@ -751,14 +752,14 @@ abstract class BaseArrayHelper
             if (is_string($value)) {
                 $d[$key] = htmlspecialchars_decode($value, ENT_QUOTES);
             } elseif (is_array($value)) {
-                $d[$key] = static::htmlDecode($value);
+                $d[$key] = ArrayHelper::htmlDecode($value);
             } else {
                 $d[$key] = $value;
             }
         }
 
         return $d;
-    }
+    }*/
 
     /**
      * Returns a value indicating whether the given array is an associative array.
@@ -773,7 +774,7 @@ abstract class BaseArrayHelper
      * the array to be treated as associative.
      * @return bool whether the array is associative
      */
-    public static function isAssociative($array, $allStrings = true)
+    /*public static function isAssociative($array, $allStrings = true)
     {
         if (!is_array($array) || empty($array)) {
             return false;
@@ -796,7 +797,7 @@ abstract class BaseArrayHelper
         }
 
         return false;
-    }
+    }*/
 
     /**
      * Returns a value indicating whether the given array is an indexed array.
@@ -811,7 +812,7 @@ abstract class BaseArrayHelper
      * in order for the array to be treated as indexed.
      * @return bool whether the array is indexed
      */
-    public static function isIndexed($array, $consecutive = false)
+    /*public static function isIndexed($array, $consecutive = false)
     {
         if (!is_array($array)) {
             return false;
@@ -832,7 +833,7 @@ abstract class BaseArrayHelper
         }
 
         return true;
-    }
+    }*/
 
     /**
      * Check whether an array or [[\Traversable]] contains an element.
@@ -847,7 +848,7 @@ abstract class BaseArrayHelper
      * @see https://secure.php.net/manual/en/function.in-array.php
      * @since 2.0.7
      */
-    public static function isIn($needle, $haystack, $strict = false)
+    /*public static function isIn($needle, $haystack, $strict = false)
     {
         if ($haystack instanceof \Traversable) {
             foreach ($haystack as $value) {
@@ -862,7 +863,7 @@ abstract class BaseArrayHelper
         }
 
         return false;
-    }
+    }*/
 
     /**
      * Checks whether a variable is an array or [[\Traversable]].
@@ -891,11 +892,11 @@ abstract class BaseArrayHelper
      * @throws InvalidArgumentException if `$haystack` or `$needles` is neither traversable nor an array.
      * @since 2.0.7
      */
-    public static function isSubset($needles, $haystack, $strict = false)
+    /*public static function isSubset($needles, $haystack, $strict = false)
     {
         if (is_array($needles) || $needles instanceof \Traversable) {
             foreach ($needles as $needle) {
-                if (!static::isIn($needle, $haystack, $strict)) {
+                if (!ArrayHelper::isIn($needle, $haystack, $strict)) {
                     return false;
                 }
             }
@@ -904,7 +905,7 @@ abstract class BaseArrayHelper
         }
 
         throw new InvalidArgumentException('Argument $needles must be an array or implement Traversable');
-    }
+    }*/
 
     /**
      * Filters array according to rules specified.
@@ -950,7 +951,7 @@ abstract class BaseArrayHelper
      * @return array Filtered array
      * @since 2.0.9
      */
-    public static function filter($array, $filters)
+    /*public static function filter($array, $filters)
     {
         $result = [];
         $forbiddenVars = [];
@@ -992,5 +993,5 @@ abstract class BaseArrayHelper
         }
 
         return $result;
-    }
+    }*/
 }

@@ -5,6 +5,8 @@ namespace Untek\Component\Arr\Helpers;
 use ArrayAccess;
 use Closure;
 use DOMNode;
+use Yiisoft\Arrays\ArrayHelper;
+
 //use yii2mod\collection\Collection;
 
 /**
@@ -412,12 +414,12 @@ class ExtArrayHelper extends BaseArrayHelper
             return false;
         }
 
-        if (static::keyExists($key, $array)) {
+        if (ArrayHelper::keyExists($key, $array)) {
             return true;
         }
 
         foreach (explode('.', $key) as $segment) {
-            if (static::accessible($array) && static::keyExists($segment, $array)) {
+            if (static::accessible($array) && ArrayHelper::keyExists($segment, $array)) {
                 $array = $array[$segment];
             } else {
                 return false;
@@ -685,7 +687,7 @@ class ExtArrayHelper extends BaseArrayHelper
             }
         }
 
-        if (static::isAssociative($array)) {
+        if (ArrayHelper::isAssociative($array)) {
             ksort($array);
         } else {
             sort($array);

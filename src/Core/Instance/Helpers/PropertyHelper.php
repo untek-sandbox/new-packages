@@ -5,6 +5,7 @@ namespace Untek\Core\Instance\Helpers;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Lib\Components\DynamicEntity\Interfaces\DynamicEntityAttributesInterface;
 use Throwable;
+use Yiisoft\Arrays\ArrayHelper;
 use Yiisoft\Strings\Inflector;
 use Untek\Component\Code\Factories\PropertyAccess;
 
@@ -68,7 +69,7 @@ class PropertyHelper
     {
         $reflClass = new \ReflectionClass($entity);
         $attributesRef = $reflClass->getProperties();
-        $attributes = ExtArrayHelper::getColumn($attributesRef, 'name');
+        $attributes = ArrayHelper::getColumn($attributesRef, 'name');
         foreach ($attributes as $index => $attributeName) {
             if ($attributeName[0] == '_') {
                 unset($attributes[$index]);
@@ -134,7 +135,7 @@ class PropertyHelper
 
         if(is_array($entity)) {
             $data = ExtArrayHelper::only($data);
-            $entity = ExtArrayHelper::merge($entity, $data);
+            $entity = ArrayHelper::merge($entity, $data);
             return;
         }
 

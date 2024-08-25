@@ -7,6 +7,7 @@ use Untek\Component\Web\TwBootstrap\Widgets\Filter\Widgets\Select\SelectFilterWi
 use Untek\Component\Web\TwBootstrap\Widgets\Filter\Widgets\Text\TextFilterWidget;
 use Untek\Core\Instance\Helpers\ClassHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
+use Yiisoft\Arrays\ArrayHelper;
 
 class FilterGenerator
 {
@@ -15,8 +16,8 @@ class FilterGenerator
     {
         $definition = ClassHelper::normalizeComponentConfig($definition);
         $widgetInstance = ClassHelper::createObject($definition['class']);
-        $widgetDefaultAttributes = ExtArrayHelper::toArray($widgetInstance);
-        $definition = ExtArrayHelper::merge($definition, $widgetDefaultAttributes);
+        $widgetDefaultAttributes = ArrayHelper::toArray($widgetInstance);
+        $definition = ArrayHelper::merge($definition, $widgetDefaultAttributes);
         unset($definition['class']);
         //$definition['options']['onkeydown'] = 'filterForm.submitOnKeyDown(this, event)';
         $definition['name'] = $name;
@@ -31,12 +32,12 @@ class FilterGenerator
         unset($filterDefinition['type']);
         //$options['onkeydown'] = 'filterForm.submitOnKeyDown(this, event)';
         $definition = ClassHelper::normalizeComponentConfig($widgetClass);
-        $definition = ExtArrayHelper::merge($definition, [
+        $definition = ArrayHelper::merge($definition, [
             'options' => $options,
             'name' => $name,
             'value' => $value,
         ]);
-        $definition = ExtArrayHelper::merge($definition, $filterDefinition);
+        $definition = ArrayHelper::merge($definition, $filterDefinition);
         if($definition['options']) {
             unset($definition['options']);
         }

@@ -9,6 +9,7 @@ use Untek\Core\Collection\Libs\Collection;
 use Untek\Database\Base\Domain\Entities\ColumnEntity;
 use Untek\Database\Base\Domain\Entities\RelationEntity;
 use Untek\Database\Base\Domain\Entities\TableEntity;
+use Yiisoft\Arrays\ArrayHelper;
 
 class DbRepository extends \Untek\Database\Base\Domain\Repositories\Base\DbRepository
 {
@@ -22,7 +23,7 @@ class DbRepository extends \Untek\Database\Base\Domain\Repositories\Base\DbRepos
         $tableCollection = new Collection();
         foreach ($schemas as $schemaName) {
             $tables = $connection->select("SELECT * FROM information_schema.tables WHERE table_schema = '{$schemaName}'");
-            $tableNames = ExtArrayHelper::getColumn($tables, 'table_name');
+            $tableNames = ArrayHelper::getColumn($tables, 'table_name');
             foreach ($tableNames as $tableName) {
                 // $tableName = StructHelper::getTableNameFromEntity($tableEntity);
                 $tableEntity = new TableEntity();
@@ -71,7 +72,7 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
             ->getCapsule()
             ->getConnection();
         $schemaCollection = $connection->select("select schema_name from information_schema.schemata;");
-        $schemaNames = ExtArrayHelper::getColumn($schemaCollection, 'schema_name');
+        $schemaNames = ArrayHelper::getColumn($schemaCollection, 'schema_name');
         $excludes = [
             "pg_toast",
             "pg_temp_1",

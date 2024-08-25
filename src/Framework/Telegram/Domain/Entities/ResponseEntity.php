@@ -5,6 +5,7 @@ namespace Untek\Framework\Telegram\Domain\Entities;
 
 
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
+use Yiisoft\Arrays\ArrayHelper;
 
 class ResponseEntity
 {
@@ -63,7 +64,7 @@ class ResponseEntity
             'resize_keyboard' => true,
             'selective' => true,
         ];
-        $keyboard = ExtArrayHelper::merge($default, $keyboard);
+        $keyboard = ArrayHelper::merge($default, $keyboard);
         $this->setReplyMarkup(json_encode($keyboard, true));
     }
 

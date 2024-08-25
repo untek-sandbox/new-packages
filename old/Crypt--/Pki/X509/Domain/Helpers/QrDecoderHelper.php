@@ -6,6 +6,7 @@ use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;
+use Yiisoft\Arrays\ArraySorter;
 
 class QrDecoderHelper
 {
@@ -48,7 +49,7 @@ class QrDecoderHelper
             $collection->add($item);
             $arr[] = $item;
         }
-        ExtArrayHelper::multisort($arr, 'elementNumber');
+        ArraySorter::multisort($arr, 'elementNumber');
         return new Collection($arr);
     }
 

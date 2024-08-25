@@ -13,6 +13,7 @@ use Untek\Develop\Package\Domain\Interfaces\Repositories\GitRepositoryInterface;
 use Untek\Develop\Package\Domain\Interfaces\Services\GitServiceInterface;
 use Untek\Develop\Package\Domain\Interfaces\Services\PackageServiceInterface;
 use Untek\Develop\Package\Domain\Libs\GitShell;
+use Yiisoft\Arrays\ArrayHelper;
 
 class GitService extends BaseService implements GitServiceInterface
 {

@@ -21,6 +21,7 @@ use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\ResourceFormatter;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\StringFormatter;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\TimeFormatter;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\UnknownTypeFormatter;
+use Yiisoft\Arrays\ArrayHelper;
 
 class FormatEncoder
 {
@@ -34,7 +35,7 @@ class FormatEncoder
 
     public function setFormatterClasses(array $formatterClasses): void
     {
-        $this->formatterClasses = ExtArrayHelper::merge($this->getDefaultFormatterClasses(), $formatterClasses);
+        $this->formatterClasses = ArrayHelper::merge($this->getDefaultFormatterClasses(), $formatterClasses);
     }
 
     public function encode(AttributeEntity $attributeEntity): string

@@ -10,6 +10,7 @@ use Untek\Database\Base\Domain\Facades\DbFacade;
 use Untek\Database\Base\Domain\Libs\TableAlias;
 use Illuminate\Database\Capsule\Manager;
 use Untek\Component\FormatAdapter\Helpers\StoreHelper;
+use Yiisoft\Arrays\ArrayHelper;
 
 class ManagerFactory
 {
@@ -30,7 +31,7 @@ class ManagerFactory
         }
 
 //        $config = LoadHelper::loadConfig(getenv('DATABASE_CONFIG_FILE'));
-//        $connectionMap = ExtArrayHelper::getValue($config, 'connection.connectionMap', []);
+//        $connectionMap = ExtExtArrayHelper::getValue($config, 'connection.connectionMap', []);
 
         $map = ExtArrayHelper::getValue($config, 'connection.map', []);
 //        $tableAlias = self::createTableAlias($connections, $map);

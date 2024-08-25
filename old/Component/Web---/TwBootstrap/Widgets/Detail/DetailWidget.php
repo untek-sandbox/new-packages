@@ -23,6 +23,7 @@ use Untek\Component\Web\TwBootstrap\Widgets\Format\Libs\FormatEncoder;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Model\Entity\Helpers\EntityHelper;
 use Untek\Component\Web\Widget\Base\BaseWidget2;
+use Yiisoft\Arrays\ArrayHelper;
 
 class DetailWidget extends BaseWidget2
 {
@@ -74,6 +75,6 @@ class DetailWidget extends BaseWidget2
 
             DateTime::class => TimeFormatter::class,
         ];
-        return ExtArrayHelper::merge($formatterClasses, $this->formatterClasses);
+        return ArrayHelper::merge($formatterClasses, $this->formatterClasses);
     }
 }

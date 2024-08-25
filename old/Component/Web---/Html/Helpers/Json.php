@@ -10,6 +10,7 @@ namespace Untek\Component\Web\Html\Helpers;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Contract\Common\Exceptions\InvalidArgumentException;
 use Untek\Core\Base\Legacy\Yii\Base\Model;
+use Yiisoft\Arrays\ArrayHelper;
 
 /**
  * Json is a helper class providing JSON data encoding and decoding.
@@ -193,7 +194,7 @@ class Json
      */
     public static function errorSummary($models, $options = [])
     {
-        $showAllErrors = ExtArrayHelper::remove($options, 'showAllErrors', false);
+        $showAllErrors = ArrayHelper::remove($options, 'showAllErrors', false);
         $lines = self::collectErrors($models, $showAllErrors);
 
         return json_encode($lines);

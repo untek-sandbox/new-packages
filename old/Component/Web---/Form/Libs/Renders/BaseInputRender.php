@@ -4,6 +4,7 @@ namespace Untek\Component\Web\Form\Libs\Renders;
 
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Web\Html\Helpers\Html;
+use Yiisoft\Arrays\ArrayHelper;
 
 abstract class BaseInputRender extends BaseRender
 {
@@ -64,8 +65,8 @@ abstract class BaseInputRender extends BaseRender
     protected function options(): array {
         $inputVars = $this->getViewOptions();
         $options = $this->defaultOptions();
-        $options = ExtArrayHelper::merge($options, $this->filterOptions($inputVars));
-        $options = ExtArrayHelper::merge($options, $this->getOptions());
+        $options = ArrayHelper::merge($options, $this->filterOptions($inputVars));
+        $options = ArrayHelper::merge($options, $this->getOptions());
         return $options;
     }
 

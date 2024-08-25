@@ -5,6 +5,7 @@ namespace Untek\Framework\RestApiTest\Helpers;
 use Symfony\Component\HttpFoundation\Response;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Develop\Test\TestHelper;
+use Yiisoft\Arrays\ArrayHelper;
 
 class RestApiTestHelper
 {
@@ -40,7 +41,7 @@ class RestApiTestHelper
         $server = [];
         if ($headers) {
             foreach ($headers as $key => $value) {
-                $value = ExtArrayHelper::toArray($value);
+                $value = ArrayHelper::toArray($value);
                 $key = strtoupper(str_replace('-', '_', $key));
                 if (\in_array($key, ['CONTENT_TYPE', 'CONTENT_LENGTH', 'CONTENT_MD5'], true)) {
                     $server[$key] = implode(', ', $value);

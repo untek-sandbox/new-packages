@@ -8,6 +8,7 @@ use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
 use Untek\Component\FileSystem\Helpers\FilePathHelper;
 use Untek\Component\FileSystem\Helpers\FindFileHelper;
 use Untek\Database\Migration\Domain\Model\Migration;
+use Yiisoft\Arrays\ArrayHelper;
 
 class SourceRepository
 {
@@ -31,7 +32,7 @@ class SourceRepository
                 throw new \Exception("Migration directory \"$dir\" not found!");
             }
             $newClasses = self::scanDir($migrationDir);
-            $classes = ExtArrayHelper::merge($classes, $newClasses);
+            $classes = ArrayHelper::merge($classes, $newClasses);
         }
         return $classes;
     }

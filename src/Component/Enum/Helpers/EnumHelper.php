@@ -8,6 +8,7 @@ use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Component\Code\Helpers\ReflectionHelper;
 use Untek\Core\Instance\Exceptions\NotInstanceOfException;
 use Untek\Core\Instance\Helpers\ClassHelper;
+use Yiisoft\Arrays\ArrayHelper;
 use Yiisoft\Strings\Inflector;
 use ReflectionException;
 
@@ -109,7 +110,7 @@ class EnumHelper
     public static function getOptions(string $className): array
     {
         $items = self::getItems($className);
-        return ExtArrayHelper::map($items, 'id', 'title');
+        return ArrayHelper::map($items, 'id', 'title');
     }
 
     /**

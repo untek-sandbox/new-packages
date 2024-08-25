@@ -4,6 +4,7 @@ namespace Untek\Component\Web\TwBootstrap\Widgets\Collection\Helpers;
 
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Web\Html\Helpers\Html;
+use Yiisoft\Arrays\ArrayHelper;
 
 class CollectionWidgetHelper
 {

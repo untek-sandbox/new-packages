@@ -11,6 +11,7 @@ use Untek\Lib\Components\ShellRobot\Domain\Services\ProfileService;
 use Untek\Lib\Components\ShellRobot\Domain\Services\TaskService;
 use Untek\Framework\Console\Domain\Libs\IO;
 use Untek\Sandbox\Sandbox\Deployer\Domain\Libs\ConfigureServerDeployShell;
+use Yiisoft\Arrays\ArrayHelper;
 
 class ShellRobotTaskCommand extends Command
 {
@@ -64,7 +65,7 @@ class ShellRobotTaskCommand extends Command
         $projectName = $this->io->getInput()->getArgument('projectName');
         if (empty($projectName)) {
             $profileCollection = $this->profileService->findAll();
-            $profiles = ExtArrayHelper::getColumn($profileCollection->toArray(), 'title');
+            $profiles = ArrayHelper::getColumn($profileCollection->toArray(), 'title');
             $projectNames = $this->io->multiChoiceQuestion('Select profiles', $profiles);
         } else {
             $projectNames = [

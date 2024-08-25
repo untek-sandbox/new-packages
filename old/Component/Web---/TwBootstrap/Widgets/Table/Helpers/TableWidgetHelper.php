@@ -4,13 +4,14 @@ namespace Untek\Component\Web\TwBootstrap\Widgets\Table\Helpers;
 
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Model\Entity\Helpers\EntityHelper;
+use Yiisoft\Arrays\ArrayHelper;
 
 class TableWidgetHelper
 {
 
     public static function prepareHeaders(array $headers = []): array
     {
-        if ($headers && !ExtArrayHelper::isIndexed($headers)) {
+        if ($headers && !ArrayHelper::isIndexed($headers)) {
             $newValue = [];
             /*foreach ($value as $row) {
                 $newRow = [];

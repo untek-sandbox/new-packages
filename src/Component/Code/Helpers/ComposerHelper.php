@@ -6,6 +6,7 @@ use Composer\Autoload\ClassLoader;
 use http\Exception\RuntimeException;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Code\Exceptions\NotFoundDependencyException;
+use Yiisoft\Arrays\ArrayHelper;
 
 /**
  * Работа с Composer

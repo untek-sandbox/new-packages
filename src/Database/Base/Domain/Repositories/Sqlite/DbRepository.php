@@ -16,6 +16,7 @@ use Untek\Database\Base\Domain\Entities\TableEntity;
 use Illuminate\Database\Capsule\Manager;
 use Untek\Database\Eloquent\Domain\Traits\EloquentTrait;
 use Untek\Database\Fixture\Domain\Helpers\StructHelper;
+use Yiisoft\Arrays\ArrayHelper;
 
 class DbRepository
 {
@@ -71,7 +72,7 @@ class DbRepository
         foreach ($schemaCollection as $schemaEntity) {
             $tables = $connection->select("SELECT * FROM information_schema.tables WHERE table_schema = '{$schemaEntity->getName()}'");
             // select * from pg_tables where schemaname='public';
-            $tableNames = ExtArrayHelper::getColumn($tables, 'table_name');
+            $tableNames = ArrayHelper::getColumn($tables, 'table_name');
             foreach ($tableNames as $tableName) {
                 $tableEntity = new \Untek\Database\Base\Domain\Entities\TableEntity;
                 $tableEntity->setName($tableName);

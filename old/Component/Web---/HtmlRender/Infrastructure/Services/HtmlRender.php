@@ -8,6 +8,7 @@ use Untek\Component\Web\HtmlRender\Application\Services\HtmlRenderInterface;
 use Untek\Component\Web\HtmlRender\Application\Services\JsResourceInterface;
 use Untek\Component\Web\HtmlRender\Infrastructure\Helpers\RenderHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
+use Yiisoft\Arrays\ArrayHelper;
 
 class HtmlRender implements HtmlRenderInterface
 {
@@ -45,7 +46,7 @@ class HtmlRender implements HtmlRenderInterface
         ob_start();
         ob_implicit_flush(false);
         try {
-            $params = ExtArrayHelper::merge($this->params, $params);
+            $params = ArrayHelper::merge($this->params, $params);
             $this->includeRender($viewFile, $params);
             // after render wirte in $out
         } catch (\Exception $e) {

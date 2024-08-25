@@ -4,6 +4,7 @@ namespace Untek\Component\Arr\Libs;
 
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Code\Helpers\DeprecateHelper;
+use Yiisoft\Arrays\ArrayHelper;
 
 DeprecateHelper::hardThrow();
 
@@ -47,7 +48,7 @@ class Alias
             return $name;
         }
         if (is_array($name)) {
-            $isIndexed = ExtArrayHelper::isIndexed($name);
+            $isIndexed = ArrayHelper::isIndexed($name);
             $result = [];
             if ($isIndexed) {
                 foreach ($name as $item) {

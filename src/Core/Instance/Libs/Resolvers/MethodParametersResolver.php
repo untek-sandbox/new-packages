@@ -9,6 +9,7 @@ use ReflectionException;
 use ReflectionParameter;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Container\Traits\ContainerAwareTrait;
+use Yiisoft\Arrays\ArrayHelper;
 
 class MethodParametersResolver
 {
@@ -22,7 +23,7 @@ class MethodParametersResolver
 
     public function resolveClosure($closure, /*string $className, string $methodName,*/ array $constructionArgs = []): array
     {
-        if (!ExtArrayHelper::isIndexed($constructionArgs) || empty($constructionArgs)) {
+        if (!ArrayHelper::isIndexed($constructionArgs) || empty($constructionArgs)) {
             try {
 //                $constructorParameters = $this->extractMethodParameters($className, $methodName);
 
@@ -49,7 +50,7 @@ class MethodParametersResolver
     {
 //        return $this->resolveClosure([$className, $methodName], $constructionArgs);
 
-        if (!ExtArrayHelper::isIndexed($constructionArgs) || empty($constructionArgs)) {
+        if (!ArrayHelper::isIndexed($constructionArgs) || empty($constructionArgs)) {
             try {
                 $constructorParameters = $this->extractMethodParameters($className, $methodName);
                 $constructionArgs = $this->extractParams($constructorParameters, $constructionArgs);

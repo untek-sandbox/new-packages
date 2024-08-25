@@ -5,6 +5,7 @@ namespace Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters;
 
 use Untek\Component\Text\Helpers\TemplateHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
+use Yiisoft\Arrays\ArrayHelper;
 
 class ArrayFormatter extends BaseFormatter implements FormatterInterface
 {
@@ -16,7 +17,7 @@ class ArrayFormatter extends BaseFormatter implements FormatterInterface
 
     public function render($items)
     {
-        if (ExtArrayHelper::isIndexed($items)) {
+        if (ArrayHelper::isIndexed($items)) {
             return $this->formatIndexed($items);
         } else {
             return $this->formatAssoc($items);

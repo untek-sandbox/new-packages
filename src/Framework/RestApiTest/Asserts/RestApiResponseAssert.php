@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Framework\Rpc\Domain\Enums\RpcErrorCodeEnum;
 use Untek\Component\Http\Enums\HttpStatusCodeEnum;
+use Yiisoft\Arrays\ArrayHelper;
 
 class RestApiResponseAssert extends Assert
 {
@@ -218,7 +219,7 @@ class RestApiResponseAssert extends Assert
         $this->assertIsResult();
         $this->assertCollectionSize(count($ids));
 
-        $actualIds = ExtArrayHelper::getColumn($this->response->getResult(), 'id');
+        $actualIds = ArrayHelper::getColumn($this->response->getResult(), 'id');
         sort($ids);
         sort($actualIds);
         $this->assertEquals($ids, $actualIds);

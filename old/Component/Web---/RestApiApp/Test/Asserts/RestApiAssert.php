@@ -8,6 +8,7 @@ use Untek\Framework\Rpc\Domain\Enums\RpcErrorCodeEnum;
 use Untek\Component\Http\Enums\HttpStatusCodeEnum;
 use Untek\Tool\Test\Asserts\BaseAssert;
 use Untek\Tool\Test\Helpers\RestHelper;
+use Yiisoft\Arrays\ArrayHelper;
 
 class RestApiAssert extends BaseAssert
 {
@@ -146,7 +147,7 @@ class RestApiAssert extends BaseAssert
         $this->assertIsResult();
         $this->assertCollectionSize(count($ids));
 
-        $actualIds = ExtArrayHelper::getColumn($this->response->getResult(), 'id');
+        $actualIds = ArrayHelper::getColumn($this->response->getResult(), 'id');
         sort($ids);
         sort($actualIds);
         $this->assertEquals($ids, $actualIds);

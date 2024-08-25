@@ -10,6 +10,7 @@ use Untek\Component\FileSystem\Helpers\FilePathHelper;
 use Untek\Component\Text\Helpers\TextHelper;
 use Untek\Framework\Console\Domain\Base\BaseShell;
 use Untek\Framework\Console\Domain\Exceptions\ShellException;
+use Yiisoft\Arrays\ArrayHelper;
 
 class GitShell extends BaseShell
 {
@@ -81,7 +82,7 @@ class GitShell extends BaseShell
         if (empty($tag)) {
             $tag = $this->getTags();
         }
-        $tag = ExtArrayHelper::toArray($tag);
+        $tag = ArrayHelper::toArray($tag);
         $tag = implode(' ', $tag);
         $result = $this->extractFromCommand('git show-ref --tags -d ' . $tag, 'trim');
         if (empty($result)) {
@@ -419,7 +420,7 @@ class GitShell extends BaseShell
     }
 
     public function searchText2(array $lines, $needles) {
-        $needles = ExtArrayHelper::toArray($needles);
+        $needles = ArrayHelper::toArray($needles);
         foreach ($lines as $line) {
             foreach ($needles as $needle) {
                 $isHas = strpos(mb_strtolower($line), mb_strtolower($needle)) !== false;
@@ -432,7 +433,7 @@ class GitShell extends BaseShell
     }
 
     public function matchText(array $lines, $needles) {
-        $needles = ExtArrayHelper::toArray($needles);
+        $needles = ArrayHelper::toArray($needles);
         $mathesResult = [];
         foreach ($lines as $line) {
             $line = TextHelper::removeDoubleSpace($line);
@@ -451,7 +452,7 @@ class GitShell extends BaseShell
     }
 
     public function matchTextAll(array $lines, $needles) {
-        $needles = ExtArrayHelper::toArray($needles);
+        $needles = ArrayHelper::toArray($needles);
         $mathesResult = [];
         //$lines = [implode("\n", $lines)];
         foreach ($lines as $line) {

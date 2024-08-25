@@ -86,13 +86,13 @@ class Manager extends CapsuleManager
 //    public function isInOneDatabase(string $tableName1, string $tableName2): bool
 //    {
 //        DeprecateHelper::hardThrow();
-//        return ExtArrayHelper::getValue($this->connectionMap, $tableName1, 'default') == ExtArrayHelper::getValue($this->connectionMap, $tableName2, 'default');
+//        return ExtExtArrayHelper::getValue($this->connectionMap, $tableName1, 'default') == ExtExtArrayHelper::getValue($this->connectionMap, $tableName2, 'default');
 //    }
 //
 //    public function getConnectionNameByTableName(string $tableName)
 //    {
 //        DeprecateHelper::hardThrow();
-//        return ExtArrayHelper::getValue($this->connectionMap, $tableName, 'default');
+//        return ExtExtArrayHelper::getValue($this->connectionMap, $tableName, 'default');
 //    }
 //
 //    public function getConnectionMap(): array

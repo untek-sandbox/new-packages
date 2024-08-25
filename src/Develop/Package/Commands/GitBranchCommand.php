@@ -8,6 +8,7 @@ use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;
 use Untek\Develop\Package\Domain\Entities\PackageEntity;
+use Yiisoft\Arrays\ArrayHelper;
 
 class GitBranchCommand extends BaseCommand
 {
@@ -38,7 +39,7 @@ class GitBranchCommand extends BaseCommand
             $output->write(" $packageId ... ");
             $branches = $this->gitService->branches($packageEntity);
             $branch = $this->gitService->branch($packageEntity);
-            ExtArrayHelper::removeValue($branches, $branch);
+            ArrayHelper::removeValue($branches, $branch);
 
             $branchesString = $branches ? ' (' . implode(', ', $branches) . ')' : '';
             $output->writeln($branch . $branchesString);

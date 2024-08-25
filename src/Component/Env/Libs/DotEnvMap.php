@@ -4,6 +4,7 @@ namespace Untek\Component\Env\Libs;
 
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Pattern\Singleton\SingletonTrait;
+use Yiisoft\Arrays\ArrayHelper;
 
 class DotEnvMap
 {

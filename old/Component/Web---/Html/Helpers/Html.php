@@ -13,6 +13,7 @@ use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Core\Base\Legacy\Yii\Base\Model;
 use Untek\Core\Contract\Common\Exceptions\InvalidArgumentException;
+use Yiisoft\Arrays\ArrayHelper;
 
 /**
  * Html provides a set of static methods for generating commonly used HTML tags.
@@ -459,7 +460,7 @@ class Html
                 $hiddenInputs[] = static::hiddenInput($request->getMethod(), $method);
                 $method = 'post';
             }
-            $csrf = ExtArrayHelper::remove($options, 'csrf', true);
+            $csrf = ArrayHelper::remove($options, 'csrf', true);
 
             /*if ($csrf && $request->enableCsrfValidation && strcasecmp($method, 'post') === 0) {
                 $hiddenInputs[] = static::hiddenInput($request->csrfParam, $request->getCsrfToken());
@@ -814,7 +815,7 @@ class Html
     public static function textarea($name, $value = '', $options = [])
     {
         $options['name'] = $name;
-        $doubleEncode = ExtArrayHelper::remove($options, 'doubleEncode', true);
+        $doubleEncode = ArrayHelper::remove($options, 'doubleEncode', true);
         return static::tag('textarea', static::encode($value, $doubleEncode), $options);
     }
 
@@ -1076,18 +1077,18 @@ class Html
             $selection = array_map('strval', (array)$selection);
         }
 
-        $formatter = ExtArrayHelper::remove($options, 'item');
-        $itemOptions = ExtArrayHelper::remove($options, 'itemOptions', []);
-        $encode = ExtArrayHelper::remove($options, 'encode', true);
-        $separator = ExtArrayHelper::remove($options, 'separator', "\n");
-        $tag = ExtArrayHelper::remove($options, 'tag', 'div');
+        $formatter = ArrayHelper::remove($options, 'item');
+        $itemOptions = ArrayHelper::remove($options, 'itemOptions', []);
+        $encode = ArrayHelper::remove($options, 'encode', true);
+        $separator = ArrayHelper::remove($options, 'separator', "\n");
+        $tag = ArrayHelper::remove($options, 'tag', 'div');
 
         $lines = [];
         $index = 0;
         foreach ($items as $value => $label) {
             $checked = $selection !== null &&
                 (!ExtArrayHelper::isTraversable($selection) && !strcmp($value, $selection)
-                    || ExtArrayHelper::isTraversable($selection) && ExtArrayHelper::isIn((string)$value, $selection));
+                    || ExtArrayHelper::isTraversable($selection) && ArrayHelper::isIn((string)$value, $selection));
             if ($formatter !== null) {
                 $lines[] = call_user_func($formatter, $index, $label, $name, $checked, $value);
             } else {
@@ -1163,11 +1164,11 @@ class Html
             $selection = array_map('strval', (array)$selection);
         }
 
-        $formatter = ExtArrayHelper::remove($options, 'item');
-        $itemOptions = ExtArrayHelper::remove($options, 'itemOptions', []);
-        $encode = ExtArrayHelper::remove($options, 'encode', true);
-        $separator = ExtArrayHelper::remove($options, 'separator', "\n");
-        $tag = ExtArrayHelper::remove($options, 'tag', 'div');
+        $formatter = ArrayHelper::remove($options, 'item');
+        $itemOptions = ArrayHelper::remove($options, 'itemOptions', []);
+        $encode = ArrayHelper::remove($options, 'encode', true);
+        $separator = ArrayHelper::remove($options, 'separator', "\n");
+        $tag = ArrayHelper::remove($options, 'tag', 'div');
 
         $hidden = '';
         if (isset($options['unselect'])) {
@@ -1186,7 +1187,7 @@ class Html
         foreach ($items as $value => $label) {
             $checked = $selection !== null &&
                 (!ExtArrayHelper::isTraversable($selection) && !strcmp($value, $selection)
-                    || ExtArrayHelper::isTraversable($selection) && ExtArrayHelper::isIn((string)$value, $selection));
+                    || ExtArrayHelper::isTraversable($selection) && ArrayHelper::isIn((string)$value, $selection));
             if ($formatter !== null) {
                 $lines[] = call_user_func($formatter, $index, $label, $name, $checked, $value);
             } else {
@@ -1233,11 +1234,11 @@ class Html
      */
     public static function ul($items, $options = [])
     {
-        $tag = ExtArrayHelper::remove($options, 'tag', 'ul');
-        $encode = ExtArrayHelper::remove($options, 'encode', true);
-        $formatter = ExtArrayHelper::remove($options, 'item');
-        $separator = ExtArrayHelper::remove($options, 'separator', "\n");
-        $itemOptions = ExtArrayHelper::remove($options, 'itemOptions', []);
+        $tag = ArrayHelper::remove($options, 'tag', 'ul');
+        $encode = ArrayHelper::remove($options, 'encode', true);
+        $formatter = ArrayHelper::remove($options, 'item');
+        $separator = ArrayHelper::remove($options, 'separator', "\n");
+        $itemOptions = ArrayHelper::remove($options, 'itemOptions', []);
 
         if (empty($items)) {
             return static::tag($tag, '', $options);
@@ -1309,9 +1310,9 @@ class Html
      */
     public static function activeLabel($model, $attribute, $options = [])
     {
-        $for = ExtArrayHelper::remove($options, 'for', static::getInputId($model, $attribute));
+        $for = ArrayHelper::remove($options, 'for', static::getInputId($model, $attribute));
         $attribute = static::getAttributeName($attribute);
-        $label = ExtArrayHelper::remove($options, 'label', static::encode($model->getAttributeLabel($attribute)));
+        $label = ArrayHelper::remove($options, 'label', static::encode($model->getAttributeLabel($attribute)));
         return static::label($label, $for, $options);
     }
 
@@ -1343,7 +1344,7 @@ class Html
         if (empty($hint)) {
             return '';
         }
-        $tag = ExtArrayHelper::remove($options, 'tag', 'div');
+        $tag = ArrayHelper::remove($options, 'tag', 'div');
         unset($options['hint']);
         return static::tag($tag, $hint, $options);
     }
@@ -1368,9 +1369,9 @@ class Html
     public static function errorSummary($models, $options = [])
     {
         $header = isset($options['header']) ? $options['header'] : '<p>' . \Yii::t('yii', 'Please fix the following errors:') . '</p>';
-        $footer = ExtArrayHelper::remove($options, 'footer', '');
-        $encode = ExtArrayHelper::remove($options, 'encode', true);
-        $showAllErrors = ExtArrayHelper::remove($options, 'showAllErrors', false);
+        $footer = ArrayHelper::remove($options, 'footer', '');
+        $encode = ArrayHelper::remove($options, 'encode', true);
+        $showAllErrors = ArrayHelper::remove($options, 'showAllErrors', false);
         unset($options['header']);
         $lines = self::collectErrors($models, $encode, $showAllErrors);
         if (empty($lines)) {
@@ -1442,14 +1443,14 @@ class Html
     public static function error($model, $attribute, $options = [])
     {
         $attribute = static::getAttributeName($attribute);
-        $errorSource = ExtArrayHelper::remove($options, 'errorSource');
+        $errorSource = ArrayHelper::remove($options, 'errorSource');
         if ($errorSource !== null) {
             $error = call_user_func($errorSource, $model, $attribute);
         } else {
             $error = $model->getFirstError($attribute);
         }
-        $tag = ExtArrayHelper::remove($options, 'tag', 'div');
-        $encode = ExtArrayHelper::remove($options, 'encode', true);
+        $tag = ArrayHelper::remove($options, 'tag', 'div');
+        $encode = ArrayHelper::remove($options, 'encode', true);
         return Html::tag($tag, $encode ? Html::encode($error) : $error, $options);
     }
 
@@ -1612,7 +1613,7 @@ class Html
         if (!empty($options['disabled'])) {
             $hiddenOptions['disabled'] = $options['disabled'];
         }
-        $hiddenOptions = ExtArrayHelper::merge($hiddenOptions, ExtArrayHelper::remove($options, 'hiddenOptions', []));
+        $hiddenOptions = ArrayHelper::merge($hiddenOptions, ArrayHelper::remove($options, 'hiddenOptions', []));
         // Add a hidden field so that if a model only has a file field, we can
         // still use isset($_POST[$modelClass]) to detect if the input is submitted.
         // The hidden input will be assigned its own set of html options via `$hiddenOptions`.
@@ -1977,8 +1978,8 @@ class Html
         }
 
         $lines = [];
-        $encodeSpaces = ExtArrayHelper::remove($tagOptions, 'encodeSpaces', false);
-        $encode = ExtArrayHelper::remove($tagOptions, 'encode', true);
+        $encodeSpaces = ArrayHelper::remove($tagOptions, 'encodeSpaces', false);
+        $encode = ArrayHelper::remove($tagOptions, 'encode', true);
         if (isset($tagOptions['prompt'])) {
             $promptOptions = ['value' => ''];
             if (is_string($tagOptions['prompt'])) {
@@ -2015,7 +2016,7 @@ class Html
                 if (!array_key_exists('selected', $attrs)) {
                     $attrs['selected'] = $selection !== null &&
                         (!ExtArrayHelper::isTraversable($selection) && !strcmp($key, $selection)
-                            || ExtArrayHelper::isTraversable($selection) && ExtArrayHelper::isIn((string)$key, $selection));
+                            || ExtArrayHelper::isTraversable($selection) && ArrayHelper::isIn((string)$key, $selection));
                 }
                 $text = $encode ? static::encode($value) : $value;
                 if ($encodeSpaces) {

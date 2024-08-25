@@ -5,6 +5,7 @@ namespace Untek\Component\Code\Libs;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Contract\Common\Exceptions\InternalServerErrorException;
 use Untek\Component\Text\Libs\RandomString;
+use Yiisoft\Arrays\ArrayHelper;
 
 /**
  * Замер производительности в произвольных местах кода.
@@ -117,7 +118,7 @@ class Benchmark
      */
     public static function allFlat(int $percision = 5): array
     {
-        $durations = ExtArrayHelper::map(self::$data, 'name', 'duration');
+        $durations = ArrayHelper::map(self::$data, 'name', 'duration');
         $durations = array_map(function ($value) use ($percision) {
             return round($value, $percision);
         }, $durations);

@@ -13,6 +13,7 @@ use Untek\Component\Http\Enums\HttpMethodEnum;
 use Untek\Component\FormatAdapter\Helpers\StoreHelper;
 use Untek\Develop\Package\Domain\Entities\GroupEntity;
 use Untek\Develop\Package\Domain\Entities\PackageEntity;
+use Yiisoft\Arrays\ArrayHelper;
 
 class GithubOrgsCommand extends BaseCommand
 {
@@ -26,14 +27,14 @@ class GithubOrgsCommand extends BaseCommand
         $url = 'https://api.github.com/user/orgs?access_token=' . getenv('GITHUB_TOKEN');
         $output->writeln('getting groups');
         $collection = $this->sendRequest(HttpMethodEnum::GET, $url);
-        $orgs = ExtArrayHelper::getColumn($collection, 'login');
+        $orgs = ArrayHelper::getColumn($collection, 'login');
         $repoCollection = new Collection();
         foreach ($orgs as $orgName) {
             if (strpos($orgName, 'zn') === 0) {
                 $url = "https://api.github.com/orgs/{$orgName}/repos";
                 $output->writeln('getting packages from: ' . $orgName);
                 $repos = $this->sendRequest(HttpMethodEnum::GET, $url);
-                $reposList = ExtArrayHelper::getColumn($repos, 'name');
+                $reposList = ArrayHelper::getColumn($repos, 'name');
                 $groupEntity = new GroupEntity();
                 $groupEntity->name = $orgName;
                 $groupEntity->providerName = 'github';

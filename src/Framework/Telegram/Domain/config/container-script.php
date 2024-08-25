@@ -9,6 +9,7 @@ use Untek\Framework\Telegram\Domain\Repositories\File\ConfigRepository;
 use Untek\Framework\Telegram\Domain\Repositories\Telegram\ResponseRepository as TelegramResponseRepository;
 use Untek\Framework\Telegram\Domain\Repositories\Test\ResponseRepository as TestResponseRepository;
 use Untek\Framework\Telegram\Domain\Services\RouteService;
+use Yiisoft\Arrays\ArrayHelper;
 
 return [
     'singletons' => [
@@ -20,7 +21,7 @@ return [
             $routes = [];
             foreach ($telegramRoutes as $containerConfig) {
                 $requiredConfig = require($containerConfig);
-                $routes = ExtArrayHelper::merge($routes, $requiredConfig);
+                $routes = ArrayHelper::merge($routes, $requiredConfig);
             }
             $routeService->setDefinitions($routes);
             return $routeService;

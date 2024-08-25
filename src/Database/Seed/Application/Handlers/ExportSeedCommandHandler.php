@@ -8,6 +8,7 @@ use Illuminate\Database\Capsule\Manager;
 use Untek\Component\Cqrs\Application\Abstract\CqrsHandlerInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Untek\Database\Seed\Application\Validators\ExportSeedCommandValidator;
+use Yiisoft\Arrays\ArrayHelper;
 
 class ExportSeedCommandHandler implements CqrsHandlerInterface
 {
@@ -35,7 +36,7 @@ class ExportSeedCommandHandler implements CqrsHandlerInterface
             $connection = $this->manager->getConnection();
             $qb = $connection->table($table);
             $data = $qb->select('*')->get()->toArray();
-            $data = ExtArrayHelper::toArray($data);
+            $data = ArrayHelper::toArray($data);
 
             $filePath = $this->seedDirectory . '/' . $table . '.php';
             (new StoreFile($filePath))->save($data);

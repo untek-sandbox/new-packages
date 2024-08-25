@@ -5,6 +5,7 @@ namespace Untek\Lib\Components\ShellRobot\Domain\Repositories\File;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Text\Helpers\TemplateHelper;
 use Untek\Lib\Components\ShellRobot\Domain\Interfaces\Repositories\VarRepositoryInterface;
+use Yiisoft\Arrays\ArrayHelper;
 
 class VarRepository implements VarRepositoryInterface
 {

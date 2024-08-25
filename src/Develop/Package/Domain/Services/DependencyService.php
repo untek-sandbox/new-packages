@@ -10,6 +10,7 @@ use Untek\Develop\Package\Domain\Helpers\PackageHelper;
 use Untek\Develop\Package\Domain\Libs\Deps\PhpClassNameInQuotedStringParser;
 use Untek\Develop\Package\Domain\Libs\Deps\PhpClassNameParser;
 use Untek\Develop\Package\Domain\Libs\Deps\PhpUsesParser;
+use Yiisoft\Arrays\ArrayHelper;
 
 class DependencyService
 {
@@ -104,12 +105,12 @@ class DependencyService
 
                 $classesFromString = $classNameStringParser->parse($code);
                 if ($classesFromString) {
-                    $classes = ExtArrayHelper::merge($classes, $classesFromString);
+                    $classes = ArrayHelper::merge($classes, $classesFromString);
                 }
 
                 $classesFromClassNames = $classNameParser->parse($code);
                 if ($classesFromClassNames) {
-                    $classes = ExtArrayHelper::merge($classes, $classesFromClassNames);
+                    $classes = ArrayHelper::merge($classes, $classesFromClassNames);
                 }
             }
 
