@@ -3,15 +3,13 @@
 namespace Untek\Develop\Test;
 
 use Doctrine\DBAL\Connection;
-use Untek\Database\Seed\Application\Commands\ImportSeedCommand;
 use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
+use Untek\Database\Seed\Application\Commands\ImportSeedCommand;
 
 trait FixtureTrait
 {
 
-//    abstract protected function get(string $id): object;
-
-    protected function loadFixtures()
+    protected function initializeFixtures()
     {
         $fixtures = $this->fixtures();
         if ($fixtures) {
