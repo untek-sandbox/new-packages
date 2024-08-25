@@ -2,6 +2,7 @@
 
 namespace Untek\Framework\RestApiTest\Traits;
 
+use Forecast\Map\Shared\Infrastructure\Enums\LanguageEnum;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 
 trait RestApiLanguageTrait
@@ -12,6 +13,11 @@ trait RestApiLanguageTrait
     protected function lang(string $language)
     {
         $this->language = $language;
+    }
+
+    protected function defaultLanguage(): ?string
+    {
+        return 'en';
     }
 
     protected function initializeApiLanguage(): void
