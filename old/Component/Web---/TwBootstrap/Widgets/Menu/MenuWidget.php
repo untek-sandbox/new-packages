@@ -4,7 +4,6 @@ namespace Untek\Component\Web\TwBootstrap\Widgets\Menu;
 
 use Closure;
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Web\Html\Helpers\Html;
 use Untek\Component\Web\Widget\Base\BaseWidget;
 use Yiisoft\Arrays\ArrayHelper;

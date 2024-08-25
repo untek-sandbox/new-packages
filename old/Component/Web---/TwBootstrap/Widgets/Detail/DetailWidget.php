@@ -3,7 +3,6 @@
 namespace Untek\Component\Web\TwBootstrap\Widgets\Detail;
 
 use DateTime;
-use Untek\Core\Collection\Helpers\CollectionHelper;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Entities\AttributeEntity;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Enums\TypeEnum;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\ArrayFormatter;
@@ -20,9 +19,9 @@ use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\StringFormatter;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\TimeFormatter;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\UnknownTypeFormatter;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Libs\FormatEncoder;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
-use Untek\Model\Entity\Helpers\EntityHelper;
 use Untek\Component\Web\Widget\Base\BaseWidget2;
+use Untek\Core\Collection\Helpers\CollectionHelper;
+use Untek\Model\Entity\Helpers\EntityHelper;
 use Yiisoft\Arrays\ArrayHelper;
 
 class DetailWidget extends BaseWidget2

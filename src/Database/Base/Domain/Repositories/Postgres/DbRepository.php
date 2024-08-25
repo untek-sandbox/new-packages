@@ -3,7 +3,6 @@
 namespace Untek\Database\Base\Domain\Repositories\Postgres;
 
 use App\Example\Controllers\ExampleEntity;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;
 use Untek\Database\Base\Domain\Entities\ColumnEntity;

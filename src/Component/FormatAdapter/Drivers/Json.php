@@ -2,7 +2,6 @@
 
 namespace Untek\Component\FormatAdapter\Drivers;
 
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Yiisoft\Arrays\ArrayHelper;
 
 class Json implements DriverInterface

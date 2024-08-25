@@ -4,9 +4,8 @@ namespace Untek\Component\Relation\Libs\Types;
 
 use Doctrine\Persistence\ObjectRepository;
 use Illuminate\Support\Arr;
-use Untek\Component\Relation\Interfaces\RelationInterface;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Code\Factories\PropertyAccess;
+use Untek\Component\Relation\Interfaces\RelationInterface;
 use Untek\Core\Collection\Helpers\CollectionHelper;
 
 class OneToOneRelation extends BaseRelation implements RelationInterface

@@ -7,7 +7,6 @@ use Untek\Component\Web\TwBootstrap\Widgets\Filter\Widgets\Number\NumberFilterWi
 use Untek\Component\Web\TwBootstrap\Widgets\Filter\Widgets\Select\SelectFilterWidget;
 use Untek\Component\Web\TwBootstrap\Widgets\Filter\Widgets\Text\TextFilterWidget;
 use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Yiisoft\Arrays\ArrayHelper;
 
 class FilterGenerator

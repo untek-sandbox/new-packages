@@ -2,7 +2,6 @@
 
 namespace Untek\Develop\Package\Domain\Services;
 
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Code\Helpers\ComposerHelper;
 use Untek\Component\FileSystem\Helpers\FileHelper;
 use Untek\Develop\Package\Domain\Entities\PackageEntity;

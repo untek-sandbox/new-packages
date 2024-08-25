@@ -2,9 +2,8 @@
 
 namespace Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters;
 
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
-use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Component\Web\Html\Helpers\Html;
+use Untek\Core\Instance\Helpers\PropertyHelper;
 use Yiisoft\Arrays\ArrayHelper;
 
 class LinkFormatter extends BaseFormatter implements FormatterInterface

@@ -4,7 +4,6 @@ namespace Untek\Component\Translator\Infrastructure\Services;
 
 use Illuminate\Support\Arr;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 
 class AttributeTranslatorService
 {

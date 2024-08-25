@@ -3,8 +3,6 @@
 namespace Untek\Database\Base\Domain\Libs;
 
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
-use Yiisoft\Arrays\ArrayHelper;
 
 class TableAlias
 {

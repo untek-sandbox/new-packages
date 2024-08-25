@@ -4,7 +4,6 @@
 namespace Untek\Framework\Telegram\Domain\Entities;
 
 
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Yiisoft\Arrays\ArrayHelper;
 
 class ResponseEntity

@@ -4,9 +4,7 @@ namespace Untek\Lib\QrBox\Libs;
 
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Encoder\Encoders\ChainEncoder;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Collection\Libs\Collection;
-use Yiisoft\Arrays\ArrayHelper;
 
 class ClassEncoder
 {

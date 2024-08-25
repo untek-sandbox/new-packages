@@ -4,9 +4,7 @@ namespace Untek\Database\Base\Domain\Helpers;
 
 use GuzzleHttp\Psr7\Uri;
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Database\Base\Domain\Enums\DbDriverEnum;
-use Yiisoft\Arrays\ArrayHelper;
 
 class ConfigHelper
 {

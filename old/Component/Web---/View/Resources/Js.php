@@ -2,7 +2,6 @@
 
 namespace Untek\Component\Web\View\Resources;
 
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Yiisoft\Arrays\ArrayHelper;
 
 class Js extends BaseResource

@@ -2,16 +2,14 @@
 
 namespace Untek\Database\Eloquent\Domain\Factories;
 
+use Illuminate\Database\Capsule\Manager;
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
-use Untek\Core\Container\Helpers\ContainerHelper;
 use Untek\Component\FileSystem\Helpers\FileStorageHelper;
+use Untek\Component\FormatAdapter\Helpers\StoreHelper;
+use Untek\Core\Container\Helpers\ContainerHelper;
 use Untek\Database\Base\Domain\Enums\DbDriverEnum;
 use Untek\Database\Base\Domain\Facades\DbFacade;
 use Untek\Database\Base\Domain\Libs\TableAlias;
-use Illuminate\Database\Capsule\Manager;
-use Untek\Component\FormatAdapter\Helpers\StoreHelper;
-use Yiisoft\Arrays\ArrayHelper;
 
 class ManagerFactory
 {

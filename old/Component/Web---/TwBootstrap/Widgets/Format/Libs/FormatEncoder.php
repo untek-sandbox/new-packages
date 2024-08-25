@@ -4,8 +4,6 @@ namespace Untek\Component\Web\TwBootstrap\Widgets\Format\Libs;
 
 use DateTime;
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
-use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Entities\AttributeEntity;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Enums\TypeEnum;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\ArrayFormatter;
@@ -22,6 +20,7 @@ use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\ResourceFormatter;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\StringFormatter;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\TimeFormatter;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters\UnknownTypeFormatter;
+use Untek\Core\Instance\Helpers\ClassHelper;
 use Yiisoft\Arrays\ArrayHelper;
 
 class FormatEncoder

@@ -4,10 +4,8 @@ namespace Untek\Framework\Telegram\Domain\Actions;
 
 use danog\MadelineProto\APIFactory;
 use Untek\Framework\Telegram\Domain\Base\BaseAction;
-use Untek\Framework\Telegram\Domain\Entities\MessageEntity;
 use Untek\Framework\Telegram\Domain\Entities\RequestEntity;
 use Untek\Framework\Telegram\Domain\Handlers\BaseInputMessageEventHandler;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Yiisoft\Arrays\ArrayHelper;
 
 class HelpAction extends BaseAction

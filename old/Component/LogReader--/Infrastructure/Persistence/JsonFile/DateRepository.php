@@ -4,7 +4,6 @@ namespace Untek\Component\LogReader\Infrastructure\Persistence\JsonFile;
 
 use Illuminate\Support\Arr;
 use Symfony\Component\Filesystem\Path;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\FileSystem\Helpers\FilePathHelper;
 use Untek\Component\FileSystem\Helpers\FindFileHelper;
 

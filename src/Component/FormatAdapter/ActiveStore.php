@@ -3,7 +3,6 @@
 namespace Untek\Component\FormatAdapter;
 
 use Illuminate\Support\Arr;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Code\Helpers\DeprecateHelper;
 
 DeprecateHelper::hardThrow();

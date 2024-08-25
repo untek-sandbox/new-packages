@@ -7,7 +7,6 @@ use Psr\Container\ContainerInterface;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionParameter;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Container\Traits\ContainerAwareTrait;
 use Yiisoft\Arrays\ArrayHelper;
 

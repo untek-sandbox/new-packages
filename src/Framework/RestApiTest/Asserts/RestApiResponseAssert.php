@@ -2,13 +2,13 @@
 
 namespace Untek\Framework\RestApiTest\Asserts;
 
+use Illuminate\Support\Arr;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\HttpFoundation\Response;
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
-use Untek\Framework\Rpc\Domain\Enums\RpcErrorCodeEnum;
 use Untek\Component\Http\Enums\HttpStatusCodeEnum;
+use Untek\Framework\Rpc\Domain\Enums\RpcErrorCodeEnum;
 use Yiisoft\Arrays\ArrayHelper;
 
 class RestApiResponseAssert extends Assert
@@ -80,7 +80,7 @@ class RestApiResponseAssert extends Assert
     public function assertHasPath(string $path): static
     {
         $responseBody = $this->getPayload();
-        $has = ArrayPathHelper::has($responseBody, $path);
+        $has = Arr::has($responseBody, $path);
         if(!$has) {
             throw new ExpectationFailedException("Path \"{$path}\" not found.");
         }

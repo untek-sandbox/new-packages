@@ -49,7 +49,7 @@ class ExtArrayHelper
      * @param $b
      * @return int
      */
-    public static function sortByLen($a, $b)
+    public static function sortByLen($a, $b): int
     {
         if (strlen($a) < strlen($b)) {
             return 1;
@@ -66,14 +66,14 @@ class ExtArrayHelper
      * @param array $array
      * @return mixed
      */
-    public static function firstKey(array $array)
+    public static function firstKey(array $array): mixed
     {
         $keys = array_keys($array);
         $firstKey = $keys[0];
         return $firstKey;
     }
 
-    public static function extractByKeys($array, $keys)
+    public static function extractByKeys($array, $keys): mixed
     {
         if (empty($keys)) {
             return $array;
@@ -90,7 +90,7 @@ class ExtArrayHelper
         return $result;
     }
 
-    public static function removeByValue($value, &$array)
+    public static function removeByValue($value, &$array): void
     {
         $key = array_search($value, $array);
         if ($key !== FALSE) {
@@ -98,41 +98,19 @@ class ExtArrayHelper
         }
     }
 
-    public static function recursiveIterator(array $array, $callback)
+    public static function recursiveIterator(array $array, $callback): array
     {
         foreach ($array as $key => $value) {
             if (is_array($value)) {
                 $array[$key] = self::recursiveIterator($value, $callback);
             } else {
-                $array[$key] = call_user_func($callback, $value);//$callback($value);
+                $array[$key] = call_user_func($callback, $value);
             }
         }
         return $array;
     }
 
-    // ==========
-
-    /**
-     * Checks whether a variable is an array or [[\Traversable]].
-     *
-     * This method does the same as the PHP function [is_array()](https://secure.php.net/manual/en/function.is-array.php)
-     * but additionally works on objects that implement the [[\Traversable]] interface.
-     * @param mixed $var The variable being evaluated.
-     * @return bool whether $var is array-like
-     * @see https://secure.php.net/manual/en/function.is-array.php
-     * @since 2.0.8
-     */
-    public static function isTraversable($var)
-    {
-        return is_array($var) || $var instanceof \Traversable;
-    }
-
-    /**
-     * @param $value
-     *
-     * @return mixed
-     */
-    public static function value($value)
+    public static function value(mixed $value): mixed
     {
         return $value instanceof Closure ? $value() : $value;
     }

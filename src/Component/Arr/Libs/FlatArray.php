@@ -2,8 +2,7 @@
 
 namespace Untek\Component\Arr\Libs;
 
-use Untek\Component\Arr\Helpers\ArrayPathHelper;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
+use Illuminate\Support\Arr;
 
 /**
  * Преобразование древовидного массива в плоский.
@@ -34,7 +33,7 @@ class FlatArray
     {
         $result = [];
         foreach ($array as $key => $value) {
-            ArrayPathHelper::setValue($result, $key, $value);
+            Arr::set($result, $key, $value);
         }
         return $result;
     }

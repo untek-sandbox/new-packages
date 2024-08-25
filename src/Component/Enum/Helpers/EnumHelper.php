@@ -3,14 +3,12 @@
 namespace Untek\Component\Enum\Helpers;
 
 use InvalidArgumentException;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
+use ReflectionException;
 use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Component\Code\Helpers\ReflectionHelper;
 use Untek\Core\Instance\Exceptions\NotInstanceOfException;
-use Untek\Core\Instance\Helpers\ClassHelper;
 use Yiisoft\Arrays\ArrayHelper;
 use Yiisoft\Strings\Inflector;
-use ReflectionException;
 
 /**
  * Работа с перечислениями

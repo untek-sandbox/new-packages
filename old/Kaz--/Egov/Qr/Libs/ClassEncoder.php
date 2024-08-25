@@ -3,9 +3,7 @@
 namespace Untek\Kaz\Egov\Qr\Libs;
 
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Collection\Libs\Collection;
-use Yiisoft\Arrays\ArrayHelper;
 
 class ClassEncoder
 {

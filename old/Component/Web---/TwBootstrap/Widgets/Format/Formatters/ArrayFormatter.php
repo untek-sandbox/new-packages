@@ -4,7 +4,6 @@ namespace Untek\Component\Web\TwBootstrap\Widgets\Format\Formatters;
 
 
 use Untek\Component\Text\Helpers\TemplateHelper;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Yiisoft\Arrays\ArrayHelper;
 
 class ArrayFormatter extends BaseFormatter implements FormatterInterface

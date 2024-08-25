@@ -3,13 +3,12 @@
 namespace Untek\Core\Instance\Helpers;
 
 use Illuminate\Support\Arr;
-use Untek\Component\Arr\Helpers\ArrayPathHelper;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
-use Untek\Lib\Components\DynamicEntity\Interfaces\DynamicEntityAttributesInterface;
 use Throwable;
+use Untek\Component\Arr\Helpers\ArrayPathHelper;
+use Untek\Component\Code\Factories\PropertyAccess;
+use Untek\Lib\Components\DynamicEntity\Interfaces\DynamicEntityAttributesInterface;
 use Yiisoft\Arrays\ArrayHelper;
 use Yiisoft\Strings\Inflector;
-use Untek\Component\Code\Factories\PropertyAccess;
 
 /**
  * Работа с атрибутами класса

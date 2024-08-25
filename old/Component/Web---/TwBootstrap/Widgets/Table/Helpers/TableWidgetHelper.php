@@ -2,7 +2,6 @@
 
 namespace Untek\Component\Web\TwBootstrap\Widgets\Table\Helpers;
 
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Model\Entity\Helpers\EntityHelper;
 use Yiisoft\Arrays\ArrayHelper;
 

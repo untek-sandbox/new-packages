@@ -1074,7 +1074,7 @@ class Html
         if (substr($name, -2) !== '[]') {
             $name .= '[]';
         }
-        if (ExtArrayHelper::isTraversable($selection)) {
+        if (self::isTraversable($selection)) {
             $selection = array_map('strval', (array)$selection);
         }
 
@@ -1088,8 +1088,8 @@ class Html
         $index = 0;
         foreach ($items as $value => $label) {
             $checked = $selection !== null &&
-                (!ExtArrayHelper::isTraversable($selection) && !strcmp($value, $selection)
-                    || ExtArrayHelper::isTraversable($selection) && ArrayHelper::isIn((string)$value, $selection));
+                (!self::isTraversable($selection) && !strcmp($value, $selection)
+                    || self::isTraversable($selection) && ArrayHelper::isIn((string)$value, $selection));
             if ($formatter !== null) {
                 $lines[] = call_user_func($formatter, $index, $label, $name, $checked, $value);
             } else {
@@ -1161,7 +1161,7 @@ class Html
      */
     public static function radioList($name, $selection = null, $items = [], $options = [])
     {
-        if (ExtArrayHelper::isTraversable($selection)) {
+        if (self::isTraversable($selection)) {
             $selection = array_map('strval', (array)$selection);
         }
 
@@ -1187,8 +1187,8 @@ class Html
         $index = 0;
         foreach ($items as $value => $label) {
             $checked = $selection !== null &&
-                (!ExtArrayHelper::isTraversable($selection) && !strcmp($value, $selection)
-                    || ExtArrayHelper::isTraversable($selection) && ArrayHelper::isIn((string)$value, $selection));
+                (!self::isTraversable($selection) && !strcmp($value, $selection)
+                    || self::isTraversable($selection) && ArrayHelper::isIn((string)$value, $selection));
             if ($formatter !== null) {
                 $lines[] = call_user_func($formatter, $index, $label, $name, $checked, $value);
             } else {
@@ -1974,7 +1974,7 @@ class Html
      */
     public static function renderSelectOptions($selection, $items, &$tagOptions = [])
     {
-        if (ExtArrayHelper::isTraversable($selection)) {
+        if (self::isTraversable($selection)) {
             $selection = array_map('strval', (array)$selection);
         }
 
@@ -2016,8 +2016,8 @@ class Html
                 $attrs['value'] = (string)$key;
                 if (!array_key_exists('selected', $attrs)) {
                     $attrs['selected'] = $selection !== null &&
-                        (!ExtArrayHelper::isTraversable($selection) && !strcmp($key, $selection)
-                            || ExtArrayHelper::isTraversable($selection) && ArrayHelper::isIn((string)$key, $selection));
+                        (!self::isTraversable($selection) && !strcmp($key, $selection)
+                            || self::isTraversable($selection) && ArrayHelper::isIn((string)$key, $selection));
                 }
                 $text = $encode ? static::encode($value) : $value;
                 if ($encodeSpaces) {
@@ -2447,4 +2447,18 @@ class Html
         return $pattern;
     }
 
+    /**
+     * Checks whether a variable is an array or [[\Traversable]].
+     *
+     * This method does the same as the PHP function [is_array()](https://secure.php.net/manual/en/function.is-array.php)
+     * but additionally works on objects that implement the [[\Traversable]] interface.
+     * @param mixed $var The variable being evaluated.
+     * @return bool whether $var is array-like
+     * @see https://secure.php.net/manual/en/function.is-array.php
+     * @since 2.0.8
+     */
+    public static function isTraversable($var)
+    {
+        return is_array($var) || $var instanceof \Traversable;
+    }
 }

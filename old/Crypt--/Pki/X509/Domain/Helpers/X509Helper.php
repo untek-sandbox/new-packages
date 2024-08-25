@@ -2,13 +2,11 @@
 
 namespace Untek\Crypt\Pki\X509\Domain\Helpers;
 
+use DateTime;
 use Illuminate\Support\Arr;
 use phpseclib\File\X509;
-use SimpleXMLElement;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Crypt\Pki\X509\Domain\Entities\CertificateEntity;
 use Untek\Crypt\Pki\X509\Domain\Entities\PersonEntity;
-use DateTime;
 
 class X509Helper
 {
