@@ -4,6 +4,7 @@ namespace Untek\Component\Web\Form\Libs\Renders;
 
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Validator\ConstraintViolation;
+use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Web\Html\Helpers\Html;
 use Yiisoft\Arrays\ArrayHelper;
@@ -27,7 +28,7 @@ class FormErrorRender extends BaseRender
                 $cause = $formError->getCause();
                 if ($cause) {
 //                    $label = $error['view']->vars['label'];
-                    $label = ExtArrayHelper::getValue($error, 'view.vars.label');
+                    $label = ArrayPathHelper::getValue($error, 'view.vars.label');
                     if($label) {
                         $message = $label . ': ' . $cause->getMessage();
                     } else {

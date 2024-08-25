@@ -2,6 +2,7 @@
 
 namespace Untek\Develop\Package\Domain\Libs;
 
+use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\FormatAdapter\StoreFile;
 use Untek\Develop\Package\Domain\Entities\ConfigEntity;
@@ -36,9 +37,9 @@ class Depend
         }
         $wanted = ComposerConfigHelper::getWanted($configEntity, $requirePackage);
         foreach ($wanted as $packageId) {
-            $lastVersion = ExtArrayHelper::getValue($this->lastVersions, $packageId);
+            $lastVersion = ArrayPathHelper::getValue($this->lastVersions, $packageId);
             if (empty($lastVersion)) {
-                $lastVersion = ExtArrayHelper::getValue($this->installedVersions, $packageId);
+                $lastVersion = ArrayPathHelper::getValue($this->installedVersions, $packageId);
             }
             $lastVersion = str_replace('.x-dev', '.*', $lastVersion);
             $wantedResult[$packageId] = $lastVersion;
@@ -67,7 +68,7 @@ class Depend
         $allWanted = $this->allDepends($collection);
         foreach ($collection as $configEntity) {
             $dep = $this->item($configEntity);
-            $dep['wanted'] = ExtArrayHelper::getValue($allWanted, $configEntity->getId());
+            $dep['wanted'] = ArrayPathHelper::getValue($allWanted, $configEntity->getId());
             $deps[$configEntity->getId()] = $dep;
             if ($callback != null) {
                 $callback();
@@ -99,7 +100,7 @@ class Depend
     {
         $requireUpdate = [];
         foreach ($this->lastVersions as $packageId => $lastVersion) {
-            $currentVersion = ExtArrayHelper::getValue($requires, $packageId);
+            $currentVersion = ArrayPathHelper::getValue($requires, $packageId);
             if ($currentVersion && $lastVersion && version_compare($currentVersion, $lastVersion, '<')) {
                 $requireUpdate[$packageId] = $lastVersion;
             }

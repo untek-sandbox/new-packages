@@ -3,6 +3,7 @@
 namespace Untek\Framework\RestApiTest\Helpers;
 
 use Symfony\Component\HttpFoundation\Response;
+use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Develop\Test\TestHelper;
 use Yiisoft\Arrays\ArrayHelper;
@@ -14,7 +15,7 @@ class RestApiTestHelper
     {
         $data = RestApiTestHelper::extractData($response);
         if ($path) {
-            $data = ExtArrayHelper::getValue($data, $path);
+            $data = ArrayPathHelper::getValue($data, $path);
         }
         TestHelper::printData($data, $format);
     }

@@ -2,6 +2,7 @@
 
 namespace Untek\Database\Base\Domain\Libs;
 
+use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Yiisoft\Arrays\ArrayHelper;
 
@@ -19,7 +20,7 @@ class TableAlias
     public function encode(string $connectionName, string $sourceTableName)
     {
         $map = $this->connectionMaps[$connectionName];
-        $targetTableName = ExtArrayHelper::getValue($map, $sourceTableName, $sourceTableName);
+        $targetTableName = ArrayPathHelper::getValue($map, $sourceTableName, $sourceTableName);
         return $targetTableName;
     }
 
@@ -27,7 +28,7 @@ class TableAlias
     {
         $map = $this->connectionMaps[$connectionName];
         $map = array_flip($map);
-        $sourceTableName = ExtArrayHelper::getValue($map, $targetTableName, $targetTableName);
+        $sourceTableName = ArrayPathHelper::getValue($map, $targetTableName, $targetTableName);
         return $sourceTableName;
     }
 

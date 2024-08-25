@@ -3,6 +3,7 @@
 namespace Untek\Component\Web\TwBootstrap\Widgets\Format\Libs;
 
 use DateTime;
+use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Core\Instance\Helpers\ClassHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Entities\AttributeEntity;
@@ -74,7 +75,7 @@ class FormatEncoder
         }
         $format = $attributeEntity->getFormat();
         if ($format) {
-            return ExtArrayHelper::getValue($formatterClasses, $format, TypeEnum::STRING);
+            return ArrayPathHelper::getValue($formatterClasses, $format, TypeEnum::STRING);
         }
         if ($valueType == TypeEnum::OBJECT) {
             $valueClass = get_class($value);
@@ -85,7 +86,7 @@ class FormatEncoder
         if (isset($formatterClasses[$valueType])) {
             return $formatterClasses[$valueType];
         }
-        return ExtArrayHelper::getValue($formatterClasses, TypeEnum::STRING);
+        return ArrayPathHelper::getValue($formatterClasses, TypeEnum::STRING);
     }
 
     private function getDefaultFormatterClasses(): array

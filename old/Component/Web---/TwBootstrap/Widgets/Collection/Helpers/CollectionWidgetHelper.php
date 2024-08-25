@@ -2,6 +2,7 @@
 
 namespace Untek\Component\Web\TwBootstrap\Widgets\Collection\Helpers;
 
+use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Web\Html\Helpers\Html;
 use Yiisoft\Arrays\ArrayHelper;
@@ -11,9 +12,9 @@ class CollectionWidgetHelper
     
     public static function sortByField(string $label, string $fieldName, string $baseUrl, array $getParams = []): string
     {
-        $sortParams = ExtArrayHelper::getValue($getParams, 'sort', []);
+        $sortParams = ArrayPathHelper::getValue($getParams, 'sort', []);
         $sortParams = self::normalizeOrderBy($sortParams);
-        $direction = ExtArrayHelper::getValue($sortParams, $fieldName);
+        $direction = ArrayPathHelper::getValue($sortParams, $fieldName);
         if ($direction) {
             $arrow = $direction == SORT_ASC ? '<i class="fas fa-sort-alpha-down"></i>' : '<i class="fas fa-sort-alpha-up"></i>';
             $label .= ' ' . $arrow;

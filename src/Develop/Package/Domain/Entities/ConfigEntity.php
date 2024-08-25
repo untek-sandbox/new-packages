@@ -3,6 +3,7 @@
 namespace Untek\Develop\Package\Domain\Entities;
 
 use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Model\Entity\Interfaces\EntityIdInterface;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -84,12 +85,12 @@ class ConfigEntity //implements ValidationByMetadataInterface, EntityIdInterface
 
     public function getConfigItem($name, $default = null)
     {
-        return ExtArrayHelper::getValue($this->config, $name, $default);
+        return ArrayPathHelper::getValue($this->config, $name, $default);
     }
 
     public function setConfigItem(string $name, $value)
     {
-        ExtArrayHelper::setValue($this->config, $name, $value);
+        ArrayPathHelper::setValue($this->config, $name, $value);
     }
 
     public function getConfig()

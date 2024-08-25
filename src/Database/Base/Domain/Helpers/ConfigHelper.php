@@ -3,6 +3,7 @@
 namespace Untek\Database\Base\Domain\Helpers;
 
 use GuzzleHttp\Psr7\Uri;
+use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Database\Base\Domain\Enums\DbDriverEnum;
 use Yiisoft\Arrays\ArrayHelper;
@@ -15,11 +16,11 @@ class ConfigHelper
         $dsnConfig = parse_url($dsn);
         $dsnConfig = array_map('rawurldecode', $dsnConfig);
         $connectionCofig = [
-            'driver' => ExtArrayHelper::getValue($dsnConfig, 'scheme'),
-            'host' => ExtArrayHelper::getValue($dsnConfig, 'host', '127.0.0.1'),
-            'database' => trim(ExtArrayHelper::getValue($dsnConfig, 'path'), '/'),
-            'username' => ExtArrayHelper::getValue($dsnConfig, 'user'),
-            'password' => ExtArrayHelper::getValue($dsnConfig, 'pass'),
+            'driver' => ArrayPathHelper::getValue($dsnConfig, 'scheme'),
+            'host' => ArrayPathHelper::getValue($dsnConfig, 'host', '127.0.0.1'),
+            'database' => trim(ArrayPathHelper::getValue($dsnConfig, 'path'), '/'),
+            'username' => ArrayPathHelper::getValue($dsnConfig, 'user'),
+            'password' => ArrayPathHelper::getValue($dsnConfig, 'pass'),
         ];
         return $connectionCofig;
     }

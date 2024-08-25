@@ -2,6 +2,7 @@
 
 namespace Untek\Core\Instance\Helpers;
 
+use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Lib\Components\DynamicEntity\Interfaces\DynamicEntityAttributesInterface;
 use Throwable;
@@ -89,7 +90,7 @@ class PropertyHelper
     public static function getValue(object $entity, string $attribute, mixed $defaultValue = null): mixed
     {
         if(is_array($entity)) {
-            return ExtArrayHelper::getValue($entity, $attribute);
+            return ArrayPathHelper::getValue($entity, $attribute);
         }
 
         $propertyAccessor = PropertyAccess::createPropertyAccessor();

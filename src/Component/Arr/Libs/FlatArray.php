@@ -2,6 +2,7 @@
 
 namespace Untek\Component\Arr\Libs;
 
+use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 
 /**
@@ -33,7 +34,7 @@ class FlatArray
     {
         $result = [];
         foreach ($array as $key => $value) {
-            ExtArrayHelper::setValue($result, $key, $value);
+            ArrayPathHelper::setValue($result, $key, $value);
         }
         return $result;
     }

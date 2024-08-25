@@ -3,6 +3,7 @@
 namespace Untek\Component\Web\RestApiApp\Test\Asserts;
 
 use Symfony\Component\HttpFoundation\Response;
+use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Framework\Rpc\Domain\Enums\RpcErrorCodeEnum;
 use Untek\Component\Http\Enums\HttpStatusCodeEnum;
@@ -23,7 +24,7 @@ class RestApiAssert extends BaseAssert
     public function assertPath($expected, string $path)
     {
         $responseBody = json_decode($this->response->getContent(), JSON_OBJECT_AS_ARRAY);
-        $actual = ExtArrayHelper::getValue($responseBody, $path);
+        $actual = ArrayPathHelper::getValue($responseBody, $path);
 //        dd($responseBody);
         $this->assertEquals($expected, $actual);
         return $this;
@@ -119,7 +120,7 @@ class RestApiAssert extends BaseAssert
 
     public function assertCollectionSizeByPath(int $expected, string $path)
     {
-        $data = ExtArrayHelper::getValue($this->response->getResult(), $path);
+        $data = ArrayPathHelper::getValue($this->response->getResult(), $path);
         $this->assertCount($expected, $data);
         /*$totalCount = $this->response->getMetaItem('totalCount', null);
         if($totalCount !== null) {

@@ -2,6 +2,7 @@
 
 namespace Untek\Component\Env\Libs;
 
+use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Component\Pattern\Singleton\SingletonTrait;
 use Yiisoft\Arrays\ArrayHelper;
@@ -25,7 +26,7 @@ class DotEnvMap
 
     private function getValue(string $path = null, $default = null)
     {
-        return ExtArrayHelper::getValue($this->map, $path, $default);
+        return ArrayPathHelper::getValue($this->map, $path, $default);
     }
 
     private function forgeMap(): void

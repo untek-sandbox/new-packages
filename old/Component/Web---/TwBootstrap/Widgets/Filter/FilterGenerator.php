@@ -2,6 +2,7 @@
 
 namespace Untek\Component\Web\TwBootstrap\Widgets\Filter;
 
+use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Web\TwBootstrap\Widgets\Filter\Widgets\Number\NumberFilterWidget;
 use Untek\Component\Web\TwBootstrap\Widgets\Filter\Widgets\Select\SelectFilterWidget;
 use Untek\Component\Web\TwBootstrap\Widgets\Filter\Widgets\Text\TextFilterWidget;
@@ -48,7 +49,7 @@ class FilterGenerator
     private static function getWidgetClassByType(string $type)
     {
         $widgetAssoc = self::widgetAssoc();
-        return ExtArrayHelper::getValue($widgetAssoc, $type);
+        return ArrayPathHelper::getValue($widgetAssoc, $type);
     }
 
     private static function widgetAssoc()

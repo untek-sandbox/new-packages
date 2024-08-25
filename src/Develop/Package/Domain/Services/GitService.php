@@ -3,6 +3,7 @@
 namespace Untek\Develop\Package\Domain\Services;
 
 //use Illuminate\Support\Arr;
+use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 //use Untek\Model\Service\Base\BaseService;
@@ -73,7 +74,7 @@ class GitService extends BaseService implements GitServiceInterface
 
         $commitTagMap = [];
         foreach ($commitShaMap as $commitSha => $commitOrder) {
-            $tagOrder = ExtArrayHelper::getValue($tagShaMap, $commitSha);
+            $tagOrder = ArrayPathHelper::getValue($tagShaMap, $commitSha);
             $commitTagMap[$commitOrder] = $tagOrder;
         }
 

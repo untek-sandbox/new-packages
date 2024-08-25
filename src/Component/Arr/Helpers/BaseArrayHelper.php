@@ -10,8 +10,11 @@ namespace Untek\Component\Arr\Helpers;
 use InvalidArgumentException;
 use Untek\Component\Arr\Libs\ArrayValues\ReplaceArrayValue;
 use Untek\Component\Arr\Libs\ArrayValues\UnsetArrayValue;
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Yiisoft\Arrays\ArrayHelper;
 use function foo\func;
+
+DeprecateHelper::hardThrow();
 
 /**
  * BaseExtArrayHelper provides concrete implementation for [[ExtArrayHelper]].
@@ -23,125 +26,6 @@ use function foo\func;
  */
 abstract class BaseArrayHelper
 {
-    /**
-     * Converts an object or an array of objects into an array.
-     * @param object|array|string $object the object to be converted into an array
-     * @param array $properties a mapping from object class names to the properties that need to put into the resulting arrays.
-     * The properties specified for each class is an array of the following format:
-     *
-     * ```php
-     * [
-     *     'app\models\Post' => [
-     *         'id',
-     *         'title',
-     *         // the key name in array result => property name
-     *         'createTime' => 'created_at',
-     *         // the key name in array result => anonymous function
-     *         'length' => function ($post) {
-     *             return strlen($post->content);
-     *         },
-     *     ],
-     * ]
-     * ```
-     *
-     * The result of `ExtArrayHelper::toArray($post, $properties)` could be like the following:
-     *
-     * ```php
-     * [
-     *     'id' => 123,
-     *     'title' => 'test',
-     *     'createTime' => '2013-01-01 12:00AM',
-     *     'length' => 301,
-     * ]
-     * ```
-     *
-     * @param bool $recursive whether to recursively converts properties which are objects into arrays.
-     * @return array the array representation of the object
-     */
-    protected static function toArray($object, $properties = [], $recursive = true)
-    {
-        if (is_array($object)) {
-            if ($recursive) {
-                foreach ($object as $key => $value) {
-                    if (is_array($value) || is_object($value)) {
-                        $object[$key] = static::toArray($value, $properties, true);
-                    }
-                }
-            }
-
-            return $object;
-        } elseif (is_object($object)) {
-            if (!empty($properties)) {
-                $className = get_class($object);
-                if (!empty($properties[$className])) {
-                    $result = [];
-                    foreach ($properties[$className] as $key => $name) {
-                        if (is_int($key)) {
-                            $result[$name] = $object->$name;
-                        } else {
-                            $result[$key] = static::getValue($object, $name);
-                        }
-                    }
-
-                    return $recursive ? static::toArray($result, $properties) : $result;
-                }
-            }
-            if (method_exists($object, 'toArray')) { // if ($object instanceof Arrayable) {
-                $result = $object->toArray([], [], $recursive);
-            } else {
-                $result = [];
-                foreach ($object as $key => $value) {
-                    $result[$key] = $value;
-                }
-            }
-
-            return $recursive ? static::toArray($result, $properties) : $result;
-        }
-
-        return [$object];
-    }
-
-    /**
-     * Merges two or more arrays into one recursively.
-     * If each array has an element with the same string key value, the latter
-     * will overwrite the former (different from array_merge_recursive).
-     * Recursive merging will be conducted if both arrays have an element of array
-     * type and are having the same key.
-     * For integer-keyed elements, the elements from the latter array will
-     * be appended to the former array.
-     * You can use [[UnsetArrayValue]] object to unset value from previous array or
-     * [[ReplaceArrayValue]] to force replace former value instead of recursive merging.
-     * @param array $a array to be merged to
-     * @param array $b array to be merged from. You can specify additional
-     * arrays via third argument, fourth argument etc.
-     * @return array the merged array (the original arrays are not changed.)
-     */
-    protected static function merge($a, $b)
-    {
-        $args = func_get_args();
-        $res = array_shift($args);
-        while (!empty($args)) {
-            foreach (array_shift($args) as $k => $v) {
-                if ($v instanceof UnsetArrayValue) {
-                    unset($res[$k]);
-                } elseif ($v instanceof ReplaceArrayValue) {
-                    $res[$k] = $v->value;
-                } elseif (is_int($k)) {
-                    if (array_key_exists($k, $res)) {
-                        $res[] = $v;
-                    } else {
-                        $res[$k] = $v;
-                    }
-                } elseif (is_array($v) && isset($res[$k]) && is_array($res[$k])) {
-                    $res[$k] = static::merge($res[$k], $v);
-                } else {
-                    $res[$k] = $v;
-                }
-            }
-        }
-
-        return $res;
-    }
 
     /**
      * Retrieves the value of an array element or object property with the given key or property name.
@@ -182,7 +66,7 @@ abstract class BaseArrayHelper
      * getting value from an object.
      * @return mixed the value of the element if found, default value otherwise
      */
-    public static function getValue($array, $key, $default = null)
+    /*public static function getValue($array, $key, $default = null)
     {
         if ($key instanceof \Closure) {
             return $key($array, $default);
@@ -214,7 +98,7 @@ abstract class BaseArrayHelper
         }
 
         return $default;
-    }
+    }*/
 
     /**
      * Writes a value into an associative array at the key path specified.
@@ -269,7 +153,7 @@ abstract class BaseArrayHelper
      * @param mixed $value the value to be written
      * @since 2.0.13
      */
-    public static function setValue(&$array, $path, $value)
+    /*public static function setValue(&$array, $path, $value)
     {
         if ($path === null) {
             $array = $value;
@@ -290,9 +174,9 @@ abstract class BaseArrayHelper
         }
 
         $array[array_shift($keys)] = $value;
-    }
+    }*/
 
-    public static function removeItem(&$array, $path)
+    /*public static function removeItem(&$array, $path)
     {
         if ($path === null) {
             //$array = $value;
@@ -319,7 +203,10 @@ abstract class BaseArrayHelper
         }
         $lastKey = array_shift($keys);
         return $callback($array, $lastKey);
-    }
+    }*/
+
+
+
 
     /**
      * Removes an item from an array and returns the value. If the key does not exist in the array, the default value
@@ -866,21 +753,6 @@ abstract class BaseArrayHelper
     }*/
 
     /**
-     * Checks whether a variable is an array or [[\Traversable]].
-     *
-     * This method does the same as the PHP function [is_array()](https://secure.php.net/manual/en/function.is-array.php)
-     * but additionally works on objects that implement the [[\Traversable]] interface.
-     * @param mixed $var The variable being evaluated.
-     * @return bool whether $var is array-like
-     * @see https://secure.php.net/manual/en/function.is-array.php
-     * @since 2.0.8
-     */
-    public static function isTraversable($var)
-    {
-        return is_array($var) || $var instanceof \Traversable;
-    }
-
-    /**
      * Checks whether an array or [[\Traversable]] is a subset of another array or [[\Traversable]].
      *
      * This method will return `true`, if all elements of `$needles` are contained in
@@ -993,5 +865,125 @@ abstract class BaseArrayHelper
         }
 
         return $result;
+    }*/
+
+    /**
+     * Converts an object or an array of objects into an array.
+     * @param object|array|string $object the object to be converted into an array
+     * @param array $properties a mapping from object class names to the properties that need to put into the resulting arrays.
+     * The properties specified for each class is an array of the following format:
+     *
+     * ```php
+     * [
+     *     'app\models\Post' => [
+     *         'id',
+     *         'title',
+     *         // the key name in array result => property name
+     *         'createTime' => 'created_at',
+     *         // the key name in array result => anonymous function
+     *         'length' => function ($post) {
+     *             return strlen($post->content);
+     *         },
+     *     ],
+     * ]
+     * ```
+     *
+     * The result of `ExtArrayHelper::toArray($post, $properties)` could be like the following:
+     *
+     * ```php
+     * [
+     *     'id' => 123,
+     *     'title' => 'test',
+     *     'createTime' => '2013-01-01 12:00AM',
+     *     'length' => 301,
+     * ]
+     * ```
+     *
+     * @param bool $recursive whether to recursively converts properties which are objects into arrays.
+     * @return array the array representation of the object
+     */
+    /*protected static function toArray($object, $properties = [], $recursive = true)
+    {
+        if (is_array($object)) {
+            if ($recursive) {
+                foreach ($object as $key => $value) {
+                    if (is_array($value) || is_object($value)) {
+                        $object[$key] = ArrayHelper::toArray($value, $properties, true);
+                    }
+                }
+            }
+
+            return $object;
+        } elseif (is_object($object)) {
+            if (!empty($properties)) {
+                $className = get_class($object);
+                if (!empty($properties[$className])) {
+                    $result = [];
+                    foreach ($properties[$className] as $key => $name) {
+                        if (is_int($key)) {
+                            $result[$name] = $object->$name;
+                        } else {
+                            $result[$key] = static::getValue($object, $name);
+                        }
+                    }
+
+                    return $recursive ? ArrayHelper::toArray($result, $properties) : $result;
+                }
+            }
+            if (method_exists($object, 'toArray')) { // if ($object instanceof Arrayable) {
+                $result = $object->toArray([], [], $recursive);
+            } else {
+                $result = [];
+                foreach ($object as $key => $value) {
+                    $result[$key] = $value;
+                }
+            }
+
+            return $recursive ? ArrayHelper::toArray($result, $properties) : $result;
+        }
+
+        return [$object];
+    }*/
+
+    /**
+     * Merges two or more arrays into one recursively.
+     * If each array has an element with the same string key value, the latter
+     * will overwrite the former (different from array_merge_recursive).
+     * Recursive merging will be conducted if both arrays have an element of array
+     * type and are having the same key.
+     * For integer-keyed elements, the elements from the latter array will
+     * be appended to the former array.
+     * You can use [[UnsetArrayValue]] object to unset value from previous array or
+     * [[ReplaceArrayValue]] to force replace former value instead of recursive merging.
+     * @param array $a array to be merged to
+     * @param array $b array to be merged from. You can specify additional
+     * arrays via third argument, fourth argument etc.
+     * @return array the merged array (the original arrays are not changed.)
+     */
+    /*protected static function merge($a, $b)
+    {
+        $args = func_get_args();
+        $res = array_shift($args);
+        while (!empty($args)) {
+            foreach (array_shift($args) as $k => $v) {
+                if ($v instanceof UnsetArrayValue) {
+                    unset($res[$k]);
+                } elseif ($v instanceof ReplaceArrayValue) {
+                    $res[$k] = $v->value;
+                } elseif (is_int($k)) {
+                    if (array_key_exists($k, $res)) {
+                        $res[] = $v;
+                    } else {
+                        $res[$k] = $v;
+                    }
+                } elseif (is_array($v) && isset($res[$k]) && is_array($res[$k])) {
+                    $res[$k] = ArrayHelper::merge($res[$k], $v);
+                } else {
+                    $res[$k] = $v;
+                }
+            }
+        }
+
+        return $res;
     }*/
 }

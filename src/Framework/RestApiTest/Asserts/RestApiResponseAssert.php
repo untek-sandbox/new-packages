@@ -5,6 +5,7 @@ namespace Untek\Framework\RestApiTest\Asserts;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\HttpFoundation\Response;
+use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Framework\Rpc\Domain\Enums\RpcErrorCodeEnum;
 use Untek\Component\Http\Enums\HttpStatusCodeEnum;
@@ -27,7 +28,7 @@ class RestApiResponseAssert extends Assert
     public function getValueFromPath(string $path = null) {
         $responseBody = $this->getPayload();
         if($path) {
-            $actual = ExtArrayHelper::getValue($responseBody, $path);
+            $actual = ArrayPathHelper::getValue($responseBody, $path);
         } else {
             $actual = $responseBody;
         }
@@ -79,7 +80,7 @@ class RestApiResponseAssert extends Assert
     public function assertHasPath(string $path): static
     {
         $responseBody = $this->getPayload();
-        $has = ExtArrayHelper::has($responseBody, $path);
+        $has = ArrayPathHelper::has($responseBody, $path);
         if(!$has) {
             throw new ExpectationFailedException("Path \"{$path}\" not found.");
         }
@@ -177,7 +178,7 @@ class RestApiResponseAssert extends Assert
 
     public function assertCollectionSizeByPath(int $expected, string $path): static
     {
-        $data = ExtArrayHelper::getValue($this->response->getResult(), $path);
+        $data = ArrayPathHelper::getValue($this->response->getResult(), $path);
         $this->assertCount($expected, $data);
         /*$totalCount = $this->response->getMetaItem('totalCount', null);
         if($totalCount !== null) {

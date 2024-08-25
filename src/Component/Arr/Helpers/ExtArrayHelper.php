@@ -12,7 +12,7 @@ use Yiisoft\Arrays\ArrayHelper;
 /**
  * Хэлпер для работы с массивами.
  */
-class ExtArrayHelper extends BaseArrayHelper
+class ExtArrayHelper //extends BaseArrayHelper
 {
 
     /**
@@ -77,6 +77,43 @@ class ExtArrayHelper extends BaseArrayHelper
         return $firstKey;
     }
 
+    public static function extractByKeys($array, $keys)
+    {
+        if (empty($keys)) {
+            return $array;
+        }
+        if (is_object($array)) {
+            $array = ArrayHelper::toArray($array);
+        }
+        $result = [];
+        foreach ($keys as $key) {
+            if (array_key_exists($key, $array)) {
+                $result[$key] = $array[$key];
+            }
+        }
+        return $result;
+    }
+
+    static function removeByValue($value, &$array)
+    {
+        $key = array_search($value, $array);
+        if ($key !== FALSE) {
+            unset($array[$key]);
+        }
+    }
+
+    static function recursiveIterator(array $array, $callback)
+    {
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
+                $array[$key] = self::recursiveIterator($value, $callback);
+            } else {
+                $array[$key] = call_user_func($callback, $value);//$callback($value);
+            }
+        }
+        return $array;
+    }
+
     /*public static function itemsToInt($array)
     {
         return self::prepareItems($array, 'intval');
@@ -101,23 +138,6 @@ class ExtArrayHelper extends BaseArrayHelper
         }
         return $result;
     }*/
-
-    public static function extractByKeys($array, $keys)
-    {
-        if (empty($keys)) {
-            return $array;
-        }
-        if (is_object($array)) {
-            $array = self::toArray($array);
-        }
-        $result = [];
-        foreach ($keys as $key) {
-            if (array_key_exists($key, $array)) {
-                $result[$key] = $array[$key];
-            }
-        }
-        return $result;
-    }
 
     /*
      * @param array $array
@@ -146,26 +166,6 @@ class ExtArrayHelper extends BaseArrayHelper
         }
         return $value;
     }*/
-
-    static function removeByValue($value, &$array)
-    {
-        $key = array_search($value, $array);
-        if ($key !== FALSE) {
-            unset($array[$key]);
-        }
-    }
-
-    static function recursiveIterator(array $array, $callback)
-    {
-        foreach ($array as $key => $value) {
-            if (is_array($value)) {
-                $array[$key] = self::recursiveIterator($value, $callback);
-            } else {
-                $array[$key] = call_user_func($callback, $value);//$callback($value);
-            }
-        }
-        return $array;
-    }
 
     /*public static function findAll(&$array, $condition)
     {
@@ -246,7 +246,7 @@ class ExtArrayHelper extends BaseArrayHelper
      */
     public static function add($array, $key, $value)
     {
-        if (is_null(static::getValue($array, $key))) {
+        if (is_null(ArrayPathHelper::getValue($array, $key))) {
             static::set($array, $key, $value);
         }
 
@@ -404,7 +404,7 @@ class ExtArrayHelper extends BaseArrayHelper
      *
      * @return bool
      */
-    public static function has($array, $key)
+    /*public static function has($array, $key)
     {
         if (!$array) {
             return false;
@@ -427,16 +427,31 @@ class ExtArrayHelper extends BaseArrayHelper
         }
 
         return true;
+    }*/
+
+    /**
+     * Checks whether a variable is an array or [[\Traversable]].
+     *
+     * This method does the same as the PHP function [is_array()](https://secure.php.net/manual/en/function.is-array.php)
+     * but additionally works on objects that implement the [[\Traversable]] interface.
+     * @param mixed $var The variable being evaluated.
+     * @return bool whether $var is array-like
+     * @see https://secure.php.net/manual/en/function.is-array.php
+     * @since 2.0.8
+     */
+    public static function isTraversable($var)
+    {
+        return is_array($var) || $var instanceof \Traversable;
     }
 
-    public static function getValue($array, $key, $default = null)
+    /*public static function getValue($array, $key, $default = null)
     {
         if ($key === null) {
             return $array;
         }
 
         return parent::getValue($array, $key, $default);
-    }
+    }*/
 
     /**
      * Return the first element in an array passing a given truth test.
@@ -540,7 +555,7 @@ class ExtArrayHelper extends BaseArrayHelper
         list($value, $key) = static::explodePluckParameters($value, $key);
 
         foreach ($array as $item) {
-            $itemValue = static::getValue($item, $value);
+            $itemValue = ArrayPathHelper::getValue($item, $value);
 
             // If the key is "null", we will just append the value to the array and keep
             // looping. Otherwise we will key the array using the value of the key we
@@ -548,7 +563,7 @@ class ExtArrayHelper extends BaseArrayHelper
             if (is_null($key)) {
                 $results[] = $itemValue;
             } else {
-                $itemKey = static::getValue($item, $key);
+                $itemKey = ArrayPathHelper::getValue($item, $key);
 
                 $results[$itemKey] = $itemValue;
             }
@@ -615,7 +630,7 @@ class ExtArrayHelper extends BaseArrayHelper
      */
     public static function pull(&$array, $key, $default = null)
     {
-        $value = static::getValue($array, $key, $default);
+        $value = ArrayPathHelper::getValue($array, $key, $default);
 
         static::forget($array, $key);
 

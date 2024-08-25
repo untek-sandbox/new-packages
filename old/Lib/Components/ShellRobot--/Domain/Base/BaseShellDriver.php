@@ -2,6 +2,7 @@
 
 namespace Untek\Lib\Components\ShellRobot\Domain\Base;
 
+use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
 use Untek\Lib\Components\ShellRobot\Domain\Factories\ShellFactory;
 use Untek\Framework\Console\Domain\Base\BaseShellNew;
@@ -79,13 +80,13 @@ abstract class BaseShellDriver
     protected static function getSudoCommandTemplate()
     {
         $connection = ShellFactory::getConnectionProcessor()->getCurrent();
-        return ExtArrayHelper::getValue($connection, 'sudo.commandTemplate', 'sudo {command}');
+        return ArrayPathHelper::getValue($connection, 'sudo.commandTemplate', 'sudo {command}');
     }
 
     protected static function getSudoCommandName(): string
     {
         $connection = ShellFactory::getConnectionProcessor()->getCurrent();
-        return ExtArrayHelper::getValue($connection, 'sudo.command', 'sudo');
+        return ArrayPathHelper::getValue($connection, 'sudo.command', 'sudo');
     }
 
     protected function stripSudo(string $command): string
