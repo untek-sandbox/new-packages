@@ -2,7 +2,6 @@
 
 namespace Untek\Component\Code\Libs;
 
-use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Text\Libs\RandomString;
 use Untek\Core\Contract\Common\Exceptions\InternalServerErrorException;
 use Yiisoft\Arrays\ArrayHelper;
@@ -95,7 +94,7 @@ class Benchmark
     public static function one(string $name, int $percision = 5): ?float
     {
         $all = self::allFlat($percision);
-        return ArrayPathHelper::getValue($all, $name);
+        return ArrayHelper::getValue($all, $name);
     }
 
     /**

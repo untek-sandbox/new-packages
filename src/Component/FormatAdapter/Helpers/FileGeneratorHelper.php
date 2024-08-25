@@ -2,8 +2,8 @@
 
 namespace Untek\Component\FormatAdapter\Helpers;
 
-use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\FileSystem\Helpers\FileStorageHelper;
+use Yiisoft\Arrays\ArrayHelper;
 
 class FileGeneratorHelper
 {
@@ -17,7 +17,7 @@ class FileGeneratorHelper
 
     private static function generateCode($data)
     {
-        $data['code'] = ArrayPathHelper::getValue($data, 'code');
+        $data['code'] = ArrayHelper::getValue($data, 'code');
         $data['code'] = trim($data['code'], PHP_EOL);
         $data['code'] = PHP_EOL . $data['code'];
         $code = self::getClassCodeTemplate();

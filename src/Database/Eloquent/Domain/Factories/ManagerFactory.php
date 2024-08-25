@@ -10,6 +10,7 @@ use Untek\Core\Container\Helpers\ContainerHelper;
 use Untek\Database\Base\Domain\Enums\DbDriverEnum;
 use Untek\Database\Base\Domain\Facades\DbFacade;
 use Untek\Database\Base\Domain\Libs\TableAlias;
+use Yiisoft\Arrays\ArrayHelper;
 
 class ManagerFactory
 {
@@ -65,7 +66,7 @@ class ManagerFactory
             if (!isset($connectionConfig['map'])) {
                 $connectionConfig['map'] = $configMap;
             }
-            $map = ArrayPathHelper::getValue($connectionConfig, 'map', []);
+            $map = ArrayHelper::getValue($connectionConfig, 'map', []);
             if (isset($connectionConfig['driver']) && $connectionConfig['driver'] !== DbDriverEnum::PGSQL) {
                 foreach ($map as $from => &$to) {
                     $to = str_replace('.', '_', $to);

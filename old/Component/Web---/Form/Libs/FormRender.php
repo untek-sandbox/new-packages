@@ -4,7 +4,6 @@ namespace Untek\Component\Web\Form\Libs;
 
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
-use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Text\Helpers\TemplateHelper;
 use Untek\Component\Web\Form\Libs\Renders\BaseRender;
 use Untek\Component\Web\Form\Libs\Renders\ButtonRender;
@@ -48,7 +47,7 @@ class FormRender
     {
         /** @var FormView $child */
         foreach ($formView->children as $child) {
-            if(ArrayPathHelper::getValue($child->vars, 'type') == 'file') {
+            if(ArrayHelper::getValue($child->vars, 'type') == 'file') {
                 $this->addFormOption('enctype', 'multipart/form-data');
             }
         }

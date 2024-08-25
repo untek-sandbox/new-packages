@@ -4,6 +4,7 @@ namespace Untek\Kaz\Egov\Qr\Libs;
 
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Core\Collection\Libs\Collection;
+use Yiisoft\Arrays\ArrayHelper;
 
 class ClassEncoder
 {
@@ -17,7 +18,7 @@ class ClassEncoder
 
     private function encoderToClass(string $name)
     {
-        return ArrayPathHelper::getValue($this->assoc, $name);
+        return ArrayHelper::getValue($this->assoc, $name);
     }
 
     public function encodersToClasses(array $names): CollectionEncoder

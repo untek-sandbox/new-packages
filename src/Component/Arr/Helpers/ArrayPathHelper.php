@@ -50,8 +50,6 @@ class ArrayPathHelper
             return $array;
         }
 
-//        return Arr::get($array, $key, $default);
-
         if ($key instanceof \Closure) {
             return $key($array, $default);
         }

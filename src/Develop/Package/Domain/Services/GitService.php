@@ -4,7 +4,6 @@ namespace Untek\Develop\Package\Domain\Services;
 
 //use Illuminate\Support\Arr;
 use Illuminate\Support\Arr;
-use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Develop\Package\Domain\Entities\CommitEntity;
 use Untek\Develop\Package\Domain\Entities\PackageEntity;
@@ -13,6 +12,7 @@ use Untek\Develop\Package\Domain\Interfaces\Repositories\GitRepositoryInterface;
 use Untek\Develop\Package\Domain\Interfaces\Services\GitServiceInterface;
 use Untek\Develop\Package\Domain\Interfaces\Services\PackageServiceInterface;
 use Untek\Develop\Package\Domain\Libs\GitShell;
+use Yiisoft\Arrays\ArrayHelper;
 
 //use Untek\Model\Service\Base\BaseService;
 
@@ -74,7 +74,7 @@ class GitService extends BaseService implements GitServiceInterface
 
         $commitTagMap = [];
         foreach ($commitShaMap as $commitSha => $commitOrder) {
-            $tagOrder = ArrayPathHelper::getValue($tagShaMap, $commitSha);
+            $tagOrder = ArrayHelper::getValue($tagShaMap, $commitSha);
             $commitTagMap[$commitOrder] = $tagOrder;
         }
 

@@ -4,8 +4,8 @@ namespace Untek\Component\Code\Helpers;
 
 use Composer\Autoload\ClassLoader;
 use Illuminate\Support\Arr;
-use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Code\Exceptions\NotFoundDependencyException;
+use Yiisoft\Arrays\ArrayHelper;
 
 /**
  * Работа с Composer
@@ -124,7 +124,7 @@ class ComposerHelper
         for ($i = 0; $i <= count($pathItems) - 1; $i++) {
             $prependPath .= $pathItems[$i] . '\\';
             unset($pathItems1[$i]);
-            $dirs = ArrayPathHelper::getValue($autoloadPsr4, $prependPath);
+            $dirs = ArrayHelper::getValue($autoloadPsr4, $prependPath);
 //            dump($prependPath, $dirs);
             if ($dirs) {
                 foreach ($dirs as $dir) {
