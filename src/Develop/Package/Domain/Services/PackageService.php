@@ -9,8 +9,12 @@ use Untek\Develop\Package\Domain\Interfaces\Services\PackageServiceInterface;
 class PackageService extends BaseCrudService implements PackageServiceInterface
 {
 
-    public function __construct(PackageRepositoryInterface $repository)
+    public function __construct(private PackageRepositoryInterface $repository)
     {
-        $this->setRepository($repository);
+    }
+
+    public function findAll()
+    {
+        return $this->repository->findAll();
     }
 }

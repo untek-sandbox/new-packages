@@ -11,6 +11,7 @@ use ErrorException;
 use Symfony\Component\Filesystem\Filesystem;
 use Untek\Core\Contract\Common\Exceptions\InvalidArgumentException;
 use Yiisoft\Strings\StringHelper;
+use Yiisoft\Strings\WildcardPattern;
 
 /**
  * BaseFileHelper provides concrete implementation for [[FileHelper]].
@@ -552,12 +553,12 @@ class FileHelper
             }
         }
 
-        $matchOptions = [];
+        $wildcardPattern = new WildcardPattern($pattern);
         if ($flags & self::PATTERN_CASE_INSENSITIVE) {
-            $matchOptions['caseSensitive'] = false;
+            $wildcardPattern->ignoreCase(true);
         }
 
-        return StringHelper::matchWildcard($pattern, $baseName, $matchOptions);
+        return $wildcardPattern->match($baseName);
     }
 
     /**
@@ -606,14 +607,12 @@ class FileHelper
             }
         }
 
-        $matchOptions = [
-            'filePath' => true
-        ];
+        $wildcardPattern = new WildcardPattern($pattern);
         if ($flags & self::PATTERN_CASE_INSENSITIVE) {
-            $matchOptions['caseSensitive'] = false;
+            $wildcardPattern->ignoreCase(true);
         }
 
-        return StringHelper::matchWildcard($pattern, $name, $matchOptions);
+        return $wildcardPattern->match($name);
     }
 
     /**
