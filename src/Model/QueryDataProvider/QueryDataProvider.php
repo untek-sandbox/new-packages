@@ -5,12 +5,12 @@ namespace Untek\Model\QueryDataProvider;
 use Untek\Model\DataProvider\Dto\CollectionData;
 use Untek\Model\DataProvider\Dto\PageResponse;
 use Untek\Model\DataProvider\Helpers\DataProviderHelper;
-use Untek\Model\QueryDataProvider\Interfaces\DataProviderWithQueryInterface;
+use Untek\Model\QueryDataProvider\Interfaces\QueryDataProviderInterface;
 
 class QueryDataProvider
 {
 
-    public function __construct(private DataProviderWithQueryInterface $repository)
+    public function __construct(private QueryDataProviderInterface $repository)
     {
     }
 

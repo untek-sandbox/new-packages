@@ -2,7 +2,7 @@
 
 namespace Untek\Model\QueryDataProvider\Interfaces;
 
-interface DataProviderWithQueryInterface
+interface QueryDataProviderInterface
 {
 
     public function countByQuery(object $query): int;

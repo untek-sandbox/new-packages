@@ -12,7 +12,7 @@ use Untek\Model\DataProvider\Interfaces\SortQueryInterface;
 
 // todo: убрать зависимость от Eloquent или переместить в пакет Eloquent
 
-trait DataProviderRepositoryTrait
+trait QueryDataProviderEloquentRepositoryTrait
 {
 
     public function countByQuery(object $query): int
