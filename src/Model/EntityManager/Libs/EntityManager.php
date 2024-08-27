@@ -6,14 +6,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Psr\Container\ContainerInterface;
 use Untek\Component\Dev\Helpers\DeprecateHelper;
-use Untek\Component\I18Next\Facades\I18Next;
 use Untek\Core\Container\Interfaces\ContainerConfiguratorInterface;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
 use Untek\Core\Contract\Common\Exceptions\InvalidMethodParameterException;
 use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Model\Entity\Helpers\EntityHelper;
-use Untek\Model\Entity\Interfaces\EntityIdInterface;
-use Untek\Model\Entity\Interfaces\UniqueInterface;
 use Untek\Model\EntityManager\Interfaces\EntityManagerConfiguratorInterface;
 use Untek\Model\EntityManager\Interfaces\EntityManagerInterface;
 use Untek\Model\EntityManager\Interfaces\OrmInterface;
@@ -127,7 +124,7 @@ class EntityManager implements EntityManagerInterface
 
     public function persistViaRepository(object $entity, object $repository): void
     {
-        $isUniqueDefined = $entity instanceof UniqueInterface && $entity->unique();
+        /*$isUniqueDefined = $entity instanceof UniqueInterface && $entity->unique();
 
         if ($isUniqueDefined) {
             try {
@@ -135,7 +132,7 @@ class EntityManager implements EntityManagerInterface
                 $entity->setId($uniqueEntity->getId());
             } catch (NotFoundException $e) {
             }
-        }
+        }*/
         if ($entity->getId() == null) {
             $repository->create($entity);
         } else {
@@ -145,9 +142,6 @@ class EntityManager implements EntityManagerInterface
 
     protected function checkUniqueExist(object $entity)
     {
-        if (!$entity instanceof UniqueInterface) {
-            return;
-        }
         try {
             $uniqueEntity = $this->findOneByUnique($entity);
             foreach ($entity->unique() as $group) {
@@ -162,7 +156,7 @@ class EntityManager implements EntityManagerInterface
                     }
                 }
                 if ($isMach) {
-                    $message = I18Next::t('core', 'domain.message.entity_already_exist');
+                    $message = 'domain.message.entity_already_exist';
                     $alreadyExistsException = new AlreadyExistsException($message);
                     $alreadyExistsException->setEntity($uniqueEntity);
                     $alreadyExistsException->setFields($fields);
@@ -198,7 +192,7 @@ class EntityManager implements EntityManagerInterface
         $repository->update($entity);
     }
 
-    public function findOneByUnique(object $entity): EntityIdInterface
+    public function findOneByUnique(object $entity): object
     {
         $entityClass = get_class($entity);
         $repository = $this->getRepository($entityClass);

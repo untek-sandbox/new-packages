@@ -5,11 +5,9 @@ namespace Untek\Component\Web\Menu\Domain\Entities;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Untek\Model\Validator\Interfaces\ValidationByMetadataInterface;
 use Untek\Core\Collection\Helpers\CollectionHelper;
-use Untek\Model\Entity\Interfaces\EntityIdInterface;
 
-class MenuEntity //implements ValidationByMetadataInterface, EntityIdInterface
+class MenuEntity
 {
 
     private $id = null;

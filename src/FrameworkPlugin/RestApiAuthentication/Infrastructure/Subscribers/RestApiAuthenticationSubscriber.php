@@ -10,8 +10,8 @@ use Symfony\Component\Security\Core\Authentication\Token\NullToken;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
-use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\FrameworkPlugin\RestApiAuthentication\Infrastructure\Token\ApiToken;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\User\Authentication\Domain\Interfaces\Repositories\IdentityRepositoryInterface;
 use Untek\User\Authentication\Domain\Interfaces\Services\TokenServiceInterface;
 

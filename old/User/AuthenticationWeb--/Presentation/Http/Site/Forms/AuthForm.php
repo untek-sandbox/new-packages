@@ -9,10 +9,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Untek\Model\Validator\Interfaces\ValidationByMetadataInterface;
 use Untek\Component\Web\Form\Interfaces\BuildFormInterface;
 
-class AuthForm implements ValidationByMetadataInterface, BuildFormInterface
+class AuthForm implements BuildFormInterface
 {
 
     private $login;

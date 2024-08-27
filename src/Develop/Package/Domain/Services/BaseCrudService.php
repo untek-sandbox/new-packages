@@ -2,7 +2,6 @@
 
 namespace Untek\Develop\Package\Domain\Services;
 
-use Untek\Model\Entity\Interfaces\EntityIdInterface;
 use Untek\Model\QueryFilter\Interfaces\ForgeQueryByFilterInterface;
 use Untek\Model\Repository\Interfaces\CrudRepositoryInterface;
 use Untek\Model\Service\Interfaces\CrudServiceInterface;

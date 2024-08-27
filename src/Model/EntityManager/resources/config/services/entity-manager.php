@@ -6,7 +6,6 @@ use Untek\Model\EntityManager\Interfaces\EntityManagerConfiguratorInterface;
 use Untek\Model\EntityManager\Interfaces\EntityManagerInterface;
 use Untek\Model\EntityManager\Libs\EntityManager;
 use Untek\Model\EntityManager\Libs\EntityManagerConfigurator;
-
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 return static function (ContainerConfigurator $configurator): void {

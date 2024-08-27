@@ -3,11 +3,8 @@
 namespace Untek\Model\EntityManager\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
-use Untek\Model\Entity\Interfaces\EntityIdInterface;
-use Untek\Model\Repository\Interfaces\FindOneUniqueInterface;
-use Untek\Model\Repository\Interfaces\RepositoryInterface;
 
-interface EntityManagerInterface extends TransactionInterface//, FindOneUniqueInterface
+interface EntityManagerInterface extends TransactionInterface
 {
 
     public function getRepository(string $entityClass): object;

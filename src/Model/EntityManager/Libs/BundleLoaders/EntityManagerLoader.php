@@ -2,9 +2,12 @@
 
 namespace Untek\Model\EntityManager\Libs\BundleLoaders;
 
+use Untek\Component\Dev\Helpers\DeprecateHelper;
 use Untek\Core\Bundle\Base\BaseLoader;
 use Untek\Core\Instance\Libs\Resolvers\MethodParametersResolver;
 use Untek\Model\EntityManager\Interfaces\EntityManagerConfiguratorInterface;
+
+DeprecateHelper::hardThrow();
 
 /**
  * Загрузчик конфигурации менеджера сущностей

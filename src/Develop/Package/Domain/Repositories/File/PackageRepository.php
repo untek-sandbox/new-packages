@@ -10,7 +10,6 @@ use Untek\Develop\Package\Domain\Entities\ConfigEntity;
 use Untek\Develop\Package\Domain\Entities\GroupEntity;
 use Untek\Develop\Package\Domain\Entities\PackageEntity;
 use Untek\Develop\Package\Domain\Interfaces\Repositories\PackageRepositoryInterface;
-use Untek\Model\Entity\Interfaces\EntityIdInterface;
 
 class PackageRepository implements PackageRepositoryInterface
 {
@@ -120,12 +119,12 @@ class PackageRepository implements PackageRepositoryInterface
         return count($this->findAll($query));
     }
 
-    public function findOneById($id, Query $query = null): EntityIdInterface
+    public function findOneById($id, Query $query = null): object
     {
         // TODO: Implement findOneById() method.
     }
 
-    /*public function findOneById($id, Query $query = null): EntityIdInterface
+    /*public function findOneById($id, Query $query = null): object
     {
         // TODO: Implement findOneById() method.
     }*/

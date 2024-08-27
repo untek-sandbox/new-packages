@@ -5,9 +5,6 @@ namespace Untek\User\Authentication\Domain\Entities;
 use DateTime;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Untek\Model\Entity\Interfaces\EntityIdInterface;
-use Untek\Model\Entity\Interfaces\UniqueInterface;
-use Untek\Model\Validator\Interfaces\ValidationByMetadataInterface;
 
 class CredentialEntity
 {

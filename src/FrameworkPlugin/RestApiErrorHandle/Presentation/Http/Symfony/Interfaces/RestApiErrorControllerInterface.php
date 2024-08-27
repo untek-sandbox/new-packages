@@ -9,6 +9,5 @@ use Throwable;
 interface RestApiErrorControllerInterface
 {
 
-
     public function handleError(Request $request, Throwable $exception): Response;
 }

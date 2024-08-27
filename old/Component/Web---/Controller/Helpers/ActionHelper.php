@@ -6,7 +6,6 @@ use Untek\Component\I18Next\Facades\I18Next;
 use Untek\Component\Web\Html\Helpers\Html;
 use Untek\Component\Web\Html\Helpers\Url;
 use Untek\Lib\Components\Status\Enums\StatusEnum;
-use Untek\Model\Entity\Interfaces\EntityIdInterface;
 use Yiisoft\Arrays\ArrayHelper;
 
 class ActionHelper
@@ -15,7 +14,7 @@ class ActionHelper
     const TYPE_LINK = 'link';
     const TYPE_BUTTON = 'button';
 
-    public static function getUpdateActionOptions(EntityIdInterface $entity, string $baseUrl) {
+    public static function getUpdateActionOptions(object $entity, string $baseUrl) {
         $options['href'] = Url::to([$baseUrl . '/update', 'id' => $entity->getId()]);
         $options['type'] = 'primary';
         $options['title'] = I18Next::t('core', 'action.update');
@@ -23,7 +22,7 @@ class ActionHelper
         return $options;
     }
 
-    public static function getRestoreActionOptions(EntityIdInterface $entity, string $baseUrl) {
+    public static function getRestoreActionOptions(object $entity, string $baseUrl) {
         $options['confirm'] = I18Next::t('web', 'message.restore_confirm');
         $options['type'] = 'success';
         $options['href'] = Url::to([$baseUrl . '/restore', 'id' => $entity->getId()]);
@@ -32,7 +31,7 @@ class ActionHelper
         return $options;
     }
 
-    public static function getDeleteActionOptions(EntityIdInterface $entity, string $baseUrl) {
+    public static function getDeleteActionOptions(object $entity, string $baseUrl) {
         $options['confirm'] = I18Next::t('web', 'message.delete_confirm');
         $options['type'] = 'danger';
         $options['href'] = Url::to([$baseUrl . '/delete', 'id' => $entity->getId()]);
@@ -41,13 +40,13 @@ class ActionHelper
         return $options;
     }
 
-    public static function generateAction(EntityIdInterface $entity, string $baseUrl, string $action, string $type) {
+    public static function generateAction(object $entity, string $baseUrl, string $action, string $type) {
         $methodName = "get{$action}ActionOptions";
         $options = call_user_func_array([self::class, $methodName], [$entity, $baseUrl]);
         return self::generate($options, $type);
     }
 
-    public static function generateRestoreOrDeleteAction(EntityIdInterface $entity, string $baseUrl, string $type, array $extraOptions = []) {
+    public static function generateRestoreOrDeleteAction(object $entity, string $baseUrl, string $type, array $extraOptions = []) {
         if($entity->getStatusId() === StatusEnum::DELETED) {
             return self::generateRestoreAction($entity, $baseUrl, $type, $extraOptions);
         } else {
@@ -55,19 +54,19 @@ class ActionHelper
         }
     }
 
-    public static function generateUpdateAction(EntityIdInterface $entity, string $baseUrl, string $type, array $extraOptions = []) {
+    public static function generateUpdateAction(object $entity, string $baseUrl, string $type, array $extraOptions = []) {
         $options = self::getUpdateActionOptions($entity, $baseUrl);
         $options = ArrayHelper::merge($options, $extraOptions);
         return self::generate($options, $type);
     }
 
-    public static function generateRestoreAction(EntityIdInterface $entity, string $baseUrl, string $type, array $extraOptions = []) {
+    public static function generateRestoreAction(object $entity, string $baseUrl, string $type, array $extraOptions = []) {
         $options = self::getRestoreActionOptions($entity, $baseUrl);
         $options = ArrayHelper::merge($options, $extraOptions);
         return self::generate($options, $type);
     }
 
-    public static function generateDeleteAction(EntityIdInterface $entity, string $baseUrl, string $type, array $extraOptions = []) {
+    public static function generateDeleteAction(object $entity, string $baseUrl, string $type, array $extraOptions = []) {
         $options = self::getDeleteActionOptions($entity, $baseUrl);
         $options = ArrayHelper::merge($options, $extraOptions);
         return self::generate($options, $type);

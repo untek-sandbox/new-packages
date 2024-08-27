@@ -2,12 +2,10 @@
 
 namespace Untek\Model\EntityManager\DependencyInjection;
 
-use ReflectionMethod;
+use Doctrine\Persistence\ObjectRepository;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Untek\Component\Cqrs\Application\Services\CommandBusConfiguratorInterface;
 use Untek\Model\EntityManager\Interfaces\EntityManagerConfiguratorInterface;
-use Doctrine\Persistence\ObjectRepository;
 
 // todo: задокументировать декларацию репозиториев
 

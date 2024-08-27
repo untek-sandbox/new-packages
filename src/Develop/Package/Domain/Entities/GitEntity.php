@@ -2,9 +2,7 @@
 
 namespace Untek\Develop\Package\Domain\Entities;
 
-use Untek\Model\Entity\Interfaces\EntityIdInterface;
-
-class GitEntity //implements EntityIdInterface
+class GitEntity
 {
 
     private $id;

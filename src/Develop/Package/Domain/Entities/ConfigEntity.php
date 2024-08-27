@@ -6,10 +6,8 @@ use Illuminate\Support\Arr;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
-use Untek\Model\Entity\Interfaces\EntityIdInterface;
-use Untek\Model\Validator\Interfaces\ValidationByMetadataInterface;
 
-class ConfigEntity //implements ValidationByMetadataInterface, EntityIdInterface
+class ConfigEntity
 {
 
     private $id = null;

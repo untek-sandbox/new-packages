@@ -4,7 +4,6 @@ namespace Untek\Develop\Package\Domain\Repositories\File;
 
 use Untek\Component\FormatAdapter\StoreFile;
 use Untek\Develop\Package\Domain\Entities\GroupEntity;
-use Untek\Model\Entity\Interfaces\EntityIdInterface;
 use Untek\Model\Repository\Interfaces\ReadRepositoryInterface;
 use Untek\Persistence\Normalizer\Traits\NormalizerTrait;
 
@@ -39,7 +38,7 @@ class GroupRepository //implements ReadRepositoryInterface
         return $collection->count();
     }
 
-    public function findOneById($id, Query $query = null): EntityIdInterface
+    public function findOneById($id, Query $query = null): object
     {
         // TODO: Implement findOneById() method.
     }
