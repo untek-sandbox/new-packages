@@ -18,6 +18,44 @@ class CollectionHelper
 {
 
     /**
+     * Преобразовать коллекцию в индексированный массив.
+     *
+     * @param Collection $collection Исходная коллекция
+     * @param string $fieldName Имя поля для индекса (должно быть уникальным)
+     * @return array
+     */
+    public static function indexing(Collection|array $collection, string $fieldName): array
+    {
+        $array = [];
+        foreach ($collection as $item) {
+            $pkValue = PropertyHelper::getValue($item, $fieldName);
+            $array[$pkValue] = $item;
+        }
+        return $array;
+    }
+
+    /**
+     * Получить массив значений одного атрибута.
+     *
+     * @param Collection $collection Исходная коллекция
+     * @param string $key Имя атрибута
+     * @return array Массив значений атрибута
+     */
+    public static function getColumn(Collection|array $collection, string $key): array
+    {
+        $array = [];
+        foreach ($collection as $entity) {
+            $array[] = PropertyHelper::getValue($entity, $key);
+        }
+        $array = array_values($array);
+        return $array;
+    }
+
+
+
+
+
+    /**
      * Фильтрация коллекции по условию.
      *
      * @param Collection $collection
@@ -89,25 +127,6 @@ class CollectionHelper
     }
 
     /**
-     * Преобразовать коллекцию в индексированный массив.
-     *
-     * @param Collection $collection Исходная коллекция
-     * @param string $fieldName Имя поля для индекса (должно быть уникальным)
-     * @return array
-     */
-    public static function indexing(Collection|array $collection, string $fieldName): array
-    {
-//        DeprecateHelper::hardThrow();
-
-        $array = [];
-        foreach ($collection as $item) {
-            $pkValue = PropertyHelper::getValue($item, $fieldName);
-            $array[$pkValue] = $item;
-        }
-        return $array;
-    }
-
-    /**
      * Создать коллекцию сущностей.
      *
      * @param string $entityClass Имя класса сущности
@@ -153,22 +172,5 @@ class CollectionHelper
         };
         $normalizeCollection = $collection->map($normalizeHandler);
         return $normalizeCollection->toArray();
-    }
-
-    /**
-     * Получить массив значений одного атрибута.
-     *
-     * @param Collection $collection Исходная коллекция
-     * @param string $key Имя атрибута
-     * @return array Массив значений атрибута
-     */
-    public static function getColumn(Collection|array $collection, string $key): array
-    {
-        $array = [];
-        foreach ($collection as $entity) {
-            $array[] = PropertyHelper::getValue($entity, $key);
-        }
-        $array = array_values($array);
-        return $array;
     }
 }

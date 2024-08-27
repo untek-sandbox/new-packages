@@ -1,11 +1,11 @@
 <?php
 
-namespace Untek\Model\DataProvider;
+namespace Untek\Model\QueryDataProvider;
 
 use Untek\Model\DataProvider\Dto\CollectionData;
 use Untek\Model\DataProvider\Dto\PageResponse;
 use Untek\Model\DataProvider\Helpers\DataProviderHelper;
-use Untek\Model\DataProvider\Interfaces\DataProviderWithQueryInterface;
+use Untek\Model\QueryDataProvider\Interfaces\DataProviderWithQueryInterface;
 
 class QueryDataProvider
 {

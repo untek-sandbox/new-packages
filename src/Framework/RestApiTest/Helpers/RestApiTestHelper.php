@@ -4,7 +4,7 @@ namespace Untek\Framework\RestApiTest\Helpers;
 
 use Symfony\Component\HttpFoundation\Response;
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
-use Untek\Develop\Test\TestHelper;
+use Untek\Develop\Debug\DataDumper;
 use Yiisoft\Arrays\ArrayHelper;
 
 class RestApiTestHelper
@@ -16,7 +16,7 @@ class RestApiTestHelper
         if ($path) {
             $data = ArrayPathHelper::getValue($data, $path);
         }
-        TestHelper::printData($data, $format);
+        DataDumper::print($data, $format);
     }
 
     public static function extractHeaders(Response $response): array

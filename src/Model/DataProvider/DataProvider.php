@@ -3,16 +3,11 @@
 namespace Untek\Model\DataProvider;
 
 use Doctrine\Persistence\ObjectRepository;
-use Untek\Persistence\Contract\Exceptions\NotFoundException;
-use Untek\Persistence\Contract\Interfaces\RepositoryCountByInterface;
 use Untek\Model\DataProvider\Dto\CollectionData;
 use Untek\Model\DataProvider\Dto\PageResponse;
-use Untek\Model\DataProvider\Exceptions\GreaterMaxPageException;
 use Untek\Model\DataProvider\Helpers\DataProviderHelper;
-use Untek\Model\DataProvider\Interfaces\ExpandQueryInterface;
-use Untek\Model\DataProvider\Interfaces\FilterQueryInterface;
-use Untek\Model\DataProvider\Interfaces\PageQueryInterface;
-use Untek\Model\DataProvider\Interfaces\SortQueryInterface;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
+use Untek\Persistence\Contract\Interfaces\RepositoryCountByInterface;
 
 class DataProvider
 {
@@ -40,11 +35,6 @@ class DataProvider
         $count = $this->repository->countBy($queryParameters->getCriteria());
 
         $pageCount = DataProviderHelper::getPageCount($queryParameters->getLimit(), $count);
-
-        /*if ($pageNumber > $pageCount) {
-            $message = "This value should be less than or equal to {$pageCount}.";
-            throw new GreaterMaxPageException($message);
-        }*/
 
         $page = new PageResponse();
         $page->setPageSize($queryParameters->getLimit());

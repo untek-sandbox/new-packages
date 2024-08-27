@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Model\DataProvider\Interfaces;
+namespace Untek\Model\QueryDataProvider\Interfaces;
 
 interface DataProviderWithQueryInterface
 {

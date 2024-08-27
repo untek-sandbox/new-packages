@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Model\DataProvider\Traits;
+namespace Untek\Model\QueryDataProvider\Traits;
 
 use Illuminate\Database\Query\Builder;
 use Untek\Database\Eloquent\Infrastructure\Helpers\QueryBuilder\EloquentQueryBuilderHelper;
@@ -14,16 +14,6 @@ use Untek\Model\DataProvider\Interfaces\SortQueryInterface;
 
 trait DataProviderRepositoryTrait
 {
-
-    protected function addConditionInQueryBuilder(object $query, Builder $queryBuilder): void
-    {
-        if($query instanceof FilterQueryInterface) {
-            $criteria = $query->getFilter();
-        } else {
-            $criteria = [];
-        }
-        EloquentQueryBuilderHelper::setWhere($criteria, $queryBuilder);
-    }
 
     public function countByQuery(object $query): int
     {
@@ -68,5 +58,15 @@ trait DataProviderRepositoryTrait
         }
         $offset = DataProviderHelper::calculateOffset($query);
         return $this->makeFindQueryBuilder([], $orderBy, $limit, $offset);
+    }
+
+    protected function addConditionInQueryBuilder(object $query, Builder $queryBuilder): void
+    {
+        if($query instanceof FilterQueryInterface) {
+            $criteria = $query->getFilter();
+        } else {
+            $criteria = [];
+        }
+        EloquentQueryBuilderHelper::setWhere($criteria, $queryBuilder);
     }
 }

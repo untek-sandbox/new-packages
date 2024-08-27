@@ -2,7 +2,6 @@
 
 namespace Untek\Core\Instance\Helpers;
 
-use Illuminate\Container\Container;
 use Psr\Container\ContainerInterface;
 use Untek\Core\Contract\Common\Exceptions\InvalidArgumentException;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
