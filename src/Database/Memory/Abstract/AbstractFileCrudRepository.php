@@ -11,10 +11,11 @@ abstract class AbstractFileCrudRepository extends AbstractMemoryCrudRepository
     {
     }
 
-    protected function loadCollection(): void {
-        if(empty($this->collection)) {
+    protected function loadCollection(): void
+    {
+        if (empty($this->collection)) {
             $items = $this->getStoreFile()->load();
-            if($items) {
+            if ($items) {
                 foreach ($items as $item) {
                     $this->collection[] = $this->denormalize($item);
                 }
@@ -22,7 +23,8 @@ abstract class AbstractFileCrudRepository extends AbstractMemoryCrudRepository
         }
     }
 
-    protected function dumpCollection(): void {
+    protected function dumpCollection(): void
+    {
         $itemsRaw = [];
         foreach ($this->collection as $entity) {
             $itemsRaw[] = $this->normalize($entity);
@@ -30,7 +32,8 @@ abstract class AbstractFileCrudRepository extends AbstractMemoryCrudRepository
         $this->getStoreFile()->save($itemsRaw);
     }
 
-    protected function getStoreFile(): StoreFile {
+    protected function getStoreFile(): StoreFile
+    {
         return new StoreFile($this->fileName);
     }
 }

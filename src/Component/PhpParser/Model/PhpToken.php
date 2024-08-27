@@ -1,8 +1,8 @@
 <?php
 
-namespace Untek\Component\Code\Entities;
+namespace Untek\Component\PhpParser\Model;
 
-class PhpTokenEntity
+class PhpToken
 {
 
     private $id;

@@ -2,7 +2,7 @@
 
 namespace Untek\Develop\Package\Domain\Libs\Deps;
 
-use Untek\Component\Code\Entities\PhpTokenEntity;
+use Untek\Component\PhpParser\Model\PhpToken;
 use Untek\Core\Instance\Helpers\ClassHelper;
 
 class PhpUsesParser
@@ -56,7 +56,7 @@ class PhpUsesParser
         return $uses;
     }
 
-    private function isInClass(PhpTokenEntity $tokenEntity)
+    private function isInClass(PhpToken $tokenEntity)
     {
         static $isClass = false;
         if (!$isClass && $tokenEntity->getName() == 'T_CLASS') {

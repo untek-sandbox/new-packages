@@ -2,9 +2,9 @@
 
 namespace Untek\Develop\Package\Domain\Libs\Deps;
 
-use Untek\Component\Code\Helpers\PhpTokenHelper;
-use Untek\Core\Instance\Helpers\ClassHelper;
+use Untek\Component\PhpParser\Helpers\PhpTokenHelper;
 use Untek\Component\Text\Helpers\TextHelper;
+use Untek\Core\Instance\Helpers\ClassHelper;
 
 class PhpClassNameInQuotedStringParser
 {

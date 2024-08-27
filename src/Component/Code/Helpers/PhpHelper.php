@@ -3,7 +3,6 @@
 namespace Untek\Component\Code\Helpers;
 
 use Symfony\Component\Filesystem\Path;
-use Untek\Component\FileSystem\Helpers\FilePathHelper;
 
 class PhpHelper
 {
@@ -19,9 +18,9 @@ class PhpHelper
      */
     public static function isValidPhpVariableName($name)
     {
-        return (bool) preg_match('/^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*$/', $name, $matches);
+        return (bool)preg_match('/^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*$/', $name, $matches);
     }
-    
+
     /**
      * Проверяет, зарезервированно ли имя в PHP.
      *

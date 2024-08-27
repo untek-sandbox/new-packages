@@ -7,7 +7,6 @@ use Illuminate\Support\Arr;
 use Throwable;
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Code\Factories\PropertyAccess;
-use Untek\Lib\Components\DynamicEntity\Interfaces\DynamicEntityAttributesInterface;
 use Yiisoft\Arrays\ArrayHelper;
 use Yiisoft\Strings\Inflector;
 
@@ -19,18 +18,18 @@ class PropertyHelper
 
     public static function mergeObjects(object $sourceObject, object $targetObject): void
     {
-        $sourceData = PropertyHelper::toArray($sourceObject);
-        PropertyHelper::setAttributes($targetObject, $sourceData);
+        $sourceData = self::toArray($sourceObject);
+        self::setAttributes($targetObject, $sourceData);
     }
 
-    public static function createObject($className, array $attributes = []): object
+    /*public static function createObject($className, array $attributes = []): object
     {
         $entityInstance = ClassHelper::createObject($className);
         if ($attributes) {
-            \Untek\Core\Instance\Helpers\PropertyHelper::setAttributes($entityInstance, $attributes);
+            self::setAttributes($entityInstance, $attributes);
         }
         return $entityInstance;
-    }
+    }*/
 
     public static function toArray($entity, bool $recursive = false): array
     {
@@ -161,11 +160,11 @@ class PropertyHelper
      * @param string $name
      * @return bool
      */
-    public static function isWritableAttribute(object $entity, string $name): bool
+    /*public static function isWritableAttribute(object $entity, string $name): bool
     {
         $propertyAccessor = PropertyAccess::createPropertyAccessor();
         return $propertyAccessor->isWritable($entity, $name);
-    }
+    }*/
 
     /**
      * Проверяет, доступен ли атрибут для чтения.
@@ -174,9 +173,9 @@ class PropertyHelper
      * @param string $name
      * @return bool
      */
-    public static function isReadableAttribute(object $entity, string $name): bool
+    /*public static function isReadableAttribute(object $entity, string $name): bool
     {
         $propertyAccessor = PropertyAccess::createPropertyAccessor();
         return $propertyAccessor->isReadable($entity, $name);
-    }
+    }*/
 }

@@ -3,9 +3,6 @@
 namespace Untek\Develop\Package\Domain\Libs\Deps;
 
 use Untek\Component\Code\Helpers\PhpHelper;
-use Untek\Component\Code\Helpers\PhpTokenHelper;
-use Untek\Core\Instance\Helpers\ClassHelper;
-use Untek\Component\Text\Helpers\TextHelper;
 
 class PhpNameParser
 {
@@ -26,8 +23,8 @@ class PhpNameParser
         $names = [];
         foreach ($matches[0] as $item) {
             $isValidName = preg_match('/[a-z0-9_\\\\]+/i', $item);
-            $isAllow = ! PhpHelper::isReservedName($item);
-            if($isValidName && $isAllow) {
+            $isAllow = !PhpHelper::isReservedName($item);
+            if ($isValidName && $isAllow) {
                 $names[] = $item;
             }
         }

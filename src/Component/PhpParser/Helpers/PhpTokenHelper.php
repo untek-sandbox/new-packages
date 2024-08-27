@@ -1,17 +1,17 @@
 <?php
 
-namespace Untek\Component\Code\Helpers;
+namespace Untek\Component\PhpParser\Helpers;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Untek\Component\Code\Entities\PhpTokenEntity;
+use Untek\Component\PhpParser\Model\PhpToken;
 
 class PhpTokenHelper
 {
 
     /**
      * @param string $code
-     * @return Collection | PhpTokenEntity[]
+     * @return Collection | PhpToken[]
      */
     public static function getTokens(string $code): Collection
     {
@@ -20,7 +20,7 @@ class PhpTokenHelper
         foreach ($tokens as &$token) {
             $tokenTypeId = is_array($token) ? $token[0] : 262;
             $tokenCode = is_array($token) ? $token[1] : $token;
-            $tokenEntity = new PhpTokenEntity();
+            $tokenEntity = new PhpToken();
             $tokenEntity->setId($tokenTypeId);
             $tokenEntity->setName(token_name($tokenTypeId));
             $tokenEntity->setData($tokenCode);

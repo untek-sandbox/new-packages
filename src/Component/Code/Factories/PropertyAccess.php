@@ -10,8 +10,6 @@ use Symfony\Component\PropertyAccess\PropertyAccessorBuilder;
 class PropertyAccess
 {
 
-    private static PropertyAccessorBuilder $builder;
-    private static AdapterInterface $adapter;
     private static PropertyAccessor $accessor;
 
     public static function createPropertyAccessor(): PropertyAccessor

@@ -10,7 +10,7 @@ class TypeHelper
 
     /**
      * Проверяет, является ли значение бинарным.
-     * 
+     *
      * @param $str
      * @return bool
      */
@@ -22,7 +22,7 @@ class TypeHelper
 
     /**
      * Проверяет, является ли значение хэшем Sha1.
-     * 
+     *
      * @param string $string
      * @return false|int
      */
@@ -33,7 +33,7 @@ class TypeHelper
 
     /**
      * Проверяет, является ли значение вызываемым.
-     * 
+     *
      * @param array | string | callable $value
      * @return bool
      */

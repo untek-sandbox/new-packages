@@ -2,13 +2,7 @@
 
 namespace Untek\Core\Collection\Helpers;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\Criteria;
-use Doctrine\Common\Collections\Expr\Comparison;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
-use Untek\Component\Dev\Helpers\DeprecateHelper;
 use Untek\Core\Instance\Helpers\PropertyHelper;
 
 /**
@@ -64,7 +58,7 @@ class CollectionHelper
      * @param mixed $value Значение
      * @return Collection
      */
-    public static function where(Collection $collection, $field, $operator, $value)
+    /*public static function where(Collection $collection, $field, $operator, $value)
     {
         DeprecateHelper::hardThrow();
 
@@ -72,7 +66,7 @@ class CollectionHelper
         $criteria = new Criteria();
         $criteria->andWhere($expr);
         return $collection->matching($criteria);
-    }
+    }*/
 
     /**
      * Слияние коллекций.
@@ -81,14 +75,14 @@ class CollectionHelper
      * @param Collection $source Коллекция 2
      * @return Collection
      */
-    public static function merge(Collection $collection, Collection $source): Collection
+    /*public static function merge(Collection $collection, Collection $source): Collection
     {
         DeprecateHelper::hardThrow();
 
         $result = clone $collection;
         self::appendCollection($result, $source);
         return $result;
-    }
+    }*/
 
     /**
      * Добавить коллекцию элементов.
@@ -96,14 +90,14 @@ class CollectionHelper
      * @param Collection $collection Исходная коллекция
      * @param Collection $source Добавляемая коллекция
      */
-    public static function appendCollection(Collection $collection, Collection $source): void
+    /*public static function appendCollection(Collection $collection, Collection $source): void
     {
         DeprecateHelper::hardThrow();
 
         foreach ($source as $item) {
             $collection->add($item);
         }
-    }
+    }*/
 
     /**
      * Разделить коллекцию на куски.
@@ -112,7 +106,7 @@ class CollectionHelper
      * @param int $size Размер куска
      * @return Collection Коллекция коллекций
      */
-    public static function chunk(Collection $collection, int $size): Collection
+    /*public static function chunk(Collection $collection, int $size): Collection
     {
         DeprecateHelper::hardThrow();
 
@@ -124,7 +118,7 @@ class CollectionHelper
             $chunks[] = new ArrayCollection($chunk);
         }
         return new ArrayCollection($chunks);
-    }
+    }*/
 
     /**
      * Создать коллекцию сущностей.
@@ -134,7 +128,7 @@ class CollectionHelper
      * @param array $filedsOnly Назначать только указанные атрибуты
      * @return Collection
      */
-    public static function create(string $entityClass, array $data = [], array $filedsOnly = []): Collection
+    /*public static function create(string $entityClass, array $data = [], array $filedsOnly = []): Collection
     {
         DeprecateHelper::hardThrow();
 
@@ -153,7 +147,7 @@ class CollectionHelper
             $data[$key] = $entity;
         }
         return $data;
-    }
+    }*/
 
     /**
      * Преобразовать коллекцию в массив.
@@ -161,7 +155,7 @@ class CollectionHelper
      * @param Collection $collection Исходная коллекция
      * @return array
      */
-    public static function toArray(Collection $collection): array
+    /*public static function toArray(Collection $collection): array
     {
         DeprecateHelper::hardThrow();
 
@@ -172,5 +166,5 @@ class CollectionHelper
         };
         $normalizeCollection = $collection->map($normalizeHandler);
         return $normalizeCollection->toArray();
-    }
+    }*/
 }
