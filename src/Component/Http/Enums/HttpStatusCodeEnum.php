@@ -2,6 +2,10 @@
 
 namespace Untek\Component\Http\Enums;
 
+use Untek\Component\Code\Helpers\DeprecateHelper;
+
+DeprecateHelper::hardThrow();
+
 /**
  * HTTP-статус ответа
  */

@@ -2,7 +2,6 @@
 
 namespace Untek\FrameworkPlugin\HttpErrorHandle\Presentation\Http\Site\Controllers;
 
-use axy\backtrace\helpers\Represent;
 use axy\backtrace\Trace;
 use Exception;
 use Psr\Log\LoggerInterface;
@@ -13,10 +12,9 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Untek\Component\Http\Enums\HttpStatusCodeEnum;
+use Untek\Component\Env\Helpers\EnvHelper;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
 use Untek\Persistence\Contract\Exceptions\NotFoundException;
-use Untek\Component\Env\Helpers\EnvHelper;
 
 class HttpErrorController
 {
@@ -116,7 +114,7 @@ class HttpErrorController
     private function unauthorized(Request $request, Exception $exception): Response
     {
         if($this->loginUrl) {
-            return new RedirectResponse($this->loginUrl, HttpStatusCodeEnum::MOVED_TEMPORARILY);
+            return new RedirectResponse($this->loginUrl, Response::HTTP_FOUND);
         } else {
             return $this->commonRender('Unauthorized', 'Unauthorized', $exception, 401);
         }

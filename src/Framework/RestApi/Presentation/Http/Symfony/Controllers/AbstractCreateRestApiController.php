@@ -5,7 +5,7 @@ namespace Untek\Framework\RestApi\Presentation\Http\Symfony\Controllers;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Untek\Component\Code\Factories\PropertyAccess;
-use Untek\Component\Http\Enums\HttpHeaderEnum;
+use Untek\Framework\RestApi\Infrastructure\Enums\RestApiHeaderEnum;
 
 abstract class AbstractCreateRestApiController extends AbstractRestApiController
 {
@@ -19,7 +19,7 @@ abstract class AbstractCreateRestApiController extends AbstractRestApiController
         $response = $this->serialize($data);
 
         $headers = [
-            HttpHeaderEnum::LOCATION => $this->generateLocationUri($entity),
+            RestApiHeaderEnum::LOCATION => $this->generateLocationUri($entity),
         ];
         $response->headers->add($headers);
         $response->setStatusCode(201);

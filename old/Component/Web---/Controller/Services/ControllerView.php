@@ -2,28 +2,18 @@
 
 namespace Untek\Component\Web\Controller\Services;
 
-use SplFileInfo;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\HeaderUtils;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Untek\Component\Web\Widget\Widgets\Toastr\Application\Services\ToastrServiceInterface;
+use Untek\Component\I18Next\Facades\I18Next;
+use Untek\Component\Text\Helpers\TemplateHelper;
 use Untek\Component\Web\HtmlRender\Application\Services\HtmlRenderInterface;
 use Untek\Core\Container\Helpers\ContainerHelper;
-use Untek\Component\Text\Helpers\TemplateHelper;
 use Untek\Model\Entity\Helpers\EntityHelper;
-use Untek\Component\Http\Enums\HttpStatusCodeEnum;
-use Untek\Component\I18Next\Facades\I18Next;
-use Untek\Component\Web\Controller\Traits\ControllerUrlGeneratorTrait;
-use Untek\Component\Web\Form\Interfaces\BuildFormInterface;
-use Untek\Component\Web\Form\Traits\ControllerFormTrait;
-use Untek\FrameworkPlugin\HttpLayout\Infrastructure\Libs\LayoutManager;
-use Untek\Component\Web\TwBootstrap\Widgets\Breadcrumb\BreadcrumbWidget;
 
 class ControllerView
 {
@@ -124,7 +114,7 @@ class ControllerView
         return new RedirectResponse($referer);
     }
 
-    public function redirect(string $url, int $status = HttpStatusCodeEnum::MOVED_TEMPORARILY): RedirectResponse
+    public function redirect(string $url, int $status = Response::HTTP_FOUND): RedirectResponse
     {
         return new RedirectResponse($url, $status);
     }

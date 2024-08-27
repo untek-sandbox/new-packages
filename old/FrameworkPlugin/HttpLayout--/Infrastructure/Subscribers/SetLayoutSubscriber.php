@@ -7,10 +7,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Untek\Component\Http\Enums\HttpStatusCodeEnum;
+use Untek\Component\Web\HtmlRender\Application\Services\HtmlRenderInterface;
 use Untek\Component\Web\TwBootstrap\Widgets\Alert\AlertWidget;
 use Untek\Component\Web\TwBootstrap\Widgets\Breadcrumb\BreadcrumbWidget;
-use Untek\Component\Web\HtmlRender\Application\Services\HtmlRenderInterface;
 
 class SetLayoutSubscriber implements EventSubscriberInterface
 {
@@ -35,7 +34,7 @@ class SetLayoutSubscriber implements EventSubscriberInterface
         $isAjax = $event->getRequest()->isXmlHttpRequest();
 
         $isWebResponse = get_class($response) == Response::class;
-        $isOk = $response->getStatusCode() === HttpStatusCodeEnum::OK;
+        $isOk = $response->getStatusCode() === Response::HTTP_OK;
         $hasDisposition = $response->headers->has('content-disposition');
 
         if ($isAjax) {

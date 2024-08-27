@@ -4,9 +4,9 @@ namespace Untek\FrameworkPlugin\RestApiCors\Infrastructure\Subscribers;
 
 use Fruitcake\Cors\CorsService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Untek\Component\Http\Enums\HttpStatusCodeEnum;
 
 class CorsSubscriber implements EventSubscriberInterface
 {
@@ -30,7 +30,7 @@ class CorsSubscriber implements EventSubscriberInterface
         $request = $event->getRequest();
         $response = $event->getResponse();
         if ($this->corsService->isPreflightRequest($request)) {
-            $response->setStatusCode(HttpStatusCodeEnum::NO_CONTENT);
+            $response->setStatusCode(Response::HTTP_NO_CONTENT);
             $this->corsService->addPreflightRequestHeaders($response, $request);
         } else {
             $this->corsService->addActualRequestHeaders($response, $request);

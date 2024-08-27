@@ -2,6 +2,10 @@
 
 namespace Untek\Component\Http\Enums;
 
+use Untek\Component\Code\Helpers\DeprecateHelper;
+
+DeprecateHelper::hardThrow();
+
 /**
  * HTTP-заголовки
  */
@@ -9,14 +13,14 @@ class HttpHeaderEnum
 {
 
     const LINK = 'Link';
-    const TOTAL_COUNT = 'X-Pagination-Total-Count';
-    const PAGE_COUNT = 'X-Pagination-Page-Count';
-    const CURRENT_PAGE = 'X-Pagination-Current-Page';
-    const PER_PAGE = 'X-Pagination-Per-Page';
+//    const TOTAL_COUNT = 'X-Pagination-Total-Count';
+//    const PAGE_COUNT = 'X-Pagination-Page-Count';
+//    const CURRENT_PAGE = 'X-Pagination-Current-Page';
+//    const PER_PAGE = 'X-Pagination-Per-Page';
     const TIME_ZONE = 'Time-Zone';
     const CONTENT_TYPE = 'Content-Type';
     const AUTHORIZATION = 'Authorization';
-    const LOCATION = 'Location';
+//    const LOCATION = 'Location';
     const ACCESS_TOKEN = 'Access-Token';
     const CONTENT_DISPOSITION = 'Content-Disposition';
     const X_REQUESTED_WITH = 'X-Requested-With';

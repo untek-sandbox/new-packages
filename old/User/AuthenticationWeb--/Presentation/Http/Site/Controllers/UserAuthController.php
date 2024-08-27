@@ -2,25 +2,23 @@
 
 namespace Untek\User\AuthenticationWeb\Presentation\Http\Site\Controllers;
 
-use Symfony\Component\Security\Core\Exception\UserNotFoundException;
-use Untek\User\AuthenticationWeb\Presentation\Http\Site\Forms\AuthForm;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Untek\Component\Http\Enums\HttpStatusCodeEnum;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Exception\UserNotFoundException;
+use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
 use Untek\Component\Web\Controller\Abstract\AbstractWebController;
-use Untek\Component\Web\View\Libs\View;
 use Untek\Component\Web\Form\Libs\FormManager;
+use Untek\Component\Web\View\Libs\View;
 use Untek\Component\Web\Widget\Widgets\Toastr\Application\Services\ToastrServiceInterface;
 use Untek\FrameworkPlugin\HttpAuthentication\Application\Services\WebAuthentication;
-use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
-use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Untek\Model\Validator\Exceptions\UnprocessibleEntityException;
 use Untek\User\Authentication\Application\Commands\GenerateTokenByPasswordCommand;
 use Untek\User\Authentication\Domain\Interfaces\Repositories\IdentityRepositoryInterface;
 use Untek\User\Authentication\Domain\Model\Token;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Untek\User\AuthenticationWeb\Presentation\Http\Site\Forms\AuthForm;
 
 class UserAuthController extends AbstractWebController
 {
@@ -60,7 +58,7 @@ class UserAuthController extends AbstractWebController
             try {
                 /** @var Token $tokenDto */
                 $tokenDto = $this->bus->handle($command);
-                $response = new RedirectResponse('/', HttpStatusCodeEnum::MOVED_TEMPORARILY);
+                $response = new RedirectResponse('/', Response::HTTP_FOUND);
                 $user = $this->identityRepository->getUserById($tokenDto->getIdentityId());
                 $this->webAuthentication->login($response, $user, $form->getRememberMe());
                 $this->toastrService->success('Auth success');

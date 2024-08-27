@@ -3,7 +3,7 @@
 namespace Untek\Framework\RestApi\Presentation\Http\Symfony\Controllers;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Untek\Component\Http\Enums\HttpHeaderEnum;
+use Untek\Framework\RestApi\Infrastructure\Enums\RestApiHeaderEnum;
 use Untek\Model\DataProvider\Dto\CollectionData;
 
 abstract class AbstractGetListRestApiController extends AbstractRestApiController
@@ -16,10 +16,10 @@ abstract class AbstractGetListRestApiController extends AbstractRestApiControlle
         $response = $this->serialize($list);
         $page = $collectionData->getPage();
         $response->headers->add([
-            HttpHeaderEnum::CURRENT_PAGE => $page->getPageNumber(),
-            HttpHeaderEnum::PER_PAGE => $page->getPageSize(),
-            HttpHeaderEnum::TOTAL_COUNT => $page->getItemsTotalCount(),
-            HttpHeaderEnum::PAGE_COUNT => $page->getPageCount(),
+            RestApiHeaderEnum::CURRENT_PAGE => $page->getPageNumber(),
+            RestApiHeaderEnum::PER_PAGE => $page->getPageSize(),
+            RestApiHeaderEnum::TOTAL_COUNT => $page->getItemsTotalCount(),
+            RestApiHeaderEnum::PAGE_COUNT => $page->getPageCount(),
         ]);
         return $response;
     }

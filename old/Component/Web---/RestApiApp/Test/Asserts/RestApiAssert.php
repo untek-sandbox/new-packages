@@ -4,7 +4,6 @@ namespace Untek\Component\Web\RestApiApp\Test\Asserts;
 
 use Symfony\Component\HttpFoundation\Response;
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
-use Untek\Component\Http\Enums\HttpStatusCodeEnum;
 use Untek\Framework\Rpc\Domain\Enums\RpcErrorCodeEnum;
 use Untek\Tool\Test\Asserts\BaseAssert;
 use Untek\Tool\Test\Helpers\RestHelper;
@@ -39,19 +38,19 @@ class RestApiAssert extends BaseAssert
 
     public function assertNotFound(string $message = null)
     {
-        $this->assertError(HttpStatusCodeEnum::NOT_FOUND, $message);
+        $this->assertError(Response::HTTP_NOT_FOUND, $message);
         return $this;
     }
 
     public function assertForbidden(string $message = null)
     {
-        $this->assertError(HttpStatusCodeEnum::FORBIDDEN, $message);
+        $this->assertError(Response::HTTP_FORBIDDEN, $message);
         return $this;
     }
 
     public function assertUnauthorized(string $message = null)
     {
-        $this->assertError(HttpStatusCodeEnum::UNAUTHORIZED, $message);
+        $this->assertError(Response::HTTP_UNAUTHORIZED, $message);
         return $this;
     }
 
