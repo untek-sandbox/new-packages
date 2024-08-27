@@ -13,30 +13,9 @@ class ReflectionHelper
         return self::filterByPrefix($constants, $prefix);
     }
 
-    public static function getConstantsValuesByPrefix($class, $prefix)
-    {
-        $constants = self::getConstantsByPrefix($class, $prefix);
-        return array_values($constants);
-    }
-
-    public static function getConstantsNamesByPrefix($class, $prefix)
-    {
-        $constants = self::getConstantsByPrefix($class, $prefix);
-        return array_keys($constants);
-    }
-
     public static function getConstants($class)
     {
-        $class = new ReflectionClass($class);
-        $constants = $class->getConstants();
-        return $constants;
-    }
-
-    public static function getProperties($class)
-    {
-        $class = new ReflectionClass($class);
-        $properties = $class->getProperties();
-        return $properties;
+        return (new ReflectionClass($class))->getConstants();
     }
 
     private static function filterByPrefix($constants, $prefix)
@@ -56,4 +35,23 @@ class ReflectionHelper
         $ucPrefixWithBl = $ucPrefix . '_';
         return strpos($name, $ucPrefixWithBl) === 0;
     }
+
+    /*public static function getConstantsValuesByPrefix($class, $prefix)
+    {
+        $constants = self::getConstantsByPrefix($class, $prefix);
+        return array_values($constants);
+    }
+
+    public static function getConstantsNamesByPrefix($class, $prefix)
+    {
+        $constants = self::getConstantsByPrefix($class, $prefix);
+        return array_keys($constants);
+    }
+
+    public static function getProperties($class)
+    {
+        $class = new ReflectionClass($class);
+        $properties = $class->getProperties();
+        return $properties;
+    }*/
 }

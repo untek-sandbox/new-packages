@@ -6,42 +6,42 @@ use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\PropertyAccess\PropertyAccessorBuilder;
-use Untek\Core\Container\Helpers\ContainerHelper;
 
 class PropertyAccess
 {
 
-    private static $builder;
-
-    private function __construct()
-    {
-    }
+    private static PropertyAccessorBuilder $builder;
+    private static AdapterInterface $adapter;
+    private static PropertyAccessor $accessor;
 
     public static function createPropertyAccessor(): PropertyAccessor
     {
-        return self::createPropertyAccessorBuilder()->getPropertyAccessor();
+        if (!isset(self::$accessor)) {
+            self::$accessor = self::createPropertyAccessorBuilder()->getPropertyAccessor();
+        }
+        return self::$accessor;
     }
 
-    public static function createPropertyAccessorBuilder(): PropertyAccessorBuilder
+    protected static function createPropertyAccessorBuilder(): PropertyAccessorBuilder
     {
-        if (empty(self::$builder)) {
-            self::$builder = new PropertyAccessorBuilder();
-            if(class_exists(AdapterInterface::class)) {
-                $cacheItemPool = self::getCacheItemPool();
-                self::$builder->setCacheItemPool($cacheItemPool);
-            }
+        $builder = new PropertyAccessorBuilder();
+        if (class_exists(AdapterInterface::class)) {
+            $cacheItemPool = self::getCacheItemPool();
+            $builder->setCacheItemPool($cacheItemPool);
         }
-        return self::$builder;
+        return $builder;
     }
 
     protected static function getCacheItemPool(): AdapterInterface
     {
-        $container = ContainerHelper::getContainer();
+        return new ArrayAdapter();
+
+        /*$container = ContainerHelper::getContainer();
         if ($container && $container->has(AdapterInterface::class)) {
             $cacheItemPool = $container->get(AdapterInterface::class);
         } else {
             $cacheItemPool = new ArrayAdapter();
         }
-        return $cacheItemPool;
+        return $cacheItemPool;*/
     }
 }

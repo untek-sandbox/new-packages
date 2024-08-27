@@ -3,7 +3,7 @@
 namespace Untek\Core\App\Libs;
 
 use Psr\Container\ContainerInterface;
-use Untek\Component\Code\Helpers\DeprecateHelper;
+use Untek\Component\Dev\Helpers\DeprecateHelper;
 
 DeprecateHelper::hardThrow();
 

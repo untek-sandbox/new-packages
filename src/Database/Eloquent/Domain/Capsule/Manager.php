@@ -7,7 +7,7 @@ use Illuminate\Database\Connection;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Schema\Builder as SchemaBuilder;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
-use Untek\Component\Code\Helpers\DeprecateHelper;
+use Untek\Component\Dev\Helpers\DeprecateHelper;
 use Untek\Database\Base\Domain\Libs\TableAlias;
 
 DeprecateHelper::hardThrow();

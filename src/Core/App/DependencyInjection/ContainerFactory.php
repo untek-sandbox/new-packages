@@ -3,8 +3,6 @@
 namespace Untek\Core\App\DependencyInjection;
 
 use Psr\Container\ContainerInterface;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Untek\Component\Code\Helpers\DeprecateHelper;
 
 class ContainerFactory
 {

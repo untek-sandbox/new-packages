@@ -2,13 +2,10 @@
 
 namespace Untek\Utility\CodeGenerator\RestApi\Application\Commands;
 
-use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Commands\AbstractCommandCommand;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\CommandInterface;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Traits\CommandNamespaceTrait;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Traits\CommandParameterTrait;
-use Untek\Utility\CodeGenerator\Application\Application\Helpers\TypeHelper;
-use Untek\Utility\CodeGenerator\Application\Infrastructure\Helpers\ApplicationPathHelper;
 
 class GenerateRestApiCommand extends AbstractCommandCommand implements CommandInterface
 {

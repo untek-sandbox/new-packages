@@ -5,7 +5,7 @@ namespace Untek\Component\FileSystem\Helpers;
 use PATHINFO_EXTENSION;
 use Symfony\Component\Mime\MimeTypes;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
-use Untek\Component\Code\Helpers\DeprecateHelper;
+use Untek\Component\Dev\Helpers\DeprecateHelper;
 
 DeprecateHelper::hardThrow();
 

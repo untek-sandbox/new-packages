@@ -3,15 +3,14 @@
 namespace Untek\Model\EntityManager\Libs;
 
 use Psr\Container\ContainerInterface;
-use Untek\Component\Code\Helpers\DeprecateHelper;
-use Untek\Core\Instance\Helpers\PropertyHelper;
+use Untek\Component\Dev\Helpers\DeprecateHelper;
+use Untek\Component\I18Next\Facades\I18Next;
 use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Core\Collection\Libs\Collection;
 use Untek\Core\Container\Interfaces\ContainerConfiguratorInterface;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
 use Untek\Core\Contract\Common\Exceptions\InvalidMethodParameterException;
-use Untek\Persistence\Contract\Exceptions\AlreadyExistsException;
-use Untek\Persistence\Contract\Exceptions\NotFoundException;
+use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Model\Entity\Helpers\EntityHelper;
 use Untek\Model\Entity\Interfaces\EntityIdInterface;
 use Untek\Model\Entity\Interfaces\UniqueInterface;
@@ -21,7 +20,8 @@ use Untek\Model\EntityManager\Interfaces\OrmInterface;
 use Untek\Model\Repository\Interfaces\CrudRepositoryInterface;
 use Untek\Model\Repository\Interfaces\RepositoryInterface;
 use Untek\Model\Validator\Exceptions\UnprocessibleEntityException;
-use Untek\Component\I18Next\Facades\I18Next;
+use Untek\Persistence\Contract\Exceptions\AlreadyExistsException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 
 class EntityManager implements EntityManagerInterface
 {

@@ -6,7 +6,6 @@ use Exception;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
-use Untek\Component\Code\Helpers\DeprecateHelper;
 
 class UnprocessableEntityException extends Exception
 {

@@ -4,8 +4,8 @@ namespace Untek\Component\Enum\Helpers;
 
 use InvalidArgumentException;
 use ReflectionException;
-use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Component\Code\Helpers\ReflectionHelper;
+use Untek\Component\Dev\Helpers\DeprecateHelper;
 use Untek\Core\Instance\Exceptions\NotInstanceOfException;
 use Yiisoft\Arrays\ArrayHelper;
 use Yiisoft\Strings\Inflector;

@@ -2,6 +2,10 @@
 
 namespace Untek\Component\Code\Helpers;
 
+use Untek\Component\Dev\Helpers\DeprecateHelper;
+
+DeprecateHelper::hardThrow();
+
 /**
  * Работа с конфигурацией PHP (php.ini)
  */

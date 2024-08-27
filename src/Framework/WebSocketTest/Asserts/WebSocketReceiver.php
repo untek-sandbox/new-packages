@@ -6,7 +6,7 @@ namespace Untek\Framework\WebSocketTest\Asserts;
 
 use Illuminate\Database\Capsule\Manager;
 use Illuminate\Support\Collection;
-use Untek\Component\Code\Helpers\DeprecateHelper;
+use Untek\Component\Dev\Helpers\DeprecateHelper;
 use Untek\Database\Eloquent\Infrastructure\Helpers\QueryBuilder\EloquentQueryBuilderHelper;
 
 DeprecateHelper::hardThrow();

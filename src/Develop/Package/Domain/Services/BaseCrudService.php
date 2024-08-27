@@ -1,17 +1,8 @@
 <?php
 
-
 namespace Untek\Develop\Package\Domain\Services;
 
-
-use Untek\Component\Code\Helpers\DeprecateHelper;
-use Untek\Model\Shared\Enums\EventEnum;
-use Untek\Model\Shared\Events\QueryEvent;
-use Untek\Model\Shared\Traits\DispatchEventTrait;
-use Untek\Model\Shared\Traits\ForgeQueryTrait;
-use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\Model\Entity\Interfaces\EntityIdInterface;
-use Untek\Core\Instance\Helpers\ClassHelper;
 use Untek\Model\QueryFilter\Interfaces\ForgeQueryByFilterInterface;
 use Untek\Model\Repository\Interfaces\CrudRepositoryInterface;
 use Untek\Model\Service\Interfaces\CrudServiceInterface;
@@ -20,6 +11,10 @@ use Untek\Model\Service\Traits\CrudServiceDeleteTrait;
 use Untek\Model\Service\Traits\CrudServiceFindAllTrait;
 use Untek\Model\Service\Traits\CrudServiceFindOneTrait;
 use Untek\Model\Service\Traits\CrudServiceUpdateTrait;
+use Untek\Model\Shared\Enums\EventEnum;
+use Untek\Model\Shared\Events\QueryEvent;
+use Untek\Model\Shared\Traits\DispatchEventTrait;
+use Untek\Model\Shared\Traits\ForgeQueryTrait;
 use Untek\Model\Validator\Helpers\ValidationHelper;
 
 

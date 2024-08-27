@@ -2,7 +2,7 @@
 
 namespace Untek\Core\Collection\Libs;
 
-use Untek\Component\Code\Helpers\DeprecateHelper;
+use Untek\Component\Dev\Helpers\DeprecateHelper;
 use Untek\Core\Collection\Interfaces\Enumerable;
 
 /**

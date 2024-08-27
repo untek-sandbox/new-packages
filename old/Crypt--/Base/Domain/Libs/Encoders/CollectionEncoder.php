@@ -3,7 +3,7 @@
 namespace Untek\Crypt\Base\Domain\Libs\Encoders;
 
 use Psr\Container\ContainerInterface;
-use Untek\Component\Code\Helpers\DeprecateHelper;
+use Untek\Component\Dev\Helpers\DeprecateHelper;
 use Untek\Core\Container\Traits\ContainerAwareTrait;
 use Untek\Core\Instance\Helpers\InstanceHelper;
 use Untek\Core\Contract\Encoder\Interfaces\DecodeInterface;

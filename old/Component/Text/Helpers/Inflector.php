@@ -2,8 +2,11 @@
 
 namespace Untek\Component\Text\Helpers;
 
-use Untek\Core\Contract\Common\Exceptions\InvalidMethodParameterException;
-use Yiisoft\Strings\Inflector as Inflector;
+use Untek\Component\Dev\Helpers\DeprecateHelper;
+//use Untek\Core\Contract\Common\Exceptions\InvalidMethodParameterException;
+use Yiisoft\Strings\Inflector as YiiInflector;
+
+DeprecateHelper::hardThrow();
 
 class Inflector
 {
@@ -100,7 +103,7 @@ class Inflector
      */
     public static function underscore($words)
     {
-        return (new Inflector())->pascalCaseToId($words, '_');
+        return (new YiiInflector())->pascalCaseToId($words, '_');
 
         // ссылка на источник функции https://stackoverflow.com/questions/1993721/how-to-convert-pascalcase-to-pascal-case
         preg_match_all('!([A-Z][A-Z0-9]*(?=$|[A-Z][a-z0-9])|[A-Za-z][a-z0-9]+)!', $words, $matches);

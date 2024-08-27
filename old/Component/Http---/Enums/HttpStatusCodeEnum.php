@@ -2,7 +2,7 @@
 
 namespace Untek\Component\Http\Enums;
 
-use Untek\Component\Code\Helpers\DeprecateHelper;
+use Untek\Component\Dev\Helpers\DeprecateHelper;
 
 DeprecateHelper::hardThrow();
 
