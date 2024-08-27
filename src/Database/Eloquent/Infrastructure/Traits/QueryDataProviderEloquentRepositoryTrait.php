@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Model\QueryDataProvider\Traits;
+namespace Untek\Database\Eloquent\Infrastructure\Traits;
 
 use Illuminate\Database\Query\Builder;
 use Untek\Database\Eloquent\Infrastructure\Helpers\QueryBuilder\EloquentQueryBuilderHelper;

@@ -7,6 +7,8 @@ use Untek\Model\EntityManager\Interfaces\EntityManagerInterface;
 use Untek\Model\EntityManager\Libs\EntityManager;
 use Untek\Model\EntityManager\Libs\EntityManagerConfigurator;
 
+\Untek\Component\Dev\Helpers\DeprecateHelper::hardThrow();
+
 return function (ContainerConfiguratorInterface $containerConfigurator) {
     $containerConfigurator->singleton(EntityManagerInterface::class, function (ContainerInterface $container) {
         $em = EntityManager::getInstance($container);
