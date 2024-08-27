@@ -3,8 +3,8 @@
 namespace Untek\Component\Relation\Libs\Types;
 
 use Doctrine\Persistence\ObjectRepository;
-use Untek\Component\Relation\Interfaces\RelationInterface;
 use Untek\Component\Code\Factories\PropertyAccess;
+use Untek\Component\Relation\Interfaces\RelationInterface;
 use Untek\Core\Collection\Helpers\CollectionHelper;
 
 class OneToManyRelation extends BaseRelation implements RelationInterface

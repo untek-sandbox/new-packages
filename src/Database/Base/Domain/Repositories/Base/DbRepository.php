@@ -2,12 +2,11 @@
 
 namespace Untek\Database\Base\Domain\Repositories\Base;
 
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
-use Untek\Model\Shared\Helpers\EntityHelper;
-use Untek\Database\Base\Domain\Entities\ColumnEntity;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Illuminate\Database\Capsule\Manager;
-use Untek\Database\Eloquent\Domain\Traits\EloquentTrait;
+use Untek\Database\Base\Domain\Entities\ColumnEntity;
+use Untek\Model\Shared\Helpers\EntityHelper;
 
 abstract class DbRepository
 {
@@ -54,16 +53,16 @@ abstract class DbRepository
     /**
      * @param string $tableName
      * @param string $schemaName
-     * @return Enumerable | ColumnEntity[]
+     * @return Collection | ColumnEntity[]
      */
-    public function allColumnsByTable(string $tableName, string $schemaName = 'public'): Enumerable
+    public function allColumnsByTable(string $tableName, string $schemaName = 'public'): Collection
     {
         $connection = $this
             ->getCapsule()
             ->getConnection();
         $schema = $connection->getSchemaBuilder();
         $columnList = $schema->getColumnListing($tableName);
-        $columnCollection = new Collection();
+        $columnCollection = new ArrayCollection();
         foreach ($columnList as $columnName) {
             $columnType = $schema->getColumnType($tableName, $columnName);
             $columnEntity = new ColumnEntity();

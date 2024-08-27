@@ -2,7 +2,7 @@
 
 namespace Untek\Model\DataProvider\Interfaces;
 
-use Untek\Core\Collection\Interfaces\Enumerable;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * Провайдер данных
@@ -14,9 +14,9 @@ interface DataProviderInterface
 
     /**
      * Получить коллекцию сущностей
-     * @return Enumerable
+     * @return Collection
      */
-    public function getCollection(): Enumerable;
+    public function getCollection(): Collection;
 
     /**
      * Получить общее колличество записей в хранилище

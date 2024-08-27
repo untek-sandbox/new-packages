@@ -2,9 +2,9 @@
 
 namespace Untek\Lib\QrBox\Libs;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\Encoder\Encoders\ChainEncoder;
-use Untek\Core\Collection\Libs\Collection;
 
 class ClassEncoder
 {
@@ -27,7 +27,7 @@ class ClassEncoder
         foreach ($names as $name) {
             $classes[] = $this->encoderToClass($name);
         }
-        $encoders = new ChainEncoder(new Collection($classes));
+        $encoders = new ChainEncoder(new ArrayCollection($classes));
         return $encoders;
     }
 }

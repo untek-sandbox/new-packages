@@ -2,14 +2,12 @@
 
 namespace Untek\Database\Base\Console\Traits;
 
+use Illuminate\Database\Capsule\Manager;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
-use Untek\Core\Container\Helpers\ContainerHelper;
 use Untek\Component\Text\Helpers\TextHelper;
-use Untek\Database\Base\Domain\Repositories\Eloquent\SchemaRepository;
-use Untek\Component\Http\Helpers\UrlHelper;
-use Illuminate\Database\Capsule\Manager;
+use Untek\Core\Container\Helpers\ContainerHelper;
 
 trait OverwriteDatabaseTrait
 {
@@ -74,11 +72,46 @@ trait OverwriteDatabaseTrait
             unset($params['pass']);
         }
 
-        $url = UrlHelper::generateUrlFromParams($params);
+        $url = $this->generateUrlFromParams($params);
         if ($connection->getConfig('driver') == 'sqlite') {
             $url = TextHelper::removeDoubleChar($url, '/');
         }
 
+        return $url;
+    }
+
+    public function generateUrlFromParams(array $data): string
+    {
+        $url = '';
+        if (!empty($data['scheme'])) {
+            $url .= $data['scheme'] . '://';
+        }
+        if (!empty($data['user'])) {
+            $url .= $data['user'];
+            if (!empty($data['pass'])) {
+                $url .= ':' . $data['pass'];
+            }
+            $url .= '@';
+        }
+        if (!empty($data['host'])) {
+            $url .= $data['host'];
+        }
+        if (!empty($data['port'])) {
+            $url .= ':' . $data['port'];
+        }
+        if (!empty($data['path'])) {
+            $data['path'] = ltrim($data['path'], '/');
+            $url .= '/' . $data['path'];
+        }
+        if (!empty($data['query'])) {
+            if (is_array($data['query'])) {
+                $data['query'] = http_build_query($data['query']);
+            }
+            $url .= '?' . $data['query'];
+        }
+        if (!empty($data['fragment'])) {
+            $url .= '#' . $data['fragment'];
+        }
         return $url;
     }
 

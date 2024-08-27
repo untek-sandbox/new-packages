@@ -2,6 +2,7 @@
 
 namespace Untek\Component\Web\Form\Helpers;
 
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormInterface;
@@ -9,11 +10,10 @@ use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
-use Untek\Core\Collection\Interfaces\Enumerable;
+use Untek\Component\Web\Form\Interfaces\BuildFormInterface;
 use Untek\Model\Validator\Entities\ValidationErrorEntity;
 use Untek\Model\Validator\Exceptions\UnprocessibleEntityException;
 use Untek\Model\Validator\Helpers\ValidationHelper;
-use Untek\Component\Web\Form\Interfaces\BuildFormInterface;
 
 class FormHelper
 {
@@ -45,7 +45,7 @@ class FormHelper
         return $form;
     }
 
-    public static function setErrorsToForm(Enumerable $collection, FormInterface $form)
+    public static function setErrorsToForm(Collection $collection, FormInterface $form)
     {
         foreach ($collection as $errorEntity) {
             /** @var ValidationErrorEntity $errorEntity */

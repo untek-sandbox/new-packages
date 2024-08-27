@@ -2,13 +2,13 @@
 
 namespace Untek\Crypt\Base\Domain\Libs\Encoders;
 
+use Doctrine\Common\Collections\Collection;
 use Psr\Container\ContainerInterface;
 use Untek\Component\Dev\Helpers\DeprecateHelper;
 use Untek\Core\Container\Traits\ContainerAwareTrait;
-use Untek\Core\Instance\Helpers\InstanceHelper;
 use Untek\Core\Contract\Encoder\Interfaces\DecodeInterface;
 use Untek\Core\Contract\Encoder\Interfaces\EncodeInterface;
-use Untek\Core\Collection\Interfaces\Enumerable;
+use Untek\Core\Instance\Helpers\InstanceHelper;
 use Untek\Model\Entity\Helpers\EntityHelper;
 
 DeprecateHelper::hardThrow();
@@ -18,7 +18,7 @@ class CollectionEncoder implements EncoderInterface
 
     private $encoderCollection;
 
-    public function __construct(Enumerable $encoderCollection, private ?ContainerInterface $container = null)
+    public function __construct(Collection $encoderCollection, private ?ContainerInterface $container = null)
     {
         $this->encoderCollection = $encoderCollection;
     }

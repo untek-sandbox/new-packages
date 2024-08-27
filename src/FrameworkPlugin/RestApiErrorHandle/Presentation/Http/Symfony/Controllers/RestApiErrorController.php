@@ -15,10 +15,9 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Untek\Component\Translator\Infrastructure\Exceptions\NotFoundLanguageException;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
-use Untek\Persistence\Contract\Exceptions\NotFoundException;
-use Untek\Component\Env\Helpers\EnvHelper;
 use Untek\FrameworkPlugin\RestApiErrorHandle\Presentation\Http\Symfony\Interfaces\RestApiErrorControllerInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 
 class RestApiErrorController implements RestApiErrorControllerInterface
 {
@@ -96,7 +95,7 @@ class RestApiErrorController implements RestApiErrorControllerInterface
         if ($errors) {
             $params['errors'] = $errors;
         }
-        if (EnvHelper::isDebug()) {
+        if (getenv('APP_DEBUG') == '1') {
             $params['exception'] = $exception;
         }
         return new JsonResponse($params, $statusCode);

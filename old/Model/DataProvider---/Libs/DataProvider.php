@@ -2,12 +2,11 @@
 
 namespace Untek\Model\DataProvider\Libs;
 
-use Untek\Core\Collection\Interfaces\Enumerable;
+use Doctrine\Common\Collections\Collection;
 use Untek\Model\DataProvider\Entities\DataProviderEntity;
 use Untek\Model\DataProvider\Interfaces\DataProviderInterface;
-use Untek\Model\Shared\Interfaces\ReadAllInterface;
-use Untek\Core\Instance\Helpers\ClassHelper;
 use Untek\Model\QueryFilter\Interfaces\ForgeQueryByFilterInterface;
+use Untek\Model\Shared\Interfaces\ReadAllInterface;
 
 class DataProvider implements DataProviderInterface
 {
@@ -129,7 +128,7 @@ class DataProvider implements DataProviderInterface
         return $query;
     }
 
-    public function getCollection(): Enumerable
+    public function getCollection(): Collection
     {
         if ($this->entity->getCollection() === null) {
             $query = $this->forgeQuery();

@@ -2,14 +2,14 @@
 
 namespace Untek\Framework\Console\Symfony4\Style;
 
+use Doctrine\Common\Collections\Collection;
 use Untek\Core\Instance\Helpers\PropertyHelper;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Yiisoft\Strings\Inflector;
+use Untek\Framework\Console\Symfony4\Question\ChoiceQuestion;
 use Untek\Model\Entity\Helpers\EntityHelper;
 use Untek\Model\Validator\Entities\ValidationErrorEntity;
 use Untek\Model\Validator\Exceptions\UnprocessibleEntityException;
 use Untek\Model\Validator\Helpers\ValidationHelper;
-use Untek\Framework\Console\Symfony4\Question\ChoiceQuestion;
+use Yiisoft\Strings\Inflector;
 
 class SymfonyStyle extends \Symfony\Component\Console\Style\SymfonyStyle
 {
@@ -74,9 +74,9 @@ class SymfonyStyle extends \Symfony\Component\Console\Style\SymfonyStyle
 
     /**
      * @param object $reportForm
-     * @return array | Enumerable | ValidationErrorEntity[] | null
+     * @return array | Collection | ValidationErrorEntity[] | null
      */
-    protected function validateForm(object $reportForm): ?Enumerable
+    protected function validateForm(object $reportForm): ?Collection
     {
         try {
             ValidationHelper::validateEntity($reportForm);

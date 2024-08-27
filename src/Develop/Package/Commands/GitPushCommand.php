@@ -2,13 +2,13 @@
 
 namespace Untek\Develop\Package\Commands;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
 use Untek\Core\Collection\Helpers\CollectionHelper;
-use Untek\Framework\Console\Symfony4\Question\ChoiceQuestion;
 use Untek\Develop\Package\Domain\Entities\PackageEntity;
+use Untek\Framework\Console\Symfony4\Question\ChoiceQuestion;
 
 class GitPushCommand extends BaseCommand
 {
@@ -60,11 +60,11 @@ class GitPushCommand extends BaseCommand
         return 0;
     }
 
-    private function displayProgress(Enumerable $collection, InputInterface $input, OutputInterface $output): Enumerable
+    private function displayProgress(Collection $collection, InputInterface $input, OutputInterface $output): Collection
     {
-        /** @var PackageEntity[] | Enumerable $collection */
-        /** @var PackageEntity[] | Enumerable $totalCollection */
-        $totalCollection = new Collection();
+        /** @var PackageEntity[] | Collection $collection */
+        /** @var PackageEntity[] | Collection $totalCollection */
+        $totalCollection = new ArrayCollection();
         foreach ($collection as $packageEntity) {
             $packageId = $packageEntity->getId();
             $output->write(" $packageId ... ");
@@ -89,9 +89,9 @@ class GitPushCommand extends BaseCommand
         return $totalCollection;
     }
 
-    private function displayTotal(Enumerable $totalCollection, InputInterface $input, OutputInterface $output)
+    private function displayTotal(Collection $totalCollection, InputInterface $input, OutputInterface $output)
     {
-        /** @var PackageEntity[] | Enumerable $totalCollection */
+        /** @var PackageEntity[] | Collection $totalCollection */
         $output->writeln('<fg=yellow>Updated packages!</>');
         $output->writeln('');
         foreach ($totalCollection as $packageEntity) {

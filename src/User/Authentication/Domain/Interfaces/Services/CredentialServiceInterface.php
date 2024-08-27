@@ -2,7 +2,6 @@
 
 namespace Untek\User\Authentication\Domain\Interfaces\Services;
 
-use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\User\Authentication\Domain\Entities\CredentialEntity;
 
 interface CredentialServiceInterface

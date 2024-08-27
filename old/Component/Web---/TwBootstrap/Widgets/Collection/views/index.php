@@ -2,7 +2,7 @@
 
 /**
  * @var HtmlRenderInterface $view
- * @var Enumerable $collection
+ * @var Collection $collection
  * @var DataProvider $dataProvider
  * @var AttributeEntity[] $attributes
  * @var string $tableClass
@@ -13,13 +13,13 @@
  * @var bool $showStatistic
  */
 
-use Untek\Component\Web\HtmlRender\Application\Services\HtmlRenderInterface;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Model\DataProvider\Libs\DataProvider;
+use Doctrine\Common\Collections\Collection;
 use Untek\Component\I18Next\Facades\I18Next;
+use Untek\Component\Web\HtmlRender\Application\Services\HtmlRenderInterface;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Entities\AttributeEntity;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Libs\FormatEncoder;
 use Untek\Component\Web\TwBootstrap\Widgets\Pagination\PaginationWidget;
+use Untek\Model\DataProvider\Libs\DataProvider;
 
 if (!isset($collection)) {
     $collection = $dataProvider->getCollection();

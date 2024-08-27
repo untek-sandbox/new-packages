@@ -2,8 +2,8 @@
 
 namespace Untek\Lib\Components\ShellRobot\Domain\Repositories\Config;
 
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Untek\Domain\Query\Entities\Query;
 use Untek\Lib\Components\ShellRobot\Domain\Factories\ShellFactory;
 
@@ -23,10 +23,10 @@ class ProfileRepository
         return $profileConfig;
     }
 
-    public function findAll(Query $query = null): Enumerable
+    public function findAll(Query $query = null): Collection
     {
         $new = $this->getItems();
-        return new Collection($new);
+        return new ArrayCollection($new);
 //        return $new;
     }
 

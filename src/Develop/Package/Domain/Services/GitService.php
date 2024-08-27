@@ -3,8 +3,8 @@
 namespace Untek\Develop\Package\Domain\Services;
 
 //use Illuminate\Support\Arr;
+use Doctrine\Common\Collections\Collection;
 use Illuminate\Support\Arr;
-use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Develop\Package\Domain\Entities\CommitEntity;
 use Untek\Develop\Package\Domain\Entities\PackageEntity;
 use Untek\Develop\Package\Domain\Entities\TagEntity;
@@ -30,7 +30,7 @@ class GitService extends BaseService implements GitServiceInterface
     public function lastVersionCollection(): array
     {
         $collection = $this->packageService->findAll();
-        /** @var PackageEntity[] | Enumerable $collection */
+        /** @var PackageEntity[] | Collection $collection */
         $versionArray = [];
         foreach ($collection as $packageEntity) {
             $packageId = $packageEntity->getId();
@@ -52,7 +52,7 @@ class GitService extends BaseService implements GitServiceInterface
     public function isNeedRelease(PackageEntity $packageEntity): bool
     {
         $commitCollection = $this->getRepository()->allCommit($packageEntity);
-        /** @var Enumerable $tagCollection */
+        /** @var Collection $tagCollection */
         $tagCollection = $this->getRepository()->allTag($packageEntity);
 
         if ($commitCollection->count() == 0) {

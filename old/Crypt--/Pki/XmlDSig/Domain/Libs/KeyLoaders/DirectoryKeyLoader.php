@@ -2,12 +2,12 @@
 
 namespace Untek\Crypt\Pki\XmlDSig\Domain\Libs\KeyLoaders;
 
-use Untek\Core\Instance\Helpers\PropertyHelper;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Untek\Component\FileSystem\Helpers\FileHelper;
 use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Component\FileSystem\Helpers\FindFileHelper;
+use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Crypt\Pki\XmlDSig\Domain\Entities\KeyEntity;
 use Untek\Domain\Entity\Helpers\EntityHelper;
 
@@ -40,10 +40,10 @@ class DirectoryKeyLoader
         $this->directory = $directory;
     }
 
-    public function findAll(): Enumerable
+    public function findAll(): Collection
     {
         $files = FindFileHelper::scanDir($this->directory);
-        $collection = new Collection();
+        $collection = new ArrayCollection();
         foreach ($files as $file) {
             $fileNmae = $this->directory . '/' . $file;
             if (is_dir($fileNmae)) {

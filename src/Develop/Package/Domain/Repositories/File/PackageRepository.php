@@ -2,15 +2,15 @@
 
 namespace Untek\Develop\Package\Domain\Repositories\File;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Untek\Component\FileSystem\Helpers\FindFileHelper;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
-use Untek\Model\Entity\Interfaces\EntityIdInterface;
 use Untek\Component\FormatAdapter\StoreFile;
 use Untek\Develop\Package\Domain\Entities\ConfigEntity;
 use Untek\Develop\Package\Domain\Entities\GroupEntity;
 use Untek\Develop\Package\Domain\Entities\PackageEntity;
 use Untek\Develop\Package\Domain\Interfaces\Repositories\PackageRepositoryInterface;
+use Untek\Model\Entity\Interfaces\EntityIdInterface;
 
 class PackageRepository implements PackageRepositoryInterface
 {
@@ -36,7 +36,7 @@ class PackageRepository implements PackageRepositoryInterface
 
         $groups = FindFileHelper::scanDir($vendorDir);
         /** @var GroupEntity[] $groupCollection */
-        $groupCollection = new Collection();
+        $groupCollection = new ArrayCollection();
 
         foreach ($groups as $group) {
             if (is_dir($vendorDir . '/' . $group)) {
@@ -46,7 +46,7 @@ class PackageRepository implements PackageRepositoryInterface
             }
         }
 
-        $collection = new Collection();
+        $collection = new ArrayCollection();
         foreach ($groupCollection as $groupEntity) {
             $dir = $vendorDir . DIRECTORY_SEPARATOR . $groupEntity->name;
 
@@ -66,12 +66,12 @@ class PackageRepository implements PackageRepositoryInterface
         return $collection;
     }
 
-    public function findAll(Query $query = null): Enumerable
+    public function findAll(Query $query = null): Collection
     {
         $vendorDir = realpath(self::VENDOR_DIR);
         /** @var GroupEntity[] $groupCollection */
         $groupCollection = $this->groupRepository->findAll();
-        $collection = new Collection();
+        $collection = new ArrayCollection();
         foreach ($groupCollection as $groupEntity) {
             $dir = $vendorDir . DIRECTORY_SEPARATOR . $groupEntity->name;
             $names = FindFileHelper::scanDir($dir);
@@ -88,14 +88,16 @@ class PackageRepository implements PackageRepositoryInterface
         return $collection;
     }
 
-    private function assignConfig(PackageEntity $packageEntity) {
+    private function assignConfig(PackageEntity $packageEntity)
+    {
         if ($this->isComposerPackage($packageEntity)) {
             $configEntity = $this->loadConfig($packageEntity);
             $packageEntity->setConfig($configEntity);
         }
     }
 
-    private function loadConfig(PackageEntity $packageEntity): ConfigEntity {
+    private function loadConfig(PackageEntity $packageEntity): ConfigEntity
+    {
         $composerConfigFile = $packageEntity->getDirectory() . '/composer.json';
         $composerConfigStore = new StoreFile($composerConfigFile);
         $composerConfig = $composerConfigStore->load();

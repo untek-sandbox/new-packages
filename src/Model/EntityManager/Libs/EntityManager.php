@@ -2,11 +2,11 @@
 
 namespace Untek\Model\EntityManager\Libs;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Psr\Container\ContainerInterface;
 use Untek\Component\Dev\Helpers\DeprecateHelper;
 use Untek\Component\I18Next\Facades\I18Next;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
 use Untek\Core\Container\Interfaces\ContainerConfiguratorInterface;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
 use Untek\Core\Contract\Common\Exceptions\InvalidMethodParameterException;
@@ -92,10 +92,10 @@ class EntityManager implements EntityManagerInterface
 
     public function loadEntityRelations(object $entityOrCollection, array $with): void
     {
-        if ($entityOrCollection instanceof Enumerable) {
+        if ($entityOrCollection instanceof Collection) {
             $collection = $entityOrCollection;
         } else {
-            $collection = new Collection([$entityOrCollection]);
+            $collection = new ArrayCollection([$entityOrCollection]);
         }
 
         $entityClass = get_class($collection->first());
@@ -220,9 +220,9 @@ class EntityManager implements EntityManagerInterface
         return $entityInstance;
     }
 
-    public function createEntityCollection(string $entityClassName, array $items): Enumerable
+    public function createEntityCollection(string $entityClassName, array $items): Collection
     {
-        $collection = new Collection();
+        $collection = new ArrayCollection();
         foreach ($items as $item) {
             $entityInstance = $this->createEntity($entityClassName, $item);
             $collection->add($entityInstance);

@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Component\Code\Exceptions;
+namespace Untek\Component\Package\Exceptions;
 
 use RuntimeException;
 

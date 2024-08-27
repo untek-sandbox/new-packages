@@ -2,17 +2,12 @@
 
 namespace Untek\Component\Web\Menu\Domain\Services;
 
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Untek\Core\Instance\Helpers\PropertyHelper;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Instance\Helpers\ClassHelper;
-use Yiisoft\Strings\Inflector;
-use Untek\Model\Service\Base\BaseCrudService;
 use Untek\Component\I18Next\Exceptions\NotFoundBundleException;
 use Untek\Component\I18Next\Facades\I18Next;
 use Untek\Component\Web\Html\Helpers\Url;
@@ -20,7 +15,11 @@ use Untek\Component\Web\Menu\Domain\Entities\MenuEntity;
 use Untek\Component\Web\Menu\Domain\Interfaces\MenuInterface;
 use Untek\Component\Web\Menu\Domain\Interfaces\Repositories\MenuRepositoryInterface;
 use Untek\Component\Web\Menu\Domain\Interfaces\Services\MenuServiceInterface;
+use Untek\Core\Instance\Helpers\ClassHelper;
+use Untek\Core\Instance\Helpers\PropertyHelper;
+use Untek\Model\Service\Base\BaseCrudService;
 use Untek\User\Rbac\Domain\Interfaces\Services\ManagerServiceInterface;
+use Yiisoft\Strings\Inflector;
 
 class MenuService extends BaseCrudService implements MenuServiceInterface
 {
@@ -40,13 +39,13 @@ class MenuService extends BaseCrudService implements MenuServiceInterface
         $this->urlGenerator = $urlGenerator;
     }
 
-    public function allByFileName(string $fileName): Enumerable
+    public function allByFileName(string $fileName): Collection
     {
         $this->getRepository()->setFileName($fileName);
         return $this->findAll();
     }
 
-    public function findAll(Query $query = null): Enumerable
+    public function findAll(Query $query = null): Collection
     {
         /** @var MenuEntity[] $collection */
         $collection = parent::findAll($query);

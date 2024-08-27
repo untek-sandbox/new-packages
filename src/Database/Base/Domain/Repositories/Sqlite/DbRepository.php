@@ -3,13 +3,13 @@
 namespace Untek\Database\Base\Domain\Repositories\Sqlite;
 
 use App\Example\Controllers\ExampleEntity;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Illuminate\Database\Capsule\Manager;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Database\Schema\Builder;
 use Illuminate\Database\Schema\MySqlBuilder;
 use Illuminate\Database\Schema\PostgresBuilder;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
 use Untek\Database\Base\Domain\Entities\ColumnEntity;
 use Untek\Database\Base\Domain\Entities\RelationEntity;
 use Untek\Database\Base\Domain\Entities\TableEntity;
@@ -63,10 +63,10 @@ class DbRepository
         return FixtureEntity::class;
     }*/
 
-    public static function allPostgresTables(ConnectionInterface $connection): Enumerable
+    public static function allPostgresTables(ConnectionInterface $connection): Collection
     {
         $schemaCollection = StructHelper::allPostgresSchemas($connection);
-        $tableCollection = new Collection();
+        $tableCollection = new ArrayCollection();
         foreach ($schemaCollection as $schemaEntity) {
             $tables = $connection->select("SELECT * FROM information_schema.tables WHERE table_schema = '{$schemaEntity->getName()}'");
             // select * from pg_tables where schemaname='public';
@@ -81,7 +81,7 @@ class DbRepository
         return $tableCollection;
     }
 
-    public function allRelations(string $tableName): Enumerable
+    public function allRelations(string $tableName): Collection
     {
         $sql = "SELECT
 tc.constraint_name, tc.table_name, kcu.column_name, 
@@ -98,7 +98,7 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
             ->capsule
             ->getConnection();
         $array = $connection->select($sql);
-        $collection = new Collection();
+        $collection = new ArrayCollection();
         foreach ($array as $item) {
             $relationEntity = new RelationEntity();
             $relationEntity->setConstraintName($item->constraint_name);
@@ -111,11 +111,11 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
         return $collection;
     }
 
-    public function allTablesByName(array $nameList): Enumerable
+    public function allTablesByName(array $nameList): Collection
     {
         /** @var TableEntity[] $collection */
         $collection = $this->allTables();
-        $newCollection = new Collection();
+        $newCollection = new ArrayCollection();
         foreach ($collection as $tableEntity) {
             if (in_array($tableEntity->getName(), $nameList)) {
                 $columnCollection = $this->getColumnsByTable($tableEntity->getName());
@@ -128,7 +128,7 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
         return $newCollection;
     }
 
-    public function allTables(): Enumerable
+    public function allTables(): Collection
     {
 //        $tableAlias = $this->getCapsule()->getAlias();
         /* @var Builder|MySqlBuilder|PostgresBuilder $schema */
@@ -138,7 +138,7 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
             ->getSchemaBuilder();
 
         $dbName = $schema->getConnection()->getDatabaseName();
-        $collection = new Collection();
+        $collection = new ArrayCollection();
         /*if ($schema->getConnection()->getDriverName() == DbDriverEnum::SQLITE) {
             
         } else {
@@ -175,16 +175,16 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
 
     /**
      * @param string $tableName
-     * @return Enumerable | ColumnEntity[]
+     * @return Collection | ColumnEntity[]
      */
-    public function getColumnsByTable(string $tableName): Enumerable
+    public function getColumnsByTable(string $tableName): Collection
     {
         $schema = $this
             ->capsule
             ->getConnection()
             ->getSchemaBuilder();
         $columnList = $schema->getColumnListing($tableName);
-        $columnCollection = new Collection();
+        $columnCollection = new ArrayCollection();
         foreach ($columnList as $columnName) {
             $columnType = $schema->getColumnType($tableName, $columnName);
             $columnEntity = new ColumnEntity();

@@ -5,10 +5,8 @@ namespace Untek\Component\Relation\Traits;
 use Psr\Container\ContainerInterface;
 use Symfony\Contracts\Service\Attribute\Required;
 use Untek\Component\Relation\Interfaces\RelationConfigInterface;
-use Untek\Component\Relation\Interfaces\RelationInterface;
 use Untek\Component\Relation\Libs\RelationConfigurator;
 use Untek\Component\Relation\Libs\RelationLoader;
-use Untek\Core\Contract\Common\Exceptions\NotImplementedMethodException;
 
 trait RepositoryRelationTrait
 {
@@ -26,7 +24,7 @@ trait RepositoryRelationTrait
     
     public function getRelation(): RelationConfigInterface
     {
-        throw new NotImplementedMethodException('Need relation class.');
+        throw new \BadMethodCallException(sprintf('Method "getRelation" not defined in %s.', get_class($this)));
     }
 
     public function relations(): RelationConfigurator

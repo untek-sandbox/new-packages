@@ -12,7 +12,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Untek\Component\Env\Helpers\EnvHelper;
 use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
 use Untek\Persistence\Contract\Exceptions\NotFoundException;
 
@@ -78,7 +77,7 @@ class HttpErrorController
             'title' => $title,
             'message' => $message,
         ];
-        if (EnvHelper::isDebug()) {
+        if (getenv('APP_DEBUG') == '1') {
             $params['exception'] = $exception;
         }
 

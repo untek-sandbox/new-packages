@@ -2,11 +2,11 @@
 
 namespace Untek\Crypt\Pki\JsonDSig\Domain\Libs;
 
-use Untek\Core\Collection\Libs\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Untek\Component\Encoder\Encoders\ChainEncoder;
 use Untek\Crypt\Pki\JsonDSig\Domain\Libs\Encoders\HexEncoder;
 use Untek\Crypt\Pki\JsonDSig\Domain\Libs\Encoders\JsonEncoder;
 use Untek\Crypt\Pki\JsonDSig\Domain\Libs\Encoders\SortEncoder;
-use Untek\Component\Encoder\Encoders\ChainEncoder;
 
 class C14n
 {
@@ -17,7 +17,7 @@ class C14n
     public function __construct($format)
     {
         $this->formatArray = $format;
-        $encodersCollection = new Collection();
+        $encodersCollection = new ArrayCollection();
 //        $sortParam = SortEncoder::detect($this->formatArray);
         $sortParam = $this->detect(SortEncoder::paramName(), $this->formatArray);
         if ($sortParam) {

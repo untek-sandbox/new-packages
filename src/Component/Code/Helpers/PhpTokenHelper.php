@@ -2,20 +2,20 @@
 
 namespace Untek\Component\Code\Helpers;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Untek\Component\Code\Entities\PhpTokenEntity;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
 
 class PhpTokenHelper
 {
 
     /**
      * @param string $code
-     * @return Enumerable | PhpTokenEntity[]
+     * @return Collection | PhpTokenEntity[]
      */
-    public static function getTokens(string $code): Enumerable
+    public static function getTokens(string $code): Collection
     {
-        $collection = new Collection();
+        $collection = new ArrayCollection();
         $tokens = token_get_all($code, TOKEN_PARSE);
         foreach ($tokens as &$token) {
             $tokenTypeId = is_array($token) ? $token[0] : 262;

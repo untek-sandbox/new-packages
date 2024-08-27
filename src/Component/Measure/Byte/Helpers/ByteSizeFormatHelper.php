@@ -3,7 +3,6 @@
 namespace Untek\Component\Measure\Byte\Helpers;
 
 use Untek\Component\Measure\Byte\Enums\ByteEnum;
-use Untek\Component\Enum\Helpers\EnumHelper;
 
 class ByteSizeFormatHelper
 {
@@ -22,7 +21,7 @@ class ByteSizeFormatHelper
         $units = ByteEnum::allUnits();
         $unitKey = self::sizeUnit($sizeByte, $units);
         $value = round($sizeByte / $unitKey, 2);
-        $label = EnumHelper::getLabel(ByteEnum::class, $unitKey);
+        $label = ByteEnum::getLabel($unitKey);
         return $value . ' ' . $label;
     }
 }

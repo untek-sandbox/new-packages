@@ -2,12 +2,12 @@
 
 namespace Untek\Component\Web\Widget\Widgets\Toastr\Presentation\Http\Site\Widgets;
 
-use Untek\Component\Web\Widget\Widgets\Toastr\Domain\Model\ToastrEntity;
-use Untek\Component\Web\Widget\Widgets\Toastr\Domain\Enums\FlashMessageTypeEnum;
-use Untek\Component\Web\Widget\Widgets\Toastr\Application\Services\ToastrServiceInterface;
+use Doctrine\Common\Collections\Collection;
 use Untek\Component\Web\HtmlRender\Application\Services\JsResourceInterface;
 use Untek\Component\Web\Widget\Base\BaseWidget2;
-use Untek\Core\Collection\Interfaces\Enumerable;
+use Untek\Component\Web\Widget\Widgets\Toastr\Application\Services\ToastrServiceInterface;
+use Untek\Component\Web\Widget\Widgets\Toastr\Domain\Enums\FlashMessageTypeEnum;
+use Untek\Component\Web\Widget\Widgets\Toastr\Domain\Model\ToastrEntity;
 
 class ToastrWidget extends BaseWidget2
 {
@@ -77,7 +77,7 @@ class ToastrWidget extends BaseWidget2
         $this->js->registerVar('toastr.options', $this);
     }
 
-    private function generateHtml(Enumerable $collection)
+    private function generateHtml(Collection $collection)
     {
         if ($collection->isEmpty()) {
             return;

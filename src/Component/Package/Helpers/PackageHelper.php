@@ -2,58 +2,8 @@
 
 namespace Untek\Component\Package\Helpers;
 
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
-use Untek\Component\FileSystem\Helpers\FilePathHelper;
-use Untek\Component\FormatAdapter\StoreFile;
-use Untek\Develop\Package\Domain\Entities\ConfigEntity;
-use Untek\Develop\Package\Domain\Entities\GroupEntity;
-use Untek\Develop\Package\Domain\Entities\PackageEntity;
-
 class PackageHelper
 {
-
-    /**
-     * @return Enumerable | PackageEntity[]
-     */
-    public static function findAll(): Enumerable
-    {
-
-        $packages = self::getInstalled()['packages'];
-        $collection = new Collection();
-        foreach ($packages as $package) {
-            $packageEntity = new PackageEntity();
-            $packageEntity->setId($package['name']);
-            list($groupName, $packageName) = explode('/', $package['name']);
-            $packageEntity->setName($packageName);
-
-            $groupEntity = new GroupEntity();
-            $groupEntity->name = $groupName;
-
-            $packageEntity->setGroup($groupEntity);
-
-            $confiEntity = new ConfigEntity();
-            $confiEntity->setId($packageEntity->getId());
-            $confiEntity->setConfig($package);
-            $confiEntity->setPackage($packageEntity);
-
-            $packageEntity->setConfig($confiEntity);
-            $collection->add($packageEntity);
-        }
-        return $collection;
-    }
-
-    public static function getInstalled(): array
-    {
-        $store = new StoreFile(__DIR__ . '/../../../../../../composer/installed.json');
-        return $installed = $store->load();
-    }
-
-    public static function getLock(): array
-    {
-        $store = new StoreFile(__DIR__ . '/../../../../../../../composer.lock', 'json');
-        return $installed = $store->load();
-    }
 
     public static function getPsr4Dictonary()
     {
@@ -63,7 +13,7 @@ class PackageHelper
 
     public static function pathByNamespace($namespace)
     {
-        $nsArray = PackageHelper::findPathByNamespace($namespace);
+        $nsArray = self::findPathByNamespace($namespace);
         if ($nsArray) {
             $partName = mb_substr($namespace, mb_strlen($nsArray['namespace']));
             $partName = trim($partName, '\\');

@@ -2,14 +2,14 @@
 
 namespace Untek\Core\Collection\Helpers;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\Common\Collections\Expr\Comparison;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Untek\Component\Dev\Helpers\DeprecateHelper;
 use Untek\Core\Instance\Helpers\PropertyHelper;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
 
 /**
  * Хэлпер для работы с коллекциями.
@@ -20,13 +20,13 @@ class CollectionHelper
     /**
      * Фильтрация коллекции по условию.
      *
-     * @param Enumerable $collection
+     * @param Collection $collection
      * @param string $field Имя поля
      * @param string $operator Оператор сравнения
      * @param mixed $value Значение
-     * @return Enumerable
+     * @return Collection
      */
-    public static function where(Enumerable $collection, $field, $operator, $value)
+    public static function where(Collection $collection, $field, $operator, $value)
     {
         DeprecateHelper::hardThrow();
 
@@ -39,11 +39,11 @@ class CollectionHelper
     /**
      * Слияние коллекций.
      *
-     * @param Enumerable $collection Коллекция 1
-     * @param Enumerable $source Коллекция 2
-     * @return Enumerable
+     * @param Collection $collection Коллекция 1
+     * @param Collection $source Коллекция 2
+     * @return Collection
      */
-    public static function merge(Enumerable $collection, Enumerable $source): Enumerable
+    public static function merge(Collection $collection, Collection $source): Collection
     {
         DeprecateHelper::hardThrow();
 
@@ -55,10 +55,10 @@ class CollectionHelper
     /**
      * Добавить коллекцию элементов.
      *
-     * @param Enumerable $collection Исходная коллекция
-     * @param Enumerable $source Добавляемая коллекция
+     * @param Collection $collection Исходная коллекция
+     * @param Collection $source Добавляемая коллекция
      */
-    public static function appendCollection(Enumerable $collection, Enumerable $source): void
+    public static function appendCollection(Collection $collection, Collection $source): void
     {
         DeprecateHelper::hardThrow();
 
@@ -70,32 +70,32 @@ class CollectionHelper
     /**
      * Разделить коллекцию на куски.
      *
-     * @param Enumerable $collection Исходная коллекция
+     * @param Collection $collection Исходная коллекция
      * @param int $size Размер куска
-     * @return Enumerable Коллекция коллекций
+     * @return Collection Коллекция коллекций
      */
-    public static function chunk(Enumerable $collection, int $size): Enumerable
+    public static function chunk(Collection $collection, int $size): Collection
     {
         DeprecateHelper::hardThrow();
 
         if ($size <= 0) {
-            return new Collection();
+            return new ArrayCollection();
         }
         $chunks = [];
         foreach (array_chunk($collection->toArray(), $size, true) as $chunk) {
-            $chunks[] = new Collection($chunk);
+            $chunks[] = new ArrayCollection($chunk);
         }
-        return new Collection($chunks);
+        return new ArrayCollection($chunks);
     }
 
     /**
      * Преобразовать коллекцию в индексированный массив.
      *
-     * @param Enumerable $collection Исходная коллекция
+     * @param Collection $collection Исходная коллекция
      * @param string $fieldName Имя поля для индекса (должно быть уникальным)
      * @return array
      */
-    public static function indexing(Enumerable|array $collection, string $fieldName): array
+    public static function indexing(Collection|array $collection, string $fieldName): array
     {
 //        DeprecateHelper::hardThrow();
 
@@ -113,14 +113,14 @@ class CollectionHelper
      * @param string $entityClass Имя класса сущности
      * @param array $data Массив значений атрибутов сущности
      * @param array $filedsOnly Назначать только указанные атрибуты
-     * @return Enumerable
+     * @return Collection
      */
-    public static function create(string $entityClass, array $data = [], array $filedsOnly = []): Enumerable
+    public static function create(string $entityClass, array $data = [], array $filedsOnly = []): Collection
     {
         DeprecateHelper::hardThrow();
 
         $data = self::createEntityArray($entityClass, $data, $filedsOnly);
-        $collection = new Collection($data);
+        $collection = new ArrayCollection($data);
         return $collection;
     }
 
@@ -139,10 +139,10 @@ class CollectionHelper
     /**
      * Преобразовать коллекцию в массив.
      *
-     * @param Enumerable $collection Исходная коллекция
+     * @param Collection $collection Исходная коллекция
      * @return array
      */
-    public static function toArray(Enumerable $collection): array
+    public static function toArray(Collection $collection): array
     {
         DeprecateHelper::hardThrow();
 
@@ -158,11 +158,11 @@ class CollectionHelper
     /**
      * Получить массив значений одного атрибута.
      *
-     * @param Enumerable $collection Исходная коллекция
+     * @param Collection $collection Исходная коллекция
      * @param string $key Имя атрибута
      * @return array Массив значений атрибута
      */
-    public static function getColumn(Enumerable|array $collection, string $key): array
+    public static function getColumn(Collection|array $collection, string $key): array
     {
         $array = [];
         foreach ($collection as $entity) {

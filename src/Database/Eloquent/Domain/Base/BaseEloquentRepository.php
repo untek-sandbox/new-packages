@@ -2,12 +2,10 @@
 
 namespace Untek\Database\Eloquent\Domain\Base;
 
-use Illuminate\Database\Query\Builder as QueryBuilder;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Database\Base\Domain\Traits\TableNameTrait;
+use Doctrine\Common\Collections\Collection;
 use Illuminate\Database\Capsule\Manager;
+use Illuminate\Database\Query\Builder as QueryBuilder;
 use Untek\Database\Eloquent\Domain\Helpers\QueryBuilder\EloquentQueryBuilderHelper;
-use Untek\Database\Eloquent\Domain\Traits\EloquentTrait;
 use Untek\Model\EntityManager\Interfaces\EntityManagerInterface;
 use Untek\Model\EntityManager\Traits\EntityManagerAwareTrait;
 use Untek\Model\Repository\Traits\RepositoryDispatchEventTrait;
@@ -67,7 +65,7 @@ abstract class BaseEloquentRepository //implements GetEntityClassInterface
 //        return $this->getQueryBuilderByTableName($this->getTableName());
     }
 
-    protected function findBy(Query $query = null): Enumerable
+    protected function findBy(Query $query = null): Collection
     {
         $query = $this->forgeQuery($query);
         $queryBuilder = $this->getQueryBuilder();
@@ -83,7 +81,7 @@ abstract class BaseEloquentRepository //implements GetEntityClassInterface
         return $collection;
     }
 
-    protected function findByBuilder(QueryBuilder $queryBuilder): Enumerable
+    protected function findByBuilder(QueryBuilder $queryBuilder): Collection
     {
         $collection = $queryBuilder->get();
         $array = $collection->toArray();

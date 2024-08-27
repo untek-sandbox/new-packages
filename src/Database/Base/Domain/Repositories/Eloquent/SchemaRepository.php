@@ -2,15 +2,12 @@
 
 namespace Untek\Database\Base\Domain\Repositories\Eloquent;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Connection;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
 use Untek\Database\Base\Domain\Entities\ColumnEntity;
 use Untek\Database\Base\Domain\Entities\RelationEntity;
 use Untek\Database\Base\Domain\Entities\TableEntity;
-use Untek\Database\Base\Domain\Enums\DbDriverEnum;
-use Illuminate\Database\Capsule\Manager;
-use Untek\Database\Eloquent\Domain\Traits\EloquentTrait;
 
 class SchemaRepository
 {
@@ -60,11 +57,11 @@ class SchemaRepository
         return $this->capsule;
     }*/
 
-    public function allTablesByName(array $nameList): Enumerable
+    public function allTablesByName(array $nameList): Collection
     {
         /** @var TableEntity[] $collection */
         $collection = $this->allTables();
-        $newCollection = new Collection();
+        $newCollection = new ArrayCollection();
         foreach ($collection as $tableEntity) {
             if (in_array($tableEntity->getName(), $nameList)) {
                 $columnCollection = $this->allColumnsByTable($tableEntity->getName(), $tableEntity->getSchemaName());
@@ -80,7 +77,7 @@ class SchemaRepository
     protected function allRelations(string $tableName) {
         $foreignKeys = $this->connection->getSchemaManager()->listTableForeignKeys($tableName);
         
-        $collection = new Collection();
+        $collection = new ArrayCollection();
         
         if($foreignKeys) {
             foreach ($foreignKeys as $key) {
@@ -97,10 +94,10 @@ class SchemaRepository
         return $collection;
     }
 
-    protected function allColumnsByTable(string $tableName, string $schemaName = 'public'): Enumerable
+    protected function allColumnsByTable(string $tableName, string $schemaName = 'public'): Collection
     {
         $columnList = $this->connection->getSchemaManager()->listTableColumns($tableName);
-        $columnCollection = new Collection();
+        $columnCollection = new ArrayCollection();
         foreach ($columnList as $column) {
             $columnType = $column->getType()->getName();
             $columnEntity = new ColumnEntity();

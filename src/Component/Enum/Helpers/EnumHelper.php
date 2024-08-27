@@ -3,11 +3,7 @@
 namespace Untek\Component\Enum\Helpers;
 
 use InvalidArgumentException;
-use ReflectionException;
-use Untek\Component\Dev\Helpers\DeprecateHelper;
-use Untek\Core\Instance\Exceptions\NotInstanceOfException;
-use Yiisoft\Arrays\ArrayHelper;
-use Yiisoft\Strings\Inflector;
+use ReflectionClass;
 
 /**
  * Работа с перечислениями
@@ -78,37 +74,35 @@ class EnumHelper
      * @param $constValue
      * @return string
      */
-    public static function getLabel(string $className, $constValue): string
+    /*public static function getLabel(string $className, $constValue): string
     {
 //        DeprecateHelper::hardThrow();
         $labels = self::getLabels($className);
         return $labels[$constValue];
-    }
+    }*/
 
     /**
      * Получить надписи все констант
      * @param string $className
      * @return array
-     * @throws NotInstanceOfException
-     * @throws ReflectionException
      */
-    public static function getLabels(string $className): array
+    /*public static function getLabels(string $className): array
     {
 //        DeprecateHelper::hardThrow();
         $labels = $className::getLabels();
         return $labels;
-    }
+    }*/
 
     /**
      * Получить список все констант в виде массива (id => title)
      * @param string $className
      * @return array
      */
-    public static function getOptions(string $className): array
+    /*public static function getOptions(string $className): array
     {
         $items = self::getItems($className);
         return ArrayHelper::map($items, 'id', 'title');
-    }
+    }*/
 
     /**
      * Получить список все констант в виде массива записей
@@ -116,7 +110,7 @@ class EnumHelper
      * @return array
      * @throws \ReflectionException
      */
-    public static function getItems(string $className): array
+    /*public static function getItems(string $className): array
     {
         $all = EnumHelper::all($className);
         $labels = self::getLabelsForce($className, $all);
@@ -129,7 +123,7 @@ class EnumHelper
             ];
         }
         return $items;
-    }
+    }*/
 
     /**
      * Получить рефлексию всех констант
@@ -139,15 +133,26 @@ class EnumHelper
      */
     protected static function all(string $className, ?string $prefix = null): array
     {
+        $constants = (new ReflectionClass($className))->getConstants();
         if (!empty($prefix)) {
-            $constants = ReflectionHelper::getConstantsByPrefix($className, $prefix);
-        } else {
-            $constants = ReflectionHelper::getConstants($className);
+            $constants = self::filterByPrefix($constants, $prefix);
         }
         return $constants;
     }
 
-    protected static function getLabelsForce(string $className, array $all = null): array
+    private static function filterByPrefix($constants, $prefix)
+    {
+        $ucPrefix = strtoupper($prefix);
+        $result = [];
+        foreach ($constants as $name => $value) {
+            if (str_starts_with($name, $ucPrefix)) {
+                $result[$name] = $value;
+            }
+        }
+        return $result;
+    }
+
+    /*protected static function getLabelsForce(string $className, array $all = null): array
     {
         DeprecateHelper::hardThrow();
         try {
@@ -164,5 +169,5 @@ class EnumHelper
             }, $labels);
         }
         return $labels;
-    }
+    }*/
 }

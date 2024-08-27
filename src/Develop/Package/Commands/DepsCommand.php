@@ -2,17 +2,17 @@
 
 namespace Untek\Develop\Package\Commands;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
 use Untek\Core\Collection\Helpers\CollectionHelper;
-use Untek\Framework\Console\Symfony4\Question\ChoiceQuestion;
 use Untek\Develop\Package\Domain\Entities\PackageEntity;
 use Untek\Develop\Package\Domain\Libs\Deps\DepsExtractor;
 use Untek\Develop\Package\Domain\Services\DependencyService;
+use Untek\Framework\Console\Symfony4\Question\ChoiceQuestion;
 
 class DepsCommand extends BaseCommand
 {
@@ -79,7 +79,7 @@ class DepsCommand extends BaseCommand
         return Command::SUCCESS;
     }
 
-    private function selectPackages(Enumerable $collection, InputInterface $input, OutputInterface $output): Enumerable
+    private function selectPackages(Collection $collection, InputInterface $input, OutputInterface $output): Collection
     {
         $output->writeln('');
         $question = new ChoiceQuestion(
@@ -89,7 +89,7 @@ class DepsCommand extends BaseCommand
         );
         $question->setMultiselect(true);
         $selectedPackages = $this->getHelper('question')->ask($input, $output, $question);
-        $selectedCollection = new Collection();
+        $selectedCollection = new ArrayCollection();
         foreach ($collection as $packageEntity) {
             if (in_array($packageEntity->getId(), $selectedPackages)) {
                 $selectedCollection->add($packageEntity);

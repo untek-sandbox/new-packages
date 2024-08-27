@@ -2,6 +2,7 @@
 
 namespace Untek\Core\Instance\Helpers;
 
+use Doctrine\Common\Collections\Collection;
 use Illuminate\Support\Arr;
 use Throwable;
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
@@ -36,7 +37,7 @@ class PropertyHelper
         $array = [];
         if (is_array($entity)) {
             $array = $entity;
-        } elseif ($entity instanceof \Doctrine\Common\Collections\Collection) {
+        } elseif ($entity instanceof Collection) {
             $array = $entity->toArray();
         } elseif (is_object($entity)) {
             $attributes = self::getAttributeNames($entity);

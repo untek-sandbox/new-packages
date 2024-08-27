@@ -2,10 +2,6 @@
 
 namespace Untek\Develop\Package\Domain\Helpers;
 
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
-use Untek\Component\FileSystem\Helpers\FilePathHelper;
-use Untek\Component\FormatAdapter\StoreFile;
 use Untek\Develop\Package\Domain\Entities\ConfigEntity;
 use Untek\Develop\Package\Domain\Entities\GroupEntity;
 use Untek\Develop\Package\Domain\Entities\PackageEntity;
@@ -14,12 +10,12 @@ class PackageHelper
 {
 
     /**
-     * @return Enumerable | PackageEntity[]
+     * @return PackageEntity[]
      */
-    public static function findAll(): Enumerable
+    public static function findAll(): array
     {
         $packages = self::getInstalled()['packages'];
-        $collection = new Collection();
+        $collection = [];
         foreach ($packages as $package) {
             $packageEntity = new PackageEntity();
             $packageEntity->setId($package['name']);
@@ -37,57 +33,14 @@ class PackageHelper
             $confiEntity->setPackage($packageEntity);
 
             $packageEntity->setConfig($confiEntity);
-            $collection->add($packageEntity);
+            $collection[] = $packageEntity;
         }
         return $collection;
     }
 
     public static function getInstalled(): array
     {
-        $store = new StoreFile(__DIR__ . '/../../../../../../../../vendor/composer/installed.json');
-        return $installed = $store->load();
-    }
-
-    public static function getLock(): array
-    {
-        $store = new StoreFile(__DIR__ . '/../../../../../../../../composer.lock', 'json');
-        return $installed = $store->load();
-    }
-
-    public static function getPsr4Dictonary()
-    {
-        $psr4 = include(__DIR__ . '/../../../../../../../../vendor/composer/autoload_psr4.php');
-        return $psr4;
-    }
-
-    public static function pathByNamespace($namespace)
-    {
-        $nsArray = PackageHelper::findPathByNamespace($namespace);
-        if ($nsArray) {
-            $partName = mb_substr($namespace, mb_strlen($nsArray['namespace']));
-            $partName = trim($partName, '\\');
-            $fileName = $nsArray['path'] . '\\' . $partName;
-        } else {
-            $fileName = realpath(__DIR__ . '/../../../../../../../..') . '\\' . $namespace;
-        }
-        $fileName = str_replace('\\', '/', $fileName);
-        return $fileName;
-    }
-
-    public static function findPathByNamespace(string $namespace): ?array
-    {
-        $namespace = trim($namespace, '\\');
-        $namespace .= '\\';
-        $psr4 = self::getPsr4Dictonary();
-        foreach ($psr4 as $ns => $path) {
-            $path = $path[0];
-            if (mb_strpos($namespace, $ns) === 0) {
-                return [
-                    'namespace' => $ns,
-                    'path' => $path,
-                ];
-            }
-        }
-        return null;
+        $json = file_get_contents(__DIR__ . '/../../../../../../../../composer.lock');
+        return json_decode($json, true);
     }
 }

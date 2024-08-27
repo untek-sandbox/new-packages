@@ -2,9 +2,9 @@
 
 namespace Untek\Develop\Package\Domain\Helpers;
 
+use Doctrine\Common\Collections\Collection;
 use Untek\Component\FileSystem\Helpers\FileHelper;
 use Untek\Component\FileSystem\Helpers\FileStorageHelper;
-use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Develop\Package\Domain\Entities\ConfigEntity;
 
 class ComposerConfigHelper
@@ -44,9 +44,9 @@ class ComposerConfigHelper
         return $depss;
     }
 
-    public static function extractPsr4Autoload(Enumerable $collection)
+    public static function extractPsr4Autoload(Collection $collection)
     {
-        /** @var ConfigEntity[] | Enumerable $collection */
+        /** @var ConfigEntity[] | Collection $collection */
         $namespaces = [];
         foreach ($collection as $configEntity) {
             $psr4autoloads = $configEntity->getAllAutoloadPsr4();
@@ -64,9 +64,9 @@ class ComposerConfigHelper
         return $namespaces;
     }
 
-    public static function extractPsr4AutoloadPackages(Enumerable $collection)
+    public static function extractPsr4AutoloadPackages(Collection $collection)
     {
-        /** @var ConfigEntity[] | Enumerable $collection */
+        /** @var ConfigEntity[] | Collection $collection */
         $namespaces = [];
         foreach ($collection as $configEntity) {
             $psr4autoloads = $configEntity->getAllAutoloadPsr4();

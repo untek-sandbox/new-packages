@@ -2,7 +2,7 @@
 
 namespace Untek\Model\EntityManager\Interfaces;
 
-use Untek\Core\Collection\Interfaces\Enumerable;
+use Doctrine\Common\Collections\Collection;
 use Untek\Model\Entity\Interfaces\EntityIdInterface;
 use Untek\Model\Repository\Interfaces\FindOneUniqueInterface;
 use Untek\Model\Repository\Interfaces\RepositoryInterface;
@@ -24,6 +24,6 @@ interface EntityManagerInterface extends TransactionInterface//, FindOneUniqueIn
 
     public function createEntity(string $entityClassName, array $attributes = []): object;
 
-    public function createEntityCollection(string $entityClassName, array $items): Enumerable;
+    public function createEntityCollection(string $entityClassName, array $items): Collection;
 
 }

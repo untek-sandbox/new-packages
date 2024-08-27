@@ -2,11 +2,11 @@
 
 namespace Untek\Component\Web\Widget\Widgets\Toastr\Infrastructure\Drivers\Symfony;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Untek\Component\Web\Widget\Widgets\Toastr\Domain\Model\ToastrEntity;
 use Untek\Component\Web\Widget\Widgets\Toastr\Application\Services\ToastrRepositoryInterface;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
+use Untek\Component\Web\Widget\Widgets\Toastr\Domain\Model\ToastrEntity;
 use Untek\Model\Validator\Helpers\ValidationHelper;
 
 class ToastrRepository implements ToastrRepositoryInterface
@@ -29,10 +29,10 @@ class ToastrRepository implements ToastrRepositoryInterface
         $this->sync();
     }
 
-    public function findAll(): Enumerable
+    public function findAll(): Collection
     {
         $items = $this->session->get('flash-alert', []);
-        return new Collection($items);
+        return new ArrayCollection($items);
     }
 
     public function clear()

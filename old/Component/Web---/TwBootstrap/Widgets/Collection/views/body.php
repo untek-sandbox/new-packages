@@ -2,14 +2,14 @@
 
 /**
  * @var HtmlRenderInterface $view
- * @var Enumerable $collection
+ * @var Collection $collection
  * @var AttributeEntity[] $attributes
  * @var FormatEncoder $formatter
  */
 
-use Untek\Component\Web\HtmlRender\Application\Services\HtmlRenderInterface;
-use Untek\Core\Collection\Interfaces\Enumerable;
+use Doctrine\Common\Collections\Collection;
 use Untek\Component\I18Next\Facades\I18Next;
+use Untek\Component\Web\HtmlRender\Application\Services\HtmlRenderInterface;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Entities\AttributeEntity;
 use Untek\Component\Web\TwBootstrap\Widgets\Format\Libs\FormatEncoder;
 

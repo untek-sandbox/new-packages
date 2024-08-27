@@ -1,7 +1,6 @@
 <?php
 
 use Psr\Container\ContainerInterface;
-use Untek\Component\Env\Helpers\EnvHelper;
 use Untek\Core\ConfigManager\Interfaces\ConfigManagerInterface;
 use Untek\Framework\Telegram\Domain\Interfaces\Repositories\ResponseRepositoryInterface;
 use Untek\Framework\Telegram\Domain\Repositories\File\ConfigRepository;
@@ -26,7 +25,7 @@ return [
             return $routeService;
         },
         ResponseRepositoryInterface::class =>
-            EnvHelper::isTest() ?
+            (getenv('APP_ENV') == 'test') ?
                 TestResponseRepository::class :
                 TelegramResponseRepository::class,
         ConfigRepository::class => function (ContainerInterface $container) {

@@ -36,6 +36,12 @@ class ByteEnum
         ];
     }
 
+    public static function getLabel($constValue): string
+    {
+        $labels = self::getLabels();
+        return $labels[$constValue];
+    }
+
     public static function getLabels()
     {
         return [

@@ -13,10 +13,10 @@ class UrlHelper
      * @param string $url the URL to be checked
      * @return bool whether the URL is relative
      */
-    protected static function isRelative($url): bool
+    /*protected static function isRelative($url): bool
     {
         return strncmp($url, '//', 2) && strpos($url, '://') === false;
-    }
+    }*/
 
     public static function generateUrlFromParams(array $data): string
     {
@@ -53,7 +53,7 @@ class UrlHelper
         return $url;
     }
 
-    public static function parse($url, $key = null)
+    /*public static function parse($url, $key = null)
     {
         $r = parse_url($url);
         if (!empty($r['query'])) {
@@ -64,5 +64,5 @@ class UrlHelper
         } else {
             return $r;
         }
-    }
+    }*/
 }

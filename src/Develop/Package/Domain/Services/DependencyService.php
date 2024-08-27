@@ -2,7 +2,7 @@
 
 namespace Untek\Develop\Package\Domain\Services;
 
-use Untek\Component\Code\Helpers\ComposerHelper;
+use Untek\Component\Package\Helpers\ComposerHelper;
 use Untek\Component\FileSystem\Helpers\FileHelper;
 use Untek\Develop\Package\Domain\Entities\PackageEntity;
 use Untek\Develop\Package\Domain\Helpers\PackageHelper;
@@ -146,7 +146,6 @@ class DependencyService
 
         $new = [];
 
-        $packageCollection = PackageHelper::findAll();
         foreach ($classes as $class) {
             $class = trim($class, ' \\');
 

@@ -2,9 +2,9 @@
 
 namespace Untek\Crypt\Pki\X509\Domain\Helpers;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Untek\Component\FileSystem\Helpers\FileStorageHelper;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
 use Yiisoft\Arrays\ArraySorter;
 
 class QrDecoderHelper
@@ -31,7 +31,7 @@ class QrDecoderHelper
         return $xml->decode($xmlContent, 'xml', $context);
     }
 
-    public static function extract(array $qrs): Enumerable
+    public static function extract(array $qrs): Collection
     {
         $xml = new \Symfony\Component\Serializer\Encoder\XmlEncoder;
         $context = [
@@ -41,7 +41,7 @@ class QrDecoderHelper
 //    'remove_empty_tags' => true,
         ];
 
-        $collection = new Collection();
+        $collection = new ArrayCollection();
         $arer = [];
         foreach ($qrs as $xmlContent) {
             $item = $xml->decode($xmlContent, 'xml');
@@ -49,10 +49,10 @@ class QrDecoderHelper
             $arr[] = $item;
         }
         ArraySorter::multisort($arr, 'elementNumber');
-        return new Collection($arr);
+        return new ArrayCollection($arr);
     }
 
-    public static function collectionToBin(Enumerable $collection): string
+    public static function collectionToBin(Collection $collection): string
     {
         $data = '';
         foreach ($collection as $item) {

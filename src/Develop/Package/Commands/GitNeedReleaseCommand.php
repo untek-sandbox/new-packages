@@ -2,14 +2,14 @@
 
 namespace Untek\Develop\Package\Commands;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
 use Untek\Core\Collection\Helpers\CollectionHelper;
-use Untek\Framework\Console\Symfony4\Style\SymfonyStyle;
 use Untek\Develop\Package\Domain\Entities\PackageEntity;
 use Untek\Develop\Package\Domain\Helpers\VersionHelper;
+use Untek\Framework\Console\Symfony4\Style\SymfonyStyle;
 
 class GitNeedReleaseCommand extends BaseCommand
 {
@@ -45,7 +45,7 @@ class GitNeedReleaseCommand extends BaseCommand
         return 0;
     }
 
-    private function selectPackages(InputInterface $input, OutputInterface $output, Enumerable $collection)//: DomainEntity
+    private function selectPackages(InputInterface $input, OutputInterface $output, Collection $collection)//: DomainEntity
     {
         $packageNames = CollectionHelper::getColumn($collection, 'id');
         $io = new SymfonyStyle($input, $output);
@@ -61,11 +61,11 @@ class GitNeedReleaseCommand extends BaseCommand
         return $choices;
     }
 
-    private function displayProgress(Enumerable $collection, InputInterface $input, OutputInterface $output): Enumerable
+    private function displayProgress(Collection $collection, InputInterface $input, OutputInterface $output): Collection
     {
-        /** @var PackageEntity[] | Enumerable $collection */
-        /** @var PackageEntity[] | Enumerable $totalCollection */
-        $totalCollection = new Collection();
+        /** @var PackageEntity[] | Collection $collection */
+        /** @var PackageEntity[] | Collection $totalCollection */
+        $totalCollection = new ArrayCollection();
         foreach ($collection as $packageEntity) {
             $packageId = $packageEntity->getId();
             $output->write(" $packageId ... ");
@@ -80,9 +80,9 @@ class GitNeedReleaseCommand extends BaseCommand
         return $totalCollection;
     }
 
-    private function displayTotal(Enumerable $totalCollection, InputInterface $input, OutputInterface $output, array $choices)
+    private function displayTotal(Collection $totalCollection, InputInterface $input, OutputInterface $output, array $choices)
     {
-        /** @var PackageEntity[] | Enumerable $totalCollection */
+        /** @var PackageEntity[] | Collection $totalCollection */
         $output->writeln('<fg=yellow>Need release!</>');
         $output->writeln('');
 

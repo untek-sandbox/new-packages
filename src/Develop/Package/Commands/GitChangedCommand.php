@@ -2,16 +2,15 @@
 
 namespace Untek\Develop\Package\Commands;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
 use Untek\Develop\Package\Domain\Entities\ChangedEntity;
 use Untek\Develop\Package\Domain\Entities\PackageEntity;
 use Untek\Develop\Package\Domain\Enums\StatusEnum;
 use Untek\Develop\Package\Domain\Interfaces\Services\GitServiceInterface;
-use Untek\Develop\Package\Domain\Interfaces\Services\PackageServiceInterface;
-use Symfony\Component\Console\Command\Command;
 use Untek\Develop\Package\Domain\Repositories\File\PackageRepository;
 
 class GitChangedCommand extends Command
@@ -49,11 +48,11 @@ class GitChangedCommand extends Command
         return 0;
     }
 
-    private function displayProgress(Enumerable $collection, InputInterface $input, OutputInterface $output): Enumerable
+    private function displayProgress(Collection $collection, InputInterface $input, OutputInterface $output): Collection
     {
-        /** @var PackageEntity[] | Enumerable $collection */
-        /** @var PackageEntity[] | Enumerable $totalCollection */
-        $totalCollection = new Collection();
+        /** @var PackageEntity[] | Collection $collection */
+        /** @var PackageEntity[] | Collection $totalCollection */
+        $totalCollection = new ArrayCollection();
         foreach ($collection as $packageEntity) {
             $packageId = $packageEntity->getId();
             $branch = $this->gitService->branch($packageEntity);
@@ -87,9 +86,9 @@ class GitChangedCommand extends Command
         return preg_match('/^([a-z\d]+[-_]?)*[a-z\d]$/i', $branchName) || preg_match('/^\d+.+x$/i', $branchName);
     }
 
-    private function displayTotal(Enumerable $totalCollection, InputInterface $input, OutputInterface $output)
+    private function displayTotal(Collection $totalCollection, InputInterface $input, OutputInterface $output)
     {
-        /** @var ChangedEntity[] | Enumerable $totalCollection */
+        /** @var ChangedEntity[] | Collection $totalCollection */
         $output->writeln('<fg=yellow>Has changes:</>');
         $output->writeln('');
 

@@ -2,9 +2,9 @@
 
 namespace Untek\Kaz\Egov\Qr\Services;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Exception;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
 use Untek\Core\Collection\Helpers\CollectionHelper;
 use Untek\Kaz\Egov\Qr\Encoders\Base64Encoder;
 use Untek\Kaz\Egov\Qr\Encoders\EconomicCompressionEncoder;
@@ -90,7 +90,7 @@ class EncoderService
         return $rate;
     }
 
-    public function encode(string $data/*, WrapperInterface $entityWrapper = null*/): Enumerable
+    public function encode(string $data/*, WrapperInterface $entityWrapper = null*/): Collection
     {
         if (empty($data)) {
             throw new \InvalidArgumentException('Empty data for encode!');
@@ -104,7 +104,7 @@ class EncoderService
         $rate = $this->getDataSizeRateByEncoders($entityEncoder->getEncoders());
         $dataSize = $this->getDataSize() / $rate;
         $encodedParts = str_split($encoded, $dataSize);
-        $collection = new Collection();
+        $collection = new ArrayCollection();
         foreach ($encodedParts as $index => $item) {
             $entityEncoder = $this->classEncoder->encodersToClasses($entityWrapper->getEncoders());
             $encodedItem = $entityEncoder->encode($item);
@@ -119,10 +119,10 @@ class EncoderService
         return $collection;
     }
 
-    public function decode(Enumerable $encodedData)
+    public function decode(Collection $encodedData)
     {
         $barCodeCollection = $this->arrayToCollection($encodedData);
-        $resultCollection = new Collection();
+        $resultCollection = new ArrayCollection();
         foreach ($barCodeCollection as $barCodeEntity) {
             $entityEncoders = $this->classEncoder->encodersToClasses($barCodeEntity->getEntityEncoders());
             $decodedItem = $entityEncoders->decode($barCodeEntity->getData());
@@ -136,19 +136,19 @@ class EncoderService
         //return $this->decodeBarCodeCollection($resultCollection, $barCodeCollection);
     }
 
-    private function decodeBarCodeCollection(Enumerable $resultCollection, Enumerable $barCodeCollection)
+    private function decodeBarCodeCollection(Collection $resultCollection, Collection $barCodeCollection)
     {
 
     }
 
     /**
-     * @param Enumerable $array
-     * @return Enumerable | BarCodeEntity[]
+     * @param Collection $array
+     * @return Collection | BarCodeEntity[]
      * @throws Exception
      */
-    private function arrayToCollection(Enumerable $array): Enumerable
+    private function arrayToCollection(Collection $array): Collection
     {
-        $collection = new Collection();
+        $collection = new ArrayCollection();
         foreach ($array as $item) {
             $wrapper = $this->detectWrapper($item);
             $barCodeEntity = $wrapper->decode($item);
@@ -156,7 +156,7 @@ class EncoderService
         }
         $arr = CollectionHelper::indexing($collection, 'id');
         ksort($arr);
-        return new Collection($arr);
+        return new ArrayCollection($arr);
     }
 
     private function detectWrapper(string $encoded): WrapperInterface

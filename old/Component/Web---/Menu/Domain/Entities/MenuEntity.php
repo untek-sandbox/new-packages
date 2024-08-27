@@ -2,6 +2,7 @@
 
 namespace Untek\Component\Web\Menu\Domain\Entities;
 
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Untek\Model\Validator\Interfaces\ValidationByMetadataInterface;
@@ -217,7 +218,7 @@ class MenuEntity //implements ValidationByMetadataInterface, EntityIdInterface
     }
 
     /**
-     * @return \Untek\Core\Collection\Interfaces\Enumerable | MenuEntity[]
+     * @return Collection | MenuEntity[]
      */
     public function getItems()
     {

@@ -2,7 +2,7 @@
 
 namespace Untek\Component\FileSystem\Entities;
 
-use Untek\Core\Collection\Libs\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class DirectoryEntity extends BaseEntity
 {
@@ -15,7 +15,7 @@ class DirectoryEntity extends BaseEntity
     }
 
     /**
-     * @return null | Collection | FileEntity[]|DirectoryEntity[]
+     * @return null | ArrayCollection | FileEntity[]|DirectoryEntity[]
      */
     public function getItems()
     {

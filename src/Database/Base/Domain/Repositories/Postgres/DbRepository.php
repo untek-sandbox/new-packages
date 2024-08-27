@@ -3,8 +3,8 @@
 namespace Untek\Database\Base\Domain\Repositories\Postgres;
 
 use App\Example\Controllers\ExampleEntity;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Untek\Database\Base\Domain\Entities\ColumnEntity;
 use Untek\Database\Base\Domain\Entities\RelationEntity;
 use Untek\Database\Base\Domain\Entities\TableEntity;
@@ -13,13 +13,13 @@ use Yiisoft\Arrays\ArrayHelper;
 class DbRepository extends \Untek\Database\Base\Domain\Repositories\Base\DbRepository
 {
 
-    public function allTables(): Enumerable
+    public function allTables(): Collection
     {
         $connection = $this
             ->getCapsule()
             ->getConnection();
         $schemas = $this->allSchemas();
-        $tableCollection = new Collection();
+        $tableCollection = new ArrayCollection();
         foreach ($schemas as $schemaName) {
             $tables = $connection->select("SELECT * FROM information_schema.tables WHERE table_schema = '{$schemaName}'");
             $tableNames = ArrayHelper::getColumn($tables, 'table_name');
@@ -35,7 +35,7 @@ class DbRepository extends \Untek\Database\Base\Domain\Repositories\Base\DbRepos
         return $tableCollection;
     }
 
-    public function allRelations(string $tableName): Enumerable
+    public function allRelations(string $tableName): Collection
     {
         $sql = "SELECT
 tc.constraint_name, tc.table_name, kcu.column_name, 
@@ -52,7 +52,7 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
             ->getCapsule()
             ->getConnection();
         $array = $connection->select($sql);
-        $collection = new Collection();
+        $collection = new ArrayCollection();
         foreach ($array as $item) {
             $relationEntity = new RelationEntity();
             $relationEntity->setConstraintName($item->constraint_name);
@@ -83,7 +83,7 @@ WHERE constraint_type = 'FOREIGN KEY' AND tc.table_name='$tableName';";
         return $schemaNames;
     }
 
-    public function allColumnsByTable(string $tableName, string $schemaName = 'public'): Enumerable
+    public function allColumnsByTable(string $tableName, string $schemaName = 'public'): Collection
     {
         $connection = $this
             ->getCapsule()
@@ -131,7 +131,7 @@ WHERE
      );");
 
 
-        $columnCollection = new Collection();
+        $columnCollection = new ArrayCollection();
         foreach ($schemaCollection as $attribute) {
             $columnEntity = new ColumnEntity();
 

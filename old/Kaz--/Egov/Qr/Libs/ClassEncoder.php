@@ -2,8 +2,7 @@
 
 namespace Untek\Kaz\Egov\Qr\Libs;
 
-use Untek\Component\Arr\Helpers\ArrayPathHelper;
-use Untek\Core\Collection\Libs\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Yiisoft\Arrays\ArrayHelper;
 
 class ClassEncoder
@@ -27,7 +26,7 @@ class ClassEncoder
         foreach ($names as $name) {
             $classes[] = $this->encoderToClass($name);
         }
-        $encoders = new CollectionEncoder(new Collection($classes));
+        $encoders = new CollectionEncoder(new ArrayCollection($classes));
         return $encoders;
     }
 

@@ -2,13 +2,12 @@
 
 namespace Untek\Component\Relation\Libs\Types;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Persistence\ObjectRepository;
-use Psr\Container\ContainerInterface;
 use Untek\Component\Code\Factories\PropertyAccess;
-use Untek\Core\Collection\Helpers\CollectionHelper;
-use Untek\Core\Collection\Libs\Collection;
-use Untek\Model\Shared\Interfaces\FindAllInterface;
 use Untek\Component\Relation\Interfaces\RelationInterface;
+use Untek\Core\Collection\Helpers\CollectionHelper;
+use Untek\Model\Shared\Interfaces\FindAllInterface;
 
 class ManyToManyRelation extends BaseRelation implements RelationInterface
 {
@@ -17,50 +16,13 @@ class ManyToManyRelation extends BaseRelation implements RelationInterface
     public $viaSourceAttribute;
     public $viaTargetAttribute;
 
-    /*public function __construct(ContainerInterface $container)
-    {
-        $this->container = $container;
-    }
-
-    public function run(array $collection): void
-    {
-        $this->loadRelation($collection);
-        $collection = $this->prepareCollection($collection);
-    }
-
-    protected function prepareCollection(array $collection)
-    {
-        if ($this->prepareCollection) {
-            call_user_func($this->prepareCollection, $collection);
-        }
-    }
-
-    protected function loadRelationByIds(array $ids): array
-    {
-        $foreignRepositoryInstance = $this->getRepositoryInstance();
-        $criteria = [
-            $this->foreignAttribute => $ids
-        ];
-        return $this->loadCollection($foreignRepositoryInstance, $criteria);
-    }*/
-
     protected function loadViaByIds(array $ids): array
     {
-        $foreignRepositoryInstance = $this->getViaRepositoryInstance();
+        $foreignRepositoryInstance = $this->container->get($this->viaRepositoryClass);
         $criteria = [
             $this->viaSourceAttribute => $ids
         ];
         return $this->loadCollection($foreignRepositoryInstance, $criteria);
-    }
-
-    /*protected function getRepositoryInstance(): FindAllInterface
-    {
-        return $this->container->get($this->foreignRepositoryClass);
-    }*/
-
-    protected function getViaRepositoryInstance(): FindAllInterface
-    {
-        return $this->container->get($this->viaRepositoryClass);
     }
 
     protected function loadRelation(array $collection): void
@@ -88,7 +50,7 @@ class ManyToManyRelation extends BaseRelation implements RelationInterface
             if (isset($result[$sourceIndex])) {
                 $value = $result[$sourceIndex];
                 $value = $this->getValueFromPath($value);
-                $propertyAccessor->setValue($entity, $this->relationEntityAttribute, new Collection($value));
+                $propertyAccessor->setValue($entity, $this->relationEntityAttribute, new ArrayCollection($value));
             }
         }
     }

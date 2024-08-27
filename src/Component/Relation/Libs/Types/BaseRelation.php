@@ -4,9 +4,8 @@ namespace Untek\Component\Relation\Libs\Types;
 
 use Doctrine\Persistence\ObjectRepository;
 use Psr\Container\ContainerInterface;
-use Untek\Component\Relation\Interfaces\RelationInterface;
-use Untek\Component\Relations\interfaces\CrudRepositoryInterface;
 use Untek\Component\Code\Factories\PropertyAccess;
+use Untek\Component\Relation\Interfaces\RelationInterface;
 
 abstract class BaseRelation implements RelationInterface
 {

@@ -2,13 +2,13 @@
 
 namespace Untek\Component\Web\Widget\Widgets\Toastr\Infrastructure\Services;
 
-use Untek\Component\Web\Widget\Widgets\Toastr\Domain\Model\ToastrEntity;
-use Untek\Component\Web\Widget\Widgets\Toastr\Domain\Enums\FlashMessageTypeEnum;
+use Doctrine\Common\Collections\Collection;
+use Untek\Component\I18Next\Facades\I18Next;
 use Untek\Component\Web\Widget\Widgets\Toastr\Application\Services\ToastrRepositoryInterface;
 use Untek\Component\Web\Widget\Widgets\Toastr\Application\Services\ToastrServiceInterface;
-use Untek\Core\Collection\Interfaces\Enumerable;
+use Untek\Component\Web\Widget\Widgets\Toastr\Domain\Enums\FlashMessageTypeEnum;
+use Untek\Component\Web\Widget\Widgets\Toastr\Domain\Model\ToastrEntity;
 use Untek\Model\Service\Base\BaseService;
-use Untek\Component\I18Next\Facades\I18Next;
 
 class ToastrService extends BaseService implements ToastrServiceInterface
 {
@@ -60,7 +60,7 @@ class ToastrService extends BaseService implements ToastrServiceInterface
         $this->getRepository()->clear();
     }
 
-    public function findAll(): Enumerable
+    public function findAll(): Collection
     {
         return $this->getRepository()->findAll();
     }

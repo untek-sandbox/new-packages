@@ -1,14 +1,10 @@
 <?php
 
-use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\Lock\LockFactory;
 use Symfony\Component\Lock\PersistingStoreInterface;
 use Symfony\Component\Lock\Store\SemaphoreStore;
-use Untek\Component\Env\Helpers\EnvHelper;
-use Untek\Core\Instance\Libs\InstanceProvider;
-use Untek\Core\Instance\Libs\Resolvers\InstanceResolver;
 use Untek\Framework\Telegram\Domain\Interfaces\Repositories\ResponseRepositoryInterface;
 use Untek\Framework\Telegram\Domain\Repositories\File\ConfigRepository;
 use Untek\Framework\Telegram\Domain\Repositories\File\StoreRepository;
@@ -21,7 +17,6 @@ use Untek\Framework\Telegram\Domain\Services\LongPullService;
 use Untek\Framework\Telegram\Domain\Services\RequestService;
 use Untek\Framework\Telegram\Domain\Services\ResponseService;
 use Untek\Framework\Telegram\Domain\Services\RouteService;
-use Untek\Framework\Telegram\Symfony4\Commands\LongPullCommand;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 return static function (ContainerConfigurator $configurator): void {
@@ -44,7 +39,7 @@ return static function (ContainerConfigurator $configurator): void {
             service(RequestRepository::class)
         ]);
 
-    if (EnvHelper::isTest()) {
+    if (getenv('APP_ENV') == 'test') {
         $services->set(ResponseRepositoryInterface::class, TestResponseRepository::class)
             ->args([
                 service(RequestService::class),

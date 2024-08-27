@@ -2,17 +2,14 @@
 
 namespace Untek\Framework\Telegram\Symfony4\Commands;
 
-use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Command\LockableTrait;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Lock\Exception\LockAcquiringException;
 use Symfony\Component\Lock\LockFactory;
-use Untek\Component\Env\Helpers\EnvHelper;
 use Untek\Core\Container\Traits\ContainerAwareTrait;
 use Untek\Framework\Console\Symfony4\Traits\IOTrait;
-use Untek\Framework\Console\Symfony4\Traits\LockTrait;
 use Untek\Framework\Console\Symfony4\Traits\LoopTrait;
 use Untek\Framework\Telegram\Domain\Repositories\File\ConfigRepository;
 use Untek\Framework\Telegram\Domain\Services\LongPullService;
@@ -75,7 +72,7 @@ class LongPullCommand extends Command
     protected function runLoopItem(): void
     {
         $output = $this->getOutput();
-        if (EnvHelper::isDebug()) {
+        if (getenv('APP_DEBUG') == '1') {
             $output->writeln('<fg=white>wait...</>');
         }
         $updates = $this->longPullService->findAll();

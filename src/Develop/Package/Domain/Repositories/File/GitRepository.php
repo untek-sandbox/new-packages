@@ -2,8 +2,8 @@
 
 namespace Untek\Develop\Package\Domain\Repositories\File;
 
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Untek\Core\Collection\Helpers\CollectionHelper;
 use Untek\Develop\Package\Domain\Entities\CommitEntity;
 use Untek\Develop\Package\Domain\Entities\GitEntity;
@@ -43,7 +43,7 @@ class GitRepository implements GitRepositoryInterface
     {
         /** @var PackageEntity[] $packageCollection */
         $packageCollection = $this->packageRepository->findAll();
-        $changedCollection = new Collection();
+        $changedCollection = new ArrayCollection();
         foreach ($packageCollection as $packageEntity) {
             $hasChanges = $this->isHasChanges($packageEntity);
             if ($hasChanges) {
@@ -72,7 +72,7 @@ class GitRepository implements GitRepositoryInterface
         }
     }
 
-    public function allCommit(PackageEntity $packageEntity): Enumerable
+    public function allCommit(PackageEntity $packageEntity): Collection
     {
         $git = new GitShell($packageEntity->getDirectory());
         $commits = $git->getCommits();
@@ -87,7 +87,7 @@ class GitRepository implements GitRepositoryInterface
         return $commitCollection;
     }
 
-    public function allTag(PackageEntity $packageEntity): Enumerable
+    public function allTag(PackageEntity $packageEntity): Collection
     {
         $git = new GitShell($packageEntity->getDirectory());
         $tags = $git->getTagsSha();

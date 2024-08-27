@@ -3,10 +3,10 @@
 namespace Untek\Lib\QrBox\Services;
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Exception;
 use Untek\Component\Encoder\Encoders\ChainEncoder;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
 use Untek\Core\Collection\Helpers\CollectionHelper;
 use Untek\Lib\QrBox\Entities\BarCodeEntity;
 use Untek\Lib\QrBox\Libs\DataSize;
@@ -38,7 +38,7 @@ class EncoderService
         $this->dataSize = $dataSize;
     }
 
-    public function encode(string $data): Enumerable
+    public function encode(string $data): Collection
     {
         if (empty($data)) {
             throw new \InvalidArgumentException('Empty data for encode!');
@@ -46,7 +46,7 @@ class EncoderService
         $encoded = $this->resultEncoder->encode($data);
         $dataSize = $this->dataSize->getSize($this->wrapperEncoder, $this->entityWrapper);
         $encodedParts = str_split($encoded, ceil($dataSize));
-        $collection = new Collection();
+        $collection = new ArrayCollection();
         foreach ($encodedParts as $index => $item) {
             $encodedItem = $this->wrapperEncoder->encode($item);
             $barCodeEntity = new BarCodeEntity();
@@ -60,10 +60,10 @@ class EncoderService
         return $collection;
     }
 
-    public function decode(Enumerable $encodedData)
+    public function decode(Collection $encodedData)
     {
         $barCodeCollection = $this->arrayToCollection($encodedData);
-        $resultCollection = new Collection();
+        $resultCollection = new ArrayCollection();
         foreach ($barCodeCollection as $barCodeEntity) {
             $decodedItem = $this->wrapperEncoder->decode($barCodeEntity->getData());
             $resultCollection->add($decodedItem);
@@ -73,13 +73,13 @@ class EncoderService
     }
 
     /**
-     * @param Enumerable $array
-     * @return Enumerable | BarCodeEntity[]
+     * @param Collection $array
+     * @return Collection | BarCodeEntity[]
      * @throws Exception
      */
-    private function arrayToCollection(Enumerable $array): Enumerable
+    private function arrayToCollection(Collection $array): Collection
     {
-        $collection = new Collection();
+        $collection = new ArrayCollection();
         foreach ($array as $item) {
             $wrapper = $this->wrapperDetector->detect($item);
             $barCodeEntity = $wrapper->decode($item);
@@ -87,6 +87,6 @@ class EncoderService
         }
         $arr = CollectionHelper::indexing($collection, 'id');
         ksort($arr);
-        return new Collection($arr);
+        return new ArrayCollection($arr);
     }
 }

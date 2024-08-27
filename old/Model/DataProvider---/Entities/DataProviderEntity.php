@@ -2,7 +2,7 @@
 
 namespace Untek\Model\DataProvider\Entities;
 
-use Untek\Core\Collection\Interfaces\Enumerable;
+use Doctrine\Common\Collections\Collection;
 
 class DataProviderEntity
 {
@@ -85,7 +85,7 @@ class DataProviderEntity
         return $this->collection;
     }
 
-    public function setCollection(Enumerable $collection): void
+    public function setCollection(Collection $collection): void
     {
         $this->collection = $collection;
     }

@@ -9,10 +9,10 @@ use BaconQrCode\Renderer\ImageRenderer;
 use BaconQrCode\Renderer\PlainTextRenderer;
 use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 use BaconQrCode\Writer;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Mime\MimeTypes;
 use Untek\Component\Enum\Helpers\EnumHelper;
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
 use Untek\Lib\QrBox\Entities\FileEntity;
 use Untek\Lib\QrBox\Enums\ImageExtensionEnum;
 
@@ -51,12 +51,12 @@ class QrService
     }
 
     /**
-     * @param Enumerable $encoded
-     * @return Enumerable | FileEntity[]
+     * @param Collection $encoded
+     * @return Collection | FileEntity[]
      */
-    public function encode(Enumerable $encoded): Enumerable
+    public function encode(Collection $encoded): Collection
     {
-        $collection = new Collection();
+        $collection = new ArrayCollection();
         $writer = new Writer($this->render);
         $extension = $this->format;
         foreach ($encoded as $i => $data) {

@@ -2,7 +2,7 @@
 
 namespace Untek\Database\Base\Domain\Entities;
 
-use Untek\Core\Collection\Interfaces\Enumerable;
+use Doctrine\Common\Collections\Collection;
 
 class TableEntity
 {
@@ -45,27 +45,27 @@ class TableEntity
     }
 
     /**
-     * @return Enumerable | ColumnEntity[]
+     * @return Collection | ColumnEntity[]
      */
-    public function getColumns(): Enumerable
+    public function getColumns(): Collection
     {
         return $this->columns;
     }
 
-    public function setColumns(Enumerable $columns): void
+    public function setColumns(Collection $columns): void
     {
         $this->columns = $columns;
     }
 
     /**
-     * @return Enumerable | RelationEntity[]
+     * @return Collection | RelationEntity[]
      */
-    public function getRelations(): ?Enumerable
+    public function getRelations(): ?Collection
     {
         return $this->relations;
     }
 
-    public function setRelations(?Enumerable $relations): void
+    public function setRelations(?Collection $relations): void
     {
         $this->relations = $relations;
     }

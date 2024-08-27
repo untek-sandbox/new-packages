@@ -2,9 +2,9 @@
 
 namespace Untek\Component\Web\Widget\Widgets\Toastr\Application\Services;
 
+use Doctrine\Common\Collections\Collection;
 use Untek\Component\Web\Widget\Widgets\Toastr\Domain\Model\ToastrEntity;
 use Untek\Model\Validator\Exceptions\UnprocessibleEntityException;
-use Untek\Core\Collection\Interfaces\Enumerable;
 
 interface ToastrRepositoryInterface
 {
@@ -17,7 +17,7 @@ interface ToastrRepositoryInterface
     public function create(ToastrEntity $toastrEntity);
 
     /**
-     * @return \Untek\Core\Collection\Interfaces\Enumerable | ToastrEntity[]
+     * @return Collection | ToastrEntity[]
      */
-    public function findAll(): Enumerable;
+    public function findAll(): Collection;
 }

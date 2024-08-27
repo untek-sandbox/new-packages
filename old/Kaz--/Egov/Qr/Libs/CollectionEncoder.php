@@ -2,8 +2,8 @@
 
 namespace Untek\Kaz\Egov\Qr\Libs;
 
+use Doctrine\Common\Collections\Collection;
 use Untek\Core\Instance\Helpers\InstanceHelper;
-use Untek\Core\Collection\Interfaces\Enumerable;
 use Untek\Kaz\Egov\Qr\Encoders\EncoderInterface;
 
 class CollectionEncoder implements EncoderInterface
@@ -11,12 +11,12 @@ class CollectionEncoder implements EncoderInterface
 
     private $encoderCollection;
 
-    public function __construct(Enumerable $encoderCollection)
+    public function __construct(Collection $encoderCollection)
     {
         $this->encoderCollection = $encoderCollection;
     }
 
-    public function getEncoders(): Enumerable
+    public function getEncoders(): Collection
     {
         return $this->encoderCollection;
     }

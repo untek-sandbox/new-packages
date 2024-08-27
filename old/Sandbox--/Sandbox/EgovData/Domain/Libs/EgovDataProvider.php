@@ -2,8 +2,8 @@
 
 namespace Untek\Sandbox\Sandbox\EgovData\Domain\Libs;
 
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 class EgovDataProvider
 {
@@ -20,11 +20,11 @@ class EgovDataProvider
         $this->datasetVersion = $datasetVersion;
     }
 
-    public function findAll(Query $query): Enumerable
+    public function findAll(Query $query): Collection
     {
         $params = $this->forgeParamsFromQuery($query);
         $data = $this->client->request('api/' . $this->apiVersion . '/' . $this->datasetName . '/' . $this->datasetVersion, $params);
-        return new Collection($data);
+        return new ArrayCollection($data);
     }
 
     protected function forgeParamsFromQuery(Query $query): array

@@ -2,11 +2,11 @@
 
 namespace Untek\Database\Memory\Abstract;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\Common\Collections\Expr\Comparison;
 use Doctrine\Persistence\ObjectRepository;
 use Untek\Component\Relation\Traits\RepositoryRelationTrait;
-use Untek\Core\Collection\Libs\Collection;
 use Untek\Persistence\Normalizer\Traits\NormalizerTrait;
 
 abstract class AbstractMemoryRepository implements ObjectRepository
@@ -36,7 +36,7 @@ abstract class AbstractMemoryRepository implements ObjectRepository
     public function findBy(array $criteria, ?array $orderBy = null, ?int $limit = null, ?int $offset = null, ?array $relations = null): array
     {
         $criteriaMatching = $this->createCriteria($criteria, $orderBy, $limit, $offset);
-        $collection = new Collection($this->getItems());
+        $collection = new ArrayCollection($this->getItems());
         $collection = $collection->matching($criteriaMatching);
         $list = $collection->toArray();
         if ($relations) {

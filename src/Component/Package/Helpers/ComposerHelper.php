@@ -1,10 +1,10 @@
 <?php
 
-namespace Untek\Component\Code\Helpers;
+namespace Untek\Component\Package\Helpers;
 
 use Composer\Autoload\ClassLoader;
 use Illuminate\Support\Arr;
-use Untek\Component\Code\Exceptions\NotFoundDependencyException;
+use Untek\Component\Package\Exceptions\NotFoundDependencyException;
 
 /**
  * Работа с Composer
@@ -23,7 +23,7 @@ class ComposerHelper
     {
         if (!self::$composerVendorClassLoader) {
             $loaders = ClassLoader::getRegisteredLoaders();
-            $vendorDir = realpath(__DIR__ . '/../../../../../../');
+            $vendorDir = realpath(__DIR__ . '/../../../../../vendor/');
             self::$composerVendorClassLoader = $loaders[$vendorDir];
         }
         return self::$composerVendorClassLoader;

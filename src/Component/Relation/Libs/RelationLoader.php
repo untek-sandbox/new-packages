@@ -6,8 +6,6 @@ use Doctrine\Persistence\ObjectRepository;
 use InvalidArgumentException;
 use Psr\Container\ContainerInterface;
 use Untek\Component\Relation\Interfaces\RelationInterface;
-use Untek\Core\Container\Helpers\ContainerHelper;
-use Untek\Model\Repository\Interfaces\RelationConfigInterface;
 
 class RelationLoader
 {
@@ -20,7 +18,7 @@ class RelationLoader
 
     private function getContainer(): ContainerInterface
     {
-        return $this->container; // ?: ContainerHelper::getContainer();
+        return $this->container;
     }
 
     public function load(ObjectRepository $repository, array $collection, array $with = []): void

@@ -2,8 +2,8 @@
 
 namespace Untek\Component\FileSystem\Helpers;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Untek\Component\Arr\Helpers\ExtArrayHelper;
-use Untek\Core\Collection\Libs\Collection;
 use Untek\Component\FileSystem\Entities\DirectoryEntity;
 use Untek\Component\FileSystem\Entities\FileEntity;
 
@@ -54,12 +54,12 @@ class FindFileHelper
     /**
      * @param $dir
      * @param null $options
-     * @return Collection | FileEntity[] | DirectoryEntity[]
+     * @return ArrayCollection | FileEntity[] | DirectoryEntity[]
      * @throws \Exception
      */
     public static function scanDirTree($dir, $options = null)
     {
-        $collection = new Collection();
+        $collection = new ArrayCollection();
         $list = self::scanDir($dir);
         foreach ($list as $name) {
             $path = $dir . '/' . $name;

@@ -3,12 +3,13 @@
 namespace Untek\Core\Collection\Libs;
 
 use Untek\Component\Dev\Helpers\DeprecateHelper;
-use Untek\Core\Collection\Interfaces\Enumerable;
+
+DeprecateHelper::hardThrow();
 
 /**
  * Коллекция сущностей
  */
-class Collection extends \Doctrine\Common\Collections\ArrayCollection implements Enumerable
+class Collection extends \Doctrine\Common\Collections\ArrayCollection
 {
 
     /**

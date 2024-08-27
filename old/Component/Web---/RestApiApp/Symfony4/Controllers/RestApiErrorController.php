@@ -11,11 +11,10 @@ use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
-use Untek\Persistence\Contract\Exceptions\NotFoundException;
-use Untek\Component\Env\Helpers\EnvHelper;
 use Untek\Component\Web\Controller\Base\BaseWebController;
 use Untek\Component\Web\Error\Symfony4\Interfaces\ErrorControllerInterface;
+use Untek\Core\Contract\Common\Exceptions\InvalidConfigException;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 
 class RestApiErrorController extends BaseWebController implements ErrorControllerInterface
 {
@@ -79,7 +78,7 @@ class RestApiErrorController extends BaseWebController implements ErrorControlle
             'title' => $title,
             'message' => $message,
         ];
-        if (EnvHelper::isDebug()) {
+        if (getenv('APP_DEBUG') == '1') {
             $params['exception'] = $exception;
         }
         return new JsonResponse($params, $statusCode);

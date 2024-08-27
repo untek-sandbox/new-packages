@@ -2,9 +2,9 @@
 
 namespace Untek\User\Authentication\Domain\Interfaces\Repositories;
 
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Persistence\Contract\Exceptions\NotFoundException;
+use Doctrine\Common\Collections\Collection;
 use Untek\Model\Repository\Interfaces\CrudRepositoryInterface;
+use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\User\Authentication\Domain\Entities\CredentialEntity;
 use Untek\User\Authentication\Domain\Enums\CredentialTypeEnum;
 
@@ -14,9 +14,9 @@ interface CredentialRepositoryInterface //extends CrudRepositoryInterface
     /**
      * @param int $identityId
      * @param array|null $types
-     * @return Enumerable | CredentialEntity[]
+     * @return Collection | CredentialEntity[]
      */
-    public function allByIdentityId(int $identityId, array $types = null): Enumerable;
+    public function allByIdentityId(int $identityId, array $types = null): Collection;
 
     /**
      * @param string $credential

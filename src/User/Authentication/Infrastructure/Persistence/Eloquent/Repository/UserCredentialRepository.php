@@ -2,9 +2,6 @@
 
 namespace Untek\User\Authentication\Infrastructure\Persistence\Eloquent\Repository;
 
-use Untek\Core\Collection\Interfaces\Enumerable;
-use Untek\Core\Collection\Libs\Collection;
-use Untek\Database\Doctrine\Domain\Base\AbstractDoctrineCrudRepository;
 use Untek\Database\Eloquent\Infrastructure\Abstract\AbstractEloquentCrudRepository;
 use Untek\User\Authentication\Domain\Entities\CredentialEntity;
 use Untek\User\Authentication\Domain\Interfaces\Services\CredentialServiceInterface;
