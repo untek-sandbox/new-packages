@@ -2,7 +2,10 @@
 
 namespace Untek\Component\FormatAdapter\Helpers;
 
+use Untek\Component\Code\Helpers\DeprecateHelper;
 use Untek\Component\FormatAdapter\StoreFile;
+
+DeprecateHelper::hardThrow();
 
 class StoreHelper
 {

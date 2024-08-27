@@ -2,15 +2,13 @@
 
 namespace Untek\Component\FormatAdapter\Drivers;
 
-use Untek\Component\Text\Helpers\TextHelper;
-
 class Csv implements DriverInterface
 {
 
     public function decode($content)
     {
         $content = trim($content);
-        $lines = TextHelper::textToLines($content);
+        $lines = explode("\n", $content);
         $data = array_map('str_getcsv', $lines);
         return $data;
     }

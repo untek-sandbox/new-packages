@@ -3,7 +3,6 @@
 namespace Untek\Component\FormatAdapter;
 
 use Symfony\Component\Filesystem\Path;
-use Untek\Component\FileSystem\Helpers\FilePathHelper;
 
 class StoreFile
 {
@@ -17,11 +16,6 @@ class StoreFile
         $this->store = new Store($driver);
         $this->file = $file;
     }
-
-    /*public function update($key, $value)
-    {
-        $this->store->update($this->file, $key, $value);
-    }*/
 
     public function load($key = null)
     {

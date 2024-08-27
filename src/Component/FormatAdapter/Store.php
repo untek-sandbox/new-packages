@@ -2,8 +2,8 @@
 
 namespace Untek\Component\FormatAdapter;
 
+use Illuminate\Support\Arr;
 use Symfony\Component\Filesystem\Filesystem;
-use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\FormatAdapter\Drivers\DriverInterface;
 
 class Store
@@ -40,7 +40,7 @@ class Store
             $data = [];
         }
         if (func_num_args() > 1) {
-            return ArrayPathHelper::getValue($data, $key);
+            return Arr::get($data, $key);
         }
         return $data;
     }

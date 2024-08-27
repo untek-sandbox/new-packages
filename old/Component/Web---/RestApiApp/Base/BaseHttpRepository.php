@@ -5,7 +5,6 @@ namespace Untek\Component\Web\RestApiApp\Base;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
-use Untek\Component\Http\Enums\HttpMethodEnum;
 
 abstract class BaseHttpRepository
 {
@@ -53,7 +52,7 @@ abstract class BaseHttpRepository
     protected function getOptions(string $uri, string $method, array $postParams = []): array
     {
         $options = [];
-        if (strtoupper($method) == HttpMethodEnum::GET) {
+        if (strtoupper($method) == 'GET') {
             $options['query'] = $postParams;
         } else {
             $options['json'] = $postParams;

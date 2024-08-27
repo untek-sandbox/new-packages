@@ -5,7 +5,7 @@ namespace Untek\Database\Eloquent\Domain\Factories;
 use Illuminate\Database\Capsule\Manager;
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\FileSystem\Helpers\FileStorageHelper;
-use Untek\Component\FormatAdapter\Helpers\StoreHelper;
+use Untek\Component\FormatAdapter\StoreFile;
 use Untek\Core\Container\Helpers\ContainerHelper;
 use Untek\Database\Base\Domain\Enums\DbDriverEnum;
 use Untek\Database\Base\Domain\Facades\DbFacade;
@@ -25,7 +25,9 @@ class ManagerFactory
     {
         $databaseConfigFile = getenv('DATABASE_CONFIG_FILE');
         if($databaseConfigFile) {
-            $config = StoreHelper::load(getenv('DATABASE_CONFIG_FILE'));
+
+            $store = new StoreFile(getenv('DATABASE_CONFIG_FILE'));
+            $config = $store->load();
         } else {
             $config = [];
         }

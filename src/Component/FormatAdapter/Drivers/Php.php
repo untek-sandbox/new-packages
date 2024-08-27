@@ -2,8 +2,8 @@
 
 namespace Untek\Component\FormatAdapter\Drivers;
 
+use Illuminate\Support\Arr;
 use Symfony\Component\VarExporter\VarExporter;
-use Untek\Component\Arr\Helpers\ArrayPathHelper;
 use Untek\Component\FileSystem\Helpers\FileStorageHelper;
 use Untek\Component\FormatAdapter\Helpers\FileGeneratorHelper;
 use Untek\Component\Text\Helpers\TextHelper;
@@ -21,7 +21,6 @@ class Php implements DriverInterface
 
     public function encode($data)
     {
-//        $content = VarDumper::export($data);
         $content = VarExporter::export($data);
         $content = TextHelper::setTab($content, 4);
         return $content;
@@ -39,12 +38,12 @@ class Php implements DriverInterface
 
     public function load($fileName, $key = null)
     {
-        if ( ! FileStorageHelper::has($fileName)) {
+        if (!FileStorageHelper::has($fileName)) {
             return null;
         }
         $data = include($fileName);
         if ($key !== null) {
-            return ArrayPathHelper::getValue($data, $key);
+            return Arr::get($data, $key);
         }
         return $data;
     }
