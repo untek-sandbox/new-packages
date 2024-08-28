@@ -2,15 +2,9 @@
 
 namespace Untek\Component\LogReader\Infrastructure\Persistence\Normalizer;
 
-use DateTime;
-use Untek\Persistence\Normalizer\DatabaseItemNormalizer;
+use Untek\Persistence\Normalizer\ModelNormalizer;
 
-class LogItemNormalizer extends DatabaseItemNormalizer
+class LogItemNormalizer extends ModelNormalizer
 {
 
-    public function denormalize(array $data, string $type): object
-    {
-        $data['created_at'] = new DateTime($data['datetime'] ?? null);
-        return parent::denormalize($data, $type);
-    }
 }
