@@ -17,9 +17,12 @@ use Untek\Framework\RestApi\Presentation\Http\Serializer\DefaultResponseSerializ
 use Untek\Framework\RestApi\Presentation\Http\Serializer\ResponseSerializerInterface;
 use Untek\Framework\RestApi\Presentation\Http\Symfony\Helpers\RestApiHelper;
 use Untek\Framework\RestApi\Presentation\Http\Symfony\Interfaces\RestApiSchemaInterface;
+use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
+use Untek\Model\Validator\ObjectValidator;
 
 /**
  * @property RestApiSchemaInterface $schema
+ * @property ObjectValidator $objectValidator
  */
 abstract class AbstractRestApiController
 {
@@ -82,6 +85,17 @@ abstract class AbstractRestApiController
         $data = $this->extractData($request);
         return MappingHelper::restoreObject($data, $type);
 //        return $this->getSerializer()->denormalize($data, $type);
+    }
+    
+    protected function validate(object $object) {
+        if(isset($this->objectValidator)) {
+            $violations = $this->objectValidator->validate($object);
+            if ($violations->count()) {
+                $exception = new UnprocessableEntityException();
+                $exception->setViolations($violations);
+                throw $exception;
+            }
+        }
     }
 
     protected function emptyResponse(): JsonResponse
