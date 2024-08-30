@@ -2,6 +2,7 @@
 
 namespace Untek\Framework\RestApi\Presentation\Http\Symfony\Controllers;
 
+use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -19,6 +20,7 @@ use Untek\Framework\RestApi\Presentation\Http\Symfony\Helpers\RestApiHelper;
 use Untek\Framework\RestApi\Presentation\Http\Symfony\Interfaces\RestApiSchemaInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Untek\Model\Validator\ObjectValidator;
+use Symfony\Contracts\Service\Attribute\Required;
 
 /**
  * @property RestApiSchemaInterface $schema
@@ -28,7 +30,20 @@ abstract class AbstractRestApiController
 {
 
 //    protected RestApiSchemaInterface $schema;
+    /**
+     * @var ContainerInterface
+     */
+    protected $container;
 
+    #[Required]
+    public function setContainer(ContainerInterface $container): ?ContainerInterface
+    {
+        $previous = $this->container ?? null;
+        $this->container = $container;
+
+        return $previous;
+    }
+    
     protected function getSchema(): ?RestApiSchemaInterface
     {
         if(isset($this->schema)) {
@@ -87,14 +102,24 @@ abstract class AbstractRestApiController
 //        return $this->getSerializer()->denormalize($data, $type);
     }
     
-    protected function validate(object $object) {
+    protected function createObject(array $data, string $type) {
         if(isset($this->objectValidator)) {
-            $violations = $this->objectValidator->validate($object);
+            $violations = $this->objectValidator->preValidate($type, $data);
             if ($violations->count()) {
                 $exception = new UnprocessableEntityException();
                 $exception->setViolations($violations);
                 throw $exception;
             }
+            $object = MappingHelper::restoreObject($data, $type);
+//            $violations = $this->objectValidator->validate($type, $data);
+//            dd($violations);
+            /*if ($violations->count()) {
+                $exception = new UnprocessableEntityException();
+                $exception->setViolations($violations);
+                throw $exception;
+            }
+            dd($data);*/
+            return $object;
         }
     }
 
