@@ -15,7 +15,7 @@ return static function (ContainerConfigurator $configurator): void {
             [
                 service(LongPullService::class),
                 service(ConfigRepository::class),
-                service(LockFactory::class),
+//                service(LockFactory::class),
 //                service(ContainerInterface::class),
             ]
         )

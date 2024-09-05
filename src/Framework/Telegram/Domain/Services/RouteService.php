@@ -3,6 +3,7 @@
 namespace Untek\Framework\Telegram\Domain\Services;
 
 use danog\MadelineProto\APIFactory;
+use Psr\Container\ContainerInterface;
 use Untek\Core\Container\Helpers\ContainerHelper;
 use Untek\Core\Instance\Libs\InstanceProvider;
 use Untek\Framework\Telegram\Domain\Base\BaseAction;
@@ -16,24 +17,31 @@ class RouteService
 {
 
     private $_definitions = [];
-    private ResponseService $responseService;
 
-    public function __construct(ResponseService $responseService = null)
+    public function __construct(
+        private ResponseService $responseService,
+        private InstanceProvider $instanceProvider,
+        private ContainerInterface $container,
+        private array $routeConfigs
+    )
     {
-        if($responseService) {
-            $this->responseService = $responseService;
+        $this->responseService = $responseService;
+        $this->define();
+    }
+
+    public function define(): void
+    {
+        foreach ($this->routeConfigs as $containerConfig) {
+            $requiredConfig = require($containerConfig);
+            $this->addDefinitions($requiredConfig);
+//            $this->_definitions = array_merge($this->_definitions, $requiredConfig);
         }
     }
 
-    public function definitions(): array
-    {
-
-    }
-
-    public function setResponseService(ResponseService $responseService): void
+    /*public function setResponseService(ResponseService $responseService): void
     {
         $this->responseService = $responseService;
-    }
+    }*/
 
     public function onUpdateNewMessage(RequestEntity $requestEntity)
     {
@@ -45,7 +53,7 @@ class RouteService
         $this->_definitions = array_merge($this->_definitions, $definitions);
     }
 
-    public function loadDefinitions(string $configFile)
+    /*public function loadDefinitions(string $configFile)
     {
         $routes = require($configFile);
         $this->addDefinitions($routes);
@@ -54,7 +62,7 @@ class RouteService
     public function setDefinitions(array $definitions)
     {
         $this->_definitions = $definitions;
-    }
+    }*/
 
     /**
      * @param $requestEntity
@@ -65,22 +73,20 @@ class RouteService
         $definitions = $this->_definitions;
         foreach ($definitions as $item) {
             //$isActive = empty($item['state']) || ($item['state'] == '*' && !empty($action)) || ($item['state'] == $action);
-            $isActive = 1;
-            if ($isActive) {
-                /** @var InstanceProvider $instanceProvider */
-                $instanceProvider = ContainerHelper::getContainer()->get(InstanceProvider::class);
-
+//            $isActive = 1;
+//            if ($isActive) {
                 /** @var MatcherInterface $matcherInstance */
-                $matcherInstance = $instanceProvider->createInstance($item['matcher']);
+                $matcherInstance = $this->instanceProvider->createInstance($item['matcher']);
 
                 /** @var BaseAction $actionInstance */
-                $actionInstance = $instanceProvider->createInstance($item['action']);
+                $actionInstance = $this->instanceProvider->createInstance($item['action']);
                 if ($matcherInstance->isMatch($requestEntity)) {
+
                     //$this->humanizeResponseDelay($requestEntity);
                     $actionInstance->setResponseService($this->responseService);
                     $actionInstance->run($requestEntity);
                 }
-            }
+//            }
         }
         return null;
     }

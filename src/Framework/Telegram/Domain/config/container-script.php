@@ -9,6 +9,8 @@ use Untek\Framework\Telegram\Domain\Repositories\Test\ResponseRepository as Test
 use Untek\Framework\Telegram\Domain\Services\RouteService;
 use Yiisoft\Arrays\ArrayHelper;
 
+\Untek\Component\Dev\Helpers\DeprecateHelper::hardThrow();
+
 return [
     'singletons' => [
         RouteService::class => function (ContainerInterface $container) {

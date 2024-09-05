@@ -5,6 +5,8 @@ use Psr\Container\ContainerInterface;
 //use Untek\Lib\Components\ShellRobot\Domain\Libs\App\ConnectionProcessor;
 //use Untek\Lib\Components\ShellRobot\Domain\Libs\App\VarProcessor;
 
+\Untek\Component\Dev\Helpers\DeprecateHelper::hardThrow();
+
 return [
     'singletons' => [
         \Untek\Lib\Components\ShellRobot\Domain\Interfaces\Repositories\VarRepositoryInterface::class => function (ContainerInterface $container) {

@@ -3,7 +3,9 @@
 namespace Untek\Core\Instance\Libs;
 
 use Psr\Container\ContainerInterface;
+use Untek\Core\Arr\Helpers\ArrayHelper;
 use Untek\Core\Instance\Exceptions\MethodNotFoundException;
+use Untek\Core\Instance\Helpers\ClassHelper;
 use Untek\Core\Instance\Libs\Resolvers\InstanceResolver;
 
 class InstanceProvider
@@ -43,5 +45,21 @@ class InstanceProvider
             $actionName = get_class($instance) . '::' . $methodName;
             throw new MethodNotFoundException('Not found method: ' . $actionName);
         }
+    }
+
+    public function createInstance($definition, array $constructorParameters = []): object
+    {
+        if (is_object($definition)) {
+            $instance = $definition;
+        } else {
+            $definition = ClassHelper::normalizeComponentConfig($definition);
+            if (isset($definition['__construct'])) {
+                $constructorParameters = ArrayHelper::merge($constructorParameters, $definition['__construct']);
+                unset($definition['__construct']);
+            }
+            $instance = ClassHelper::createInstance($definition, $constructorParameters, $this->container);
+            //$instance = $this->container->make($definition, $constructorParameters);
+        }
+        return $instance;
     }
 }

@@ -7,4 +7,5 @@ return static function (ContainerConfigurator $configurator): void {
     $services = $configurator->services()->defaults()->public()->autowire();
 
     $services->set(InstanceResolver::class);
+    $services->set(\Untek\Core\Instance\Libs\InstanceProvider::class);
 };

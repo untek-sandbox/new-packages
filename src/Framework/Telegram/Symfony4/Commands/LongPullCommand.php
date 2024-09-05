@@ -30,14 +30,14 @@ class LongPullCommand extends Command
     public function __construct(
         LongPullService $longPullService,
         ConfigRepository $configRepository,
-        LockFactory $lockFactory,
+//        LockFactory $lockFactory,
 //        ContainerInterface $container
     )
     {
         parent::__construct(self::$defaultName);
         $this->longPullService = $longPullService;
         $this->configRepository = $configRepository;
-        $this->setLockFactory($lockFactory);
+//        $this->setLockFactory($lockFactory);
 //        $this->setContainer($container);
     }
 
