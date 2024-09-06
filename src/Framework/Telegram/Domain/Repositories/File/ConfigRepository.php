@@ -12,9 +12,9 @@ class ConfigRepository
     private $longpullTimeout = 30;
     private $token = 30;
     
-    public function __construct(?string $token)
+    public function __construct(?string $botToken)
     {
-        $this->token = $token;
+        $this->token = $botToken;
     }
 
     public function getBotToken() {

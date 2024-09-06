@@ -12,6 +12,7 @@ use Untek\Framework\Telegram\Infrastructure\TelegramBot;
 
 return static function (ContainerConfigurator $configurator): void {
     $services = $configurator->services()->defaults()->public()->autowire()->autoconfigure();
+    $services->bind('$botToken', getenv('TELEGRAM_BOT_TOKEN'));
 
     $services
         ->load('Untek\Framework\Telegram\\', __DIR__ . '/../../..')
@@ -28,14 +29,8 @@ return static function (ContainerConfigurator $configurator): void {
     ]);
 
     $services->set(UpdatesRepository::class);
-    $services->set(ConfigRepository::class)
-        ->args([
-            getenv('TELEGRAM_BOT_TOKEN'),
-        ]);
-
+    $services->set(ConfigRepository::class);
     $services->set(RequestRepository::class);
-    $services->set(TelegramBot::class)
-        ->arg('$botToken', getenv('TELEGRAM_BOT_TOKEN'));
 
     if (getenv('APP_ENV') == 'test') {
         $services->set(TestResponseRepository::class)

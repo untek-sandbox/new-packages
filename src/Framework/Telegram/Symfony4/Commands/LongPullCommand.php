@@ -2,66 +2,67 @@
 
 namespace Untek\Framework\Telegram\Symfony4\Commands;
 
+use React\EventLoop\Loop;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Command\LockableTrait;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Lock\Exception\LockAcquiringException;
-use Symfony\Component\Lock\LockFactory;
-use Untek\Core\Container\Traits\ContainerAwareTrait;
-use Untek\Framework\Console\Symfony4\Traits\IOTrait;
-use Untek\Framework\Console\Symfony4\Traits\LoopTrait;
+use Untek\Framework\Console\Symfony4\Style\SymfonyStyle;
 use Untek\Framework\Telegram\Domain\Repositories\File\ConfigRepository;
 use Untek\Framework\Telegram\Infrastructure\Services\LongPullService;
 
 class LongPullCommand extends Command
 {
 
-//    use ContainerAwareTrait;
-//    use LockTrait;
     use LockableTrait;
-    use LoopTrait;
-    use IOTrait;
 
-    protected static $defaultName = 'telegram:long-pull';
-    protected $longPullService;
-    protected $configRepository;
+    private SymfonyStyle $io;
 
     public function __construct(
-        LongPullService $longPullService,
-        ConfigRepository $configRepository,
-//        LockFactory $lockFactory,
-//        ContainerInterface $container
+        private LongPullService $longPullService,
+        private ConfigRepository $configRepository,
     )
     {
-        parent::__construct(self::$defaultName);
-        $this->longPullService = $longPullService;
-        $this->configRepository = $configRepository;
-//        $this->setLockFactory($lockFactory);
-//        $this->setContainer($container);
+        parent::__construct();
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'telegram:long-pull';
+    }
+
+    protected function initialize(InputInterface $input, OutputInterface $output): void
+    {
+        // SymfonyStyle is an optional feature that Symfony provides so you can
+        // apply a consistent look to the commands of your application.
+        // See https://symfony.com/doc/current/console/style.html
+        $this->io = new SymfonyStyle($input, $output);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         if (!$this->lock()) {
-            $output->writeln('The command is already running in another process.');
+            $this->io->writeln('The command is already running in another process.');
 
             return Command::SUCCESS;
         }
 
-        $this->setInputOutput($input, $output);
-        $output->writeln('<fg=white># Long pull</>');
-        $output->writeln('');
-
-        $output->writeln('<fg=white>timeout:</> <fg=yellow>' . $this->configRepository->getLongpullTimeout() . ' second</>');
-        $name = 'telegramBot.longPull';
-//        $this->runProcessWithLock($name);
+        $this->io->writeln('<fg=white># Long pull</>');
+        $this->io->writeln('');
+        $this->io->writeln('<fg=white>timeout:</> <fg=yellow>' . $this->configRepository->getLongpullTimeout() . ' second</>');
 
         try {
-            $this->runProcess($name);
+            $callback = function () {
+                $this->runLoopItem();
+            };
+            $loop = Loop::get();
+            $loop->addPeriodicTimer(0, $callback);
+            $loop->run();
+
         } catch (LockAcquiringException $e) {
-            $output->writeln('<fg=yellow>' . $e->getMessage() . '</>');
-            $output->writeln('');
+            $this->io->writeln('<fg=yellow>' . $e->getMessage() . '</>');
+            $this->io->writeln('');
         }
 
         $this->release();
@@ -71,13 +72,12 @@ class LongPullCommand extends Command
 
     protected function runLoopItem(): void
     {
-        $output = $this->getOutput();
         if (getenv('APP_DEBUG') == '1') {
-            $output->writeln('<fg=white>wait...</>');
+            $this->io->writeln('<fg=white>wait...</>');
         }
         $updates = $this->longPullService->findAll();
         if ($updates) {
-            //$output->writeln('<fg=green>has updates</>');
+            //$this->io->writeln('<fg=green>has updates</>');
             foreach ($updates as $update) {
 //                    dd($update['message']['from']['id']);
                 if (!empty($update['message'])) {
@@ -87,21 +87,21 @@ class LongPullCommand extends Command
                     } elseif ($update['message']['chat']['first_name']) {
                         $line .= ' (' . $update['message']['chat']['first_name'] . ')';
                     }
-                    $output->write('<fg=default> ' . $line . ' ... </>');
+                    $this->io->write('<fg=default> ' . $line . ' ... </>');
                     try {
                         $this->longPullService->runBotFromService($update);
-                        $output->writeln('<fg=green>OK</>');
+                        $this->io->writeln('<fg=green>OK</>');
                     } catch (\Throwable $e) {
                         $this->longPullService->setHandled($update);
-                        $output->writeln('<fg=red>FAIL ' . $e->getMessage() . '</>');
+                        $this->io->writeln('<fg=red>FAIL ' . $e->getMessage() . '</>');
                     }
                 } elseif (!empty($update['channel_post'])) {
                     $line = 'channel post ' . $update['update_id'] . ' from ' . $update['channel_post']['chat']['id'];
                     if ($update['channel_post']['chat']['title']) {
                         $line .= ' (' . $update['channel_post']['chat']['title'] . ')';
                     }
-                    $output->write('<fg=default> ' . $line . ' ... </>');
-                    $output->writeln('<fg=yellow>SKIP</>');
+                    $this->io->write('<fg=default> ' . $line . ' ... </>');
+                    $this->io->writeln('<fg=yellow>SKIP</>');
                     $this->longPullService->setHandled($update);
                 }
             }

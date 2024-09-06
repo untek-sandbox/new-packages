@@ -10,15 +10,13 @@ use Symfony\Component\String\Slugger\AsciiSlugger;
 use Untek\Component\Text\Libs\TemplateRender;
 use Untek\Framework\Console\Symfony4\Question\ChoiceQuestion;
 use Untek\Framework\Console\Symfony4\Style\SymfonyStyle;
-use Untek\Framework\Console\Symfony4\Traits\IOTrait;
 use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\Utility\Init\Presentation\Libs\Init;
 
 class InitCommand extends Command
 {
-    use IOTrait;
 
-    private \Symfony\Component\Console\Style\SymfonyStyle $io;
+    private SymfonyStyle $io;
 
     public static function getDefaultName(): ?string
     {
@@ -57,9 +55,7 @@ class InitCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $output->writeln("Application Initialization Tool\n");
-
-        $this->setInputOutput($input, $output);
+        $this->io->writeln("Application Initialization Tool\n");
 
         $overwrite = $input->getOption('overwrite');
         $profile = $input->getOption('profile');
@@ -78,7 +74,7 @@ class InitCommand extends Command
         $profileConfig = $this->findProfile($profile, $profiles);
         $profileConfig['overwrite'] = $overwrite;
 
-        $initLib = new Init($this->getStyle(), $profileConfig);
+        $initLib = new Init($this->io, $profileConfig);
 
         $this->io->writeln("\n  Start initialization ...\n\n");
         $initLib->run();
@@ -118,7 +114,7 @@ class InitCommand extends Command
     {
         $envName = $this->selectEnv($profiles);
         if ($envName === null) {
-            $this->output->write("\n  Quit initialization.\n");
+            $this->io->write("\n  Quit initialization.\n");
             exit(Command::SUCCESS);
         }
         $this->validateEnvName($envName, $profiles);
@@ -134,15 +130,15 @@ class InitCommand extends Command
             $envNames,
             0
         );
-        return $this->getStyle()->askQuestion($question);
+        return $this->io->askQuestion($question);
     }
 
     private function userConfirm(string $envName)
     {
         $questionText = "  Initialize the application under '{$envName}' environment?";
-        $answer = $this->getStyle()->confirm($questionText, false);
+        $answer = $this->io->confirm($questionText, false);
         if (!$answer) {
-            $this->output->write("  Quit initialization.\n");
+            $this->io->write("  Quit initialization.\n");
             exit(Command::SUCCESS);
         }
     }
@@ -152,7 +148,7 @@ class InitCommand extends Command
         $envNames = array_keys($profiles);
         if (!in_array($envName, $envNames, true)) {
             $envList = implode(', ', $envNames);
-            $this->output->write("\n  $envName is not a valid environment. Try one of the following: $envList. \n");
+            $this->io->write("\n  $envName is not a valid environment. Try one of the following: $envList. \n");
             exit(Command::INVALID);
         }
     }

@@ -4,7 +4,10 @@ namespace Untek\Framework\Console\Symfony4\Traits;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Untek\Component\Dev\Helpers\DeprecateHelper;
 use Untek\Framework\Console\Symfony4\Style\SymfonyStyle;
+
+DeprecateHelper::hardThrow();
 
 trait IOTrait
 {

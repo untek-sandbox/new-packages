@@ -5,6 +5,9 @@ namespace Untek\Framework\Console\Symfony4\Traits;
 use React\EventLoop\Loop;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Untek\Component\Dev\Helpers\DeprecateHelper;
+
+DeprecateHelper::hardThrow();
 
 trait LoopTrait
 {
