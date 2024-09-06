@@ -14,7 +14,7 @@ class TelegramBundle extends AbstractBundle
     {
         $fileLocator = new FileLocator(__DIR__);
         $loader = new PhpFileLoader($container, $fileLocator);
-        $loader->load(__DIR__ . '/resources/config/services/console.php');
+//        $loader->load(__DIR__ . '/resources/config/services/console.php');
         $loader->load(__DIR__ . '/resources/config/services/main.php');
     }
 }

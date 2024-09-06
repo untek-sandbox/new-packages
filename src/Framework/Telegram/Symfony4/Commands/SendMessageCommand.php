@@ -25,6 +25,9 @@ class SendMessageCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $chatId = $input->getArgument('chatId');
+        $text = $input->getArgument('text');
+        dd($chatId, $text);
         $output->writeln('<fg=white># Send Message</>');
         $container = ContainerHelper::getContainer();
         /** @var ResponseService $responseService */
@@ -34,7 +37,7 @@ class SendMessageCommand extends Command
 //        $config = include __DIR__ . '/../../../config/main.php';
 //        $botService->authByToken($config['telegram']['bot']['token']);
         $botService->authByToken(getenv('TELEGRAM_BOT_TOKEN'));
-        $responseService->sendMessage($input->getArgument('chatId'), $input->getArgument('text'));
+        $responseService->sendMessage($chatId, $text);
         return Command::SUCCESS;
     }
 }

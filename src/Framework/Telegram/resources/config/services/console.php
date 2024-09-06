@@ -7,17 +7,9 @@ use Untek\Framework\Telegram\Domain\Services\LongPullService;
 use Untek\Framework\Telegram\Symfony4\Commands\LongPullCommand;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
-return static function (ContainerConfigurator $configurator): void {
-    $services = $configurator->services()->defaults()->public();
+\Untek\Component\Dev\Helpers\DeprecateHelper::hardThrow();
 
-    $services->set(LongPullCommand::class, LongPullCommand::class)
-        ->args(
-            [
-                service(LongPullService::class),
-                service(ConfigRepository::class),
-//                service(LockFactory::class),
-//                service(ContainerInterface::class),
-            ]
-        )
-        ->tag('console.command');
+return static function (ContainerConfigurator $configurator): void {
+    $services = $configurator->services()->defaults()->public()->autowire()->autoconfigure();
+
 };

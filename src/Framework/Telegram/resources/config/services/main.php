@@ -1,10 +1,6 @@
 <?php
 
-use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symfony\Component\Lock\LockFactory;
-use Symfony\Component\Lock\PersistingStoreInterface;
-use Symfony\Component\Lock\Store\SemaphoreStore;
 use Untek\Framework\Telegram\Domain\Interfaces\Repositories\ResponseRepositoryInterface;
 use Untek\Framework\Telegram\Domain\Repositories\File\ConfigRepository;
 use Untek\Framework\Telegram\Domain\Repositories\File\StoreRepository;
@@ -12,70 +8,42 @@ use Untek\Framework\Telegram\Domain\Repositories\Http\RequestRepository;
 use Untek\Framework\Telegram\Domain\Repositories\Http\UpdatesRepository;
 use Untek\Framework\Telegram\Domain\Repositories\Telegram\ResponseRepository as TelegramResponseRepository;
 use Untek\Framework\Telegram\Domain\Repositories\Test\ResponseRepository as TestResponseRepository;
-use Untek\Framework\Telegram\Domain\Services\BotService;
-use Untek\Framework\Telegram\Domain\Services\LongPullService;
-use Untek\Framework\Telegram\Domain\Services\RequestService;
-use Untek\Framework\Telegram\Domain\Services\ResponseService;
-use Untek\Framework\Telegram\Domain\Services\RouteService;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 return static function (ContainerConfigurator $configurator): void {
-    $services = $configurator->services()->defaults()->public();
+    $services = $configurator->services()->defaults()->public()->autowire()->autoconfigure();
 
-    $services->set(StoreRepository::class, StoreRepository::class)
+    $services
+        ->load('Untek\Framework\Telegram\\', __DIR__ . '/../../..')
+        ->exclude([
+            __DIR__ . '/../../../{resources,Domain,Application/Commands,Application/Queries}',
+            __DIR__ . '/../../../**/*{Event.php,Helper.php,Message.php,Task.php,Relation.php,Normalizer.php}',
+            __DIR__ . '/../../../**/{Dto,Enums}',
+        ]);
+
+
+    $services->set(StoreRepository::class)
     ->args([
         getenv('VAR_DIRECTORY') . '/telegram/server/state.json',
     ]);
 
-    $services->set(UpdatesRepository::class, UpdatesRepository::class);
-    $services->set(ConfigRepository::class, ConfigRepository::class)
+    $services->set(UpdatesRepository::class);
+    $services->set(ConfigRepository::class)
         ->args([
             getenv('TELEGRAM_BOT_TOKEN'),
         ]);
 
-    $services->set(RequestRepository::class, RequestRepository::class);
-    $services->set(RequestService::class, RequestService::class)
-        ->args([
-            service(RequestRepository::class)
-        ]);
+    $services->set(RequestRepository::class);
 
     if (getenv('APP_ENV') == 'test') {
-        $services->set(ResponseRepositoryInterface::class, TestResponseRepository::class)
+        $services->set(TestResponseRepository::class)
             ->args([
                 service(RequestService::class),
                 getenv('VAR_DIRECTORY') . '/telegram/response',
             ]);
+        $services->alias(ResponseRepositoryInterface::class, TestResponseRepository::class);
     } else {
-        $services->set(ResponseRepositoryInterface::class, TelegramResponseRepository::class);
+        $services->set(TelegramResponseRepository::class);
+        $services->alias(ResponseRepositoryInterface::class, TelegramResponseRepository::class);
     }
-
-    $services->set(ResponseService::class, ResponseService::class)
-        ->args([
-            service(BotService::class),
-            service(ResponseRepositoryInterface::class),
-        ]);
-    $services->set(BotService::class, BotService::class);
-
-    $services->set(LongPullService::class, LongPullService::class)
-        ->args(
-            [
-                service(StoreRepository::class),
-                service(UpdatesRepository::class),
-                service(ConfigRepository::class),
-                service(LoggerInterface::class),
-                service(RequestService::class),
-                service(ResponseService::class),
-                service(BotService::class),
-                service(RouteService::class),
-            ]
-        );
-
-    $services->set(PersistingStoreInterface::class, SemaphoreStore::class);
-
-    $services->set(LockFactory::class, LockFactory::class)
-        ->args(
-            [
-                service(PersistingStoreInterface::class),
-            ]
-        );
 };
