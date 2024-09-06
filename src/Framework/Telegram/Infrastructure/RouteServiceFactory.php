@@ -2,8 +2,11 @@
 
 namespace Untek\Framework\Telegram\Infrastructure;
 
+use Untek\Component\Dev\Helpers\DeprecateHelper;
 use Untek\Core\Instance\Libs\InstanceProvider;
-use Untek\Framework\Telegram\Domain\Services\RouteService;
+use Untek\Framework\Telegram\Infrastructure\Services\RouteService;
+
+//DeprecateHelper::hardThrow();
 
 class RouteServiceFactory
 {

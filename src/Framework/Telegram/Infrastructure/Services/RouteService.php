@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Framework\Telegram\Domain\Services;
+namespace Untek\Framework\Telegram\Infrastructure\Services;
 
 use danog\MadelineProto\APIFactory;
 use Psr\Container\ContainerInterface;
@@ -9,9 +9,9 @@ use Untek\Core\Instance\Libs\InstanceProvider;
 use Untek\Framework\Telegram\Domain\Base\BaseAction;
 use Untek\Framework\Telegram\Domain\Entities\RequestEntity;
 use Untek\Framework\Telegram\Domain\Interfaces\MatcherInterface;
-use Untek\Framework\Telegram\Domain\Services\SessionService;
-use Untek\Framework\Telegram\Domain\Services\StateService;
-use Untek\Framework\Telegram\Domain\Services\UserService;
+use Untek\Framework\Telegram\Infrastructure\Services\SessionService;
+use Untek\Framework\Telegram\Infrastructure\Services\StateService;
+use Untek\Framework\Telegram\Infrastructure\Services\UserService;
 
 class RouteService
 {

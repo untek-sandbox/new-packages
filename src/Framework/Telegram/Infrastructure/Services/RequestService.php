@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Untek\Framework\Telegram\Domain\Services;
+namespace Untek\Framework\Telegram\Infrastructure\Services;
 
 use Untek\Framework\Telegram\Domain\Entities\RequestEntity;
 use Untek\Framework\Telegram\Domain\Repositories\Http\RequestRepository;

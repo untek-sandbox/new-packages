@@ -12,7 +12,7 @@ use Untek\Core\Container\Traits\ContainerAwareTrait;
 use Untek\Framework\Console\Symfony4\Traits\IOTrait;
 use Untek\Framework\Console\Symfony4\Traits\LoopTrait;
 use Untek\Framework\Telegram\Domain\Repositories\File\ConfigRepository;
-use Untek\Framework\Telegram\Domain\Services\LongPullService;
+use Untek\Framework\Telegram\Infrastructure\Services\LongPullService;
 
 class LongPullCommand extends Command
 {

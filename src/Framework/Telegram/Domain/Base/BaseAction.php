@@ -4,10 +4,10 @@ namespace Untek\Framework\Telegram\Domain\Base;
 
 use Untek\Core\Container\Libs\Container;
 use Untek\Framework\Telegram\Domain\Entities\RequestEntity;
-use Untek\Framework\Telegram\Domain\Services\ResponseService;
-use Untek\Framework\Telegram\Domain\Services\SessionService;
-use Untek\Framework\Telegram\Domain\Services\StateService;
-use Untek\Framework\Telegram\Domain\Services\UserService;
+use Untek\Framework\Telegram\Infrastructure\Services\ResponseService;
+use Untek\Framework\Telegram\Infrastructure\Services\SessionService;
+use Untek\Framework\Telegram\Infrastructure\Services\StateService;
+use Untek\Framework\Telegram\Infrastructure\Services\UserService;
 
 abstract class BaseAction
 {

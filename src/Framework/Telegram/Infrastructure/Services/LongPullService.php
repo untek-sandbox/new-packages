@@ -1,6 +1,6 @@
 <?php
 
-namespace Untek\Framework\Telegram\Domain\Services;
+namespace Untek\Framework\Telegram\Infrastructure\Services;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ServerException;

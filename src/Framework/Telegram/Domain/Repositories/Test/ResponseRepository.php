@@ -6,7 +6,7 @@ namespace Untek\Framework\Telegram\Domain\Repositories\Test;
 use Untek\Framework\Telegram\Domain\Entities\BotEntity;
 use Untek\Framework\Telegram\Domain\Entities\ResponseEntity;
 use Untek\Framework\Telegram\Domain\Interfaces\Repositories\ResponseRepositoryInterface;
-use Untek\Framework\Telegram\Domain\Services\RequestService;
+use Untek\Framework\Telegram\Infrastructure\Services\RequestService;
 use Untek\Lib\Components\Store\StoreFile;
 use Untek\Model\Entity\Helpers\EntityHelper;
 

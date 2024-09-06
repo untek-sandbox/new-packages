@@ -8,8 +8,8 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Untek\Core\Container\Helpers\ContainerHelper;
-use Untek\Framework\Telegram\Domain\Services\BotService;
-use Untek\Framework\Telegram\Domain\Services\ResponseService;
+use Untek\Framework\Telegram\Infrastructure\Services\BotService;
+use Untek\Framework\Telegram\Infrastructure\Services\ResponseService;
 
 class SendMessageCommand extends Command
 {
