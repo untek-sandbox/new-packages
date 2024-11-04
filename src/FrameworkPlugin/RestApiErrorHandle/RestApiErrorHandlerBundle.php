@@ -2,6 +2,7 @@
 
 namespace Untek\FrameworkPlugin\RestApiErrorHandle;
 
+use Exception;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
@@ -10,6 +11,11 @@ use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 class RestApiErrorHandlerBundle extends AbstractBundle
 {
 
+    /**
+     * @param ContainerBuilder $container
+     * @return void
+     * @throws Exception
+     */
     public function build(ContainerBuilder $container)
     {
         $fileLocator = new FileLocator(__DIR__);

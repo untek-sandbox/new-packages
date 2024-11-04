@@ -2,6 +2,7 @@
 
 namespace Untek\Model\EntityManager;
 
+use Exception;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -14,6 +15,11 @@ use Untek\Model\EntityManager\DependencyInjection\EntityManagerPass;
 class EntityManagerBundle extends AbstractBundle
 {
 
+    /**
+     * @param ContainerBuilder $container
+     * @return void
+     * @throws Exception
+     */
     public function build(ContainerBuilder $container)
     {
         $container->addCompilerPass(new EntityManagerPass());
