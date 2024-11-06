@@ -7,7 +7,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
+use Untek\Component\Cqs\Application\Interfaces\CommandBusInterface;
 use Untek\Component\FormatAdapter\StoreFile;
 use Untek\Component\Measure\Byte\Helpers\ByteSizeFormatHelper;
 use Untek\Component\Text\Helpers\TemplateHelper;

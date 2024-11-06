@@ -4,7 +4,7 @@ namespace Untek\User\Authentication\Presentation\Http\RestApi\Controllers;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
-use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
+use Untek\Component\Cqs\Application\Interfaces\CommandBusInterface;
 use Untek\User\Authentication\Application\Commands\GenerateTokenByPasswordCommand;
 use Untek\User\Authentication\Domain\Exceptions\BadPasswordException;
 use Symfony\Component\HttpFoundation\JsonResponse;

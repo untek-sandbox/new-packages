@@ -2,7 +2,7 @@
 
 namespace Untek\Utility\CodeGenerator\Cli\Infrastructure\Generators;
 
-use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
+use Untek\Component\Cqs\Application\Interfaces\CommandBusInterface;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
 use Untek\Utility\CodeGenerator\Cli\Application\Commands\GenerateCliCommand;
 use Untek\Utility\CodeGenerator\Cli\Infrastructure\Helpers\CliPathHelper;

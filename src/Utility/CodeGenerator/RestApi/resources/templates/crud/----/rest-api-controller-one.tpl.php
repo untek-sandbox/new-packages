@@ -12,7 +12,7 @@
 namespace <?= $namespace ?>;
 
 use Symfony\Component\Routing\Annotation\Route;
-use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
+use Untek\Component\Cqs\Application\Interfaces\CommandBusInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Untek\Framework\RestApi\Presentation\Http\Symfony\Helpers\QueryParameterHelper;

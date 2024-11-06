@@ -4,7 +4,7 @@ namespace Untek\Utility\CodeGenerator\RestApi\Infrastructure\Generators;
 
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Untek\Core\App\Services\ControllerAccessChecker;
-use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
+use Untek\Component\Cqs\Application\Interfaces\CommandBusInterface;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\GeneratorInterface;
 use Untek\Utility\CodeGenerator\RestApi\Application\Commands\GenerateRestApiCommand;

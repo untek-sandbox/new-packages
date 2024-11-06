@@ -23,7 +23,7 @@ class RestApiErrorController implements RestApiErrorControllerInterface
 {
 
     public function __construct(
-        private LoggerInterface $logger,
+        private LoggerInterface     $logger,
         private TranslatorInterface $translator,
     )
     {
@@ -81,11 +81,11 @@ class RestApiErrorController implements RestApiErrorControllerInterface
     }
 
     protected function commonRender(
-        string $title,
-        string $message,
+        string     $title,
+        string     $message,
         \Throwable $exception,
-        int $statusCode = 500,
-        array $errors = null
+        int        $statusCode = 500,
+        array      $errors = null
     ): Response
     {
         $params = [

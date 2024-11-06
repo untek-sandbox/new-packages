@@ -12,7 +12,7 @@ use Untek\Database\Seed\Application\Queries\GetTablesQuery;
 use Untek\Framework\Console\Symfony4\Question\ChoiceQuestion;
 use Untek\Framework\Console\Symfony4\Style\SymfonyStyle;
 use Untek\Framework\Console\Symfony4\Widgets\LogWidgetIo;
-use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
+use Untek\Component\Cqs\Application\Interfaces\CommandBusInterface;
 
 class ImportSeedCliCommand extends Command
 {
