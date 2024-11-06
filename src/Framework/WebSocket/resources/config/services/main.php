@@ -22,7 +22,7 @@ return static function (ContainerConfigurator $configurator): void {
         ->load('Untek\Framework\WebSocket\\', __DIR__ . '/../../../')
         ->exclude([
             __DIR__ . '/../../../Application/**/*{Command.php,Query.php}',
-            __DIR__ . '/../../../{resources,Domain}',
+            __DIR__ . '/../../../{resources,Domain/Model}',
             __DIR__ . '/../../../**/*{Event.php,Helper.php,Message.php,Task.php,Relation.php,Normalizer.php}',
             __DIR__ . '/../../../**/{Dto,Enums}',
         ]);
