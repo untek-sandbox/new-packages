@@ -9,7 +9,7 @@ use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Untek\Database\Seed\Application\Validators\GetTablesQueryValidator;
 
 #[AsMessageHandler]
-class GetTablesQueryHandler implements CqrsHandlerInterface
+class GetTablesQueryHandler //implements CqrsHandlerInterface
 {
 
     public function __construct(

@@ -20,7 +20,7 @@ use Untek\Utility\CodeGenerator\RestApi\Infrastructure\Generators\RoutConfigGene
 use Untek\Utility\CodeGenerator\RestApi\Infrastructure\Generators\RoutConfigImportGenerator;
 
 #[AsMessageHandler]
-class GenerateRestApiCommandHandler implements CqrsHandlerInterface
+class GenerateRestApiCommandHandler //implements CqrsHandlerInterface
 {
 
     public function __construct(

@@ -27,7 +27,7 @@ use Untek\User\Authentication\Infrastructure\Libs\CredentialsPasswordValidator;
 use Untek\User\Identity\Domain\Interfaces\UserIdentityInterface;
 
 #[AsMessageHandler]
-class GenerateTokenByPasswordCommandHandler implements CqrsHandlerInterface
+class GenerateTokenByPasswordCommandHandler //implements CqrsHandlerInterface
 {
 
 //    use EventDispatcherTrait;

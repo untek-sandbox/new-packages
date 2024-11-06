@@ -21,7 +21,7 @@ use <?= $repositoryInterfaceClassName ?>;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
-class <?= $className ?> implements CqrsHandlerInterface
+class <?= $className ?> //implements CqrsHandlerInterface
 
 {
 

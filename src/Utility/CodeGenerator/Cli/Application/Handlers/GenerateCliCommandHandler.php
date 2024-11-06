@@ -17,7 +17,7 @@ use Untek\Utility\CodeGenerator\Cli\Infrastructure\Generators\ConsoleCommandConf
 use Untek\Utility\CodeGenerator\Cli\Infrastructure\Generators\ContainerConfigGenerator;
 
 #[AsMessageHandler]
-class GenerateCliCommandHandler implements CqrsHandlerInterface
+class GenerateCliCommandHandler //implements CqrsHandlerInterface
 {
 
     public function __construct(

@@ -11,7 +11,7 @@ use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Yiisoft\Arrays\ArrayHelper;
 
 #[AsMessageHandler]
-class ExportSeedCommandHandler implements CqrsHandlerInterface
+class ExportSeedCommandHandler //implements CqrsHandlerInterface
 {
 
     public function __construct(

@@ -16,7 +16,7 @@ use Untek\Utility\CodeGenerator\Application\Infrastructure\Generators\ContainerC
 use Untek\Utility\CodeGenerator\Application\Infrastructure\Generators\ContainerConfigImportGenerator;
 
 #[AsMessageHandler]
-class GenerateApplicationCommandHandler implements CqrsHandlerInterface
+class GenerateApplicationCommandHandler //implements CqrsHandlerInterface
 {
 
     public function __construct(

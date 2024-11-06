@@ -21,7 +21,7 @@ use Untek\Utility\CodeGenerator\Database\Infrastructure\Generators\RepositoryInt
 use Untek\Utility\CodeGenerator\Database\Infrastructure\Generators\SeedGenerator;
 
 #[AsMessageHandler]
-class GenerateDatabaseCommandHandler implements CqrsHandlerInterface
+class GenerateDatabaseCommandHandler //implements CqrsHandlerInterface
 {
 
     public function __construct(

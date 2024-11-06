@@ -14,7 +14,7 @@ use Untek\Component\Cqrs\Application\Abstract\CqrsHandlerInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 
 #[AsMessageHandler]
-class ImportSeedCommandHandler implements CqrsHandlerInterface
+class ImportSeedCommandHandler //implements CqrsHandlerInterface
 {
 
     public function __construct(
