@@ -3,6 +3,7 @@
 namespace Untek\User\Authentication\Application\Handlers;
 
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -25,6 +26,7 @@ use Untek\User\Authentication\Domain\Model\Token;
 use Untek\User\Authentication\Infrastructure\Libs\CredentialsPasswordValidator;
 use Untek\User\Identity\Domain\Interfaces\UserIdentityInterface;
 
+#[AsMessageHandler]
 class GenerateTokenByPasswordCommandHandler implements CqrsHandlerInterface
 {
 

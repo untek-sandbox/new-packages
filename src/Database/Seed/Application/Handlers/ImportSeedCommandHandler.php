@@ -3,6 +3,7 @@
 namespace Untek\Database\Seed\Application\Handlers;
 
 use Doctrine\DBAL\Connection;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Untek\Component\FormatAdapter\StoreFile;
 use Untek\Component\FileSystem\Helpers\FileHelper;
 use Untek\Component\FileSystem\Helpers\FilePathHelper;
@@ -12,6 +13,7 @@ use Untek\Database\Seed\Application\Validators\ImportSeedCommandValidator;
 use Untek\Component\Cqrs\Application\Abstract\CqrsHandlerInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 
+#[AsMessageHandler]
 class ImportSeedCommandHandler implements CqrsHandlerInterface
 {
 

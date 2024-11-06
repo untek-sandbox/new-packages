@@ -3,10 +3,12 @@
 namespace Untek\Database\Seed\Application\Handlers;
 
 use Doctrine\DBAL\Connection;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Untek\Component\Cqrs\Application\Abstract\CqrsHandlerInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Untek\Database\Seed\Application\Validators\GetTablesQueryValidator;
 
+#[AsMessageHandler]
 class GetTablesQueryHandler implements CqrsHandlerInterface
 {
 

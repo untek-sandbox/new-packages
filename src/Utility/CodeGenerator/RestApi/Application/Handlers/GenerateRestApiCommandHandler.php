@@ -2,6 +2,7 @@
 
 namespace Untek\Utility\CodeGenerator\RestApi\Application\Handlers;
 
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Untek\Component\Cqrs\Application\Abstract\CqrsHandlerInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\FileResult;
@@ -18,6 +19,7 @@ use Untek\Utility\CodeGenerator\RestApi\Infrastructure\Generators\RestApiSchemeG
 use Untek\Utility\CodeGenerator\RestApi\Infrastructure\Generators\RoutConfigGenerator;
 use Untek\Utility\CodeGenerator\RestApi\Infrastructure\Generators\RoutConfigImportGenerator;
 
+#[AsMessageHandler]
 class GenerateRestApiCommandHandler implements CqrsHandlerInterface
 {
 

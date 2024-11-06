@@ -3,12 +3,14 @@
 namespace Untek\Database\Seed\Application\Handlers;
 
 use Illuminate\Database\Capsule\Manager;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Untek\Component\Cqrs\Application\Abstract\CqrsHandlerInterface;
 use Untek\Component\FormatAdapter\StoreFile;
 use Untek\Database\Seed\Application\Validators\ExportSeedCommandValidator;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Yiisoft\Arrays\ArrayHelper;
 
+#[AsMessageHandler]
 class ExportSeedCommandHandler implements CqrsHandlerInterface
 {
 
