@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Throwable;
 use Untek\FrameworkPlugin\RestApiErrorHandle\Presentation\Http\Symfony\Interfaces\RestApiErrorControllerInterface;
 use function Symfony\Component\String\u;
@@ -41,13 +42,16 @@ class RestApiErrorHandleSubscriber implements EventSubscriberInterface
         $event->stopPropagation();
     }
 
-    protected function forgeResponse(Request $request, Throwable $e): Response
+    protected function forgeResponse(Request $request, Throwable $exception): Response
     {
+        if ($exception instanceof HandlerFailedException) {
+            $exception = $exception->getPrevious();
+        }
         $request->attributes->set('_controller', $this->restApiErrorController);
         $request->attributes->set('_action', 'handleError');
         $arguments = [
             $request,
-            $e,
+            $exception,
         ];
         $response = call_user_func_array([$this->restApiErrorController, 'handleError'], $arguments);
         return $response;
