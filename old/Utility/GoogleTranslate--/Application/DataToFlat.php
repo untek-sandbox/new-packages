@@ -2,19 +2,6 @@
 
 namespace Untek\Utility\GoogleTranslate\Application;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
-use Stichoza\GoogleTranslate\GoogleTranslate;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
-use Untek\Component\FormatAdapter\StoreFile;
-use Untek\Component\Arr\Helpers\ExtArrayHelper;
-use Untek\Framework\Console\Symfony4\Style\SymfonyStyle;
-use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
-use Untek\Utility\CodeGenerator\CodeGenerator\Application\Interfaces\InteractInterface;
-
 class DataToFlat
 {
 
@@ -23,7 +10,8 @@ class DataToFlat
 //    protected $placeholders = [];
 //    protected $placeholderNumber = 1;
 
-    public function run(array $data) {
+    public function run(array $data)
+    {
 //        self::$id = 0;
         $lines = [];
         $this->toFlat($data, $lines);
