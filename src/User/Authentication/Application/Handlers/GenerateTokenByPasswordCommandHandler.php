@@ -7,7 +7,6 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Untek\Component\Cqrs\Application\Abstract\CqrsHandlerInterface;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Untek\Model\Validator\Interfaces\ValidatorInterface;
 use Untek\User\Authentication\Application\Commands\GenerateTokenByPasswordCommand;
@@ -27,7 +26,7 @@ use Untek\User\Authentication\Infrastructure\Libs\CredentialsPasswordValidator;
 use Untek\User\Identity\Domain\Interfaces\UserIdentityInterface;
 
 #[AsMessageHandler]
-class GenerateTokenByPasswordCommandHandler //implements CqrsHandlerInterface
+class GenerateTokenByPasswordCommandHandler
 {
 
 //    use EventDispatcherTrait;

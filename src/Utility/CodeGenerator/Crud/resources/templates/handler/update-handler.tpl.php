@@ -16,12 +16,11 @@ use Untek\Persistence\Contract\Exceptions\NotFoundException;
 use Untek\Core\Instance\Helpers\PropertyHelper;
 use Untek\Model\Validator\Exceptions\UnprocessableEntityException;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Untek\Component\Cqrs\Application\Abstract\CqrsHandlerInterface;
 use <?= $repositoryInterfaceClassName ?>;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
-class <?= $className ?> //implements CqrsHandlerInterface
+class <?= $className ?>
 
 {
 

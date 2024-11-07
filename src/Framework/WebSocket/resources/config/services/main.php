@@ -8,7 +8,6 @@ use Untek\Framework\WebSocket\Infrastructure\Services\SocketDaemonTest;
 use Untek\Framework\WebSocket\Infrastructure\Storage\ConnectionRamStorage;
 use Untek\Framework\WebSocket\Presentation\Cli\Commands\SendMessageToSocketCommand;
 use Untek\Framework\WebSocket\Presentation\Cli\Commands\SocketCommand;
-use Untek\Component\Cqrs\Application\Services\CommandBusInterface;
 use Untek\User\Authentication\Domain\Interfaces\Services\TokenServiceInterface;
 use Untek\Framework\WebSocket\Application\Services\SocketDaemonInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;

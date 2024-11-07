@@ -3,7 +3,6 @@
 namespace Untek\Utility\CodeGenerator\Application\Application\Handlers;
 
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
-use Untek\Component\Cqrs\Application\Abstract\CqrsHandlerInterface;
 use Untek\Utility\CodeGenerator\CodeGenerator\Application\Dto\GenerateResultCollection;
 use Untek\Utility\CodeGenerator\CodeGenerator\Infrastructure\Helpers\GeneratorHelper;
 use Untek\Utility\CodeGenerator\Application\Application\Commands\GenerateApplicationCommand;
@@ -16,7 +15,7 @@ use Untek\Utility\CodeGenerator\Application\Infrastructure\Generators\ContainerC
 use Untek\Utility\CodeGenerator\Application\Infrastructure\Generators\ContainerConfigImportGenerator;
 
 #[AsMessageHandler]
-class GenerateApplicationCommandHandler //implements CqrsHandlerInterface
+class GenerateApplicationCommandHandler
 {
 
     public function __construct(
