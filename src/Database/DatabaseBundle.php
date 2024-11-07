@@ -4,7 +4,6 @@ namespace Untek\Database;
 
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
-use Untek\Component\Cqrs\Infrastructure\DependencyInjection\CqrsExtension;
 
 class DatabaseBundle extends AbstractBundle
 {

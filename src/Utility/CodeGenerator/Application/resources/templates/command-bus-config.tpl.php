@@ -6,9 +6,9 @@
  * @var string $commandClassName
  */
 
-?>
+\Untek\Component\Dev\Helpers\DeprecateHelper::hardThrow();
 
-use Untek\Component\Cqrs\Application\Services\CommandBusConfiguratorInterface;
+?>
 
 return function (CommandBusConfiguratorInterface $configurator) {
 };
