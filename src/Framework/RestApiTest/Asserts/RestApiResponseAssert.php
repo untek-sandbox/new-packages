@@ -7,7 +7,6 @@ use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\HttpFoundation\Response;
 use Untek\Component\Arr\Helpers\ArrayPathHelper;
-use Untek\Framework\Rpc\Domain\Enums\RpcErrorCodeEnum;
 use Yiisoft\Arrays\ArrayHelper;
 
 class RestApiResponseAssert extends Assert
@@ -20,14 +19,14 @@ class RestApiResponseAssert extends Assert
         $this->response = $response;
     }
 
-    protected function getPayload(): array {
+    public function getPayload(): mixed {
         return json_decode($this->response->getContent(), JSON_OBJECT_AS_ARRAY);
     }
 
     public function getValueFromPath(string $path = null) {
         $responseBody = $this->getPayload();
         if($path) {
-            $actual = ArrayPathHelper::getValue($responseBody, $path);
+            $actual = Arr::get($responseBody, $path);
         } else {
             $actual = $responseBody;
         }
@@ -40,6 +39,15 @@ class RestApiResponseAssert extends Assert
         dd($responseBody);
     }*/
 
+    public function assertNotEmptyHeader(string $name): static
+    {
+        $actual = $this->response->headers->get($name);
+        if(empty($actual)) {
+            throw new ExpectationFailedException("Header \"{$name}\" is empty.");
+        }
+        return $this;
+    }
+
     public function assertHeader($expected, string $name): static
     {
         $actual = $this->response->headers->get($name);
@@ -48,7 +56,7 @@ class RestApiResponseAssert extends Assert
         return $this;
     }
 
-    public function getPathAssert(string $path): RestApiResponsePathAssert
+    public function getPathAssert(string $path = null): RestApiResponsePathAssert
     {
         $actual = $this->getValueFromPath($path);
         return new RestApiResponsePathAssert($actual, $this);
@@ -83,7 +91,27 @@ class RestApiResponseAssert extends Assert
         if(!$has) {
             throw new ExpectationFailedException("Path \"{$path}\" not found.");
         }
-        return $actual;
+        return $this;
+    }
+
+    public function assertNotEmptyPath(string $path): static
+    {
+        $responseBody = $this->getPayload();
+        $value = Arr::get($responseBody, $path);
+        if(empty($value)) {
+            throw new ExpectationFailedException("Path \"{$path}\" not found.");
+        }
+        return $this;
+    }
+
+    public function assertEmptyPath(string $path): static
+    {
+        $responseBody = $this->getPayload();
+        $value = Arr::get($responseBody, $path);
+        if(!empty($value)) {
+            throw new ExpectationFailedException("Path \"{$path}\" not found.");
+        }
+        return $this;
     }
 
     public function assertData(array $data): static
@@ -261,7 +289,7 @@ class RestApiResponseAssert extends Assert
         return $this;
     }
 
-    public function assertUnprocessableEntity(array $fieldNames = []): static
+    /*public function assertUnprocessableEntity(array $fieldNames = []): static
     {
         $this->assertIsError();
         $this->assertErrorMessage('Parameter validation error');
@@ -276,7 +304,7 @@ class RestApiResponseAssert extends Assert
             $this->assertEquals($fieldNames, $expectedBody);
         }
         return $this;
-    }
+    }*/
 
     public function assertUnprocessableEntityErrors(array $errors): static
     {

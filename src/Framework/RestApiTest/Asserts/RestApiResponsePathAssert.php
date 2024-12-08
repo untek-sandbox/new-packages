@@ -27,6 +27,12 @@ class RestApiResponsePathAssert
         return $this;
     }
 
+    public function assertInt(): static
+    {
+        $this->assert->assertIsInt($this->actual);
+        return $this;
+    }
+
     public function assertRegexp($exp): static
     {
         if(!preg_match("/$exp/u", $this->actual)) {
