@@ -1,0 +1,31 @@
+
+# PHP Storm IDE
+/.idea/*
+
+# netbeans project files
+nbproject
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+.phpdoc
+
+# windows thumbnail cache
+Thumbs.db
+
+# composer vendor dir
+/vendor
+
+# Mac DS_Store Files
+.DS_Store
+
+# local phpunit config
+/phpunit.xml
+.phpunit.result.cache
+
+# vagrant runtime
+/.vagrant
+
+.dbeaver-data-sources.xml
